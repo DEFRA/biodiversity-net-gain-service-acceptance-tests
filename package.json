@@ -1,5 +1,5 @@
 {
-    "name": "wdio-bng-applcation-to-register-acceptancetests",
+    "name": "Biodiversity-net-gain-service-acceptance-tests",
     "version": "1.0.0",
     "description": "BNG Register web app Accpetance tests",
     "main": "index.js",
