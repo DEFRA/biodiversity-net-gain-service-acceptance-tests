@@ -1,3 +1,4 @@
+@regression
 Feature: Start page
 
     As a BNG user, I want to see all the relevant guidance
@@ -5,10 +6,8 @@ Feature: Start page
     or to complete an unfinished one
 
     Scenario Outline:
-
         Given I am on the start page
         Then I should see the header with text saying <message>
-
         Examples:
             | message                                      |
             | Register land for off-site biodiversity gain |

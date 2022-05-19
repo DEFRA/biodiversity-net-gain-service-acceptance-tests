@@ -8,6 +8,22 @@ module.exports = class Page {
    * @param path path of the sub page (e.g. /path/to/page.html)
    */
 
+  get getHeading() {
+    return $(".govuk-heading-xl");
+  }
+
+  get startButton() {
+    return $(".govuk-button--start']");
+  }
+
+  get continueButton() {
+    return $(".govuk-button");
+  }
+
+  get govFileUpload() {
+    return $(".govuk-file-upload");
+  }
+
   open(path) {
     return browser.url(`./${path}`);
   }

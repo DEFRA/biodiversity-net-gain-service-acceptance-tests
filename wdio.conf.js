@@ -1,9 +1,14 @@
 exports.config = {
+  // Browserstack Config
+  // user: process.env.BROWSERSTACK_USERNAME,
+  // key: process.env.BROWSERSTACK_ACCESS_KEY,
+
   //
   // ====================
   // Runner Configuration
   // ====================
   //
+  runner: "local",
   //
   // ==================
   // Specify Test Files
@@ -110,7 +115,12 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: ["chromedriver"],
+
+  // ...
+  services: [
+    "chromedriver",
+    // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
+  ],
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
@@ -140,13 +150,15 @@ exports.config = {
     // <string[]> (file/dir) require files before executing features
     require: ["./features/step-definitions/**/*.js"],
     // <boolean> show full backtrace for errors
-    backtrace: false,
+    backtrace: true,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
     requireModule: [],
     // <boolean> invoke formatters without executing steps
     dryRun: false,
     // <boolean> abort the run on first failure
     failFast: false,
+    // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
+    format: ["pretty"],
     // <boolean> hide step definition snippets for pending steps
     snippets: true,
     // <boolean> hide source uris
@@ -154,7 +166,7 @@ exports.config = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tagExpression: "",
+    tagExpression: "@new",
     // <number> timeout for step definitions
     timeout: 60000,
     // <boolean> Enable this config to treat undefined definitions as warnings.
