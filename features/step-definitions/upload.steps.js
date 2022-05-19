@@ -1,7 +1,9 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 const uploads = require("../page-objects/planning-obligation-upload");
 
-When("I choose and upload a valid file", async () => {
+When("I choose and upload a {string}", async (file) => {
+  // Todo: switch for specific files (metric, planning obligation etc)
+
   const path = require("path");
 
   const filePath = "TestFiles\\test.txt";
@@ -28,15 +30,14 @@ Then(
   "I should be able to see the filesize of the document",
   async () =>
     // Todo: again is this worth it, could just e visual to make sure its present.
+    // this is possibly in the uint tests...
     "pending"
 );
 
-Given(/^I have uploaded the (.*)$/, async (document) => {
-  // Todo:  switch statment for particular doc?
+When("I choose a different file", async function () {
+  return "pending";
+});
 
-  // go through steps to upload the planning obligation
-  // go to the upload page
-  // then select the file
-  // then continue
-  "pending";
+Then("The original document should be deleted", async function () {
+  return "pending";
 });

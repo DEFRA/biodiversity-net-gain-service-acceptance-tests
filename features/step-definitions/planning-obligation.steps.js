@@ -5,8 +5,3 @@ const PlanningObligationUpload = require("../page-objects/planning-obligation-up
 const pages = {
   PlanningObligationUpload,
 };
-// Given(/^I am on the (.*) upload page$/, async (page) => {
-//   await pages[page].open();
-
-//   const pageTitle = await browser.getTitle();
-// });

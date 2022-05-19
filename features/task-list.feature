@@ -6,9 +6,8 @@ Feature: Task List Page
     So that I can track the progress of my registration.
 
     @e2e @new
-    Scenario Outline: After the document is uploaded the <task> section on the task list page should have a status of completed
-        Given I have uploaded the "<document>"
-        And I navigate to the "task-list" page
+    Scenario Outline: The task list page should show the correct status of tasks to complete
+        Given I navigate to the "task-list" page
         Then I should see the "<task>" section status as "<status>"
         Examples:
             | document            | task             | status    |

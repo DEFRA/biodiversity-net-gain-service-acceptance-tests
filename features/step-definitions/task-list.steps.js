@@ -8,7 +8,7 @@ Then(
     // Todo: switch for the task - only one at the moment planning obligation/legal agreement
     // also the prototype version 8 has non unique ID's so not a good test right now
 
-    status = "incorrect";
+    //status = "incorrect";
 
     expect(await TaskList.LegalAgreementStatus).toHaveTextContaining(status);
 

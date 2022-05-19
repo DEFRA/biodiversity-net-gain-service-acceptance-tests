@@ -32,7 +32,7 @@ When("I navigate to the {string} page", async function (page) {
   console.log(pageUrl);
 });
 
-Then(/^I should be on the "(.*)" page$/, async (page) => {
+Then(/^I should be (?:on|returned to) the "(.*)" page$/, async (page) => {
   const pageUrl = await browser.getUrl();
 
   // assert against page url
