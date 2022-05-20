@@ -1,5 +1,5 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-const uploads = require("../page-objects/planning-obligation-upload");
+const uploads = require("../page_objects/planning-obligation-upload");
 
 When("I choose and upload a {string}", async (file) => {
   // Todo: switch for specific files (metric, planning obligation etc)
