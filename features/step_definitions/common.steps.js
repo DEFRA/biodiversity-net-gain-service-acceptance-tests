@@ -1,9 +1,9 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 
-const StartPage = require("../page-objects/start");
-const PlanningObligationUpload = require("../page-objects/planning-obligation-upload");
-const PlanningObligationCheck = require("../page-objects/planning-obligation-check");
-const TaskListPage = require("../page-objects/task-list");
+const StartPage = require("../page_objects/start");
+const PlanningObligationUpload = require("../page_objects/planning-obligation-upload");
+const PlanningObligationCheck = require("../page_objects/planning-obligation-check");
+const TaskListPage = require("../page_objects/task-list");
 
 const pages = {
   start: StartPage,
