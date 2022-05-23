@@ -12,17 +12,8 @@ const pages = {
   "task-list": TaskListPage,
 };
 
-Given(/^I am on the "(.*)" page$/, async (page) => {
-  await pages[page].open();
-
-  const pageUrl = await browser.getUrl();
-
-  // assert against page url
-  await expect(pageUrl).toContain(page);
-  console.log(pageUrl);
-});
-
-When("I navigate to the {string} page", async function (page) {
+Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
+  page = page.toLowerCase();
   await pages[page].open();
 
   const pageUrl = await browser.getUrl();
