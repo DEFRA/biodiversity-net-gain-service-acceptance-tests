@@ -19,6 +19,7 @@
         "@wdio/spec-reporter": "^7.19.1",
         "wdio-chromedriver-service": "^7.3.2"
     },
+    
     "dependencies": {
         "chromedriver": "^101.0.0",
         "selenium-webdriver": "^4.1.1"
