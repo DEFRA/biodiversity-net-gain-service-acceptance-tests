@@ -4,6 +4,7 @@
     "description": "BNG Register web app Accpetance tests",
     "main": "index.js",
     "scripts": {
+        "test:ci": "wdio run wdio-github.conf.js --cucumberOpts.tagExpression='@e2e'",
         "test": "wdio run wdio.conf.js",
         "e2e": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@e2e'",
         "regression": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@regeression'",
@@ -19,7 +20,7 @@
         "@wdio/spec-reporter": "^7.19.1",
         "wdio-chromedriver-service": "^7.3.2"
     },
-    
+
     "dependencies": {
         "chromedriver": "^101.0.0",
         "selenium-webdriver": "^4.1.1"
