@@ -8,7 +8,7 @@ Feature: uploads
     Background:
         Given I am on the "planning-obligation-upload" page
 
-    @e2e
+
     Scenario: I can upload the planning-obligation document
         When I choose and upload a "planning obligation"
         Then I should be on the "planning-obligation-check" page
@@ -37,7 +37,7 @@ Feature: uploads
 
     #Todo: check this is probably be covered by the unit tests
     Scenario Outline: I cannot upload an invalid file type
-        Given I am on the Planning-Obligation upload page
+        Given I am on the "planning-obligation-upload" page
         When I choose a file type that is not allowed
         Then I should not be able to upload the file
         And I am informed of what the allowed file types should be
