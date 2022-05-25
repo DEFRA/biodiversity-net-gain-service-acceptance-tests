@@ -27,5 +27,5 @@ jobs:
         name: Install dependencies
 
       # Run your test with the same command you uses locally
-      - run: npm wdio run wdio-github.conf.js --cucumberOpts.tagExpression='@e2e'"
+      - run: npm wdio run wdio-github.conf.js --cucumberOpts.tagExpression='@e2e'
         name: Running E2E tests
