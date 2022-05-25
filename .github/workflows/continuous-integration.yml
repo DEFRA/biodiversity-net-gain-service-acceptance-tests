@@ -26,9 +26,6 @@ jobs:
       - run: npm install
         name: Install dependencies
 
-      # This is where you could build your app
-      # You could also start your server process (take a look at my job for example https://github.com/Slashgear/slashgear.github.io/blob/source/.github/workflows/continuous-integration.yml)
-
       # Run your test with the same command you uses locally
       - run: npm wdio run wdio-github.conf.js --cucumberOpts.tagExpression='@e2e'"
         name: Running E2E tests
