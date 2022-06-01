@@ -10,7 +10,6 @@ const pages = {
   "planning-obligation-upload": PlanningObligationUpload,
   "planning-obligation-check": PlanningObligationCheck,
   "task-list": TaskListPage,
-  "land-boundary-options": LandBoundaryOptions,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
