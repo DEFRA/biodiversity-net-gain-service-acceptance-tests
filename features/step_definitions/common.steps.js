@@ -1,15 +1,16 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-
 const StartPage = require("../page_objects/start");
 const PlanningObligationUpload = require("../page_objects/planning-obligation-upload");
 const PlanningObligationCheck = require("../page_objects/planning-obligation-check");
 const TaskListPage = require("../page_objects/task-list");
+const LandBoundaryOptions = require("../page_objects/land-boundary-upload-options");
 
 const pages = {
   start: StartPage,
   "planning-obligation-upload": PlanningObligationUpload,
   "planning-obligation-check": PlanningObligationCheck,
   "task-list": TaskListPage,
+  "land-boundary-options": LandBoundaryOptions,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
@@ -20,7 +21,7 @@ Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
 
   // assert against page url
   await expect(pageUrl).toContain(page);
-  console.log(pageUrl);
+  console.log("I expect " + pageUrl + " to be" + page);
 });
 
 Then(/^I should be (?:on|returned to) the "(.*)" page$/, async (page) => {

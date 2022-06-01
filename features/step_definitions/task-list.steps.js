@@ -1,5 +1,4 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-
 const TaskList = require("../page_objects/task-list");
 
 Then(

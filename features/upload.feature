@@ -8,7 +8,6 @@ Feature: uploads
     Background:
         Given I am on the "planning-obligation-upload" page
 
-
     Scenario: I can upload the planning-obligation document
         When I choose and upload a "planning obligation"
         Then I should be on the "planning-obligation-check" page

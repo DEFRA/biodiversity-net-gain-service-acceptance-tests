@@ -5,7 +5,6 @@ When("I choose and upload a {string}", async (file) => {
   // Todo: switch for specific files (metric, planning obligation etc)
 
   const path = require("path");
-
   const filePath = "TestFiles\\test.txt";
   const remoteFilePath = await browser.uploadFile(filePath);
 
