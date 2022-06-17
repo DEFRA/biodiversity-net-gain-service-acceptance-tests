@@ -99,7 +99,7 @@ exports.config = {
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
   baseUrl:
-    "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v8/",
+    "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
