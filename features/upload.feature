@@ -39,19 +39,3 @@ Feature: uploads
         When I choose a file type that is not allowed
         Then I should not be able to upload the file
         And I am informed of what the allowed file types should be
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

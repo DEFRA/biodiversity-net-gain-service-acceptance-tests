@@ -5,12 +5,14 @@ Feature: Start page
     I need to start a registration application
     or to complete an unfinished one
 
-    Scenario Outline:
+    @new
+    Scenario:
         Given I am on the "start" page
-        Then I should see the header with text saying "<message>"
+        Then I should see the header text "<message>"
         Examples:
             | message                                      |
             | Register land for off-site biodiversity gain |
+
     @skip()
     Scenario: As a returning BNG user I want to login and continue with my previous journey
         Given I am a returning user
