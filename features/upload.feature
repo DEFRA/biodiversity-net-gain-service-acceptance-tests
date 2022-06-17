@@ -7,17 +7,17 @@ Feature: uploads
 
     Background:
         Given I am on the "upload-planning-obligation" page
-
+    @e2e
     Scenario: I can upload the planning-obligation document
         When I choose and upload a "planning obligation"
         Then I should be on the "check-planning-obligation" page
         And I should be able to see the filesize of the document
-
+    @e2e
     Scenario: I can check that the uploaded file is the one I wanted to upload before continuing
         When I choose and upload a "planning obligation"
         And I am on the "check-planning-obligation" page
         Then I should be able to see a link to the document
-    @new
+    @e2e
     Scenario: There is a way to choose a different file if necessary
         When I choose and upload a "planning obligation"
         And I am on the "check-planning-obligation" page
