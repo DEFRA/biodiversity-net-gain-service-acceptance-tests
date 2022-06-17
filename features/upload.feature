@@ -12,7 +12,7 @@ Feature: uploads
         When I choose and upload a "planning obligation"
         Then I should be on the "check-planning-obligation" page
         And I should be able to see the filesize of the document
-    @e2e
+    @e2e @skip()
     Scenario: I can check that the uploaded file is the one I wanted to upload before continuing
         When I choose and upload a "planning obligation"
         And I am on the "check-planning-obligation" page
@@ -24,7 +24,7 @@ Feature: uploads
         When I choose a different file
         Then I should be returned to the "upload-planning-obligation" page
         And The original document should be deleted
-
+    @skip()
     #Todo: check this is probably be covered by the unit tests
     Scenario: I cannot upload a file larger than the max file size
         When I choose a document that is larger than "<maxFileSize>" in size
@@ -33,7 +33,7 @@ Feature: uploads
     Example:
             | maxFileSize |
             | 50mb        |
-
+    @skip()
     #Todo: check this is probably be covered by the unit tests
     Scenario Outline: I cannot upload an invalid file type
         When I choose a file type that is not allowed

@@ -11,7 +11,7 @@ Feature: Start page
         Examples:
             | message                                      |
             | Register land for off-site biodiversity gain |
-
+    @skip()
     Scenario: As a returning BNG user I want to login and continue with my previous journey
         Given I am a returning user
         When I Sign In to the register
