@@ -16,6 +16,10 @@ When("I choose and upload a {string}", async (file) => {
   console.log("The remote filepath is " + remoteFilePath);
 });
 
+When('I have "uploaded and checked a {string}', function (string) {
+  return "pending";
+});
+
 Then("I should be able to see a link to the document", async () => {
   /* verify correct file has been uploaded
   Grab the filename text that the page displays after processing the upload
