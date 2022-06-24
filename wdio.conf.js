@@ -99,7 +99,8 @@ exports.config = {
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
   baseUrl:
-    "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
+    "http://localhost:3000/"
+    //https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -166,7 +167,7 @@ exports.config = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tagExpression: "",
+    tagExpression: "@new",
     // <number> timeout for step definitions
     timeout: 60000,
     // <boolean> Enable this config to treat undefined definitions as warnings.
