@@ -3,12 +3,18 @@ const StartPage = require("../page_objects/start");
 const PlanningObligationUpload = require("../page_objects/planning-obligation-upload");
 const PlanningObligationCheck = require("../page_objects/planning-obligation-check");
 const TaskListPage = require("../page_objects/task-list");
+const LandBoundaryChooseUploadOption = require("../page_objects/land_boundary/choose-upload-option");
+const LandBoundaryUploadGeospatial = require("../page_objects/land_boundary/upload-geospatial");
+const LandBoundaryUploadImageFile = require("../page_objects/land_boundary/upload-lmage-file");
 
 const pages = {
   start: StartPage,
   "upload-planning-obligation": PlanningObligationUpload,
   "check-planning-obligation": PlanningObligationCheck,
   "task-list": TaskListPage,
+  "location-options": LandBoundaryChooseUploadOption,
+  "upload-geospatial-file": LandBoundaryUploadGeospatial,
+  "upload-image-file": LandBoundaryUploadImageFile,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
