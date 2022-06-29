@@ -1,17 +1,18 @@
-@regression
+@regression @e2e
 Feature: Start page
 
     As a BNG user, I want to see all the relevant guidance
     I need to start a registration application
     or to complete an unfinished one
 
-    @new @e2e
+    @new
     Scenario:
         Given I am on the "start" page
         Then I should see the header text "<message>"
         Examples:
             | message                                      |
             | Register land for off-site biodiversity gain |
+
 
     @skip()
     Scenario: As a returning BNG user I want to login and continue with my previous journey
