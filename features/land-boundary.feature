@@ -1,4 +1,4 @@
-@regression
+@regression @skip()
 Feature: land-boundary
 
     As a BNG User
