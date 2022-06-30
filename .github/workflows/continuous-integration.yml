@@ -16,6 +16,10 @@ jobs:
       # fetch the current ref
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: setup-chromedriver
+        uses: nanasess/setup-chromedriver@v1.0.7
+
       # Use Node version above 14.x you want to use
       - uses: actions/setup-node@v1
         with:
