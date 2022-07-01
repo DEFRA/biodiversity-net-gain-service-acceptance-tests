@@ -21,15 +21,11 @@ Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
   page = page.toLowerCase();
   await pages[page].open();
 
-  const pageUrl = await browser.getUrl();
-
   // assert against the page title
   await expect(await browser.getTitle()).toContain(pages[page].Title);
 });
 
 Then(/^I should be (?:on|returned to) the "(.*)" page$/, async (page) => {
-  const pageUrl = await browser.getUrl();
-
   // assert against the page title
   await expect(await browser.getTitle()).toContain(pages[page].Title);
 });

@@ -9,7 +9,9 @@ Then(
 
     //status = "incorrect";
 
-    expect(await TaskList.LegalAgreementStatus).toHaveTextContaining(status);
+    await expect(await TaskList.LegalAgreementStatus).toHaveTextContaining(
+      status
+    );
 
     // expect(TaskList.LegalAgreementStatus).toEqual(
     //   expect.stringContaining(status)
