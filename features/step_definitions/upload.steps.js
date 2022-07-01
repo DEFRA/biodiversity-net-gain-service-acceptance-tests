@@ -16,11 +16,7 @@ When("I choose and upload a {string}", async (file) => {
   console.log("The remote filepath is " + remoteFilePath);
 });
 
-<<<<<<< HEAD
-When('I have "uploaded and checked a {string}', function (string) {
-=======
 When("I have uploaded and checked a {string}", function (string) {
->>>>>>> main
   return "pending";
 });
 
