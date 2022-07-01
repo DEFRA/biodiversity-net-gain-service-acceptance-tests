@@ -16,12 +16,8 @@
         "@wdio/cli": "^7.19.2",
         "@wdio/cucumber-framework": "^7.19.2",
         "@wdio/local-runner": "^7.19.2",
-        "@wdio/selenium-standalone-service": "^7.19.5",
+        "@wdio/selenium-standalone-service": "^7.20.3",
         "@wdio/spec-reporter": "^7.19.1",
         "wdio-chromedriver-service": "^7.3.2"
-    },
-
-    "dependencies": {
-        "selenium-webdriver": "^4.1.1"
     }
 }

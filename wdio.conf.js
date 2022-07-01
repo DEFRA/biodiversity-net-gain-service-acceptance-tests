@@ -1,3 +1,6 @@
+let baseUrl = process.env.SERVICE_URL || "http://localhost:3000";
+//   "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/";
+
 exports.config = {
   // Browserstack Config
   // user: process.env.BROWSERSTACK_USERNAME,
@@ -46,7 +49,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 10,
+  maxInstances: 1,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -57,10 +60,22 @@ exports.config = {
       // maxInstances can get overwritten per capability. So if you have an in-house Selenium
       // grid with only 5 firefox instances available you can make sure that not more than
       // 5 instances get started at a time.
-      maxInstances: 5,
+      maxInstances: 1,
       //
       browserName: "chrome",
       acceptInsecureCerts: true,
+
+      "goog:chromeOptions": {
+        args: [
+          "--disable-infobars",
+          "--window-size=1280,800",
+          "--no-sandbox",
+          "--disable-gpu",
+          "--disable-setuid-sandbox",
+          "--disable-dev-shm-usage",
+        ],
+      },
+
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -98,8 +113,9 @@ exports.config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: "http://localhost:3000",
-  //"https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
+  //baseUrl: "http://localhost:3000",
+  //baseUrl:"https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
+  baseUrl,
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -118,7 +134,17 @@ exports.config = {
 
   // ...
   services: [
-    "chromedriver",
+    //   //if this is uncommented, don't need to run selenium-standalone start separately
+    [
+      "selenium-standalone",
+      {
+        logPath: "logs",
+        installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
+        args: { drivers: { chrome: { version: "103.0.5060.53" } } },
+      },
+    ],
+
+    // "chromedriver",
     // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
   ],
 
