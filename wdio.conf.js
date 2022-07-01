@@ -1,3 +1,8 @@
+//let baseUrl = "http://localhost:3000";
+let baseUrl =
+  process.env.SERVICE_URL ||
+  "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/";
+
 exports.config = {
   // Browserstack Config
   // user: process.env.BROWSERSTACK_USERNAME,
@@ -112,8 +117,8 @@ exports.config = {
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
   //baseUrl: "http://localhost:3000",
-  baseUrl:
-    "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
+  //baseUrl:"https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
+  baseUrl,
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -142,7 +147,7 @@ exports.config = {
       },
     ],
 
-    //"chromedriver",
+    //  "chromedriver",
     // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
   ],
 
