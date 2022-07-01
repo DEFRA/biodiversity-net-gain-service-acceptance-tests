@@ -1,7 +1,5 @@
-//let baseUrl = "http://localhost:3000";
-let baseUrl =
-  process.env.SERVICE_URL ||
-  "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/";
+let baseUrl = process.env.SERVICE_URL || "http://localhost:3000";
+//   "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/";
 
 exports.config = {
   // Browserstack Config
@@ -69,7 +67,6 @@ exports.config = {
 
       "goog:chromeOptions": {
         args: [
-          "--headless",
           "--disable-infobars",
           "--window-size=1280,800",
           "--no-sandbox",
@@ -147,7 +144,7 @@ exports.config = {
       },
     ],
 
-    //  "chromedriver",
+    // "chromedriver",
     // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
   ],
 

@@ -6,7 +6,7 @@ class StartPage extends Page {
   }
 
   open() {
-    return super.open("start");
+    return super.open("");
   }
 }
 module.exports = new StartPage();
