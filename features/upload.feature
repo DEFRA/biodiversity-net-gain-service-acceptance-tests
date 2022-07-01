@@ -1,4 +1,4 @@
-@regression
+@regression @skip()
 Feature: uploads
 
     As a BNG User
@@ -12,16 +12,15 @@ Feature: uploads
         When I choose and upload a "planning obligation"
         Then I should be on the "check-planning-obligation" page
         And I should be able to see the filesize of the document
-    @e2e @skip()
+    @e2e
     Scenario: I can check that the uploaded file is the one I wanted to upload before continuing
         When I choose and upload a "planning obligation"
         And I am on the "check-planning-obligation" page
         Then I should be able to see a link to the document
     @e2e
     Scenario: There is a way to choose a different file if necessary
-        When I choose and upload a "planning obligation"
-        And I am on the "check-planning-obligation" page
-        When I choose a different file
+        When I have "uploaded and checked a "planning oblligation"
+        And  I choose a different file
         Then I should be returned to the "upload-planning-obligation" page
         And The original document should be deleted
     @skip()

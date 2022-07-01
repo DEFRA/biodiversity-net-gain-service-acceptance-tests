@@ -1,10 +1,10 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 
-const StartPage = require("../page_objects/start");
+const StartPage = require("../page_objects/start.page");
 
-Then("I should see the header with text saying {string}", async (message) => {
-  expect(StartPage.getHeading).toBeExisting();
-  expect(StartPage.getHeading).toHaveTextContaining(message);
+Then("I should see the header text {string}", async (message) => {
+  await expect(StartPage.getHeading).toBeExisting();
+  await expect(StartPage.getHeading).toHaveTextContaining(message);
 });
 
 Given("I am a returning user", async function () {

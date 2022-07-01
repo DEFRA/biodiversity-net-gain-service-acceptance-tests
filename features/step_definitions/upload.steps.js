@@ -1,5 +1,5 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-const uploads = require("../page_objects/planning-obligation-upload");
+const uploads = require("../page_objects/planning-obligation-upload.page");
 let filename = "";
 
 When("I choose and upload a {string}", async (file) => {
@@ -14,6 +14,10 @@ When("I choose and upload a {string}", async (file) => {
 
   console.log("The filename is " + filename);
   console.log("The remote filepath is " + remoteFilePath);
+});
+
+When("I have uploaded and checked a {string}", function (string) {
+  return "pending";
 });
 
 Then("I should be able to see a link to the document", async () => {
