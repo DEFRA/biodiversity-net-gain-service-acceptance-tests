@@ -1,5 +1,5 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-const uploads = require("../page_objects/land_boundary/choose-upload-option");
+const uploads = require("../page_objects/land_boundary/choose-upload-option.page");
 
 Then(
   /^I should be able to choose (?:a|an) "(.*)" option$/,

@@ -1,4 +1,4 @@
-const Page = require("../base-page");
+const Page = require("../page");
 
 class LandBoundaryUploadImageFile extends Page {
   open() {
