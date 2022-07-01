@@ -67,7 +67,7 @@ exports.config = {
 
       "goog:chromeOptions": {
         args: [
-          // "--headless",
+          "--headless",
           "--disable-infobars",
           "--window-size=1280,800",
           "--no-sandbox",
