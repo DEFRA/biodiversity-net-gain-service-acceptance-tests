@@ -1,4 +1,4 @@
-const Page = require("./base-page");
+const Page = require("./page");
 
 class StartPage extends Page {
   get Title() {
@@ -6,7 +6,7 @@ class StartPage extends Page {
   }
 
   open() {
-    return super.open("start");
+    return super.open("");
   }
 }
 module.exports = new StartPage();

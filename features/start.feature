@@ -1,4 +1,4 @@
-@regression
+@regression @e2e
 Feature: Start page
 
     As a BNG user, I want to see all the relevant guidance
@@ -12,6 +12,7 @@ Feature: Start page
         Examples:
             | message                                      |
             | Register land for off-site biodiversity gain |
+
 
     @skip()
     Scenario: As a returning BNG user I want to login and continue with my previous journey
