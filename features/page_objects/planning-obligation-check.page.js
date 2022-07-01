@@ -2,7 +2,7 @@ const Page = require("./page");
 
 class PlanningObligationCheck extends Page {
   get Title() {
-    return "Check your planning obligation file";
+    return "Check your file";
   }
 
   open() {
