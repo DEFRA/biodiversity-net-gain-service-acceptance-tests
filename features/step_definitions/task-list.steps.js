@@ -1,4 +1,4 @@
-const { Given, When, Then } = require("@wdio/cucumber-framework");
+const { Then } = require("@wdio/cucumber-framework");
 const TaskList = require("../page_objects/task-list.page");
 
 Then(

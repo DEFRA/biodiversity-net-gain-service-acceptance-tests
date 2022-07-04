@@ -1,4 +1,4 @@
-const { Given, When, Then } = require("@wdio/cucumber-framework");
+const { Given, Then } = require("@wdio/cucumber-framework");
 const StartPage = require("../page_objects/start.page");
 const PlanningObligationUpload = require("../page_objects/planning-obligation-upload.page");
 const PlanningObligationCheck = require("../page_objects/planning-obligation-check.page");

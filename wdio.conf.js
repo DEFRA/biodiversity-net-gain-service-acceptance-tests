@@ -1,6 +1,3 @@
-let baseUrl = process.env.SERVICE_URL || "http://localhost:3000";
-//   "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/";
-
 exports.config = {
   // Browserstack Config
   // user: process.env.BROWSERSTACK_USERNAME,
@@ -113,9 +110,9 @@ exports.config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  //baseUrl: "http://localhost:3000",
+
   //baseUrl:"https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
-  baseUrl,
+  baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -135,16 +132,16 @@ exports.config = {
   // ...
   services: [
     //   //if this is uncommented, don't need to run selenium-standalone start separately
-    [
-      "selenium-standalone",
-      {
-        logPath: "logs",
-        installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
-        args: { drivers: { chrome: { version: "103.0.5060.53" } } },
-      },
-    ],
+    // [
+    //   "selenium-standalone",
+    //   {
+    //     logPath: "logs",
+    //     installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
+    //     args: { drivers: { chrome: { version: "103.0.5060.53" } } },
+    //   },
+    // ],
 
-    // "chromedriver",
+    "chromedriver",
     // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
   ],
 
