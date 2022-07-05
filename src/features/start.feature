@@ -5,7 +5,6 @@ Feature: Start page
     I need to start a registration application
     or to complete an unfinished one
 
-    @new @e2e
     Scenario:
         Given I am on the "start" page
         Then I should see the header text "<message>"

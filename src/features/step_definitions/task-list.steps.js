@@ -1,4 +1,4 @@
-const { Given, When, Then } = require("@wdio/cucumber-framework");
+const { Then } = require("@wdio/cucumber-framework");
 const TaskList = require("../page_objects/task-list.page");
 
 Then(
@@ -9,7 +9,9 @@ Then(
 
     //status = "incorrect";
 
-    expect(await TaskList.LegalAgreementStatus).toHaveTextContaining(status);
+    await expect(await TaskList.LegalAgreementStatus).toHaveTextContaining(
+      status
+    );
 
     // expect(TaskList.LegalAgreementStatus).toEqual(
     //   expect.stringContaining(status)
