@@ -1,4 +1,4 @@
-const { Given, When, Then } = require("@wdio/cucumber-framework");
+const { Then } = require("@wdio/cucumber-framework");
 const uploads = require("../page_objects/land_boundary/choose-upload-option.page");
 
 Then(

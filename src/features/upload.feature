@@ -19,7 +19,7 @@ Feature: uploads
         Then There should be a link to download the document
     @e2e
     Scenario: There is a way to choose a different file if necessary
-        When I have "uploaded and checked a "planning oblligation"
+        When I have uploaded and checked a "planning obligation"
         And  I choose a different file
         Then I should be returned to the "upload-planning-obligation" page
         And The original document should be deleted

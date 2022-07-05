@@ -1,4 +1,4 @@
-const basicConfig = require("./wdio.conf");
+const basicConfig = require("../../wdio.conf");
 
 exports.config = {
   ...basicConfig.config,
@@ -14,4 +14,6 @@ exports.config = {
       },
     },
   ],
+
+  baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
 };
