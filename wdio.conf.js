@@ -171,7 +171,10 @@ exports.config = {
   reporters: [
     'spec',
     ['junit', {
-      outputDir: './'
+      outputDir: './',
+      outputFileFormat: function (options) { // optional
+        return `TEST-${options.cid}.xml`
+      }
     }]
   ],
 
