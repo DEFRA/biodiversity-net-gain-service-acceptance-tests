@@ -1,4 +1,4 @@
-const { Given, When, Then } = require("@wdio/cucumber-framework");
+const { When, Then } = require("@wdio/cucumber-framework");
 const uploads = require("../page_objects/planning-obligation-upload.page");
 let filename = "";
 
