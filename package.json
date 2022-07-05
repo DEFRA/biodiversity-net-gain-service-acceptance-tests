@@ -4,10 +4,10 @@
     "description": "BNG Register web app Accpetance tests",
     "main": "index.js",
     "scripts": {
-        "test:ci": "wdio run wdio-github.conf.js --cucumberOpts.tagExpression='@e2e'",
+        "test:ci": "./node_modules/.bin/wdio ./src/conf/wdio.ci.conf.js --cucumberOpts.tagExpression='@e2e'",
         "test": "wdio run wdio.conf.js",
         "e2e": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@e2e'",
-        "regression": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@regeression'",
+        "regression": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@regression'",
         "smoke": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@smoke'",
         "eslint": "eslint ."
     },
