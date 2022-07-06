@@ -11,7 +11,7 @@ const pages = {
   "upload-planning-obligation": PlanningObligationUpload,
   "check-planning-obligation": PlanningObligationCheck,
   "task-list": TaskListPage,
-  "location-options": LandBoundaryChooseUploadOption,
+  "choose-land-boundary-upload-option": LandBoundaryChooseUploadOption,
   "upload-geospatial-file": LandBoundaryUploadGeospatial,
   "upload-image-file": LandBoundaryUploadImageFile,
 };
