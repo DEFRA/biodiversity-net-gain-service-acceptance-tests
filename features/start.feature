@@ -6,7 +6,7 @@ Feature: Start page
     or to complete an unfinished one
 
     @new
-    Scenario:
+    Scenario Outline: The start page should show the header text
         Given I am on the "start" page
         Then I should see the header text "<message>"
         Examples:
