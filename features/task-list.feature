@@ -1,4 +1,4 @@
-@regression @e2e
+@regression @skip()
 Feature: Task List Page
 
     As a BNG user
