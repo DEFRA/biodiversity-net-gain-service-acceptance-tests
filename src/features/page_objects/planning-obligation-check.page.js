@@ -2,7 +2,11 @@ const Page = require("./page");
 
 class PlanningObligationCheck extends Page {
   get Title() {
-    return "Check your file";
+    return "Check your planning obligation file";
+  }
+
+  get downloadLink() {
+    return $("#planning-obligation-download");
   }
 
   open() {
