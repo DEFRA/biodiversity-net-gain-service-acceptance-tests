@@ -1,4 +1,4 @@
-@regression @skip()
+@regression @e2e
 Feature: uploads
 
     As a BNG User
