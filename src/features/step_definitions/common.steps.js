@@ -12,8 +12,8 @@ const pages = {
   "check-planning-obligation": PlanningObligationCheck,
   "task-list": TaskListPage,
   "choose-land-boundary-upload-option": LandBoundaryChooseUploadOption,
-  "upload-geospatial-file": LandBoundaryUploadGeospatial,
-  "upload-image-file": LandBoundaryUploadImageFile,
+  "upload-geospatial": LandBoundaryUploadGeospatial,
+  "upload-image": LandBoundaryUploadImageFile,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {

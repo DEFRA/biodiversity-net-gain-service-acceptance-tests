@@ -23,9 +23,7 @@ class LandBoundaryChooseUploadOption extends Page {
   }
 
   async selectUploadTypeGeospatial() {
-    await $("#landBoundaryUploadType").click();
-
-    //this.geospatialOption.click();
+    await this.geospatialOption.click();
   }
 
   async selectUploadTypeImage() {
@@ -33,7 +31,6 @@ class LandBoundaryChooseUploadOption extends Page {
   }
 
   open() {
-    //return super.open("/land/location-options");
     return super.open("land/choose-land-boundary-upload-option");
   }
 }

@@ -6,10 +6,10 @@ Then(
   async (fileType) => {
     switch (fileType) {
       case "geospatial":
-        (await uploads.geospatialOption).click();
+        await expect(uploads.geospatialOption).toBeClickable;
         break;
       case "Document or Image":
-        (await uploads.ImageOption).click();
+        await expect(uploads.imageOption).toBeClickable;
         break;
     }
   }
