@@ -6,6 +6,7 @@ const TaskListPage = require("../page_objects/task-list.page");
 const LandBoundaryChooseUploadOption = require("../page_objects/land_boundary/choose-upload-option.page");
 const LandBoundaryUploadGeospatial = require("../page_objects/land_boundary/upload-geospatial.page");
 const LandBoundaryUploadImageFile = require("../page_objects/land_boundary/upload-lmage-file.page");
+const LandBoundaryConfirm = require("../page_objects/land_boundary/confirm-land-boundary.page");
 const pages = {
   start: StartPage,
   "upload-planning-obligation": PlanningObligationUpload,
@@ -14,6 +15,7 @@ const pages = {
   "choose-land-boundary-upload-option": LandBoundaryChooseUploadOption,
   "upload-geospatial": LandBoundaryUploadGeospatial,
   "upload-image": LandBoundaryUploadImageFile,
+  "confirm-land-boundary": LandBoundaryConfirm,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
@@ -22,10 +24,10 @@ Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
   await pages[page].open();
 
   // assert against the page title
-  await expect(await browser.getTitle()).toContain(pages[page].Title);
+  await expect(browser).toHaveTitleContaining(pages[page].Title);
 });
 
 Then(/^I should be (?:on|returned to) the "(.*)" page$/, async (page) => {
   // assert against the page title
-  await expect(await browser.getTitle()).toContain(pages[page].Title);
+  await expect(browser).toHaveTitleContaining(pages[page].Title);
 });
