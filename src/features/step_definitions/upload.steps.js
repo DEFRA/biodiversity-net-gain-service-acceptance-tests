@@ -1,20 +1,26 @@
 const { When, Then } = require("@wdio/cucumber-framework");
-const upload = require("../page_objects/planning-obligation-upload.page");
+const uploads = require("../page_objects/planning-obligation-upload.page");
 const uploadCheck = require("../page_objects/planning-obligation-check.page");
 let filename = "";
+let filePath = "src\\TestFiles\\";
+let remoteFilePath = "";
 
 When("I choose and upload a {string}", async (file) => {
   // Todo: switch for specific files (metric, planning obligation etc)
-  const filePath = "src\\TestFiles\\test.txt";
-  filename = filePath.substring(14);
-  const remoteFilePath = await browser.uploadFile(filePath);
+  switch (file) {
+    case "planning obligation":
+      filePath = filePath + "test.txt";
+      filename = filePath.substring(14);
+      remoteFilePath = await browser.uploadFile(filePath);
 
-  await expect(remoteFilePath).toContain(filename);
-  await upload.govFileUpload.setValue(remoteFilePath);
-  await upload.continueButton.click();
+      expect(remoteFilePath).toContain(filename);
+      await uploads.govFileUpload.setValue(remoteFilePath);
+      await uploads.continueButton.click();
 
-  console.log("The filename is " + filename);
-  console.log("The remote filepath is " + remoteFilePath);
+      console.log("The filename is " + filename);
+      console.log("The remote filepath is " + remoteFilePath);
+      break;
+  }
 });
 
 When("I have uploaded and checked a {string}", function (string) {
@@ -35,8 +41,8 @@ Then("I should be able to see the filesize of the document", async () => {
 });
 
 When("I choose a different file", async () => {
-  await upload.radioNo.click();
-  await upload.continueButton.click();
+  await uploads.radioNo.click();
+  await uploads.continueButton.click();
 });
 
 Then("The original document should be deleted", async function () {
