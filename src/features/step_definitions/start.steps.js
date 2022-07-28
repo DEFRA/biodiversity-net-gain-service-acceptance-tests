@@ -1,5 +1,4 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-
 const StartPage = require("../page_objects/start.page");
 
 Then("I should see the header text {string}", async (message) => {
