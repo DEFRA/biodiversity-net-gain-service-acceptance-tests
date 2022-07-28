@@ -20,13 +20,13 @@ module.exports = class Page {
   }
 
   get radioYes() {
-    // return $("#check-planning-obligation-correct-yes");
-    return $("#legal-agreement-planning-obligation-correct");
+    // return $("#check-legal-agreement-correct-yes");
+    return $("#legal-agreement-correct");
   }
 
   get radioNo() {
-    // return $("#check-planning-obligation-correct-no");
-    return $("#legal-agreement-planning-obligation-correct-2");
+    // return $("#check-legal-agreement-correct-no");
+    return $("#legal-agreement-correct-2");
   }
 
   /**

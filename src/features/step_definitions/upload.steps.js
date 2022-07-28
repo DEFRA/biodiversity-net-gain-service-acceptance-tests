@@ -1,16 +1,19 @@
 const { When, Then } = require("@wdio/cucumber-framework");
-const uploads = require("../page_objects/planning-obligation-upload.page");
-const uploadCheck = require("../page_objects/planning-obligation-check.page");
+const uploads = require("../page_objects/legal-agreement-upload.page");
+const uploadCheck = require("../page_objects/legal-agreement-check.page");
 let filename = "";
-let filePath = "src\\TestFiles\\";
+let filePath = "";
 let remoteFilePath = "";
 
-When("I choose and upload a {string}", async (file) => {
+When("I choose and upload a {string}", async (document) => {
   // Todo: switch for specific files (metric, planning obligation etc)
-  switch (file) {
-    case "planning obligation":
+  switch (document) {
+    case "legal agreement":
+      filePath = "src\\TestFiles\\";
       filePath = filePath + "test.txt";
-      filename = filePath.substring(14);
+      var group = filePath.split("\\");
+      filename = group[group.length - 1];
+
       remoteFilePath = await browser.uploadFile(filePath);
 
       expect(remoteFilePath).toContain(filename);
