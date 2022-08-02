@@ -6,7 +6,7 @@ class LegalAgreementUpload extends Page {
   }
 
   open() {
-    return super.open("/land/legal-agreement-upload");
+    return super.open("/land/upload-legal-agreement");
   }
 }
 module.exports = new LegalAgreementUpload();
