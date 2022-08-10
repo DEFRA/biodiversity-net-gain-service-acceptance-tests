@@ -20,11 +20,11 @@ module.exports = class Page {
   }
 
   get radioYes() {
-    return $("#check-legal-agreement-correct-yes");
+    return $("#check-upload-correct-yes");
   }
 
   get radioNo() {
-    return $("#id=check-legal-agreement-correct-no");
+    return $("#check-upload-correct-no");
   }
 
   get filesizeIndicator() {
