@@ -101,8 +101,8 @@ exports.config = {
   // gets prepended directly.
 
   baseUrl:
-    "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
-  //baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
+    //"https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
+    "http://localhost:3000",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
