@@ -7,7 +7,7 @@ Feature: Start page
 
     Scenario:
         Given I am on the "start" page
-        Then I should see the header text "<message>"
+        Then I should see the heading text "<message>"
         Examples:
             | message                                      |
             | Register land for off-site biodiversity gain |
