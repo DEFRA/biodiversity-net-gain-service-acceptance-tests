@@ -1,4 +1,4 @@
-@regression  @new
+@e2e
 Feature: legal agreement
 
     As a Site Provider
