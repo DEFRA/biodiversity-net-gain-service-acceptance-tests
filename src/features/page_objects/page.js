@@ -15,10 +15,6 @@ module.exports = class Page {
     return $(".govuk-file-upload");
   }
 
-  get errorMsg() {
-    return $(".govuk-error-message");
-  }
-
   get radioYes() {
     return $("#check-upload-correct-yes");
   }
