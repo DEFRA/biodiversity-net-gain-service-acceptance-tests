@@ -1,4 +1,4 @@
-@regression @new
+@regression  @new
 Feature: legal agreement
 
     As a Site Provider
@@ -27,12 +27,3 @@ Feature: legal agreement
         When I choose and upload a "legal agreement"
         And  I choose a different file
         Then I should be returned to the "legal-agreement-upload" page
-#     And The original document should be deleted
-
-# Scenario Outline: I cannot upload a file larger than the max file size
-#     When I choose a document that is larger than "<maxFileSize>" in size
-#     Then I should not be able to upload the file
-#     And I am informed that the max file size should be "<maxFileSize>"
-# Example:
-#         | maxFileSize |
-#         | 50mb        |
