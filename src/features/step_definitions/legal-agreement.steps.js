@@ -1,6 +1,6 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const uploadPage = require("../page_objects/legal_agreement/legal-agreement-upload.page");
-const uploadCheckPage = require("../page_objects/legal_agreement/legal-agreement-check.page");
+const CheckPage = require("../page_objects/legal_agreement/legal-agreement-check.page");
 
 const path = require("path");
 
@@ -25,7 +25,7 @@ When("I choose and upload a {string}", async (document) => {
       await uploadPage.continueButton.click();
 
       // wait for file to be uploaded and show an element on the check/confirm page
-      await uploadCheckPage.downloadLink.waitForExist({ timeout: 5000 });
+      await CheckPage.downloadLink.waitForExist({ timeout: 5000 });
 
       break;
     }
@@ -37,15 +37,18 @@ Then("There should be a link to download the document", async () => {
   Grab the filename text that the page displays after processing the upload
   Assert that the filename text matches the filename provided in the test
   */
-  const link = await uploadCheckPage.downloadLink;
+  const link = await CheckPage.downloadLink;
   await expect(link).toHaveText(filename);
+
+  // verify is a valid link
+  await expect(link.getAttribute("href")).not.toBeNull();
 });
 
 Then("I should be able to see the filesize of the document", async () => {
-  //todo get actual filesize if not in unit tests
-  expect(
-    (await (await uploadCheckPage.filesizeIndicator).getText()).length
-  ).not.toBe(0);
+  // todo get actual filesize if not in unit tests
+  expect((await (await CheckPage.filesizeIndicator).getText()).length).not.toBe(
+    0
+  );
 });
 
 When("I choose a file type that is not in the specified format", async () => {
@@ -69,18 +72,18 @@ Then("I should not be able to upload the file", async () => {
 
 Then("I am informed of what the allowed file types should be", async () => {
   // wait for error message
-  await uploadPage.errorMsg.waitForExist({ timeout: 5000 });
+  await (await uploadPage.errorMsg).waitForDisplayed({ timeout: 5000 });
 
   // check errorMsg text
-  await expect(uploadPage.errorMsg).toHaveText(
+  await expect(uploadPage.errorMsg).toHaveTextContaining(
     "The selected file must be a DOC, DOCX or PDF"
   );
 });
 
 When("I choose a different file", async () => {
-  await uploadCheckPage.radioNo.waitForExist({ timeout: 5000 });
-  await uploadCheckPage.radioNo.click();
-  await uploadCheckPage.continueButton.click();
+  await CheckPage.radioNo.waitForExist({ timeout: 5000 });
+  await CheckPage.radioNo.click();
+  await CheckPage.continueButton.click();
 });
 
 Then("The original document should be deleted", async function () {
