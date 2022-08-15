@@ -1,4 +1,4 @@
-@e2e
+@e2e @new
 Feature: legal agreement
 
     As a Site Provider
@@ -11,7 +11,6 @@ Feature: legal agreement
     Scenario: I can upload the legal-agreement document
         When I choose and upload a "legal agreement"
         Then I should be on the "legal-agreement-check" page
-        And I should be able to see the filesize of the document
 
     Scenario: I cannot upload a file that is not in the specified format
         When I choose a file type that is not in the specified format
@@ -22,6 +21,7 @@ Feature: legal agreement
         When I choose and upload a "legal agreement"
         And I am on the "legal-agreement-check" page
         Then There should be a link to download the document
+        And I should be able to see the filesize of the document
 
     Scenario: There is a way to choose a different file if necessary
         When I choose and upload a "legal agreement"
