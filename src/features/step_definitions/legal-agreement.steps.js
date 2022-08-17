@@ -11,7 +11,7 @@ let remoteFilePath = "";
 When("I choose and upload a {string}", async (document) => {
   switch (document) {
     case "legal agreement": {
-      filePath = path.join(__dirname, "../../TestFiles/test.pdf");
+      filePath = path.join(__dirname, "../../TestFiles/test_12kb.docx");
       remoteFilePath = await browser.uploadFile(filePath);
 
       // get the filename for assertions
@@ -45,10 +45,8 @@ Then("There should be a link to download the document", async () => {
 });
 
 Then("I should be able to see the filesize of the document", async () => {
-  // todo get actual filesize if not in unit tests
-  expect((await (await CheckPage.filesizeIndicator).getText()).length).not.toBe(
-    0
-  );
+  // get actual filesize if not in unit tests
+  await expect(CheckPage.filesizeIndicator).toHaveTextContaining("0.01 MB");
 });
 
 When("I choose a file type that is not in the specified format", async () => {
@@ -63,11 +61,11 @@ When("I choose a file type that is not in the specified format", async () => {
 });
 
 Then("I should not be able to upload the file", async () => {
+  // should still be on the upload page instead of the check page
+  expect(await browser.getTitle()).not.toContain(CheckPage.titleText);
+
   // wait for error message
   await uploadPage.errorMsg.waitForExist({ timeout: 5000 });
-
-  // should still be on the upload page instead of the check page
-  expect(await browser.getTitle()).toContain(uploadPage.titleText);
 });
 
 Then("I am informed of what the allowed file types should be", async () => {
@@ -84,6 +82,23 @@ When("I choose a different file", async () => {
   await CheckPage.radioNo.waitForExist({ timeout: 5000 });
   await CheckPage.radioNo.click();
   await CheckPage.continueButton.click();
+});
+
+When("I choose an empty file", async () => {
+  filePath = path.join(__dirname, "../../TestFiles/test_1k_empty.pdf");
+  remoteFilePath = await browser.uploadFile(filePath);
+
+  // get the filename for assertions
+  var group = filePath.split("\\");
+  filename = group[group.length - 1];
+
+  // open the upload url page
+  browser.url(uploadPage.path);
+
+  await uploadPage.govFileUpload.setValue(remoteFilePath);
+  await uploadPage.continueButton.click();
+
+  console.log("the filename is " + filename);
 });
 
 Then("The original document should be deleted", async function () {
