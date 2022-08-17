@@ -1,4 +1,4 @@
-@e2e @new
+@e2e
 Feature: legal agreement
 
     As a Site Provider
@@ -27,3 +27,8 @@ Feature: legal agreement
         When I choose and upload a "legal agreement"
         And  I choose a different file
         Then I should be returned to the "legal-agreement-upload" page
+
+    Scenario: I cannot upload an empty file
+        When I choose an empty file
+        Then I should not be able to upload the file
+
