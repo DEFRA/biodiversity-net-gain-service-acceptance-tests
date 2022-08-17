@@ -97,8 +97,6 @@ When("I choose an empty file", async () => {
 
   await uploadPage.govFileUpload.setValue(remoteFilePath);
   await uploadPage.continueButton.click();
-
-  console.log("the filename is " + filename);
 });
 
 Then("The original document should be deleted", async function () {
