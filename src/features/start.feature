@@ -1,4 +1,4 @@
-@regression @e2e
+@regression
 Feature: Start page
 
     As a BNG user, I want to see all the relevant guidance

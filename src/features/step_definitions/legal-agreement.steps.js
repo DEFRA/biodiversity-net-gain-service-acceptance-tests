@@ -45,7 +45,7 @@ Then("There should be a link to download the document", async () => {
 });
 
 Then("I should be able to see the filesize of the document", async () => {
-  // get actual filesize if not in unit tests
+  // get actual filesize of test file
   await expect(CheckPage.filesizeIndicator).toHaveTextContaining("0.01 MB");
 });
 
