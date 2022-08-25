@@ -101,8 +101,8 @@ exports.config = {
   // gets prepended directly.
 
   baseUrl:
-    "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
-  //baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
+    //"https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
+    "http://localhost:3000",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -179,7 +179,7 @@ exports.config = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tagExpression: "",
+    tagExpression: "@new",
     // <number> timeout for step definitions
     timeout: 60000,
     // <boolean> Enable this config to treat undefined definitions as warnings.

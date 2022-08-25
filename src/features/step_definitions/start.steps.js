@@ -1,8 +1,7 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-
 const StartPage = require("../page_objects/start.page");
 
-Then("I should see the header text {string}", async (message) => {
+Then("I should see the heading text {string}", async (message) => {
   await expect(StartPage.getHeading).toBeExisting();
   await expect(StartPage.getHeading).toHaveTextContaining(message);
 });

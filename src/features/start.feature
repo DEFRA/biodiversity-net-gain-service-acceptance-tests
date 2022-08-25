@@ -1,4 +1,4 @@
-@regression @e2e
+@regression
 Feature: Start page
 
     As a BNG user, I want to see all the relevant guidance
@@ -7,11 +7,10 @@ Feature: Start page
 
     Scenario:
         Given I am on the "start" page
-        Then I should see the header text "<message>"
+        Then I should see the heading text "<message>"
         Examples:
             | message                                      |
             | Register land for off-site biodiversity gain |
-
 
     @skip()
     Scenario: As a returning BNG user I want to login and continue with my previous journey
