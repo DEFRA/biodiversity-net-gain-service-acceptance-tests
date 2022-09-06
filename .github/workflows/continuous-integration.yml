@@ -33,5 +33,6 @@ jobs:
         name: Install dependencies
 
       # Run your test with the same command you uses locally
-      - run: npm run test:ci
+      - run: npm run test:ci |
+        const { SERVICE_URL: SERVICE_URL } = process.env
         name: Running E2E tests
