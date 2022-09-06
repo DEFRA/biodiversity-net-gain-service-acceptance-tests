@@ -3,7 +3,10 @@ name: Continuous Integration
 on:
   push:
     branches:
-      - main
+      - "**"
+
+env:
+  SERVICE_URL: https://registerwebapp.agreeableflower-aab4eacd.uksouth.azurecontainerapps.io
 
 jobs:
   build:
