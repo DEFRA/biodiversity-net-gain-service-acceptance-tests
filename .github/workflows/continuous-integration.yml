@@ -31,6 +31,4 @@ jobs:
 
       # Run your test with the same command you uses locally
       - run: npm run test:ci |
-        env:
-          SERVICE_URL: https://registerwebapp.agreeableflower-aab4eacd.uksouth.azurecontainerapps.io
         name: Running E2E tests
