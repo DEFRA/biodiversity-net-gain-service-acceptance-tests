@@ -4,7 +4,7 @@ Feature: upload documents
     As a Site Provider
     I need to upload copies of my evidence documents
     So that I can prove that I have met all the eligibility criteria
-    @new
+
     Scenario Outline: I can upload the <document>
         Given I am on the "<document>-upload" page
         When I choose and upload a "<document>"
@@ -49,6 +49,25 @@ Feature: upload documents
         Given I am on the "<document>-upload" page
         When I choose an empty file
         Then I should not be able to upload the file
+        Examples:
+            | document        |
+            | legal-agreement |
+            | management-plan |
+
+    Scenario Outline: I cannot continue without uploading a <document>
+        Given I am on the "<document>-upload" page
+        When I continue without an action
+        Then I should see the error "<message>"
+        Examples:
+            | document        | message                                         |
+            | legal-agreement | Select a legal agreement                        |
+            | management-plan | Select a habitat management and monitoring plan |
+
+    Scenario Outline: I cannot continue without confirming the uploaded <document>
+        Given I choose and upload a "<document>"
+        And I am on the "<document>-check" page
+        When I continue without an action
+        Then I should see the error "Select yes if this is the correct file"
         Examples:
             | document        |
             | legal-agreement |
