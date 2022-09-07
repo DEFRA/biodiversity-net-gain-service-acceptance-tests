@@ -2,7 +2,7 @@
 Feature: upload documents
 
     As a Site Provider
-    I need to provide copies of my evidence documents
+    I need to upload copies of my evidence documents
     So that I can prove that I have met all the eligibility criteria
     @new
     Scenario Outline: I can upload the <document>
@@ -14,7 +14,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
 
-    Scenario Outline: I cannot upload a file that is not in the specified format
+    Scenario Outline: I cannot upload a <document> that is not in the specified format
         Given I am on the "<document>-upload" page
         When I choose a file type that is not in the specified format
         Then I should not be able to upload the file
@@ -24,7 +24,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
 
-    Scenario Outline: I can check that the uploaded file is the one I wanted to upload before continuing
+    Scenario Outline: I can check that the uploaded <document> is the one I wanted to upload before continuing
         Given I am on the "<document>-upload" page
         When I choose and upload a "<document>"
         And I am on the "<document>-check" page
@@ -35,7 +35,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
 
-    Scenario Outline: There is a way to choose a different file if necessary
+    Scenario Outline: There is a way to choose a different <document> if necessary
         Given I am on the "<document>-upload" page
         When I choose and upload a "<document>"
         And  I choose a different file
@@ -45,7 +45,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
 
-    Scenario Outline: I cannot upload an empty file
+    Scenario Outline: I cannot upload an empty <document>
         Given I am on the "<document>-upload" page
         When I choose an empty file
         Then I should not be able to upload the file
