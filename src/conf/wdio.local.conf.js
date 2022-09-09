@@ -100,9 +100,7 @@ exports.config = {
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
 
-  baseUrl:
-    //"https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
-    "http://localhost:3000",
+  baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -121,15 +119,15 @@ exports.config = {
 
   // ...
   services: [
-    //   //if this is uncommented, don't need to run selenium-standalone start separately
-    // [
-    //   "selenium-standalone",
-    //   {
-    //     logPath: "logs",
-    //     installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
-    //     args: { drivers: { chrome: { version: "103.0.5060.53" } } },
-    //   },
-    // ],
+    //if this is uncommented, don't need to run selenium-standalone start separately
+    [
+      "selenium-standalone",
+      {
+        logPath: "logs",
+        installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
+        args: { drivers: { chrome: { version: "103.0.5060.53" } } },
+      },
+    ],
 
     "chromedriver",
     // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
@@ -161,10 +159,10 @@ exports.config = {
       "junit",
       {
         outputDir: "./",
-        outputFileFormat: function (options) {
+        outputFileFormat: function () {
           // optional
-          return `results-${options.cid}.${options.capabilities}.xml`;
-          //return "junitreport.xml";
+          //return `results-${options.cid}.${options.capabilities}.xml`;
+          return `TestReport.xml`;
         },
       },
     ],
