@@ -15,5 +15,16 @@ exports.config = {
     },
   ],
 
+  services: [
+    "selenium-standalone",
+    {
+      logPath: "logs",
+      installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
+      args: { drivers: { chrome: { version: "103.0.5060.53" } } },
+    },
+
+    "chromedriver",
+  ],
+
   baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
 };
