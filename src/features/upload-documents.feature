@@ -69,6 +69,7 @@ Feature: upload documents
         And I am on the "<document>-check" page
         When I continue without an action
         Then I should see the error "Select yes if this is the correct file"
+        And I should see the error and the error summary displayed
         Examples:
             | document        |
             | legal-agreement |
