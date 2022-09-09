@@ -3,10 +3,6 @@
  * that is shared across all page objects
  */
 module.exports = class Page {
-  get getHeading() {
-    return $(".govuk-heading-xl");
-  }
-
   get startButton() {
     return $(".govuk-button--start']");
   }
@@ -19,14 +15,24 @@ module.exports = class Page {
     return $(".govuk-file-upload");
   }
 
+  get errorMsg() {
+    return $(".govuk-error-message");
+  }
+
+  get errorMsgSummary() {
+    return $(".govuk-error-summary");
+  }
+
   get radioYes() {
-    // return $("#check-planning-obligation-correct-yes");
-    return $("#legal-agreement-planning-obligation-correct");
+    return $("#check-upload-correct-yes");
   }
 
   get radioNo() {
-    // return $("#check-planning-obligation-correct-no");
-    return $("#legal-agreement-planning-obligation-correct-2");
+    return $("#check-upload-correct-no");
+  }
+
+  get filesizeIndicator() {
+    return $("#filesize");
   }
 
   /**

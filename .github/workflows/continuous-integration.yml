@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # # First you need to install a chromium browser in your runner
+      # First you need to install a chromium browser in your runner
       # - name: Install Chromium
       #   run: sudo apt-get install chromium-browser firefox openjdk-8-jdk
 
