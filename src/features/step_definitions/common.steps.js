@@ -50,7 +50,7 @@ Then("I should see the error {string}", async (message) => {
   await expect(basePage.errorMsg).toHaveTextContaining(message);
 });
 
-Then(" I should see the error and the error summary displayed", async () => {
+Then("I should see the error and the error summary displayed", async () => {
   // check on error an errorMsg and error summary is displayed following Gov Design system guidelines
   // https://design-system.service.gov.uk/components/error-summary/
   await expect(basePage.errorMsg).toBeDisplayed();
