@@ -159,10 +159,10 @@ exports.config = {
       "junit",
       {
         outputDir: "./",
-        outputFileFormat: function (options) {
+        outputFileFormat: function () {
           // optional
-          return `results-${options.cid}.${options.capabilities}.xml`;
-          //return "junitreport.xml";
+          //return `results-${options.cid}.${options.capabilities}.xml`;
+          return `TestReport.xml`;
         },
       },
     ],
