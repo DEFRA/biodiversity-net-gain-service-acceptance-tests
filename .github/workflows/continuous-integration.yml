@@ -7,7 +7,7 @@ on:
 
 env:
   # Temporarily add poc pipeline url Todo: update when actual environment is ready
-  process.env.SERVICE_URL: https://registerwebapp.agreeableflower-aab4eacd.uksouth.azurecontainerapps.io
+  process.env.SERVICE_URL: ${{ secrets.SERVICE_URL }}
 
 jobs:
   build:
