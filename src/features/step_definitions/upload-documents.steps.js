@@ -1,8 +1,13 @@
 const { When, Then } = require("@wdio/cucumber-framework");
-const uploadPage = require("../page_objects/legal_agreement/legal-agreement-upload.page");
-const CheckPage = require("../page_objects/legal_agreement/legal-agreement-check.page");
 
 const path = require("path");
+const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
+const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
+const legalAgreementUploadPage = require("../page_objects/legal_agreement/legal-agreement-upload.page");
+const legalAgreementCheckPage = require("../page_objects/legal_agreement/legal-agreement-check.page");
+
+let uploadPage = legalAgreementUploadPage;
+let CheckPage = legalAgreementCheckPage;
 
 let filename = "";
 let filePath = "";
@@ -10,26 +15,36 @@ let remoteFilePath = "";
 
 When("I choose and upload a {string}", async (document) => {
   switch (document) {
-    case "legal agreement": {
-      filePath = path.join(__dirname, "../../TestFiles/test_12kb.docx");
-      remoteFilePath = await browser.uploadFile(filePath);
-
-      // get the filename for assertions
-      var group = filePath.split("\\");
-      filename = group[group.length - 1];
-
-      // open the upload url page
-      browser.url(uploadPage.path);
-
-      await uploadPage.govFileUpload.setValue(remoteFilePath);
-      await uploadPage.continueButton.click();
-
-      // wait for file to be uploaded and show an element on the check/confirm page
-      await CheckPage.downloadLink.waitForExist({ timeout: 5000 });
-
+    case "legal-agreement": {
+      uploadPage = legalAgreementUploadPage;
+      CheckPage = legalAgreementCheckPage;
+      break;
+    }
+    case "management-plan": {
+      uploadPage = managementPlanUploadPage;
+      CheckPage = managementPlanCheckPage;
       break;
     }
   }
+
+  // test file
+  filePath = path.join(__dirname, "../../TestFiles/test_12kb.docx");
+  remoteFilePath = await browser.uploadFile(filePath);
+
+  // get the filename for assertions
+  var group = filePath.split("\\");
+  filename = group[group.length - 1];
+
+  // open the upload url page
+  browser.url(uploadPage.path);
+
+  await uploadPage.govFileUpload.setValue(remoteFilePath);
+  await uploadPage.continueButton.click();
+
+  /* BNGP-765 download link not in latest designs, could change so commented
+  // wait for file to be uploaded and show an element on the check/confirm page
+   await CheckPage.downloadLink.waitForExist({ timeout: 5000 });
+   */
 });
 
 Then("There should be a link to download the document", async () => {
@@ -37,6 +52,7 @@ Then("There should be a link to download the document", async () => {
   Grab the filename text that the page displays after processing the upload
   Assert that the filename text matches the filename provided in the test
   */
+
   const link = await CheckPage.downloadLink;
   await expect(link).toHaveText(filename);
 
