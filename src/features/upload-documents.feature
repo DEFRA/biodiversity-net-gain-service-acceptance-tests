@@ -58,6 +58,7 @@ Feature: upload documents
         Given I am on the "<document>-upload" page
         When I continue without an action
         Then I should see the error "<message>"
+        And I should see the error and the error summary displayed
         Examples:
             | document        | message                                         |
             | legal-agreement | Select a legal agreement                        |

@@ -19,6 +19,10 @@ module.exports = class Page {
     return $(".govuk-error-message");
   }
 
+  get errorMsgSummary() {
+    return $(".govuk-error-summary");
+  }
+
   get radioYes() {
     return $("#check-upload-correct-yes");
   }
