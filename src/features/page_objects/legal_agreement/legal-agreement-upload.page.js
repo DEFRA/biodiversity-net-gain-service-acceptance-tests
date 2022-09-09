@@ -9,10 +9,6 @@ class LegalAgreementUpload extends Page {
     return "/land/upload-legal-agreement";
   }
 
-  get errorMsg() {
-    return $("#legalAgreement-error");
-  }
-
   open() {
     return super.open("land/upload-legal-agreement");
   }
