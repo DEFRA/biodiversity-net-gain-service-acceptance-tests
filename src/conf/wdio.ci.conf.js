@@ -15,5 +15,7 @@ exports.config = {
     },
   ],
 
-  baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
+  baseUrl:
+    process.env.SERVICE_URL ||
+    "https://registerwebapp.agreeableflower-aab4eacd.uksouth.azurecontainerapps.io",
 };
