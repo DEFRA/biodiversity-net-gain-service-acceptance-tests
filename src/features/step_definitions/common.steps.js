@@ -1,27 +1,28 @@
 const { Given, Then } = require("@wdio/cucumber-framework");
-const StartPage = require("../page_objects/start.page");
-const LegalAgreementUpload = require("../page_objects/legal_agreement/legal-agreement-upload.page");
-const LegalAgreementCheck = require("../page_objects/legal_agreement/legal-agreement-check.page");
-const ManagementPlanUpload = require("../page_objects/management_plan/management-plan-upload.page");
-const ManagementPlanCheck = require("../page_objects/management_plan/management-plan-check.page");
-const TaskListPage = require("../page_objects/task-list.page");
-const LandBoundaryChooseUploadOption = require("../page_objects/land_boundary/choose-upload-option.page");
-const LandBoundaryUploadGeospatial = require("../page_objects/land_boundary/upload-geospatial.page");
-const LandBoundaryUploadImageFile = require("../page_objects/land_boundary/upload-land-boundary-file.page");
+const startPage = require("../page_objects/start.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/legal-agreement-upload.page");
+const legalAgreementCheckPage = require("../page_objects/legal_agreement/legal-agreement-check.page");
+const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
+const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
+const taskListPage = require("../page_objects/task-list.page");
+const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundary/choose-upload-option.page");
+const landBoundaryUploadGeospatialPage = require("../page_objects/land_boundary/upload-geospatial.page");
+const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/image-file.page");
+const landBoundaryCheckImageFilePage = require("../page_objects/land_boundary/image-file-check.page");
 
 const basePage = legalAgreementUploadPage;
 
 const pages = {
-  start: StartPage,
-  "legal-agreement-upload": LegalAgreementUpload,
-  "legal-agreement-check": LegalAgreementCheck,
-  "management-plan-upload": ManagementPlanUpload,
-  "management-plan-check": ManagementPlanCheck,
-  "task-list": TaskListPage,
-  "location-options": LandBoundaryChooseUploadOption,
-  "upload-geospatial-file": LandBoundaryUploadGeospatial,
-  "upload-image-file": LandBoundaryUploadImageFile,
+  start: startPage,
+  "legal-agreement-upload": legalAgreementUploadPage,
+  "legal-agreement-check": legalAgreementCheckPage,
+  "management-plan-upload": managementPlanUploadPage,
+  "management-plan-check": managementPlanCheckPage,
+  "task-list": taskListPage,
+  "location-options": landBoundaryChooseUploadOptionPage,
+  "upload-geospatial-file": landBoundaryUploadGeospatialPage,
+  "land-boundary-file-upload": landBoundaryUploadImageFilePage,
+  "land-boundary-file-check": landBoundaryCheckImageFilePage,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {

@@ -5,6 +5,8 @@ const managementPlanUploadPage = require("../page_objects/management_plan/manage
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/legal-agreement-upload.page");
 const legalAgreementCheckPage = require("../page_objects/legal_agreement/legal-agreement-check.page");
+const landBoundaryFileUploadPage = require("../page_objects/land_boundary/image-file.page");
+const landBoundaryFileCheckPage = require("../page_objects/land_boundary/image-file-check.page");
 
 let uploadPage = legalAgreementUploadPage;
 let CheckPage = legalAgreementCheckPage;
@@ -25,10 +27,15 @@ When("I choose and upload a {string}", async (document) => {
       CheckPage = managementPlanCheckPage;
       break;
     }
+    case "land-boundary-file": {
+      uploadPage = landBoundaryFileUploadPage;
+      CheckPage = landBoundaryFileCheckPage;
+      break;
+    }
   }
 
   // test file
-  filePath = path.join(__dirname, "../../TestFiles/test_12kb.docx");
+  filePath = path.join(__dirname, "../../TestFiles/test_12kb.PDF");
   remoteFilePath = await browser.uploadFile(filePath);
 
   // get the filename for assertions
