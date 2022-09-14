@@ -5,8 +5,12 @@ class LandBoundaryUploadImageFile extends Page {
     return "Upload a document or image showing the land boundary";
   }
 
+  get path() {
+    return "/land/upload-land-boundary";
+  }
+
   open() {
-    return super.open("/land/upload-land-boundary");
+    return super.open("land/upload-land-boundary");
     // return super.open("land/upload-land-boundary-file");
   }
 }
