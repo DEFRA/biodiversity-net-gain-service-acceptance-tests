@@ -35,7 +35,7 @@ When("I choose and upload a {string}", async (document) => {
   }
 
   // test file
-  filePath = path.join(__dirname, "../../TestFiles/test_12kb.PDF");
+  filePath = path.join(__dirname, "../../TestFiles/test_12kb.docx");
   remoteFilePath = await browser.uploadFile(filePath);
 
   // get the filename for assertions
@@ -47,14 +47,14 @@ When("I choose and upload a {string}", async (document) => {
 
   await uploadPage.govFileUpload.setValue(remoteFilePath);
   await uploadPage.continueButton.click();
+});
 
+Then("There should be a link to download the document", async () => {
   /* BNGP-765 download link not in latest designs, could change so commented
   // wait for file to be uploaded and show an element on the check/confirm page
    await CheckPage.downloadLink.waitForExist({ timeout: 5000 });
    */
-});
 
-Then("There should be a link to download the document", async () => {
   /* verify correct file has been uploaded
   Grab the filename text that the page displays after processing the upload
   Assert that the filename text matches the filename provided in the test
@@ -95,10 +95,20 @@ Then("I am informed of what the allowed file types should be", async () => {
   // wait for error message
   await (await uploadPage.errorMsg).waitForDisplayed({ timeout: 5000 });
 
+  let errorTxt = "";
+
+  switch (uploadPage) {
+    case landBoundaryFileUploadPage: {
+      errorTxt = "The selected file must be a DOC, DOCX, JPG, PNG or PDF";
+      break;
+    }
+    default: {
+      errorTxt = "The selected file must be a DOC, DOCX or PDF";
+    }
+  }
+
   // check errorMsg text
-  await expect(uploadPage.errorMsg).toHaveTextContaining(
-    "The selected file must be a DOC, DOCX or PDF"
-  );
+  await expect(uploadPage.errorMsg).toHaveTextContaining(errorTxt);
 });
 
 When("I choose a different file", async () => {
