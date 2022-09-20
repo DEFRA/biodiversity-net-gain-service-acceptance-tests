@@ -27,7 +27,7 @@ When("I choose and upload a {string}", async (document) => {
       CheckPage = managementPlanCheckPage;
       break;
     }
-    case "land-boundary-file": {
+    case "land-boundary": {
       uploadPage = landBoundaryFileUploadPage;
       CheckPage = landBoundaryFileCheckPage;
       break;

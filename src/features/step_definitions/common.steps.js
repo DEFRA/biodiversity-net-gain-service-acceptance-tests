@@ -21,8 +21,8 @@ const pages = {
   "task-list": taskListPage,
   "location-options": landBoundaryChooseUploadOptionPage,
   "upload-geospatial-file": landBoundaryUploadGeospatialPage,
-  "land-boundary-file-upload": landBoundaryUploadImageFilePage,
-  "land-boundary-file-check": landBoundaryCheckImageFilePage,
+  "land-boundary-upload": landBoundaryUploadImageFilePage,
+  "land-boundary-check": landBoundaryCheckImageFilePage,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {

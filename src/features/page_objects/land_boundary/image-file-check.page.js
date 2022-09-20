@@ -6,12 +6,11 @@ class LandBoundaryCheckImageFile extends Page {
   }
 
   get path() {
-    return "/land/check-land-boundary";
+    return "/land/check-land-boundary-file";
   }
 
   open() {
-    return super.open("land/check-land-boundary");
-    // return super.open("land/check-land-boundary-file");
+    return super.open("land/check-land-boundary-file");
   }
 }
 module.exports = new LandBoundaryCheckImageFile();
