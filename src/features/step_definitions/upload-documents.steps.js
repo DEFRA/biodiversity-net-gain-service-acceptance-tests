@@ -5,8 +5,8 @@ const managementPlanUploadPage = require("../page_objects/management_plan/manage
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/legal-agreement-upload.page");
 const legalAgreementCheckPage = require("../page_objects/legal_agreement/legal-agreement-check.page");
-const landBoundaryFileUploadPage = require("../page_objects/land_boundary/image-file.page");
-const landBoundaryFileCheckPage = require("../page_objects/land_boundary/image-file-check.page");
+const landBoundaryFileUploadPage = require("../page_objects/land_boundary/upload-land-boundary.page");
+const landBoundaryFileCheckPage = require("../page_objects/land_boundary/check-land-boundary-file.page");
 
 let uploadPage = legalAgreementUploadPage;
 let CheckPage = legalAgreementCheckPage;
@@ -27,7 +27,7 @@ When("I choose and upload a {string}", async (document) => {
       CheckPage = managementPlanCheckPage;
       break;
     }
-    case "land-boundary-file": {
+    case "land-boundary": {
       uploadPage = landBoundaryFileUploadPage;
       CheckPage = landBoundaryFileCheckPage;
       break;
@@ -50,16 +50,13 @@ When("I choose and upload a {string}", async (document) => {
 });
 
 Then("There should be a link to download the document", async () => {
-  /* BNGP-765 download link not in latest designs, could change so commented
   // wait for file to be uploaded and show an element on the check/confirm page
-   await CheckPage.downloadLink.waitForExist({ timeout: 5000 });
-   */
+  await CheckPage.downloadLink.waitForExist({ timeout: 5000 });
 
   /* verify correct file has been uploaded
   Grab the filename text that the page displays after processing the upload
   Assert that the filename text matches the filename provided in the test
   */
-
   const link = await CheckPage.downloadLink;
   await expect(link).toHaveText(filename);
 

@@ -7,8 +7,8 @@ const managementPlanCheckPage = require("../page_objects/management_plan/managem
 const taskListPage = require("../page_objects/task-list.page");
 const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundary/choose-upload-option.page");
 const landBoundaryUploadGeospatialPage = require("../page_objects/land_boundary/upload-geospatial.page");
-const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/image-file.page");
-const landBoundaryCheckImageFilePage = require("../page_objects/land_boundary/image-file-check.page");
+const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/upload-land-boundary.page");
+const landBoundaryCheckImageFilePage = require("../page_objects/land_boundary/check-land-boundary-file.page");
 
 const basePage = legalAgreementUploadPage;
 
@@ -21,8 +21,8 @@ const pages = {
   "task-list": taskListPage,
   "location-options": landBoundaryChooseUploadOptionPage,
   "upload-geospatial-file": landBoundaryUploadGeospatialPage,
-  "land-boundary-file-upload": landBoundaryUploadImageFilePage,
-  "land-boundary-file-check": landBoundaryCheckImageFilePage,
+  "land-boundary-upload": landBoundaryUploadImageFilePage,
+  "land-boundary-check": landBoundaryCheckImageFilePage,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
@@ -37,6 +37,8 @@ Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
 });
 
 Then(/^I should be (?:on|returned to) the "(.*)" page$/, async (page) => {
+  await $("h1").waitForExist({ timeout: 5000 });
+
   // assert against the page title
   await expect(await browser.getTitle()).toContain(pages[page].titleText);
 });

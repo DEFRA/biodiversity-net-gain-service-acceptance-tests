@@ -6,12 +6,11 @@ class LandBoundaryUploadImageFile extends Page {
   }
 
   get path() {
-    return "/land/upload-land-boundary";
+    return "land/upload-land-boundary";
   }
 
   open() {
-    return super.open("land/upload-land-boundary");
-    // return super.open("land/upload-land-boundary-file");
+    return super.open(this.path);
   }
 }
 module.exports = new LandBoundaryUploadImageFile();
