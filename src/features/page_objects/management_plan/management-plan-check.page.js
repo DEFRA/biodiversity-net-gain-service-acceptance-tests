@@ -6,11 +6,11 @@ class ManagementPlanCheck extends Page {
   }
 
   get downloadLink() {
-    return $("#management-plan-download");
+    return $("#document-download");
   }
 
   open() {
-    return super.open("land/check-management-plan");
+    return super.open("land/check-management-plan-file");
   }
 }
 module.exports = new ManagementPlanCheck();

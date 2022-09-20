@@ -6,11 +6,11 @@ class LegalAgreementUpload extends Page {
   }
 
   get path() {
-    return "/land/upload-legal-agreement";
+    return "land/upload-legal-agreement";
   }
 
   open() {
-    return super.open("land/upload-legal-agreement");
+    return super.open(this.path);
   }
 }
 module.exports = new LegalAgreementUpload();

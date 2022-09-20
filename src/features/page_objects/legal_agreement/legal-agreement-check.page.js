@@ -6,11 +6,11 @@ class LegalAgreementCheck extends Page {
   }
 
   get downloadLink() {
-    return $("#legal-agreement-download");
+    return $("#document-download");
   }
 
   open() {
-    return super.open("land/check-legal-agreement");
+    return super.open("land/check-legal-agreement-file");
   }
 }
 module.exports = new LegalAgreementCheck();

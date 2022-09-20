@@ -6,11 +6,11 @@ class ManagementPlanUpload extends Page {
   }
 
   get path() {
-    return "/land/upload-management-plan";
+    return "land/upload-management-plan";
   }
 
   open() {
-    return super.open("land/upload-management-plan");
+    return super.open(this.path);
   }
 }
 module.exports = new ManagementPlanUpload();
