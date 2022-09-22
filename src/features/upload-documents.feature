@@ -14,6 +14,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
+            | metric          |
 
     Scenario Outline: I cannot upload a <document> that is not in the specified format
         Given I am on the "<document>-upload" page
@@ -25,7 +26,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
-
+            | metric          |
 
     Scenario Outline: I can check that the uploaded <document> is the one I wanted to upload before continuing
         Given I am on the "<document>-upload" page
@@ -38,6 +39,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
+            | metric          |
 
     Scenario Outline: There is a way to choose a different <document> if necessary
         Given I am on the "<document>-upload" page
@@ -49,16 +51,19 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
+            | metric          |
 
     Scenario Outline: I cannot upload an empty <document>
         Given I am on the "<document>-upload" page
         When I choose an empty file
         Then I should not be able to upload the file
+        And I am informed that the file is empty
         Examples:
             | document        |
             | legal-agreement |
             | management-plan |
             | land-boundary   |
+            | metric          |
 
     Scenario Outline: I cannot continue without uploading a <document>
         Given I am on the "<document>-upload" page
@@ -70,6 +75,7 @@ Feature: upload documents
             | legal-agreement | Select a legal agreement                        |
             | management-plan | Select a habitat management and monitoring plan |
             | land-boundary   | Select a file showing the land boundary         |
+            | metric          | Select a Biodiversity Metric                    |
 
     Scenario Outline: I cannot continue without confirming the uploaded <document>
         Given I choose and upload a "<document>"
@@ -82,3 +88,26 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
+            | metric          |
+
+    Scenario Outline: I can upload all allowed filetypes
+        Then I should be able to upload all allowed filetypes
+            | document        | filetype |
+            | legal-agreement | doc      |
+            | legal-agreement | docx     |
+            | legal-agreement | pdf      |
+            | management-plan | doc      |
+            | management-plan | docx     |
+            | management-plan | pdf      |
+            | land-boundary   | doc      |
+            | land-boundary   | docx     |
+            | land-boundary   | pdf      |
+            | land-boundary   | jpg      |
+            | metric          | xlsx     |
+            | metric          | xlsm     |
+
+
+
+
+
+
