@@ -152,7 +152,7 @@ Then("I am informed that the file is empty", async () => {
   // wait for error message
   await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
 
-  await expect(uploadPage.errorMsg).toHaveTextContaining(
+  await expect(UploadPage.errorMsg).toHaveTextContaining(
     "The selected file is empty"
   );
 });
