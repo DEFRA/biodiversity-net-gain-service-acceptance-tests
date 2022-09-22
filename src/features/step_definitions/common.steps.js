@@ -1,4 +1,4 @@
-const { Given, Then } = require("@wdio/cucumber-framework");
+const { Given, When, Then } = require("@wdio/cucumber-framework");
 const startPage = require("../page_objects/start.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/legal-agreement-upload.page");
 const legalAgreementCheckPage = require("../page_objects/legal_agreement/legal-agreement-check.page");
@@ -9,6 +9,8 @@ const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundar
 const landBoundaryUploadGeospatialPage = require("../page_objects/land_boundary/upload-geospatial.page");
 const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/upload-land-boundary.page");
 const landBoundaryCheckImageFilePage = require("../page_objects/land_boundary/check-land-boundary-file.page");
+const metricUploadPage = require("../page_objects/metric/metric-upload.page");
+const metricCheckPage = require("../page_objects/metric/metric-check.page");
 
 const basePage = legalAgreementUploadPage;
 
@@ -23,6 +25,8 @@ const pages = {
   "upload-geospatial-file": landBoundaryUploadGeospatialPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
   "land-boundary-check": landBoundaryCheckImageFilePage,
+  "metric-upload": metricUploadPage,
+  "metric-check": metricCheckPage,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
@@ -43,7 +47,7 @@ Then(/^I should be (?:on|returned to) the "(.*)" page$/, async (page) => {
   await expect(await browser.getTitle()).toContain(pages[page].titleText);
 });
 
-Then("I continue without an action", async () => {
+When("I continue without an action", async () => {
   // click continue
   await basePage.continueButton.click();
 });
