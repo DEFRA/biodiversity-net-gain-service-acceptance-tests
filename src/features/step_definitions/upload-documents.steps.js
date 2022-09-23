@@ -61,7 +61,7 @@ When("I choose and upload a {string}", async (document) => {
   await UploadPage.continueButton.click();
 });
 
-Given(/^I should be able to upload all allowed filetypes$/, async (table) => {
+Given("I should be able to upload all allowed filetypes", async (table) => {
   const tableRows = table.hashes();
   for (const element of tableRows) {
     switch (element.document) {
