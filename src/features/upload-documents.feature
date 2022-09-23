@@ -90,7 +90,7 @@ Feature: upload documents
             | land-boundary   |
             | metric          |
 
-    Scenario Outline: I can upload all allowed filetypes
+    Scenario: I can upload all allowed filetypes
         Then I should be able to upload all allowed filetypes
             | document        | filetype |
             | legal-agreement | doc      |
