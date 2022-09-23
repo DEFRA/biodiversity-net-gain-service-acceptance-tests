@@ -8,8 +8,6 @@ import landBoundaryFileUploadPage from "../page_objects/land_boundary/upload-lan
 import landBoundaryFileCheckPage from "../page_objects/land_boundary/check-land-boundary-file.page";
 import metricUploadPage from "../page_objects/metric/metric-upload.page";
 import metricCheckPage from "../page_objects/metric/metric-check.page";
-import { assert } from "console";
-import { get } from "http";
 
 let UploadPage = legalAgreementUploadPage;
 let CheckPage = legalAgreementCheckPage;
