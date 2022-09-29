@@ -1,4 +1,4 @@
-@regression @skip()
+@regression
 Feature: BNGP-785 Grid Reference
 
     As as Site Provider
@@ -34,7 +34,3 @@ Feature: BNGP-785 Grid Reference
             | 006233            |
             | TLSSSS            |
             | TL 62551 33315 00 |
-
-
-
-

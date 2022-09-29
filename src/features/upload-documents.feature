@@ -1,4 +1,4 @@
-@e2e
+@regression
 Feature: upload documents
 
     As a Site Provider
