@@ -9,7 +9,8 @@ Feature: BNGP-785 Grid Reference
         Given I am on the "grid-reference" page
 
     Scenario Outline: I can add a valid grid reference
-        Then I should be able to add a valid grid reference "<grid-reference>"
+        When I add a valid grid reference "<grid-reference>"
+        Then I should be on the "add-hectares" page
         @e2e
         Examples:
             | grid-reference |
@@ -25,12 +26,13 @@ Feature: BNGP-785 Grid Reference
     Scenario: Grid reference cannot be blank
         When I continue without an action
         Then I should see the error "Enter the grid reference"
-        And I should see the error and the error summary displayed
 
-    Scenario Outline: I cannot enter an invalid grid reference
-        Then I should not be able to enter the invalid reference "<grid-reference>"
+    Scenario Outline: I cannot enter an invalid grid reference "<grid-reference>"
+        When I add an invalid grid reference "<grid-reference>"
+        Then I should see the error "<error-msg>"
+        And I should see the error and the error summary displayed
         Examples:
-            | grid-reference    |
-            | 006233            |
-            | TLSSSS            |
-            | TL 62551 33315 00 |
+            | grid-reference    | error-msg                                                                                       |
+            | 006233            | Grid reference must start with two letters, followed by only numbers and spaces, like SE 170441 |
+            | TLSSSS            | Grid reference must start with two letters, followed by only numbers and spaces, like SE 170441 |
+            | TL 62551 33315 00 | Grid reference must be between 6 and 14 characters                                              |

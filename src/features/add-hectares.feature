@@ -10,6 +10,7 @@ Feature: BNGP-786 Enter Area in hectares
 
     @e2e
     Scenario Outline: I can add the total hectares for my land
+        #Todo: add page that follows.  CYA page for hectares doesn't currently exist
         Then I should be able to add my total hectares of "<hectares>"
         Examples:
             | hectares |
@@ -20,7 +21,7 @@ Feature: BNGP-786 Enter Area in hectares
         Then I should see the error "Size of the land must be more than 0.00 hectares"
         And I should see the error and the error summary displayed
 
-    Scenario: I cannot conitinue without adding total hectares
+    Scenario: I cannot continue without adding total hectares
         When I continue without an action
         Then I should see the error "Enter the size of the land in hectares"
         And I should see the error and the error summary displayed
