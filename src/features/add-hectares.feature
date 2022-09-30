@@ -15,7 +15,12 @@ Feature: BNGP-786 Enter Area in hectares
             | hectares |
             | 1231.11  |
 
-    Scenario: Add hectares cannot be blank
+    Scenario: I cannot add a total hectares value of 0
+        When I add total hectares as 0
+        Then I should see the error "Size of the land must be more than 0.00 hectares"
+        And I should see the error and the error summary displayed
+
+    Scenario: I cannot conitinue without adding total hectares
         When I continue without an action
         Then I should see the error "Enter the size of the land in hectares"
         And I should see the error and the error summary displayed
