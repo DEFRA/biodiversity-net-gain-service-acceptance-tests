@@ -10,7 +10,7 @@ class LandOwnershipCheck extends Page {
   }
 
   open() {
-    return super.open("land/check-land-ownership-file");
+    return super.open("land/check-ownership-proof-file");
   }
 }
 module.exports = new LandOwnershipCheck();
