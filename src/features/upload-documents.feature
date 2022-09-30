@@ -1,4 +1,4 @@
-@e2e @new
+@regression
 Feature: upload documents
 
     As a Site Provider
@@ -97,7 +97,7 @@ Feature: upload documents
             # | metric          |
             | land-ownership |
 
-    Scenario Outline: I can upload all allowed filetypes
+    Scenario: I can upload all allowed filetypes
         Then I should be able to upload all allowed filetypes
             | document       | filetype |
             # | legal-agreement | doc      |

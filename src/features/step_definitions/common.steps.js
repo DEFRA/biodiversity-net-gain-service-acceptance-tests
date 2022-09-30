@@ -13,6 +13,8 @@ const metricUploadPage = require("../page_objects/metric/metric-upload.page");
 const metricCheckPage = require("../page_objects/metric/metric-check.page");
 const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
 const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
+const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
+const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 
 const basePage = legalAgreementUploadPage;
 
@@ -31,6 +33,8 @@ const pages = {
   "metric-check": metricCheckPage,
   "land-ownership-upload": landOwnershipUploadPage,
   "land-ownership-check": landOwnershipCheckPage,
+  "grid-reference": gridReferencePage,
+  "add-hectares": addHectaresPage,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
