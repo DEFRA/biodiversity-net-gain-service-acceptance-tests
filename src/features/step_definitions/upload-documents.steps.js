@@ -8,8 +8,8 @@ import landBoundaryFileUploadPage from "../page_objects/land_boundary/upload-lan
 import landBoundaryFileCheckPage from "../page_objects/land_boundary/check-land-boundary-file.page";
 import metricUploadPage from "../page_objects/metric/metric-upload.page";
 import metricCheckPage from "../page_objects/metric/metric-check.page";
-import { assert } from "console";
-import { get } from "http";
+import landOwnershipUploadPage from "../page_objects/land_ownership/land-ownership-upload.page";
+import landOwnershipCheckPage from "../page_objects/land_ownership/land-ownership-check.page";
 
 let UploadPage = legalAgreementUploadPage;
 let CheckPage = legalAgreementCheckPage;
@@ -44,6 +44,11 @@ When("I choose and upload a {string}", async (document) => {
 
       //metric is .xlsx and .xslm files only
       filePath = join(__dirname, "../../TestFiles/test_12kb.xlsx");
+      break;
+    }
+    case "land-ownership": {
+      UploadPage = landOwnershipUploadPage;
+      CheckPage = landOwnershipCheckPage;
       break;
     }
   }
@@ -83,6 +88,11 @@ Given(/^I should be able to upload all allowed filetypes$/, async (table) => {
       case "metric": {
         UploadPage = metricUploadPage;
         CheckPage = metricCheckPage;
+        break;
+      }
+      case "land-ownership": {
+        UploadPage = landOwnershipUploadPage;
+        CheckPage = landOwnershipCheckPage;
         break;
       }
     }

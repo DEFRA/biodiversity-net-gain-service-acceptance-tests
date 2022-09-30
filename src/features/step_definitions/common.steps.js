@@ -11,6 +11,8 @@ const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/u
 const landBoundaryCheckImageFilePage = require("../page_objects/land_boundary/check-land-boundary-file.page");
 const metricUploadPage = require("../page_objects/metric/metric-upload.page");
 const metricCheckPage = require("../page_objects/metric/metric-check.page");
+const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
+const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
 
 const basePage = legalAgreementUploadPage;
 
@@ -27,6 +29,8 @@ const pages = {
   "land-boundary-check": landBoundaryCheckImageFilePage,
   "metric-upload": metricUploadPage,
   "metric-check": metricCheckPage,
+  "land-ownership-upload": landOwnershipUploadPage,
+  "land-ownership-check": landOwnershipCheckPage,
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
