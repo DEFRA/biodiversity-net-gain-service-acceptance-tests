@@ -1,3 +1,5 @@
+import cucumberJson from "wdio-cucumberjs-json-reporter";
+
 exports.config = {
   // Browserstack Config
   // user: process.env.BROWSERSTACK_USERNAME,
@@ -120,14 +122,14 @@ exports.config = {
   // ...
   services: [
     // //if this is uncommented, don't need to run selenium-standalone start separately
-    [
-      "selenium-standalone",
-      // {
-      //   logPath: "logs",
-      //   installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
-      //   args: { drivers: { chrome: { version: "103.0.5060.53" } } },
-      // },
-    ],
+    // [
+    // "selenium-standalone",
+    // {
+    //   logPath: "logs",
+    //   installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
+    //   args: { drivers: { chrome: { version: "103.0.5060.53" } } },
+    // },
+    // ],
 
     "chromedriver",
     // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
@@ -155,15 +157,22 @@ exports.config = {
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
     "spec",
+    // [
+    //   "junit",
+    //   {
+    //     outputDir: "./",
+    //     outputFileFormat: function () {
+    //       // optional
+    //       //return `results-${options.cid}.${options.capabilities}.xml`;
+    //       return `TestReport.xml`;
+    //     },
+    //   },
+    // ],
     [
-      "junit",
+      "cucumberjs-json",
       {
-        outputDir: "./",
-        outputFileFormat: function () {
-          // optional
-          //return `results-${options.cid}.${options.capabilities}.xml`;
-          return `TestReport.xml`;
-        },
+        jsonFolder: ".tmp/cucumberjs-json/",
+        reportFilePerRetry: false,
       },
     ],
   ],
@@ -176,7 +185,7 @@ exports.config = {
     // <boolean> show full backtrace for errors
     backtrace: true,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-    requireModule: [],
+    requireModule: ["@babel/register"],
     // <boolean> invoke formatters without executing steps
     dryRun: false,
     // <boolean> abort the run on first failure
