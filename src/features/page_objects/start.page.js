@@ -2,7 +2,7 @@ const Page = require("./page");
 
 class StartPage extends Page {
   get titleText() {
-    return "Register land for off-site biodiversity gain";
+    return "Register land as a biodiversity gain site";
   }
 
   get getHeading() {
