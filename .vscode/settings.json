@@ -3,5 +3,11 @@
   "cucumberautocomplete.strictGherkinCompletion": true,
   "cucumberautocomplete.strictGherkinValidation": true,
   "cucumberautocomplete.syncfeatures": "./src/features/**/*.feature",
-  "cucumberautocomplete.smartSnippets": true
+  "cucumberautocomplete.smartSnippets": true,
+  "files.exclude": {
+    "**/node_modules/": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/": true
+  }
 }
