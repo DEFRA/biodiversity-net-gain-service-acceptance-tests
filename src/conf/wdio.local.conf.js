@@ -122,15 +122,7 @@ exports.config = {
   // ...
   services: [
     // //if this is uncommented, don't need to run selenium-standalone start separately
-    // [
-    // "selenium-standalone",
-    // {
-    //   logPath: "logs",
-    //   installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
-    //   args: { drivers: { chrome: { version: "103.0.5060.53" } } },
-    // },
-    // ],
-
+    
     "chromedriver",
     // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
   ],
@@ -157,17 +149,6 @@ exports.config = {
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
     "spec",
-    // [
-    //   "junit",
-    //   {
-    //     outputDir: "./",
-    //     outputFileFormat: function () {
-    //       // optional
-    //       //return `results-${options.cid}.${options.capabilities}.xml`;
-    //       return `TestReport.xml`;
-    //     },
-    //   },
-    // ],
     [
       "cucumberjs-json",
       {
