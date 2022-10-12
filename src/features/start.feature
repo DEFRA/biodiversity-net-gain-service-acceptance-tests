@@ -9,8 +9,8 @@ Feature: Start page
         Given I am on the "start" page
         Then I should see the heading text "<message>"
         Examples:
-            | message                                      |
-            | Register land for off-site biodiversity gain |
+            | message                                   |
+            | Register land as a biodiversity gain site |
 
     @skip()
     Scenario: As a returning BNG user I want to login and continue with my previous journey
