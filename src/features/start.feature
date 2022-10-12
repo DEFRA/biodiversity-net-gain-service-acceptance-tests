@@ -4,7 +4,7 @@ Feature: Start page
     As a BNG user, I want to see all the relevant guidance
     I need to start a registration application
     or to complete an unfinished one
-    @new
+
     Scenario:
         Given I am on the "start" page
         Then I should see the heading text "<message>"

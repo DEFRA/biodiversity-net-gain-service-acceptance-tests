@@ -16,6 +16,7 @@ const landOwnershipCheckPage = require("../page_objects/land_ownership/land-owne
 const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 const habitatWorksStartDatePage = require("../page_objects/management_plan/habitat-works-start-date.page");
+const monitoringStartDatePage = require("../page_objects/management_plan/monitoring-start-date.page");
 
 const basePage = legalAgreementUploadPage;
 
@@ -37,6 +38,7 @@ const pages = {
   "grid-reference": gridReferencePage,
   "add-hectares": addHectaresPage,
   "habitat-works-start-date": habitatWorksStartDatePage,
+  "monitoring-start-date": monitoringStartDatePage
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
