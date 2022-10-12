@@ -11,7 +11,7 @@ Feature: BNGP-785 Grid Reference
     Scenario Outline: I can add a valid grid reference
         When I add a valid grid reference "<grid-reference>"
         Then I should be on the "add-hectares" page
-        @e2e
+
         Examples:
             | grid-reference |
             | TL6233         |

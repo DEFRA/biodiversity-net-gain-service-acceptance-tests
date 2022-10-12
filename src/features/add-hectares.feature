@@ -1,4 +1,4 @@
-@regression
+@regression @new
 Feature: BNGP-786 Enter Area in hectares
 
     As a Site Provider
@@ -10,14 +10,14 @@ Feature: BNGP-786 Enter Area in hectares
 
     @e2e
     Scenario Outline: I can add the total hectares for my land
-        #Todo: add page that follows.  CYA page for hectares doesn't currently exist
-        Then I should be able to add my total hectares of "<hectares>"
+        When I add total hectares as "<hectares>"
+        Then I should be on the check your answers page
         Examples:
             | hectares |
             | 1231.11  |
 
     Scenario: I cannot add a total hectares value of 0
-        When I add total hectares as 0
+        When I add total hectares as "0"
         Then I should see the error "Size of the land must be more than 0.00 hectares"
         And I should see the error and the error summary displayed
 
