@@ -9,6 +9,14 @@ class LegalAgreementType extends Page {
     return $("#document-download");
   }
 
+  get conservationCovenant() {
+    return $("#conservation-covenant");
+  }
+
+  get planningObligation() {
+    return $("#planning-obligation");
+  }
+
   open() {
     return super.open("land/legal-agreement-type");
   }
