@@ -9,7 +9,7 @@ const legalAgreementStartDatePage = require("../page_objects/legal_agreement/leg
 const legalAgreementCheckDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page");
 const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
-const taskListPage = require("../page_objects/task-list.page");
+const taskListPage = require("../page_objects/register-land-task-list.page");
 const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundary/choose-upload-option.page");
 const landBoundaryUploadGeospatialPage = require("../page_objects/land_boundary/upload-geospatial.page");
 const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/upload-land-boundary.page");
@@ -22,8 +22,6 @@ const gridReferencePage = require("../page_objects/land_boundary/grid-reference.
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 const habitatWorksStartDatePage = require("../page_objects/management_plan/habitat-works-start-date.page");
 const monitoringStartDatePage = require("../page_objects/management_plan/monitoring-start-date.page");
-
-
 
 const basePage = legalAgreementUploadPage;
 
@@ -38,7 +36,7 @@ const pages = {
   "check-legal-agreement-details": legalAgreementCheckDetailsPage,
   "management-plan-upload": managementPlanUploadPage,
   "management-plan-check": managementPlanCheckPage,
-  "task-list": taskListPage,
+  "register-land-task-list": taskListPage,
   "location-options": landBoundaryChooseUploadOptionPage,
   "upload-geospatial-file": landBoundaryUploadGeospatialPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
@@ -51,7 +49,6 @@ const pages = {
   "add-hectares": addHectaresPage,
   "habitat-works-start-date": habitatWorksStartDatePage,
   "monitoring-start-date": monitoringStartDatePage
- 
 };
 
 Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
@@ -108,10 +105,34 @@ When("I confirm my role as a {string}", async (role) => {
   await legalAgreementAddPartiesPage.legalPartyRole.waitForExist({ timeout: 5000 });
   await legalAgreementAddPartiesPage.legalPartyRole.click();
   await legalAgreementAddPartiesPage.legalContinueButton.click();
-
-  // await browser.pause(30000);
   
 })
+
+When("I enter a valid startdate of {string} for the {string} page", async (date, page) => {
+
+  var arr = date.split('/');
+
+  switch (page) {
+    case "habitat-works-start-date": {
+          await habitatWorksStartDatePage.Day.addValue(arr[0]);
+          await habitatWorksStartDatePage.Month.addValue(arr[1]);
+          await habitatWorksStartDatePage.Year.addValue(arr[2]);
+          await (await habitatWorksStartDatePage.continueButton).click();
+      break;
+    }
+    case "legal-agreement-start-date": {
+          await legalAgreementStartDatePage.Day.addValue(arr[0]);
+          await legalAgreementStartDatePage.Month.addValue(arr[1]);
+          await legalAgreementStartDatePage.Year.addValue(arr[2]);
+          await (await legalAgreementStartDatePage.continueButton).click();
+      break;
+    } 
+    default:
+    break
+  }
+
+  
+});
 
 Then("I should see the error {string}", async (message) => {
   // check errorMsg text
