@@ -1,4 +1,4 @@
-@regression @new
+@regression
 Feature: BNGP-786 Enter Area in hectares
 
     As a Site Provider
