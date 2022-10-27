@@ -8,7 +8,7 @@ module.exports = class Page {
   }
 
   get continueButton() {
-    return $(".govuk-button");
+    return $("[class*='govuk-button']");
   }
 
   get govFileUpload() {
@@ -33,6 +33,22 @@ module.exports = class Page {
 
   get filesizeIndicator() {
     return $("#filesize");
+  }
+
+  get doNotHaveDocument() {
+    return $("#dont-have-document");
+  }
+
+  get Day() {
+    return $("[id$='StartDate-day']");
+  }
+
+  get Month() {
+    return $("[id$='StartDate-month']");
+  }
+
+  get Year() {
+    return $("[id$='StartDate-year']");
   }
 
   /**

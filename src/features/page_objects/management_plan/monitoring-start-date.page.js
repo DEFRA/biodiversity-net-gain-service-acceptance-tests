@@ -5,18 +5,6 @@ class MonitoringStartDate extends Page {
     return "When will the 30 year management and monitoring period start?";
   }
 
-  get Day() {
-    return $("#managementMonitoringStartDate-day");
-  }
-
-  get Month() {
-    return $("#managementMonitoringStartDate-month");
-  }
-
-  get Year() {
-    return $("#managementMonitoringStartDate-year");
-  }
-
   open() {
     return super.open("land/management-monitoring-start-date");
   }

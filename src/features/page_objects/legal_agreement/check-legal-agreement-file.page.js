@@ -1,6 +1,6 @@
 const Page = require("../page");
 
-class LegalAgreementCheck extends Page {
+class LegalAgreementCheckFile extends Page {
   get titleText() {
     return "Check the legal agreement file";
   }
@@ -13,4 +13,4 @@ class LegalAgreementCheck extends Page {
     return super.open("land/check-legal-agreement-file");
   }
 }
-module.exports = new LegalAgreementCheck();
+module.exports = new LegalAgreementCheckFile();
