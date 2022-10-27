@@ -1,5 +1,5 @@
 const { Then } = require("@wdio/cucumber-framework");
-const TaskList = require("../page_objects/task-list.page");
+const TaskList = require("../page_objects/register-land-task-list.page");
 
 Then(
   "I should see the {string} section status as {string}",

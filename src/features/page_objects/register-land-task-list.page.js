@@ -7,8 +7,13 @@ class TaskList extends Page {
     return $("#biodiversity-metric-status");
   }
 
+  get titleText() {
+    return "Register land as a biodiversity gain site";
+  }
+
+
   open() {
-    return super.open("task-list");
+    return super.open("land/register-land-task-list");
   }
 }
 module.exports = new TaskList();
