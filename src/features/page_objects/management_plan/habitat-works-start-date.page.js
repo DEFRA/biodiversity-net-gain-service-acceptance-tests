@@ -5,18 +5,6 @@ class HabitatWorksStartDate extends Page {
     return "When will the habitat enhancement works start?";
   }
 
-  get Day() {
-    return $("#habitatWorksStartDate-day");
-  }
-
-  get Month() {
-    return $("#habitatWorksStartDate-month");
-  }
-
-  get Year() {
-    return $("#habitatWorksStartDate-year");
-  }
-
   open() {
     return super.open("land/habitat-works-start-date");
   }

@@ -109,30 +109,15 @@ When("I confirm my role as a {string}", async (role) => {
   
 })
 
-When("I enter a valid startdate of {string} for the {string} page", async (date, page) => {
+When("I enter a valid startdate of {string}", async (date) => {
 
   var arr = date.split('/');
 
-  switch (page) {
-    case "habitat-works-start-date": {
-          await habitatWorksStartDatePage.Day.addValue(arr[0]);
-          await habitatWorksStartDatePage.Month.addValue(arr[1]);
-          await habitatWorksStartDatePage.Year.addValue(arr[2]);
-          await (await habitatWorksStartDatePage.continueButton).click();
-      break;
-    }
-    case "legal-agreement-start-date": {
-          await legalAgreementStartDatePage.Day.addValue(arr[0]);
-          await legalAgreementStartDatePage.Month.addValue(arr[1]);
-          await legalAgreementStartDatePage.Year.addValue(arr[2]);
-          await (await legalAgreementStartDatePage.continueButton).click();
-      break;
-    } 
-    default:
-    break
-  }
+  await basePage.Day.addValue(arr[0]);
+  await basePage.Month.addValue(arr[1]);
+  await basePage.Year.addValue(arr[2]);
+  await (await basePage.continueButton).click();
 
-  
 });
 
 Then("I should see the error {string}", async (message) => {

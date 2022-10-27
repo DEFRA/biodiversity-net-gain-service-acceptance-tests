@@ -22,7 +22,7 @@ Feature: legal-agreement
 
     Scenario: BNGP-188 I can add a valid legal agreement startdate
         Given I am on the "legal-agreement-start-date" page
-        When I enter a valid startdate of "12/10/2022" for the "legal-agreement-start-date" page
+        When I enter a valid startdate of "12/10/2022"
         Then I should be on the "check-legal-agreement-details" page
         # Todo: BNGP-826 add an actual flow to this scenario for CYA when it comes in
         When I continue without an action
