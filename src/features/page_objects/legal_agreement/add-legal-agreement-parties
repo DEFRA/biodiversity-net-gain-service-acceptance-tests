@@ -15,10 +15,6 @@ class LegalAgreementAddParties extends Page {
     return $(".govuk-radios__input");
   }
 
-  get legalContinueButton() {
-    return $("#continue");
-  }
-
   open() {
     return super.open("land/add-legal-agreement-parties");
   }

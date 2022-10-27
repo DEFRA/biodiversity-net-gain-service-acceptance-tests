@@ -105,8 +105,7 @@ When("I confirm my role as a {string}", async (role) => {
   //Todo: currently no unique identifiers in code awaiting bug fixes in BNGP-1267
   await legalAgreementAddPartiesPage.legalPartyRole.waitForExist({ timeout: 5000 });
   await legalAgreementAddPartiesPage.legalPartyRole.click();
-  await legalAgreementAddPartiesPage.legalContinueButton.click();
-  
+  await legalAgreementAddPartiesPage.continueButton.click();  
 })
 
 When("I enter a valid startdate of {string}", async (date) => {

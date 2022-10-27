@@ -8,7 +8,7 @@ module.exports = class Page {
   }
 
   get continueButton() {
-    return $(".govuk-button");
+    return $("[class*='govuk-button']");
   }
 
   get govFileUpload() {
