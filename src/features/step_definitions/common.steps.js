@@ -102,6 +102,7 @@ When("I add my fullname or organisation as {string}", async (fullname) => {
 })
 
 When("I confirm my role as a {string}", async (role) => {
+  //Todo: currently no unique identifiers in code awaiting bug fixes in BNGP-1267
   await legalAgreementAddPartiesPage.legalPartyRole.waitForExist({ timeout: 5000 });
   await legalAgreementAddPartiesPage.legalPartyRole.click();
   await legalAgreementAddPartiesPage.legalContinueButton.click();
