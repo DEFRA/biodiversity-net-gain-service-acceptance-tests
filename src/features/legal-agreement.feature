@@ -32,33 +32,20 @@ Feature: legal-agreement
         When I select "Other role" and continue
         Then I should see the error "Other type of role cannot be left blank"
 
-    Scenario: BNGP-188 9 I can add a valid legal agreement startdate
+    Scenario: BNGP-188 9 I can add a valid legal agreement start date
         Given I am on the "legal-agreement-start-date" page
-        When I enter a valid startdate of "12/10/2022"
+        When I enter a valid start date of "12/10/2022"
         Then I should be on the "check-legal-agreement-details" page
 
-    Scenario Outline: BNGP-188 9 I cannot add an invalid startdate date
+    Scenario Outline: BNGP-188 9 I cannot add an invalid start date date
         Given I am on the "legal-agreement-start-date" page
-        When I enter an invalid startdate of "<date>"
+        When I enter an invalid start date of "<date>"
         Then I should see the error "Start date must be a real date"
         Examples:
             | date       |
             | 31/11/2022 |
             | 29/02/2022 |
             | 30/02/2022 |
-
-# has a unit test not needed
-# Scenario: BNGP-188 Bug : other role textbox should not display undefined
-#     Given I am on the "legal-agreement-type" page
-#     When I select "conservation covenant" and continue
-#     And I choose and upload a "legal-agreement"
-#     And I confirm it is the correct file
-#     And I add my fullname or organisation as "Mr John Smith"
-#     And I confirm my role as a "landowner"
-#     And I enter a valid startdate of "12/10/2022"
-#     And I choose to change the "parties involved"
-#     And I select other role
-#     Then the other role value should not be "undefined"
 
 
 
