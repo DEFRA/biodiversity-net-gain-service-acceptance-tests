@@ -119,7 +119,7 @@ When("I confirm my role as a {string}", async (role) => {
   await legalAgreementAddPartiesPage.continueButton.click();  
 })
 
-When("I enter a valid startdate of {string}", async (date) => {
+When("I enter a valid start date of {string}", async (date) => {
 
   var arr = date.split('/');
 
@@ -130,7 +130,7 @@ When("I enter a valid startdate of {string}", async (date) => {
  
 });
 
-When("I enter an invalid startdate of {string}", async (date) => {
+When("I enter an invalid start date of {string}", async (date) => {
   var arr = date.split('/');
 
   await basePage.Day.addValue(arr[0]);

@@ -2,7 +2,7 @@ import { When, Then } from "@cucumber/cucumber";
 import monitoringStartDatePage from "../page_objects/management_plan/monitoring-start-date.page";
 
 
-Then("I should be able to enter a valid 30 year monitoring startdate of {string}", async (date) => {
+Then("I should be able to enter a valid 30 year monitoring start date of {string}", async (date) => {
 
     var arr = date.split('/');
 
