@@ -19,7 +19,6 @@ Feature: upload documents
             | management-plan | habitat-works-start-date |
             | land-boundary   | grid-reference           |
             | metric          | register-land-task-list  |
-            # | land-ownership  | registered-landowner     |
             | land-ownership  | add-landowners           |
 
     Scenario Outline: BNGP-499 2 - I cannot upload a <document> that is not in the specified format
