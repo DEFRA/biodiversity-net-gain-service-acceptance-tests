@@ -8,26 +8,18 @@ Feature: BNGP-785 Grid Reference
     Background:
         Given I am on the "grid-reference" page
 
-    Scenario Outline: I can add a valid grid reference
-        When I add a valid grid reference "<grid-reference>"
-        Then I should be on the "add-hectares" page
-
-        Examples:
-            | grid-reference |
-            | TL6233         |
-        Examples:
-            | grid-reference |
-            | TL 625 333     |
-            | TL625333       |
-            | TL 6255 3331   |
-            | TL62553331     |
-            | TL 62551 33315 |
-
-    Scenario: Grid reference cannot be blank
+    Scenario: BNGP-785 1 Grid reference cannot be blank
         When I continue without an action
         Then I should see the error "Enter the grid reference"
 
-    Scenario Outline: I cannot enter an invalid grid reference "<grid-reference>"
+    Scenario Outline: BNGP-785 2 I can add a valid grid reference
+        When I add a valid grid reference "<grid-reference>"
+        Then I should be on the "add-hectares" page
+        Examples:
+            | grid-reference |
+            | TL6233         |
+
+    Scenario Outline: BNGP-785 2 I cannot enter an invalid grid reference "<grid-reference>"
         When I add an invalid grid reference "<grid-reference>"
         Then I should see the error "<error-msg>"
         And I should see the error and the error summary displayed
