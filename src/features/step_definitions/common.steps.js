@@ -4,7 +4,7 @@ const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-ag
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement.page");
 const legalAgreementCheckFilePage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
-const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties");
+const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page.js");
 const legalAgreementStartDatePage = require("../page_objects/legal_agreement/legal-agreement-start-date.page");
 const legalAgreementCheckDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page");
 const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
@@ -14,10 +14,13 @@ const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundar
 const landBoundaryUploadGeospatialPage = require("../page_objects/land_boundary/upload-geospatial.page");
 const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/upload-land-boundary.page");
 const landBoundaryCheckImageFilePage = require("../page_objects/land_boundary/check-land-boundary-file.page");
+const landBoundaryCheckImageDetailsPage = require("../page_objects/land_boundary/check-land-boundary-details.page");
 const metricUploadPage = require("../page_objects/metric/metric-upload.page");
 const metricCheckPage = require("../page_objects/metric/metric-check.page");
 const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
 const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
+const landownershipRegisteredLandownerPage = require("../page_objects/land_ownership/registered-landowner.page");
+const landownershipAddLandowners = require("../page_objects/land_ownership/add-landowners.page");
 const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 const habitatWorksStartDatePage = require("../page_objects/management_plan/habitat-works-start-date.page");
@@ -27,7 +30,7 @@ const basePage = legalAgreementUploadPage;
 
 const pages = {
   start: startPage,
-  "upload-legal-agreement": legalAgreementUploadPage,
+  "legal-agreement-upload": legalAgreementUploadPage,
   "legal-agreement-check": legalAgreementCheckFilePage,
   "legal-agreement-type": legalAgreementTypePage,
   "need-legal-agreement": legalAgreementNeedpage,
@@ -41,10 +44,13 @@ const pages = {
   "upload-geospatial-file": landBoundaryUploadGeospatialPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
   "land-boundary-check": landBoundaryCheckImageFilePage,
+  "check-land-boundary-details": landBoundaryCheckImageDetailsPage,
   "metric-upload": metricUploadPage,
   "metric-check": metricCheckPage,
   "land-ownership-upload": landOwnershipUploadPage,
   "land-ownership-check": landOwnershipCheckPage,
+  "registered-landowner": landownershipRegisteredLandownerPage,
+  "add-landowners": landownershipAddLandowners,
   "grid-reference": gridReferencePage,
   "add-hectares": addHectaresPage,
   "habitat-works-start-date": habitatWorksStartDatePage,
@@ -76,26 +82,31 @@ When("I continue without an action", async () => {
 
 When("I select {string} and continue", async (option) => {
 
-let choice = "";
-
   switch (option) {
     case "conservation covenant": {
-      choice = legalAgreementTypePage.conservationCovenant;
+      await legalAgreementTypePage.conservationCovenant.click();
       break;
     }
     case "planning obligation": {
-      choice = legalAgreementTypePage.planningObligation;
+      await legalAgreementTypePage.planningObligation.click();
       break;
     }
     case "I do not have a legal agreement": {
-      choice = legalAgreementTypePage.doNotHaveDocument;
+      await legalAgreementTypePage.doNotHaveDocument.click();
+      break;
+    }
+    case "Other role": {
+      (await legalAgreementAddPartiesPage.otherLegalPartyRoleOption).click();
       break;
     }
   }
 
-  await (await choice).click();
-  await (await legalAgreementTypePage.continueButton).click();
+  (await basePage.continueButton).click();
 });
+
+When("I select other role", async () => {
+  (await legalAgreementAddPartiesPage.otherLegalPartyRoleOption).click();
+}); 
 
 When("I add my fullname or organisation as {string}", async (fullname) => {
   await legalAgreementAddPartiesPage.legalPartyName.addValue(fullname);
@@ -116,8 +127,26 @@ When("I enter a valid startdate of {string}", async (date) => {
   await basePage.Month.addValue(arr[1]);
   await basePage.Year.addValue(arr[2]);
   await (await basePage.continueButton).click();
+ 
+});
+
+When("I enter an invalid startdate of {string}", async (date) => {
+  var arr = date.split('/');
+
+  await basePage.Day.addValue(arr[0]);
+  await basePage.Month.addValue(arr[1]);
+  await basePage.Year.addValue(arr[2]);
+  await (await basePage.continueButton).click();
 
 });
+
+
+When("I choose to change the {string}", async (option) => {
+  if(option == "parties involved"){
+    await (await legalAgreementCheckDetailsPage.changeParties).click();
+  }
+});
+
 
 Then("I should see the error {string}", async (message) => {
   // check errorMsg text
@@ -129,6 +158,10 @@ Then("I should see the error and the error summary displayed", async () => {
   // https://design-system.service.gov.uk/components/error-summary/
   await expect(basePage.errorMsg).toBeDisplayed();
   await expect(basePage.errorMsgSummary).toBeDisplayed();
+});
+
+Then("the other role value should not be {string}", async (input) => {
+  await expect(basePage.otherRoleTextBox).not.toHaveValue(input);
 });
 
 

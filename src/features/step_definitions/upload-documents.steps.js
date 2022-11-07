@@ -14,6 +14,8 @@ import landOwnershipCheckPage from "../page_objects/land_ownership/land-ownershi
 let UploadPage = legalAgreementUploadPage;
 let CheckPage = legalAgreementCheckPage;
 
+let  basePage = legalAgreementUploadPage;
+
 let filename = "";
 let filePath = "";
 let remoteFilePath = "";
@@ -192,10 +194,17 @@ Then("I am informed of what the allowed file types should be", async () => {
 });
 
 When("I choose a different file", async () => {
-  await CheckPage.radioNo.waitForExist({ timeout: 5000 });
-  await CheckPage.radioNo.click();
-  await CheckPage.continueButton.click();
+  await basePage.radioNo.waitForExist({ timeout: 5000 });
+  await basePage.radioNo.click();
+  await basePage.continueButton.click();
 });
+
+When("I confirm it is the correct file", async () => {
+  await basePage.radioYes.waitForExist({ timeout: 5000 });
+  await basePage.radioYes.click();
+  await basePage.continueButton.click();
+});
+
 
 When("I choose an empty file", async () => {
   switch (UploadPage) {
