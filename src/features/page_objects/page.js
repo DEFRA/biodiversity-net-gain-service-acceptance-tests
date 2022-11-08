@@ -8,7 +8,7 @@ module.exports = class Page {
   }
 
   get continueButton() {
-    return $("[class*='govuk-button']");
+    return $("#continue");
   }
 
   get govFileUpload() {
@@ -49,6 +49,10 @@ module.exports = class Page {
 
   get Year() {
     return $("[id$='StartDate-year']");
+  }
+  
+  get otherRoleTextBox(){
+    return $(".govuk-\\!-width-one-third")
   }
 
   /**
