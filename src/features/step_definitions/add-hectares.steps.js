@@ -1,4 +1,4 @@
-import { When, Then } from "@cucumber/cucumber";
+import { When } from "@cucumber/cucumber";
 import addHectaresPage from "../page_objects/land_boundary/add-hectares.page";
 
 When("I add total hectares as {string}", async (value) => {
