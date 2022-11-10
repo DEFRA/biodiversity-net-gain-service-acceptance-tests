@@ -1,7 +1,7 @@
 @regression @skip()
 Feature: land-boundary
 
-    As a BNG User
+    As a Site Provider
     I need to provide the location and boundary of the land I am registering
     So that I can provide the Register Operator with the data in a file type consistent with technology I already use
 

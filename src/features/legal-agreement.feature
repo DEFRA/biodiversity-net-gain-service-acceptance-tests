@@ -1,6 +1,10 @@
 @regression
 Feature: legal-agreement
 
+    As a Site Provider
+    I need to answer questions about my legal agreement
+    So that I can provide the data required for registration
+
     Scenario Outline: BNGP-188 2 I have a choice between 2 types of legal agreement or not having one
         Given I am on the "legal-agreement-type" page
         When I select "<legal-agreement-type>" and continue
@@ -22,13 +26,13 @@ Feature: legal-agreement
 
     Scenario: BNGP-188 5,6 There must be at least 1 legal party added
         Given I am on the "add-legal-agreement-parties" page
-        When I add my fullname or organisation as "Mr John Smith"
-        And I confirm my role as a "landowner"
+        When I add the legal party fullname or organisation as "Mr John Smith"
+        And I confirm the legal party role as a "landowner"
         Then I should be on the "legal-agreement-start-date" page
 
     Scenario: BNGP-188 7,8 If 'Other' option is selected as Role then the Role field popup must not be left blank
         Given I am on the "add-legal-agreement-parties" page
-        And I add my fullname or organisation as "Mr John Smith"
+        And I add the legal party fullname or organisation as "Mr John Smith"
         When I select "Other role" and continue
         Then I should see the error "Other type of role cannot be left blank"
 
