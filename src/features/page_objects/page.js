@@ -52,7 +52,7 @@ module.exports = class Page {
   }
   
   get otherRoleTextBox(){
-    return $(".govuk-\\!-width-one-third")
+    return $("#roleOther");
   }
 
   /**

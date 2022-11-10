@@ -13,11 +13,11 @@ class LegalAgreementAddParties extends Page {
   return $("#remove1");
   }
 
-  get legalPartyName() {
+  get legalPartyFullName() {
     return $("[id='organisation[0][organisationName]']");
   }
 
-  get legalPartyName2() {
+  get legalPartyFullName2() {
     return $("[id='organisation[1][organisationName]']");
   }
     
