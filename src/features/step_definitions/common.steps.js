@@ -1,5 +1,8 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 const startPage = require("../page_objects/start.page");
+const applicantDetailsNamePage = require("../page_objects/applicant_details/name.page");
+const applicantDetailsRolePage = require("../page_objects/applicant_details/role.page");
+const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_details/check-your-details.page");
 const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement.page");
@@ -30,6 +33,9 @@ const basePage = legalAgreementUploadPage;
 
 const pages = {
   start: startPage,
+  "name": applicantDetailsNamePage,
+  "role": applicantDetailsRolePage,
+  "check-your-details": applicantDetailsCheckYourDetailsPage,
   "legal-agreement-upload": legalAgreementUploadPage,
   "legal-agreement-check": legalAgreementCheckFilePage,
   "legal-agreement-type": legalAgreementTypePage,
@@ -104,19 +110,19 @@ When("I select {string} and continue", async (option) => {
   (await basePage.continueButton).click();
 });
 
-When("I select other role", async () => {
-  (await legalAgreementAddPartiesPage.otherLegalPartyRoleOption).click();
-}); 
-
-When("I add my fullname or organisation as {string}", async (fullname) => {
-  await legalAgreementAddPartiesPage.legalPartyName.addValue(fullname);
-})
-
 When("I confirm my role as a {string}", async (role) => {
-  //Todo: currently no unique identifiers in code awaiting bug fixes in BNGP-1267
-  await legalAgreementAddPartiesPage.legalPartyRole.waitForExist({ timeout: 5000 });
-  await legalAgreementAddPartiesPage.legalPartyRole.click();
-  await legalAgreementAddPartiesPage.continueButton.click();  
+
+  switch (role) {
+    case "landowner": {
+      await applicantDetailsRolePage.landOwner.click();
+      break;
+    }
+    case "other": {
+      await applicantDetailsRolePage.other.click(); 
+      break;
+    }
+  }
+  await basePage.continueButton.click();  
 })
 
 When("I enter a valid start date of {string}", async (date) => {
@@ -140,13 +146,36 @@ When("I enter an invalid start date of {string}", async (date) => {
 
 });
 
-
-When("I choose to change the {string}", async (option) => {
-  if(option == "parties involved"){
-    await (await legalAgreementCheckDetailsPage.changeParties).click();
+When("I choose to change the {string} answer", async (option) => {
+  switch (option) {
+    case "name": {
+      await applicantDetailsCheckYourDetailsPage.changeFullname.click();
+      break;
+    }
+    case "role": {
+      await applicantDetailsCheckYourDetailsPage.changeRole.click();
+      break;
+    }
+    case "parties involved": {
+      await legalAgreementCheckDetailsPage.changeParties.click();
+      break;
+    }
   }
 });
 
+When("I update the {string} to {string}", async (option, change) => {
+
+  await applicantDetailsNamePage.fullName.addValue(change);
+    await (await applicantDetailsNamePage.continueButton).click();
+
+})
+
+When("I add another {string}", async (option) => {
+
+  await legalAgreementAddPartiesPage.addAnotherLegalParty.click();
+  //Todo: add details for 2nd party
+  
+})
 
 Then("I should see the error {string}", async (message) => {
   // check errorMsg text
@@ -164,4 +193,16 @@ Then("the other role value should not be {string}", async (input) => {
   await expect(basePage.otherRoleTextBox).not.toHaveValue(input);
 });
 
+Then("I can choose to remove the other {string}", async (option) => {
+
+  if(option == "legal party") {
+
+    await (await legalAgreementAddPartiesPage.removeLegalParty2).click();
+
+    //check 2nd party details do not exist
+    await expect(legalAgreementAddPartiesPage.legalPartyName2).not.toExist();
+    await expect(legalAgreementAddPartiesPage.legalPartyRole2).not.toExist();
+  }
+  
+})
 
