@@ -171,15 +171,14 @@ When("I update the {string} to {string}", async (option, change) => {
 })
 
 When("I add another {string}", async (option) => {
-
-  await legalAgreementAddPartiesPage.addAnotherLegalParty.click();
-  //Todo: add details for 2nd party
-  
+  if(option == "legal party") {
+    await legalAgreementAddPartiesPage.addAnotherLegalParty.click();
+  }
 })
 
 Then("I should see the error {string}", async (message) => {
-  // check errorMsg text
-  await expect(basePage.errorMsg).toHaveTextContaining(message);
+    // check errorMsg text
+    await expect(basePage.errorMsg).toHaveTextContaining(message);
 });
 
 Then("I should see the error and the error summary displayed", async () => {
@@ -203,6 +202,6 @@ Then("I can choose to remove the other {string}", async (option) => {
     await expect(legalAgreementAddPartiesPage.legalPartyName2).not.toExist();
     await expect(legalAgreementAddPartiesPage.legalPartyRole2).not.toExist();
   }
-  
+
 })
 
