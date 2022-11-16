@@ -14,8 +14,15 @@ exports.config = {
       },
     },
   ],
-
+  reporters: [
+    'spec',
+    ['junit', {
+      outputDir: './',
+      outputFileFormat: function (options) {
+        return `TEST-${options.cid}.xml`
+      }
+    }]
+  ],
   baseUrl:
-    process.env.SERVICE_URL ||
-    "https://registerwebapp.agreeableflower-aab4eacd.uksouth.azurecontainerapps.io",
+    process.env.SERVICE_URL
 };
