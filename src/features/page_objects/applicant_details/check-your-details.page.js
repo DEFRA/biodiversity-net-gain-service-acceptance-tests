@@ -5,12 +5,28 @@ class CheckYourDetails extends Page {
     return "Check your details";
   }
 
+  get fullnameValue(){
+    return $("#fullname-value");
+  }
+
+  get roleValue(){
+    return $("#role-value");
+  }
+
+  get emailValue(){
+    return $("#email-value");
+  }
+
   get changeFullname(){
-    return $("a[href^='/land/name']");
+    return $("#fullname");
   }
 
   get changeRole(){
-    return $("a[href^='/land/name']");
+    return $("#role");
+  }
+
+  get changeEmail(){
+    return $("#email");
   }
 
   open() {
