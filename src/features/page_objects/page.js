@@ -24,11 +24,11 @@ module.exports = class Page {
   }
 
   get radioYes() {
-    return $("#check-upload-correct-yes");
+    return $("[id$='correct-yes']");  
   }
 
   get radioNo() {
-    return $("#check-upload-correct-no");
+    return $("[id$='correct-no']");
   }
 
   get filesizeIndicator() {
