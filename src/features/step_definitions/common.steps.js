@@ -2,6 +2,8 @@ const { Given, When, Then } = require("@wdio/cucumber-framework");
 const startPage = require("../page_objects/start.page");
 const applicantDetailsNamePage = require("../page_objects/applicant_details/name.page");
 const applicantDetailsRolePage = require("../page_objects/applicant_details/role.page");
+const applicantDetailsEmailPage = require("../page_objects/applicant_details/email.page");
+const applicantDetailsCorrectEmailPage = require("../page_objects/applicant_details/correct-email.page");
 const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_details/check-your-details.page");
 const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
@@ -35,6 +37,8 @@ const pages = {
   start: startPage,
   "name": applicantDetailsNamePage,
   "role": applicantDetailsRolePage,
+  "email": applicantDetailsEmailPage,
+  "correct-email": applicantDetailsCorrectEmailPage,
   "check-your-details": applicantDetailsCheckYourDetailsPage,
   "legal-agreement-upload": legalAgreementUploadPage,
   "legal-agreement-check": legalAgreementCheckFilePage,
@@ -63,7 +67,7 @@ const pages = {
   "monitoring-start-date": monitoringStartDatePage
 };
 
-Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
+Given(/^I navigate to the "(.*)" page$/, async (page) => {
   // open the page requested from the list of pages
   page = page.toLowerCase();
   await pages[page].open();
@@ -74,7 +78,7 @@ Given(/^I (?:am on|navigate to) the "(.*)" page$/, async (page) => {
   expect(await browser.getTitle()).toContain(pages[page].titleText);
 });
 
-Then(/^I should be (?:on|returned to) the "(.*)" page$/, async (page) => {
+Then(/^I (?:am|should be) (?:on|returned to) the "(.*)" page$/, async (page) => {
   await $("h1").waitForExist({ timeout: 5000 });
 
   // assert against the page title
@@ -91,38 +95,54 @@ When("I select {string} and continue", async (option) => {
   switch (option) {
     case "conservation covenant": {
       await legalAgreementTypePage.conservationCovenant.click();
+      await basePage.continueButton.click();
       break;
     }
     case "planning obligation": {
       await legalAgreementTypePage.planningObligation.click();
+      await basePage.continueButton.click();
       break;
     }
     case "I do not have a legal agreement": {
       await legalAgreementTypePage.doNotHaveDocument.click();
+      await basePage.continueButton.click();
       break;
     }
     case "Other role": {
       (await legalAgreementAddPartiesPage.otherLegalPartyRoleOption).click();
+      await basePage.continueButton.click();
       break;
     }
   }
-
-  (await basePage.continueButton).click();
 });
 
 When("I confirm my role as a {string}", async (role) => {
-
   switch (role) {
     case "landowner": {
       await applicantDetailsRolePage.landOwner.click();
+      await basePage.continueButton.click(); 
       break;
     }
     case "other": {
       await applicantDetailsRolePage.other.click(); 
+      await basePage.continueButton.click(); 
       break;
     }
   }
-  await basePage.continueButton.click();  
+   
+})
+
+When("I confirm my {string} are correct", async (check) => {
+  //confirm cya pages
+  if(check == "details"){
+    await expect(applicantDetailsCheckYourDetailsPage.continueButton).toBeDisplayed();
+
+    await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).not.toBeNull();
+    await expect(applicantDetailsCheckYourDetailsPage.roleValue).not.toBeNull();
+    await expect(applicantDetailsCheckYourDetailsPage.emailValue).not.toBeNull();
+
+    await (applicantDetailsCheckYourDetailsPage.continueButton).click();
+  }  
 })
 
 When("I enter a valid start date of {string}", async (date) => {
@@ -148,7 +168,8 @@ When("I enter an invalid start date of {string}", async (date) => {
 
 When("I choose to change the {string} answer", async (option) => {
   switch (option) {
-    case "name": {
+    //applicant details
+    case "fullname": {
       await applicantDetailsCheckYourDetailsPage.changeFullname.click();
       break;
     }
@@ -156,6 +177,11 @@ When("I choose to change the {string} answer", async (option) => {
       await applicantDetailsCheckYourDetailsPage.changeRole.click();
       break;
     }
+    case "email": {
+      await applicantDetailsCheckYourDetailsPage.changeEmail.click();
+      break;
+    }
+    //legal agreement 
     case "parties involved": {
       await legalAgreementCheckDetailsPage.changeParties.click();
       break;
@@ -163,11 +189,39 @@ When("I choose to change the {string} answer", async (option) => {
   }
 });
 
-When("I update the {string} to {string}", async (option, change) => {
+When("I update the {string} to {string}", async (option, value) => {
 
-  await applicantDetailsNamePage.fullName.addValue(change);
-    await (await applicantDetailsNamePage.continueButton).click();
+  switch (option) {
+    //applicant details
+  case "fullname": {
+    // clear the original value
+    await (applicantDetailsNamePage.fullName).clearValue();
+    // add the fullname
+    await applicantDetailsNamePage.fullName.addValue(value);
+    await expect(applicantDetailsNamePage.fullname).toHaveText(value);
+    await (basePage.continueButton).click();
+    break;
+  }
+  case "role": {
+    await applicantDetailsCheckYourDetailsPage.changeRole.click();
+    await (basePage.continueButton).click();
+    break;
+  }
+  case "email": {
+    // clear the original value
+    await (applicantDetailsEmailPage.emailAddress).clearValue();
 
+    // add the email address
+    await applicantDetailsEmailPage.emailAddress.addValue(value);
+    await expect(applicantDetailsEmailPage.emailAddress).toHaveValue(value);
+    await (applicantDetailsEmailPage.continueButton).click();
+
+    // confirm on the correct email page
+    await (applicantDetailsCorrectEmailPage.radioYes).click();
+    await (basePage.continueButton).click();
+    break;
+  }
+  }
 })
 
 When("I add another {string}", async (option) => {
@@ -196,12 +250,11 @@ Then("I can choose to remove the other {string}", async (option) => {
 
   if(option == "legal party") {
 
-    await (await legalAgreementAddPartiesPage.removeLegalParty2).click();
+    await (legalAgreementAddPartiesPage.removeLegalParty2).click();
 
     //check 2nd party details do not exist
     await expect(legalAgreementAddPartiesPage.legalPartyName2).not.toExist();
     await expect(legalAgreementAddPartiesPage.legalPartyRole2).not.toExist();
   }
-
 })
 
