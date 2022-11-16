@@ -102,7 +102,7 @@ Feature: upload documents
             # | metric   |
             | land-ownership  |
 
-    Scenario: I can upload all allowed filetypes
+    Scenario Outline: I can upload all allowed filetypes
         Then I should be able to upload all allowed filetypes
             | document        | filetype |
             | legal-agreement | doc      |
@@ -123,9 +123,3 @@ Feature: upload documents
             | land-ownership  | DOC      |
             | land-ownership  | DOCX     |
             | land-ownership  | PDF      |
-
-
-
-
-
-
