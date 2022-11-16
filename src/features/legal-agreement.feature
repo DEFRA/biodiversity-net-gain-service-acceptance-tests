@@ -36,12 +36,13 @@ Feature: legal-agreement
         When I select "Other role" and continue
         Then I should see the error "Other type of role cannot be left blank"
 
+    @skip()
     Scenario: BNGP-188 9 I can add a valid legal agreement start date
         Given I am on the "legal-agreement-start-date" page
         When I enter a valid start date of "12/10/2022"
         Then I should be on the "check-legal-agreement-details" page
 
-    Scenario Outline: BNGP-188 9 I cannot add an invalid start date date
+    Scenario Outline: BNGP-188 9 I cannot add an invalid start date
         Given I am on the "legal-agreement-start-date" page
         When I enter an invalid start date of "<date>"
         Then I should see the error "Start date must be a real date"
