@@ -11,3 +11,7 @@ package.json
 .tmp/cucumberjs-json/upload-documents.json
 .tmp/cucumberjs-json/task-list-page.json
 .tmp/cucumberjs-json/bngp-179,-bngp-1099-site-provider-applicant-details.json
+
+# Test logs
+TEST-*.xml
+.tmp

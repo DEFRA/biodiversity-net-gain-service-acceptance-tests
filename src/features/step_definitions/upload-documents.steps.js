@@ -1,5 +1,5 @@
 import { Given, When, Then } from "@cucumber/cucumber";
-import { join } from "path";
+import { join, basename } from "path";
 import managementPlanUploadPage from "../page_objects/management_plan/management-plan-upload.page";
 import managementPlanCheckPage from "../page_objects/management_plan/management-plan-check.page";
 import legalAgreementUploadPage from "../page_objects/legal_agreement/upload-legal-agreement.page";
@@ -59,7 +59,7 @@ When("I choose and upload a {string}", async (document) => {
 
   // get the filename for assertions
   var group = filePath.split("\\");
-  filename = group[group.length - 1];
+  filename = basename(group[group.length - 1]);
 
   // open the upload url page
   browser.url(UploadPage.path);
@@ -109,7 +109,7 @@ Given("I should be able to upload all allowed filetypes", async (table) => {
 
     // get the filename for assertions
     var group = filePath.split("\\");
-    filename = group[group.length - 1];
+    filename = basename(group[group.length - 1]);
 
     // open the upload url page
     browser.url(UploadPage.path);
@@ -221,7 +221,7 @@ When("I choose an empty file", async () => {
 
   // get the filename for assertions
   var group = filePath.split("\\");
-  filename = group[group.length - 1];
+  filename = basename(group[group.length - 1]);
 
   // open the upload url page
   browser.url(UploadPage.path);
