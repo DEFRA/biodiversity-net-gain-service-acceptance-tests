@@ -6,7 +6,7 @@ Feature: land-boundary
     So that I can provide the Register Operator with the data in a file type consistent with technology I already use
 
     Scenario Outline: There is an option to upload geospatial and non geospatial data
-        Given I am on the "location-options" page
+        Given I navigate to the "location-options" page
         Then I should be able to choose to upload a geospatial file
         And I should be able to choose to upload an Image file
     # When I choose and upload a "<fileType>"

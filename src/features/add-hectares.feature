@@ -6,7 +6,7 @@ Feature: BNGP-786 Enter Area in hectares
     So the Operator can identify the full size of the site
 
     Background:
-        Given I am on the "add-hectares" page
+        Given I navigate to the "add-hectares" page
 
     @e2e
     Scenario Outline: I can add the total hectares for my land

@@ -6,7 +6,7 @@ Feature: Start page
     or to complete an unfinished one
 
     Scenario:
-        Given I am on the "start" page
+        Given I navigate to the "start" page
         Then I should see the heading text "<message>"
         Examples:
             | message                                   |

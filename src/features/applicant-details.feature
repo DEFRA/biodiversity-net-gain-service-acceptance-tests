@@ -11,7 +11,7 @@ Feature: BNGP-179, BNGP-1099 Site Provider applicant details
         And I confirm my "fullname" as "BNGP-1469"
         And I confirm my role as a "landowner"
         And I confirm my "email address" as "me@you.com"
-        And I am on the "check-your-details" page
+        And I navigate to the "check-your-details" page
 
     Scenario: BNGP-179 All entered details should be shown on the cya page
         Then I should see the "fullname" shown as "BNGP-1469" on the check-your-details page
