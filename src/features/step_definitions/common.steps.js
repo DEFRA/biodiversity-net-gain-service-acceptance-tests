@@ -208,17 +208,13 @@ When("I update the {string} to {string}", async (option, value) => {
     break;
   }
   case "email": {
-    // clear the original value
-    await (applicantDetailsEmailPage.emailAddress).clearValue();
 
-    // add the email address
-    await applicantDetailsEmailPage.emailAddress.addValue(value);
-    await expect(applicantDetailsEmailPage.emailAddress).toHaveValue(value);
-    await (applicantDetailsEmailPage.continueButton).click();
+    await applicantDetailsEmailPage.addEmailAddress(value);
 
-    // confirm on the correct email page
-    await (applicantDetailsCorrectEmailPage.radioYes).click();
-    await (basePage.continueButton).click();
+    // confirm the address is correct on the correct email page
+    await applicantDetailsCorrectEmailPage.radioYes.click();
+    await  applicantDetailsCorrectEmailPage.continueButton.click();
+
     break;
   }
   }
