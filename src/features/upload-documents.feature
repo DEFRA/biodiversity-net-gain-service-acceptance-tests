@@ -1,65 +1,65 @@
-@regression
+@regression     @new
 Feature: upload documents
 
     As a Site Provider
     I need to upload copies of my evidence documents
     So that I can prove that I have met all the eligibility criteria
 
-    Scenario Outline: BNGP-499 1 - There is an option of uploading a single <document>
+    Scenario Outline: <jira ticket> 1 - There is an option of uploading a single <document>
         Given I navigate to the "<document>-upload" page
         When I choose and upload a "<document>"
         And I confirm it is the correct file
         Then I should be on the "<destination>" page
         @e2e
         Examples:
-            | document        | destination                 |
-            | legal-agreement | add-legal-agreement-parties |
+            | jira ticket | document        | destination                 |
+            | BNGP-499    | legal-agreement | add-legal-agreement-parties |
         Examples:
-            | document        | destination              |
-            | management-plan | habitat-works-start-date |
-            | land-boundary   | grid-reference           |
-            | metric          | register-land-task-list  |
-            | land-ownership  | add-landowners           |
+            | jira ticket | document        | destination              |
+            | BNGP-765    | management-plan | habitat-works-start-date |
+            | BNGP-767    | land-boundary   | grid-reference           |
+            | BNGP-524    | metric          | register-land-task-list  |
+            | BNGP-515    | land-ownership  | add-landowners           |
 
-    Scenario Outline: BNGP-499 2 - I cannot upload a <document> that is not in the specified format
+    Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
         Given I navigate to the "<document>-upload" page
         When I choose a file type that is not in the specified format
         Then I should not be able to upload the file
         And I am informed of what the allowed file types should be
         Examples:
-            | document        |
-            | legal-agreement |
-            | management-plan |
-            | land-boundary   |
-            | metric          |
-            | land-ownership  |
+            | jira ticket | document        |
+            | BNGP-499    | legal-agreement |
+            | BNGP-765    | management-plan |
+            | BNGP-767    | land-boundary   |
+            | BNGP-524    | metric          |
+            | BNGP-515    | land-ownership  |
 
-    Scenario Outline: BNGP-499 3 - I can check that the uploaded <document> is the one I wanted to upload before continuing
+    Scenario Outline: <jira ticket> 3 - I can check that the uploaded <document> is the one I wanted to upload before continuing
         Given I navigate to the "<document>-upload" page
         When I choose and upload a "<document>"
         And I navigate to the "<document>-check" page
         Then There should be a link to download the document
         And I should be able to see the filesize of the document
         Examples:
-            | document        |
-            | legal-agreement |
-            | management-plan |
-            | land-boundary   |
-            | metric          |
-            | land-ownership  |
+            | jira ticket | document        |
+            | BNGP-499    | legal-agreement |
+            | BNGP-765    | management-plan |
+            | BNGP-767    | land-boundary   |
+            | BNGP-524    | metric          |
+            | BNGP-515    | land-ownership  |
 
-    Scenario Outline: BNGP-499 4 - There is a way to choose a different <document> if necessary
+    Scenario Outline: <jira ticket> 4 - There is a way to choose a different <document> if necessary
         Given I navigate to the "<document>-upload" page
         When I choose and upload a "<document>"
         And  I choose a different file
         Then I should be returned to the "<document>-upload" page
         Examples:
-            | document        |
-            | legal-agreement |
-            | management-plan |
-            | land-boundary   |
-            | metric          |
-            | land-ownership  |
+            | jira ticket | document        |
+            | BNGP-499    | legal-agreement |
+            | BNGP-765    | management-plan |
+            | BNGP-767    | land-boundary   |
+            | BNGP-524    | metric          |
+            | BNGP-515    | land-ownership  |
 
     Scenario Outline: I cannot upload an empty <document>
         Given I navigate to the "<document>-upload" page
