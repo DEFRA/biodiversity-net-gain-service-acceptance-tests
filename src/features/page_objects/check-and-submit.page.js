@@ -1,12 +1,8 @@
 const Page = require("./page");
 
-class TaskList extends Page {
+class CheckAndSubmit extends Page {
   get titleText() {
-    return "Register land as a biodiversity gain site";
-  }
-
-  get progressText(){
-    return $(".govuk-\\!-margin-bottom-4");
+    return "Check your answers before submitting your information";
   }
 
   get addDetails() {
@@ -42,7 +38,7 @@ class TaskList extends Page {
   }
 
   get landBoundaryStatus() {
-    return $("#add-land-boundary-status");
+    return $("#add-your-landboundary-status");
   }
 
   get landOwnershipStatus() {
@@ -66,7 +62,7 @@ class TaskList extends Page {
   }
 
   open() {
-    return super.open("land/register-land-task-list");
+    return super.open("land/check-and-submit");
   }
 }
-module.exports = new TaskList();
+module.exports = new CheckAndSubmit();
