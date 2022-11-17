@@ -19,7 +19,7 @@ Feature: Task List Page
         And I start my registration
         And I confirm my "fullname" as "BNGP-1469"
         And I confirm my role as a "landowner"
-        And I confirm my "email address" as "me@you.com"
+        And I confirm my "email address" as "test@example.com"
         When I confirm my "details" are correct
         Then I should see the "details" section status as "COMPLETED"
         And I should see my progress as "You have completed 1 of 7 sections"

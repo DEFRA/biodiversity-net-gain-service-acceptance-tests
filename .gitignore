@@ -1,16 +1,6 @@
 # Dependency directories
 node_modules/
-package-lock.json
-package.json
-.tmp/cucumberjs-json/bngp-179-site-provider-applicant-details.json
-.tmp/cucumberjs-json/bngp-785-grid-reference.json
-.tmp/cucumberjs-json/bngp-786-enter-area-in-hectares.json
-.tmp/cucumberjs-json/bngp-799-habitat-management-and-monitoring-plan-pre-upload-questions.json
-.tmp/cucumberjs-json/legal-agreement.json
-.tmp/cucumberjs-json/start-page.json
-.tmp/cucumberjs-json/upload-documents.json
-.tmp/cucumberjs-json/task-list-page.json
-.tmp/cucumberjs-json/bngp-179,-bngp-1099-site-provider-applicant-details.json
+.tmp/*
 
 # Test logs
 TEST-*.xml

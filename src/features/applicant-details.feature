@@ -10,13 +10,13 @@ Feature: BNGP-179, BNGP-1099 Site Provider applicant details
         And I start my registration
         And I confirm my "fullname" as "BNGP-1469"
         And I confirm my role as a "landowner"
-        And I confirm my "email address" as "me@you.com"
+        And I confirm my "email address" as "test@example.com"
         And I navigate to the "check-your-details" page
 
-    Scenario: BNGP-179 All entered details should be shown on the cya page
+    Scenario: BNGP-179 All entered details should be shown on the check your answer page
         Then I should see the "fullname" shown as "BNGP-1469" on the check-your-details page
         And I should see the "role" shown as "landowner" on the check-your-details page
-        And I should see the "email" shown as "me@you.com" on the check-your-details page
+        And I should see the "email" shown as "test@example.com" on the check-your-details page
 
     Scenario: BNGP-179 3 There is a way that I can create a new applicant role if necessary
         When I choose to change the "role" answer
@@ -32,16 +32,16 @@ Feature: BNGP-179, BNGP-1099 Site Provider applicant details
         Then I should see the "email" updated to "john.smith@email.com" on the check-your-details page
 
     @skip()
-    Scenario: CYA : I can change/update all sections that I have entered
+    Scenario: check your answer page(s) : I can change/update all sections that I have entered
         When I choose to change the "fullname" answer
         And I am returned to the "name" page
         And I update the "fullname" to "new name"
         Then I should see the "fullname" updated to "new name" on the check-your-details page
         And I should see the "role" shown as "landowner" on the check-your-details page
-        And I should see the "email" shown as "me@you.com" on the check-your-details page
+        And I should see the "email" shown as "test@example.com" on the check-your-details page
 
     @skip()
-    Scenario: CYA : When I update an answer to a section I am returned to the feature “CYA page”
+    Scenario: check your answer page(s) : When I update an answer to a section I am returned to the feature “check your answer page”
         When I choose to change the "fullname" answer
         And I update the "fullname" to "new name"
         Then I should be returned to the "check-your-details" page

@@ -133,7 +133,7 @@ When("I confirm my role as a {string}", async (role) => {
 })
 
 When("I confirm my {string} are correct", async (check) => {
-  //confirm cya pages
+  //confirm check your answer pages
   if(check == "details"){
     await expect(applicantDetailsCheckYourDetailsPage.continueButton).toBeDisplayed();
 
