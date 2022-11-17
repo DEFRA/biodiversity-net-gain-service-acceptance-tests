@@ -9,6 +9,10 @@ class StartPage extends Page {
     return $(".govuk-heading-xl");
   }
 
+  get startButton() {
+    return $(".govuk-button");
+  }
+
   open() {
     return super.open("");
   }

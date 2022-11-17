@@ -1,4 +1,4 @@
-import { When, Then } from "@cucumber/cucumber";
+import { Then } from "@cucumber/cucumber";
 import monitoringStartDatePage from "../page_objects/management_plan/monitoring-start-date.page";
 
 
