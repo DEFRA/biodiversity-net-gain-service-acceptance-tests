@@ -211,9 +211,10 @@ When("I update the {string} to {string}", async (option, value) => {
   case "fullname": {
     // clear the original value
     await (applicantDetailsNamePage.fullName).clearValue();
+    
     // add the fullname
     await applicantDetailsNamePage.fullName.addValue(value);
-    await expect(applicantDetailsNamePage.fullname).toHaveText(value);
+  
     await (basePage.continueButton).click();
     break;
   }
