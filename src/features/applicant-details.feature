@@ -31,7 +31,6 @@ Feature: BNGP-179, BNGP-1099 Site Provider applicant details
         When I update the "email" to "john.smith@email.com"
         Then I should see the "email" updated to "john.smith@email.com" on the "check-your-details" page
 
-    @skip()
     Scenario: check your answer page(s) : I can change/update all sections that I have entered
         When I choose to change the "fullname" answer
         And I am returned to the "name" page
@@ -40,7 +39,6 @@ Feature: BNGP-179, BNGP-1099 Site Provider applicant details
         And I should see the "role" shown as "landowner" on the "check-your-details" page
         And I should see the "email" shown as "test@example.com" on the "check-your-details" page
 
-    @skip()
     Scenario: check your answer page(s) : When I update an answer to a section I am returned to the feature “check your answer page”
         When I choose to change the "fullname" answer
         And I update the "fullname" to "new name"
