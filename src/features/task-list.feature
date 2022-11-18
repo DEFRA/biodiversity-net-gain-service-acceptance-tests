@@ -17,7 +17,7 @@ Feature: Task List Page
     Scenario: BNGP-527 2, 5 The sections on the task list page should show the status of progress.
         Given I navigate to the "start" page
         And I start my registration
-        And I confirm my "fullname" as "BNGP-1469"
+        And I confirm my "fullname" as "John Smith"
         And I confirm my role as a "landowner"
         And I confirm my "email address" as "test@example.com"
         When I confirm my "details" are correct
@@ -29,6 +29,3 @@ Feature: Task List Page
         And I should see the "hmmp" section status as "NOT STARTED"
         And I should see the "legal-agreement" section status as "NOT STARTED"
         And I should see the "check-and-submit" section status as "CANNOT START YET"
-
-
-
