@@ -67,7 +67,10 @@ const pages = {
   "monitoring-start-date": monitoringStartDatePage
 };
 
+
+
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
+
   // open the page requested from the list of pages
   page = page.toLowerCase();
   await pages[page].open();
@@ -149,6 +152,12 @@ When("I enter a valid start date of {string}", async (date) => {
 
   var arr = date.split('/');
 
+  //clear values
+  await basePage.Day.clearValue();
+  await basePage.Month.clearValue();
+  await basePage.Year.clearValue();
+
+  //add values
   await basePage.Day.addValue(arr[0]);
   await basePage.Month.addValue(arr[1]);
   await basePage.Year.addValue(arr[2]);
@@ -159,10 +168,16 @@ When("I enter a valid start date of {string}", async (date) => {
 When("I enter an invalid start date of {string}", async (date) => {
   var arr = date.split('/');
 
-  await basePage.Day.addValue(arr[0]);
-  await basePage.Month.addValue(arr[1]);
-  await basePage.Year.addValue(arr[2]);
-  await (await basePage.continueButton).click();
+    //clear values
+    await basePage.Day.clearValue();
+    await basePage.Month.clearValue();
+    await basePage.Year.clearValue();
+
+    //add values
+    await basePage.Day.addValue(arr[0]);
+    await basePage.Month.addValue(arr[1]);
+    await basePage.Year.addValue(arr[2]);
+    await (await basePage.continueButton).click();
 
 });
 
@@ -220,9 +235,13 @@ When("I update the {string} to {string}", async (option, value) => {
   }
 })
 
-When("I add another {string}", async (option) => {
+When("I add another {string} as {string} and confirm", async (option, value) => {
   if(option == "legal party") {
     await legalAgreementAddPartiesPage.addAnotherLegalParty.click();
+    await (legalAgreementAddPartiesPage.legalPartyFullName2).addValue(value);
+    //Todo: role currently defaults to landowner
+    await legalAgreementAddPartiesPage.legalPartyRole2.click();
+    await (basePage.continueButton).click();
   }
 })
 
@@ -253,4 +272,38 @@ Then("I can choose to remove the other {string}", async (option) => {
     await expect(legalAgreementAddPartiesPage.legalPartyRole2).not.toExist();
   }
 })
+
+Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page$/, async (option, value, page) => {
+
+  switch(page){
+    case "check-your-details": {
+      
+      switch (option) {
+        case "fullname": {
+          await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).toHaveTextContaining(value);
+          break;
+        }
+        case "role": {
+          await expect(applicantDetailsCheckYourDetailsPage.roleValue).toHaveTextContaining(value, {ignoreCase:true, asString:true});
+          break;
+        }
+        case "email": {
+          await expect (applicantDetailsCheckYourDetailsPage.emailValue).toHaveTextContaining(value);
+          break;
+        }
+      }
+      break;
+    }
+    case "check-legal-agreement-details": {
+      
+      switch (option) {
+        case "parties involved": {
+          await expect(legalAgreementCheckDetailsPage.legalPartiesValue).toHaveTextContaining(value);
+          break;
+        }
+      }
+      break;
+    }  
+  }    
+});
 
