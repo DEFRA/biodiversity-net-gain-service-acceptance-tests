@@ -21,7 +21,7 @@ Feature: legal-agreement
 
     Scenario: BNGP-188 4 There is a way to remove unwanted legal parties
         Given I navigate to the "add-legal-agreement-parties" page
-        When I add another "legal party" and confirm
+        When I add another "legal party" as "legal party 2" and confirm
         Then I can choose to remove the other "legal party"
 
     Scenario: BNGP-188 5,6 There must be at least 1 legal party added
@@ -50,7 +50,7 @@ Feature: legal-agreement
             | 31/11/2022 |
             | 29/02/2022 |
             | 30/02/2022 |
-    @new
+
     Scenario: BNGP-1468 - BUG - Adding another legal party initially clears the role value
         Given I navigate to the "add-legal-agreement-parties" page
         And I add the legal party fullname or organisation as "legal party 1"
