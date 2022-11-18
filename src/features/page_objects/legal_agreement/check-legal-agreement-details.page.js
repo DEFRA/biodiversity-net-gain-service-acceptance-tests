@@ -5,8 +5,40 @@ class LegalAgreementCheckDetails extends Page {
     return "Check the legal agreement details";
   }
 
-  get changeParties(){
-    return $("a[href^='/land/add-legal-agreement-parties']");
+  get acceptBtn(){
+    return $(".govuk-button");
+  }
+
+  get agreementTypeValue(){
+    return $("#add-legal-agreement-type-value");
+  }
+
+  get fileUploadedValue(){
+    return $("#add-legal-agreement-file-value");
+  }
+
+  get legalPartiesValue(){
+    return $("#add-legal-agreement-parties-value");
+  }
+
+  get startdateValue(){
+    return $("#add-legal-agreement-start-date-value");
+  }
+
+  get changeAgreementType(){
+    return $("#add-legal-agreement-parties");
+  }
+
+  get changeFileUploaded(){
+    return $("#add-legal-agreement-file");
+  }
+
+  get changeLegalParties(){
+    return $("#add-legal-agreement-parties");
+  }
+
+  get changeStartdate(){
+    return $("#add-legal-agreement-start-date");
   }
 
   open() {
