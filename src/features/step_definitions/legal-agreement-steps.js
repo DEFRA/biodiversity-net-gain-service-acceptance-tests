@@ -16,6 +16,11 @@ When("I confirm the legal party role as a {string}", async (role) => {
   await legalAgreementAddPartiesPage.continueButton.click();  
 })
 
+When("I add a legal party role as a {string}", async (role) => {
+  await legalAgreementAddPartiesPage.legalPartyRole.waitForExist({ timeout: 5000 });
+  await legalAgreementAddPartiesPage.legalPartyRole.click();
+})
+
 When("I add the legal party fullname or organisation as {string}", async (fullname) => {
   await legalAgreementAddPartiesPage.legalPartyFullName.addValue(fullname);
 })
