@@ -3,30 +3,56 @@
  * that is shared across all page objects
  */
 module.exports = class Page {
-  get getHeading() {
-    return $(".govuk-heading-xl");
-  }
-
   get startButton() {
     return $(".govuk-button--start']");
   }
 
   get continueButton() {
-    return $(".govuk-button");
+    return $("#continue");
   }
 
   get govFileUpload() {
     return $(".govuk-file-upload");
   }
 
+  get errorMsg() {
+    return $(".govuk-error-message");
+  }
+
+  get errorMsgSummary() {
+    return $(".govuk-error-summary");
+  }
+
   get radioYes() {
-    // return $("#check-planning-obligation-correct-yes");
-    return $("#legal-agreement-planning-obligation-correct");
+    return $("[id$='correct-yes']");  
   }
 
   get radioNo() {
-    // return $("#check-planning-obligation-correct-no");
-    return $("#legal-agreement-planning-obligation-correct-2");
+    return $("[id$='correct-no']");
+  }
+
+  get filesizeIndicator() {
+    return $("#filesize");
+  }
+
+  get doNotHaveDocument() {
+    return $("#dont-have-document");
+  }
+
+  get Day() {
+    return $("[id$='StartDate-day']");
+  }
+
+  get Month() {
+    return $("[id$='StartDate-month']");
+  }
+
+  get Year() {
+    return $("[id$='StartDate-year']");
+  }
+  
+  get otherRoleTextBox(){
+    return $("#roleOther");
   }
 
   /**

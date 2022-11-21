@@ -1,19 +1,18 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
+const startPage = require("../page_objects/start.page");
 
-const StartPage = require("../page_objects/start.page");
-
-Then("I should see the header text {string}", async (message) => {
-  await expect(StartPage.getHeading).toBeExisting();
-  await expect(StartPage.getHeading).toHaveTextContaining(message);
-});
-
-Given("I am a returning user", async function () {
+Given("I am a returning user", async () => {
   return "pending";
 });
 
-When("I Sign In to the register", async function () {
+When("I Sign In to the register", async () => {
   return "pending";
 });
+
+When("I start my registration", async () => {
+  // start
+  await (await startPage.startButton).click();
+}) 
 
 Then(
   "I should be able to continue with my previous journey",
@@ -21,3 +20,10 @@ Then(
     return "pending";
   }
 );
+
+Then("I should see the heading text {string}", async (message) => {
+  await expect(startPage.getHeading).toBeExisting();
+  await expect(startPage.getHeading).toHaveTextContaining(message);
+});
+
+

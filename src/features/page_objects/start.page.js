@@ -1,8 +1,16 @@
 const Page = require("./page");
 
 class StartPage extends Page {
-  get Title() {
-    return "Register land for off-site biodiversity gain";
+  get titleText() {
+    return "Register land as a biodiversity gain site";
+  }
+
+  get getHeading() {
+    return $(".govuk-heading-xl");
+  }
+
+  get startButton() {
+    return $(".govuk-button");
   }
 
   open() {

@@ -1,5 +1,8 @@
 const basicConfig = require("../../wdio.conf");
 
+// Need longer timeout for dev environment uploads to pass AV scanning
+basicConfig.config.cucumberOpts.timeout = 300000
+
 exports.config = {
   ...basicConfig.config,
   // We only need to override the Chrome configuration of capabilities
@@ -14,6 +17,14 @@ exports.config = {
       },
     },
   ],
-
-  baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
+  reporters: [
+    'spec',
+    ['junit', {
+      outputDir: './',
+      outputFileFormat: function (options) {
+        return `TEST-${options.cid}.xml`
+      }
+    }]
+  ],
+  baseUrl: process.env.SERVICE_URL
 };

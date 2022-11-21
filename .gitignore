@@ -1,2 +1,7 @@
 # Dependency directories
 node_modules/
+.tmp/*
+
+# Test logs
+TEST-*.xml
+.tmp

@@ -1,3 +1,10 @@
+//for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
+import cucumberJson from "wdio-cucumberjs-json-reporter";
+
+// Import the module https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#use-it-with-multiple-cucumber-html-reporter
+const { generate } = require('multiple-cucumber-html-reporter');
+const { removeSync } = require('fs-extra');
+
 exports.config = {
   // Browserstack Config
   // user: process.env.BROWSERSTACK_USERNAME,
@@ -61,6 +68,9 @@ exports.config = {
       //
       browserName: "chrome",
       acceptInsecureCerts: true,
+      "goog:chromeOptions": {
+        args: ["--headless"],
+      },
     },
 
     // If outputDir is provided WebdriverIO can capture driver session logs
@@ -100,9 +110,7 @@ exports.config = {
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
 
-  baseUrl:
-    "https://biodiversity:netgain@bng-prototype.herokuapp.com/register-application/v9/",
-  //baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
+  baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -121,16 +129,8 @@ exports.config = {
 
   // ...
   services: [
-    //   //if this is uncommented, don't need to run selenium-standalone start separately
-    // [
-    //   "selenium-standalone",
-    //   {
-    //     logPath: "logs",
-    //     installArgs: { drivers: { chrome: { version: "103.0.5060.53" } } },
-    //     args: { drivers: { chrome: { version: "103.0.5060.53" } } },
-    //   },
-    // ],
-
+    // //if this is uncommented, don't need to run selenium-standalone start separately
+    
     "chromedriver",
     // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
   ],
@@ -155,7 +155,16 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec"],
+  reporters: [
+    "spec",
+    [
+      "cucumberjs-json",
+      {
+        jsonFolder: ".tmp/cucumberjs-json/",
+        reportFilePerRetry: true,
+      },
+    ],
+  ],
 
   //
   // If you are using Cucumber you need to specify the location of your step definitions.
@@ -165,7 +174,7 @@ exports.config = {
     // <boolean> show full backtrace for errors
     backtrace: true,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-    requireModule: [],
+    requireModule: ["@babel/register"],
     // <boolean> invoke formatters without executing steps
     dryRun: false,
     // <boolean> abort the run on first failure
@@ -179,7 +188,7 @@ exports.config = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tagExpression: "",
+    tagExpression: "@new",
     // <number> timeout for step definitions
     timeout: 60000,
     // <boolean> Enable this config to treat undefined definitions as warnings.
@@ -199,8 +208,10 @@ exports.config = {
    * @param {Object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  // onPrepare: function (config, capabilities) {
-  // },
+  onPrepare: function (config, capabilities) {
+    // Remove the `.tmp/` folder that holds the json and report files
+    removeSync('.tmp/');
+  },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
    * for that worker as well as modify runtime environments in an async fashion.
@@ -284,8 +295,11 @@ exports.config = {
    * @param {number}             result.duration  duration of scenario in milliseconds
    * @param {Object}             context          Cucumber World object
    */
-  // afterStep: function (step, scenario, result, context) {
-  // },
+   afterStep: async function (step, context, { error, result, duration, passed, retries }) {
+    if(error) {
+        cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+    }
+   },
   /**
    *
    * Runs after a Cucumber Scenario.
@@ -341,8 +355,21 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  // onComplete: function(exitCode, config, capabilities, results) {
-  // },
+  onComplete: function(exitCode, config, capabilities, results) {
+    // Generate the report when it all tests are done
+    generate({
+      // Required
+      // This part needs to be the same path where you store the JSON files
+      // default = '.tmp/json/'
+      jsonDir: '.tmp/cucumberjs-json/',
+      reportPath: '.tmp/report/',
+      openReportInBrowser: true,
+      hideMetadata: true,
+      displayReportTime: true,
+
+      // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
+    });
+  },
   /**
    * Gets executed when a refresh happens.
    * @param {String} oldSessionId session ID of the old session

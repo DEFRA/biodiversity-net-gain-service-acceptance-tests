@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    browser: false,
+    browser: true,
     node: true,
     es2021: true,
   },
@@ -8,6 +8,7 @@ module.exports = {
   extends: ["eslint:recommended", "plugin:wdio/recommended"],
   parserOptions: {
     ecmaVersion: "latest",
+    sourceType: "module",
   },
   rules: {},
 };
