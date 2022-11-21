@@ -15,7 +15,7 @@ class ApplicantDetailsEmail extends Page {
     (this.emailAddress).clearValue();
 
    // add the email address 
-   // focus on element before adding as addition is being skipped
+   // wait for focus on element before adding as addition is being skipped
    await (this.emailAddress).isFocused();
    await this.emailAddress.addValue(value);
 

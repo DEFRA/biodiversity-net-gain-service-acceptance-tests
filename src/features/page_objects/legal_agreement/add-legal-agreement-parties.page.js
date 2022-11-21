@@ -31,7 +31,7 @@ class LegalAgreementAddParties extends Page {
 
   get legalPartyRole2(){
     //Todo: switch for changing role
-    return $("[id='landowner[1][role]']");
+    return $("[id='organisation[1][role]']");
   }
 
   open() {

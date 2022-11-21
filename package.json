@@ -9,6 +9,7 @@
         "e2e": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@e2e'",
         "regression": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@regression'",
         "smoke": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@smoke'",
+        "bug": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@bug'",
         "eslint": "eslint ."
     },
     "author": "Shaun Ricketts",
@@ -26,6 +27,8 @@
         "chromedriver": "^107.0.0",
         "eslint": "^8.18.0",
         "eslint-plugin-wdio": "^7.19.4",
+        "fs-extra": "^10.1.0",
+        "multiple-cucumber-html-reporter": "^3.0.1",
         "wdio-chromedriver-service": "^8.0.0",
         "wdio-cucumberjs-json-reporter": "^4.4.3"
     },

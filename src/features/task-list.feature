@@ -17,7 +17,7 @@ Feature: Task List Page
     Scenario: BNGP-527 2, 5 The sections on the task list page should show the status of progress.
         Given I navigate to the "start" page
         And I start my registration
-        And I confirm my "fullname" as "BNGP-1469"
+        And I confirm my "fullname" as "John Smith"
         And I confirm my role as a "landowner"
         And I confirm my "email address" as "test@example.com"
         When I confirm my "details" are correct
@@ -30,5 +30,12 @@ Feature: Task List Page
         And I should see the "legal-agreement" section status as "NOT STARTED"
         And I should see the "check-and-submit" section status as "CANNOT START YET"
 
-
-
+    @bug
+    Scenario: BNGP-1612- BUG - Task-list : Metric section initially showing as completed.
+        Given I navigate to the "start" page
+        And I start my registration
+        And I confirm my "fullname" as "John Smith"
+        And I confirm my role as a "landowner"
+        And I confirm my "email address" as "test@example.com"
+        When I confirm the check "your details" are correct
+        Then I should see the "metric" section status as "NOT STARTED"
