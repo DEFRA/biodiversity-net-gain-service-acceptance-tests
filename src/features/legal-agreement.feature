@@ -51,6 +51,7 @@ Feature: legal-agreement
             | 29/02/2022 |
             | 30/02/2022 |
 
+    @bug
     Scenario: BNGP-1468 - BUG - Adding another legal party initially clears the role value
         Given I navigate to the "add-legal-agreement-parties" page
         And I add the legal party fullname or organisation as "legal party 1"
