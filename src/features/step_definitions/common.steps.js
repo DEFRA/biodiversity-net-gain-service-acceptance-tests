@@ -278,7 +278,7 @@ Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page
 
   switch(page){
     case "check-your-details": {
-      
+      //Todo: check your details statement could add a function to aid readability
       switch (option) {
         case "fullname": {
           await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).toHaveTextContaining(value);
