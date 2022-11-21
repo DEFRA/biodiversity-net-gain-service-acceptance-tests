@@ -364,6 +364,8 @@ exports.config = {
       jsonDir: '.tmp/cucumberjs-json/',
       reportPath: '.tmp/report/',
       openReportInBrowser: true,
+      hideMetadata: true,
+      displayReportTime: true,
 
       // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
     });
