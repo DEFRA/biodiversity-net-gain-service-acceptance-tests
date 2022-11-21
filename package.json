@@ -26,7 +26,7 @@
         "@wdio/spec-reporter": "^7.19.1",
         "chromedriver": "^107.0.0",
         "eslint": "^8.18.0",
-        "eslint-plugin-wdio": "^7.19.4",
+        "eslint-plugin-wdio": "^7.25.3",
         "fs-extra": "^10.1.0",
         "multiple-cucumber-html-reporter": "^3.0.1",
         "wdio-chromedriver-service": "^8.0.0",
