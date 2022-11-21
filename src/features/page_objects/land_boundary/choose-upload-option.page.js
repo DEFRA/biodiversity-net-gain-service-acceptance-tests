@@ -2,15 +2,17 @@ const Page = require("../page");
 
 class LandBoundaryChooseUploadOption extends Page {
   get Title() {
-    //return "How do you want to provide the land boundary for the off-site?";
-    return "Register land for off-site biodiversity gain - GOV.UK";
+    return "Choose how to add the land boundary details for the biodiversity gain site";
   }
 
   get geospatialOption() {
+    // location-options
     return $("#landBoundaryUploadType");
   }
 
   get imageOption() {
+
+    // location-options-2
     return $("#landBoundaryUploadType-2");
   }
 
@@ -31,7 +33,7 @@ class LandBoundaryChooseUploadOption extends Page {
   }
 
   open() {
-    return super.open("land/choose-land-boundary-upload-option");
+    return super.open("land/choose-land-boundary-upload");
   }
 }
 module.exports = new LandBoundaryChooseUploadOption();

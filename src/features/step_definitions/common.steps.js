@@ -16,9 +16,10 @@ const managementPlanUploadPage = require("../page_objects/management_plan/manage
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
 const taskListPage = require("../page_objects/register-land-task-list.page");
 const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundary/choose-upload-option.page");
-const landBoundaryUploadGeospatialPage = require("../page_objects/land_boundary/upload-geospatial.page");
 const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/upload-land-boundary.page");
+const landBoundaryUploadGeospatialFilePage = require("../page_objects/land_boundary/upload-geospatial-file.page");
 const landBoundaryCheckImageFilePage = require("../page_objects/land_boundary/check-land-boundary-file.page");
+const landBoundaryCheckGeospatialFilePage = require("../page_objects/land_boundary/check-geospatial-file.page")
 const landBoundaryCheckImageDetailsPage = require("../page_objects/land_boundary/check-land-boundary-details.page");
 const metricUploadPage = require("../page_objects/metric/metric-upload.page");
 const metricCheckPage = require("../page_objects/metric/metric-check.page");
@@ -50,10 +51,11 @@ const pages = {
   "management-plan-upload": managementPlanUploadPage,
   "management-plan-check": managementPlanCheckPage,
   "register-land-task-list": taskListPage,
-  "location-options": landBoundaryChooseUploadOptionPage,
-  "upload-geospatial-file": landBoundaryUploadGeospatialPage,
+  "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
+  "geospatial-upload": landBoundaryUploadGeospatialFilePage,
   "land-boundary-check": landBoundaryCheckImageFilePage,
+  "geospatial-check": landBoundaryCheckGeospatialFilePage,
   "check-land-boundary-details": landBoundaryCheckImageDetailsPage,
   "metric-upload": metricUploadPage,
   "metric-check": metricCheckPage,

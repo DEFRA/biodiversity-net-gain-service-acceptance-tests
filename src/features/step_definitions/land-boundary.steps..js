@@ -23,7 +23,7 @@ When("I add total hectares as {string}", async (value) => {
   await (await addHectaresPage.continueButton).click();
 });
 
-Then(/^I should be able to choose (?:a|an) "(.*)" option$/, async (fileType) => {
+Then(/^I choose to upload (?:a|an) "(.*)" file$/, async (fileType) => {
     switch (fileType) {
       case "geospatial":
         await expect(uploads.geospatialOption).toBeClickable;

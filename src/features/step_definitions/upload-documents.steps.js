@@ -5,7 +5,9 @@ import managementPlanCheckPage from "../page_objects/management_plan/management-
 import legalAgreementUploadPage from "../page_objects/legal_agreement/upload-legal-agreement.page";
 import legalAgreementCheckPage from "../page_objects/legal_agreement/check-legal-agreement-file.page";
 import landBoundaryFileUploadPage from "../page_objects/land_boundary/upload-land-boundary.page";
+import landBoundaryGeospatialUploadPage from "../page_objects/land_boundary/upload-land-boundary.page";
 import landBoundaryFileCheckPage from "../page_objects/land_boundary/check-land-boundary-file.page";
+import landBoundaryGeospatialCheckPage from "../page_objects/land_boundary/check-geospatial-file.page";
 import metricUploadPage from "../page_objects/metric/metric-upload.page";
 import metricCheckPage from "../page_objects/metric/metric-check.page";
 import landOwnershipUploadPage from "../page_objects/land_ownership/land-ownership-upload.page";
@@ -38,6 +40,15 @@ When("I choose and upload a {string}", async (document) => {
     case "land-boundary": {
       UploadPage = landBoundaryFileUploadPage;
       CheckPage = landBoundaryFileCheckPage;
+      break;
+    }
+    case "geospatial": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+
+      //geospatial is geop
+      filePath = join(__dirname, "../../TestFiles/test_geospatial.gpkg");
+
       break;
     }
     case "metric": {

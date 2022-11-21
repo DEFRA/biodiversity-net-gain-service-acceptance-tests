@@ -15,11 +15,12 @@ Feature: upload documents
             | jira ticket | document        | destination                 |
             | BNGP-499    | legal-agreement | add-legal-agreement-parties |
         Examples:
-            | jira ticket | document        | destination              |
-            | BNGP-765    | management-plan | habitat-works-start-date |
-            | BNGP-767    | land-boundary   | grid-reference           |
-            | BNGP-524    | metric          | register-land-task-list  |
-            | BNGP-515    | land-ownership  | add-landowners           |
+            | jira ticket | document        | destination                 |
+            | BNGP-765    | management-plan | habitat-works-start-date    |
+            | BNGP-767    | land-boundary   | grid-reference              |
+            | BNGP-526    | geospatial      | check-land-boundary-details |
+            | BNGP-524    | metric          | register-land-task-list     |
+            | BNGP-515    | land-ownership  | add-landowners              |
 
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
         Given I navigate to the "<document>-upload" page
@@ -31,6 +32,7 @@ Feature: upload documents
             | BNGP-499    | legal-agreement |
             | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
+            | BNGP-526    | geospatial      |
             | BNGP-524    | metric          |
             | BNGP-515    | land-ownership  |
 
@@ -45,6 +47,7 @@ Feature: upload documents
             | BNGP-499    | legal-agreement |
             | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
+            | BNGP-526    | geospatial      |
             | BNGP-524    | metric          |
             | BNGP-515    | land-ownership  |
 
@@ -58,6 +61,7 @@ Feature: upload documents
             | BNGP-499    | legal-agreement |
             | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
+            | BNGP-526    | geospatial      |
             | BNGP-524    | metric          |
             | BNGP-515    | land-ownership  |
 
@@ -71,6 +75,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
+            | geospatial      |
             | metric          |
             | land-ownership  |
 
@@ -84,6 +89,7 @@ Feature: upload documents
             | legal-agreement | Select a legal agreement                        |
             | management-plan | Select a habitat management and monitoring plan |
             | land-boundary   | Select a file showing the land boundary         |
+            | geospatial      | Select a file showing the land boundary         |
             | metric          | Select a Biodiversity Metric                    |
             | land-ownership  | Select a proof of land ownership file           |
 
@@ -98,6 +104,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
+            | geospatial      |
             # skip as need to investigate this specific test
             # | metric   |
             | land-ownership  |
