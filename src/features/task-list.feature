@@ -37,5 +37,5 @@ Feature: Task List Page
         And I confirm my "fullname" as "John Smith"
         And I confirm my role as a "landowner"
         And I confirm my "email address" as "test@example.com"
-        When I confirm my "details" are correct
+        When I confirm the check "your details" are correct
         Then I should see the "metric" section status as "NOT STARTED"
