@@ -15,7 +15,7 @@ const legalAgreementCheckDetailsPage = require("../page_objects/legal_agreement/
 const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
 const taskListPage = require("../page_objects/register-land-task-list.page");
-const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundary/choose-upload-option.page");
+const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundary/choose-land-boundary-upload.page");
 const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/upload-land-boundary.page");
 const landBoundaryUploadGeospatialFilePage = require("../page_objects/land_boundary/upload-geospatial-file.page");
 const landBoundaryCheckImageFilePage = require("../page_objects/land_boundary/check-land-boundary-file.page");
@@ -51,12 +51,14 @@ const pages = {
   "management-plan-upload": managementPlanUploadPage,
   "management-plan-check": managementPlanCheckPage,
   "register-land-task-list": taskListPage,
+  //Land boundary pages
   "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
   "geospatial-upload": landBoundaryUploadGeospatialFilePage,
   "land-boundary-check": landBoundaryCheckImageFilePage,
   "geospatial-check": landBoundaryCheckGeospatialFilePage,
   "check-land-boundary-details": landBoundaryCheckImageDetailsPage,
+  //metric pages
   "metric-upload": metricUploadPage,
   "metric-check": metricCheckPage,
   "land-ownership-upload": landOwnershipUploadPage,
@@ -69,8 +71,6 @@ const pages = {
   "monitoring-start-date": monitoringStartDatePage
 };
 
-
-
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
 
   // open the page requested from the list of pages
@@ -79,15 +79,28 @@ Given(/^I navigate to the "(.*)" page$/, async (page) => {
 
   await $("h1").waitForExist({ timeout: 5000 });
 
+  browser.getUrl()
+
+  //expect(await browser.getUrl()).toContain(pages[page].path);
+
   // assert against the page title
   expect(await browser.getTitle()).toContain(pages[page].titleText);
+  // await console.log("navigate step path: " + await browser.getUrl() + " should be: " + pages[page].path);
+
+ 
+ 
 });
 
 Then(/^I (?:am|should be) (?:on|returned to) the "(.*)" page$/, async (page) => {
   await $("h1").waitForExist({ timeout: 5000 });
 
+  //expect(await browser.getUrl()).toContain(pages[page].path);
+
   // assert against the page title
-  await expect(await browser.getTitle()).toContain(pages[page].titleText);
+  expect(await browser.getTitle()).toContain(pages[page].titleText);
+  // console.log("I am on step path: " + await browser.getUrl() + " should be: " + pages[page].path);
+  
+  
 });
 
 When("I continue without an action", async () => {
