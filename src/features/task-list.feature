@@ -20,7 +20,7 @@ Feature: Task List Page
         And I confirm my "fullname" as "John Smith"
         And I confirm my role as a "landowner"
         And I confirm my "email address" as "test@example.com"
-        When I confirm my "details" are correct
+        When I confirm the check "your details" are correct
         Then I should see the "details" section status as "COMPLETED"
         And I should see my progress as "You have completed 1 of 7 sections"
         And I should see the "land-boundary" section status as "NOT STARTED"
