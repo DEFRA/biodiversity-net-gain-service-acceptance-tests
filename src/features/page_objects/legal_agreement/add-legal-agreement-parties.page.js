@@ -22,11 +22,11 @@ class LegalAgreementAddParties extends Page {
   }
     
   get legalPartyRole(){
-    return $("[id='landowner[0][role]']");
+    return $("[id='landOwner[0][role]']");
   }
 
   get otherLegalPartyRoleOption(){
-    return $("[id='otherOrganisation[0][role]'");
+    return $("[id='other[0][role]'");
   }
 
   get legalPartyRole2(){
