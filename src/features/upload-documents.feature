@@ -15,12 +15,20 @@ Feature: upload documents
             | jira ticket | document        | destination                 |
             | BNGP-499    | legal-agreement | add-legal-agreement-parties |
         Examples:
+            <<<<<<< HEAD
             | jira ticket | document        | destination                 |
             | BNGP-765    | management-plan | habitat-works-start-date    |
             | BNGP-767    | land-boundary   | grid-reference              |
             | BNGP-526    | geospatial      | check-land-boundary-details |
             | BNGP-524    | metric          | register-land-task-list     |
             | BNGP-515    | land-ownership  | add-landowners              |
+            =======
+            | jira ticket | document        | destination              |
+            | BNGP-765    | management-plan | habitat-works-start-date |
+            | BNGP-767    | land-boundary   | grid-reference           |
+            | BNGP-524    | metric          | register-land-task-list  |
+            | BNGP-515    | land-ownership  | add-landowners           |
+    >>>>>>> main
 
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
         Given I navigate to the "<document>-upload" page
@@ -32,9 +40,12 @@ Feature: upload documents
             | BNGP-499    | legal-agreement |
             | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
-            | BNGP-526    | geospatial      |
-            | BNGP-524    | metric          |
-            | BNGP-515    | land-ownership  |
+            <<<<<<< HEAD
+            | BNGP-526 | geospatial |
+            =======
+            >>>>>>> main
+            | BNGP-524 | metric         |
+            | BNGP-515 | land-ownership |
 
     Scenario Outline: <jira ticket> 3 - I can check that the uploaded <document> is the one I wanted to upload before continuing
         Given I navigate to the "<document>-upload" page
@@ -63,9 +74,12 @@ Feature: upload documents
             | BNGP-499    | legal-agreement |
             | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
-            | BNGP-526    | geospatial      |
-            | BNGP-524    | metric          |
-            | BNGP-515    | land-ownership  |
+            <<<<<<< HEAD
+            | BNGP-526 | geospatial |
+            =======
+            >>>>>>> main
+            | BNGP-524 | metric         |
+            | BNGP-515 | land-ownership |
 
     Scenario Outline: I cannot upload an empty <document>
         Given I navigate to the "<document>-upload" page

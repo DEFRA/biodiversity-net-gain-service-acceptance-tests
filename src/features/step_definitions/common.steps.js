@@ -71,6 +71,8 @@ const pages = {
   "monitoring-start-date": monitoringStartDatePage
 };
 
+
+
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
 
   // open the page requested from the list of pages
@@ -150,9 +152,9 @@ When("I confirm my role as a {string}", async (role) => {
    
 })
 
-When("I confirm my {string} are correct", async (check) => {
+When("I confirm the check {string} are correct", async (check) => {
   //confirm check your answer pages
-  if(check == "details"){
+  if(check == "your details"){
     await expect(applicantDetailsCheckYourDetailsPage.continueButton).toBeDisplayed();
 
     await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).not.toBeNull();
@@ -293,7 +295,7 @@ Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page
 
   switch(page){
     case "check-your-details": {
-      
+      //Todo: check your details statement could add a function to aid readability
       switch (option) {
         case "fullname": {
           await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).toHaveTextContaining(value);
