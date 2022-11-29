@@ -14,22 +14,22 @@ Feature: legal-agreement
             | conservation covenant           | legal-agreement-upload |
             | planning obligation             | legal-agreement-upload |
             | I do not have a legal agreement | need-legal-agreement   |
-    @skip()
+
     Scenario: BNGP-188 3 I should be able to add multiple legal parties
         Given I navigate to the "add-legal-agreement-parties" page
         Then I can choose to add another legal party
-    @skip()
+
     Scenario: BNGP-188 4 There is a way to remove unwanted legal parties
         Given I navigate to the "add-legal-agreement-parties" page
         When I add another "legal party" as "legal party 2" and confirm
         Then I can choose to remove the other "legal party"
-    @skip()
+
     Scenario: BNGP-188 5,6 There must be at least 1 legal party added
         Given I navigate to the "add-legal-agreement-parties" page
         When I add the legal party fullname or organisation as "legal party 1"
         And I confirm the legal party role as a "landowner"
         Then I should be on the "legal-agreement-start-date" page
-    @skip()
+
     Scenario: BNGP-188 7,8 If 'Other' option is selected as Role then the Role field popup must not be left blank
         Given I navigate to the "add-legal-agreement-parties" page
         And I add the legal party fullname or organisation as "legal party 1"
@@ -51,7 +51,7 @@ Feature: legal-agreement
             | 29/02/2022 |
             | 30/02/2022 |
 
-    @bug     @skip()
+    @bug
     Scenario: BNGP-1468 - BUG - Adding another legal party initially clears the role value
         Given I navigate to the "add-legal-agreement-parties" page
         And I add the legal party fullname or organisation as "legal party 1"
