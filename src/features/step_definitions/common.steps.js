@@ -71,8 +71,6 @@ const pages = {
   "monitoring-start-date": monitoringStartDatePage
 };
 
-
-
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
 
   // open the page requested from the list of pages
@@ -81,28 +79,15 @@ Given(/^I navigate to the "(.*)" page$/, async (page) => {
 
   await $("h1").waitForExist({ timeout: 5000 });
 
-  browser.getUrl()
-
-  //expect(await browser.getUrl()).toContain(pages[page].path);
-
   // assert against the page title
   expect(await browser.getTitle()).toContain(pages[page].titleText);
-  // await console.log("navigate step path: " + await browser.getUrl() + " should be: " + pages[page].path);
-
- 
- 
 });
 
 Then(/^I (?:am|should be) (?:on|returned to) the "(.*)" page$/, async (page) => {
   await $("h1").waitForExist({ timeout: 5000 });
 
-  //expect(await browser.getUrl()).toContain(pages[page].path);
-
   // assert against the page title
   expect(await browser.getTitle()).toContain(pages[page].titleText);
-  // console.log("I am on step path: " + await browser.getUrl() + " should be: " + pages[page].path);
-  
-  
 });
 
 When("I continue without an action", async () => {
