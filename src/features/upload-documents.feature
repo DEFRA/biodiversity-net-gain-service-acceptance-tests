@@ -41,21 +41,23 @@ Feature: upload documents
         When I choose and upload a "<document>"
         And I navigate to the "<document>-check" page
         Then There should be a link to download the document
-        And I should be able to see the filesize of the document
+        And I should be able to see the filesize of the document as "<filesize>"
+
         Examples:
-            | jira ticket | document        |
-            | BNGP-499    | legal-agreement |
-            | BNGP-765    | management-plan |
-            | BNGP-767    | land-boundary   |
-            | BNGP-526    | geospatial      |
-            | BNGP-524    | metric          |
-            | BNGP-515    | land-ownership  |
+            | jira ticket | document        | filesize  |
+            | BNGP-499    | legal-agreement | 0.01 MB   |
+            | BNGP-765    | management-plan | 0.01 MB   |
+            | BNGP-767    | land-boundary   | 0.01 MB   |
+            | BNGP-526    | geospatial      | 0.0938 MB |
+            | BNGP-524    | metric          | 0.01 MB   |
+            | BNGP-515    | land-ownership  | 0.01 MB   |
 
     Scenario Outline: <jira ticket> 4 - There is a way to choose a different <document> if necessary
         Given I navigate to the "<document>-upload" page
         When I choose and upload a "<document>"
         And  I choose a different file
         Then I should be returned to the "<document>-upload" page
+
         Examples:
             | jira ticket | document        |
             | BNGP-499    | legal-agreement |
@@ -99,6 +101,7 @@ Feature: upload documents
         When I continue without an action
         Then I should see the error "Select yes if this is the correct file"
         And I should see the error and the error summary displayed
+
         Examples:
             | document        |
             | legal-agreement |
