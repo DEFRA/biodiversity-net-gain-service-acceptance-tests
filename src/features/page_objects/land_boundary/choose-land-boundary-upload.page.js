@@ -1,7 +1,7 @@
 const Page = require("../page");
 
 class LandBoundaryChooseUploadOption extends Page {
-  get Title() {
+  get titleText() {
     return "Choose how to add the land boundary details for the biodiversity gain site";
   }
 
@@ -32,8 +32,12 @@ class LandBoundaryChooseUploadOption extends Page {
     await this.imageOption.click();
   }
 
+  get path() {
+    return "land/choose-land-boundary-upload";
+  }
+
   open() {
-    return super.open("land/choose-land-boundary-upload");
+    return super.open(this.path);
   }
 }
 module.exports = new LandBoundaryChooseUploadOption();

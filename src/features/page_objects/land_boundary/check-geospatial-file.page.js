@@ -9,8 +9,12 @@ class LandBoundaryCheckGeospatialFile extends Page {
     return $("#document-download");
   }
 
+  get path() {
+    return "land/check-geospatial-file";
+  }
+
   open() {
-    return super.open("land/check-geospatial-file");
+    return super.open(this.path);
   }
 }
 module.exports = new LandBoundaryCheckGeospatialFile();
