@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "test geojson 4326 file",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -2.577851811913481, 51.475813882933885 ], [ -2.579491798755723, 51.474910846342588 ], [ -2.578648037409352, 51.474451919256566 ], [ -2.577851811913481, 51.475813882933885 ] ] ] } }
+]
+}

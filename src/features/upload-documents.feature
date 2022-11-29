@@ -15,11 +15,12 @@ Feature: upload documents
             | jira ticket | document        | destination                 |
             | BNGP-499    | legal-agreement | add-legal-agreement-parties |
         Examples:
-            | jira ticket | document        | destination              |
-            | BNGP-765    | management-plan | habitat-works-start-date |
-            | BNGP-767    | land-boundary   | grid-reference           |
-            | BNGP-524    | metric          | register-land-task-list  |
-            | BNGP-515    | land-ownership  | add-landowners           |
+            | jira ticket | document        | destination                 |
+            | BNGP-765    | management-plan | habitat-works-start-date    |
+            | BNGP-767    | land-boundary   | grid-reference              |
+            | BNGP-526    | geospatial      | check-land-boundary-details |
+            | BNGP-524    | metric          | register-land-task-list     |
+            | BNGP-515    | land-ownership  | add-landowners              |
 
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
         Given I navigate to the "<document>-upload" page
@@ -31,6 +32,7 @@ Feature: upload documents
             | BNGP-499    | legal-agreement |
             | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
+            | BNGP-526    | geospatial      |
             | BNGP-524    | metric          |
             | BNGP-515    | land-ownership  |
 
@@ -39,25 +41,29 @@ Feature: upload documents
         When I choose and upload a "<document>"
         And I navigate to the "<document>-check" page
         Then There should be a link to download the document
-        And I should be able to see the filesize of the document
+        And I should be able to see the filesize of the document as "<filesize>"
+
         Examples:
-            | jira ticket | document        |
-            | BNGP-499    | legal-agreement |
-            | BNGP-765    | management-plan |
-            | BNGP-767    | land-boundary   |
-            | BNGP-524    | metric          |
-            | BNGP-515    | land-ownership  |
+            | jira ticket | document        | filesize  |
+            | BNGP-499    | legal-agreement | 0.01 MB   |
+            | BNGP-765    | management-plan | 0.01 MB   |
+            | BNGP-767    | land-boundary   | 0.01 MB   |
+            | BNGP-526    | geospatial      | 0.0938 MB |
+            | BNGP-524    | metric          | 0.01 MB   |
+            | BNGP-515    | land-ownership  | 0.01 MB   |
 
     Scenario Outline: <jira ticket> 4 - There is a way to choose a different <document> if necessary
         Given I navigate to the "<document>-upload" page
         When I choose and upload a "<document>"
         And  I choose a different file
         Then I should be returned to the "<document>-upload" page
+
         Examples:
             | jira ticket | document        |
             | BNGP-499    | legal-agreement |
             | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
+            | BNGP-526    | geospatial      |
             | BNGP-524    | metric          |
             | BNGP-515    | land-ownership  |
 
@@ -71,6 +77,7 @@ Feature: upload documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
+            | geospatial      |
             | metric          |
             | land-ownership  |
 
@@ -84,6 +91,7 @@ Feature: upload documents
             | legal-agreement | Select a legal agreement                        |
             | management-plan | Select a habitat management and monitoring plan |
             | land-boundary   | Select a file showing the land boundary         |
+            | geospatial      | Select a file showing the land boundary         |
             | metric          | Select a Biodiversity Metric                    |
             | land-ownership  | Select a proof of land ownership file           |
 
@@ -93,11 +101,13 @@ Feature: upload documents
         When I continue without an action
         Then I should see the error "Select yes if this is the correct file"
         And I should see the error and the error summary displayed
+
         Examples:
             | document        |
             | legal-agreement |
             | management-plan |
             | land-boundary   |
+            | geospatial      |
             # skip as need to investigate this specific test
             # | metric   |
             | land-ownership  |
