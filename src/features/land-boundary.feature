@@ -13,3 +13,14 @@ Feature: land-boundary
             | fileType          | section              |
             | geospatial        | geospatial-upload    |
             | Document or Image | land-boundary-upload |
+
+    @bug
+    Scenario: BNGP-1711 BUG - geospatial upload error (geojson, repeat upload)
+        Given I navigate to the "geospatial-upload" page
+        And I choose and upload a "geospatial-geojson" file
+        And  I choose a different file
+        And I am on the "geospatial-upload" page
+        When I choose and upload the same file
+        Then I should not see an error message displayed
+        And I should be on the "check-geospatial-file" page
+

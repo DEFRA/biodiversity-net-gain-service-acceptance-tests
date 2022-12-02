@@ -55,6 +55,7 @@ const pages = {
   "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
   "geospatial-upload": landBoundaryUploadGeospatialFilePage,
+  "check-geospatial-file": landBoundaryCheckGeospatialFilePage,
   "land-boundary-check": landBoundaryCheckImageFilePage,
   "geospatial-check": landBoundaryCheckGeospatialFilePage,
   "check-land-boundary-details": landBoundaryCheckImageDetailsPage,
@@ -258,6 +259,12 @@ Then("I should see the error and the error summary displayed", async () => {
   // https://design-system.service.gov.uk/components/error-summary/
   await expect(basePage.errorMsg).toBeDisplayed();
   await expect(basePage.errorMsgSummary).toBeDisplayed();
+});
+
+Then("I should not see an error message displayed", async () => {
+  await expect(basePage.errorMsg).not.toBeDisplayed();
+  await expect(basePage.errorMsgSummary).not.toBeDisplayed();
+  
 });
 
 Then("the other role value should not be {string}", async (input) => {

@@ -22,7 +22,7 @@ let filename = "";
 let filePath = "";
 let remoteFilePath = "";
 
-When("I choose and upload a {string}", async (document) => {
+When("I choose and upload a {string} file", async (document) => {
   //default test file
   filePath = join(__dirname, "../../TestFiles/test_12kb.docx");
 
@@ -46,8 +46,24 @@ When("I choose and upload a {string}", async (document) => {
       UploadPage = landBoundaryGeospatialUploadPage;
       CheckPage = landBoundaryGeospatialCheckPage;
 
-      //geospatial is geopackage
+      //default geospatial : esri file 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial_esri.zip");
+      break;
+    }
+    case "geospatial-geopackage": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+
+      //Geopackage geospatial 
       filePath = join(__dirname, "../../TestFiles/test_geospatial.gpkg");
+      break;
+    }
+    case "geospatial-geojson": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+
+      //GeoJson geospatial 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial.geojson");
       break;
     }
     case "metric": {
@@ -77,6 +93,23 @@ When("I choose and upload a {string}", async (document) => {
   // set the remote path value to the upload element and continue
   await UploadPage.govFileUpload.setValue(remoteFilePath);
   await UploadPage.continueButton.click();
+});
+
+When("I choose and upload the same file", async () => {
+
+  remoteFilePath = await browser.uploadFile(filePath);
+
+  // get the filename for assertions
+  var group = filePath.split("\\");
+  filename = basename(group[group.length - 1]);
+
+  // open the upload url page
+  await browser.url(UploadPage.path);
+
+  // set the remote path value to the upload element and continue
+  await UploadPage.govFileUpload.setValue(remoteFilePath);
+  await UploadPage.continueButton.click();
+
 });
 
 Given("I should be able to upload all allowed filetypes", async (table) => {
