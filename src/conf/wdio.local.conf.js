@@ -7,8 +7,8 @@ const { removeSync } = require('fs-extra');
 
 exports.config = {
   // Browserstack Config
-  user: process.env.BROWSERSTACK_USERNAME,
-  key: process.env.BROWSERSTACK_ACCESS_KEY,
+  // user: process.env.BROWSERSTACK_USERNAME,
+  // key: process.env.BROWSERSTACK_ACCESS_KEY,
 
   //
   // ====================
@@ -111,8 +111,6 @@ exports.config = {
   // gets prepended directly.
 
   baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
-
-  //baseUrl: process.env.SERVICE_URL || "https://devbngwebwa1401.azurewebsites.net",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
