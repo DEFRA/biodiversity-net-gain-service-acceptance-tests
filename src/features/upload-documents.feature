@@ -47,7 +47,7 @@ Feature: upload documents
             | BNGP-499    | legal-agreement | 0.01 MB   |
             | BNGP-765    | management-plan | 0.01 MB   |
             | BNGP-767    | land-boundary   | 0.01 MB   |
-            | BNGP-526    | geospatial      | 0.0938 MB |
+            | BNGP-526    | geospatial      | 0.0010 MB |
             | BNGP-524    | metric          | 0.01 MB   |
             | BNGP-515    | land-ownership  | 0.01 MB   |
 
@@ -118,10 +118,6 @@ Feature: upload documents
             | management-plan | doc      |
             | management-plan | docx     |
             | management-plan | pdf      |
-            | land-boundary   | doc      |
-            | land-boundary   | docx     |
-            | land-boundary   | pdf      |
-            | land-boundary   | jpg      |
             | metric          | xlsx     |
             | metric          | xlsm     |
             | land-ownership  | doc      |
@@ -130,3 +126,10 @@ Feature: upload documents
             | land-ownership  | DOC      |
             | land-ownership  | DOCX     |
             | land-ownership  | PDF      |
+            | land-boundary   | doc      |
+            | land-boundary   | docx     |
+            | land-boundary   | pdf      |
+            | land-boundary   | jpg      |
+            | geospatial      | zip      |
+            | geospatial      | geojson  |
+            | geospatial      | gpkg     |

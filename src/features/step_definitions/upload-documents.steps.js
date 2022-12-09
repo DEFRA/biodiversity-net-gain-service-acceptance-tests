@@ -47,7 +47,7 @@ When("I choose and upload a {string} file", async (document) => {
       CheckPage = landBoundaryGeospatialCheckPage;
 
       //default geospatial : esri file 
-      filePath = join(__dirname, "../../TestFiles/test_geospatial_esri.zip");
+      filePath = join(__dirname, "../../TestFiles/test_geospatial.zip");
       break;
     }
     case "geospatial-geopackage": {
@@ -113,6 +113,9 @@ When("I choose and upload the same file", async () => {
 });
 
 Given("I should be able to upload all allowed filetypes", async (table) => {
+  //default test file
+  let testFileName = "../../TestFiles/test_12kb.";
+  
   const tableRows = table.hashes();
   for (const element of tableRows) {
     switch (element.document) {
@@ -141,13 +144,19 @@ Given("I should be able to upload all allowed filetypes", async (table) => {
         CheckPage = landOwnershipCheckPage;
         break;
       }
+      case "geospatial": {
+        UploadPage = landBoundaryGeospatialUploadPage;
+        CheckPage = landBoundaryGeospatialCheckPage;
+        //default geospatial test file
+        testFileName = "../../TestFiles/test_geospatial."
+        break;
+      }
     }
 
     await UploadPage.open();
     await $("h1").waitForExist({ timeout: 5000 });
 
-    // test file, appended with the filetype
-    filePath = join(__dirname, "../../TestFiles/test_12kb." + element.filetype);
+    filePath = join(__dirname, testFileName + element.filetype);
 
     remoteFilePath = await browser.uploadFile(filePath);
 
