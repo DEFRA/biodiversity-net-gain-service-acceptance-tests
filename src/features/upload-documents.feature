@@ -39,7 +39,7 @@ Feature: upload documents
     Scenario Outline: <jira ticket> 3 - I can check that the uploaded <document> is the one I wanted to upload before continuing
         Given I navigate to the "<document>-upload" page
         When I choose and upload a "<document>" file
-        And I navigate to the "<document>-check" page
+        And I am on the "<document>-check" page
         Then There should be a link to download the document
         And I should be able to see the filesize of the document as "<filesize>"
         Examples:
@@ -95,7 +95,7 @@ Feature: upload documents
 
     Scenario Outline: I cannot continue without confirming the uploaded <document>
         Given I choose and upload a "<document>" file
-        And I navigate to the "<document>-check" page
+        And I am on the "<document>-check" page
         When I continue without an action
         Then I should see the error "Select yes if this is the correct file"
         And I should see the error and the error summary displayed
@@ -118,10 +118,6 @@ Feature: upload documents
             | management-plan | doc      |
             | management-plan | docx     |
             | management-plan | pdf      |
-            | land-boundary   | doc      |
-            | land-boundary   | docx     |
-            | land-boundary   | pdf      |
-            | land-boundary   | jpg      |
             | metric          | xlsx     |
             | metric          | xlsm     |
             | land-ownership  | doc      |
@@ -130,3 +126,10 @@ Feature: upload documents
             | land-ownership  | DOC      |
             | land-ownership  | DOCX     |
             | land-ownership  | PDF      |
+            | land-boundary   | doc      |
+            | land-boundary   | docx     |
+            | land-boundary   | pdf      |
+            | land-boundary   | jpg      |
+            | geospatial      | zip      |
+            | geospatial      | geojson  |
+            | geospatial      | gpkg     |
