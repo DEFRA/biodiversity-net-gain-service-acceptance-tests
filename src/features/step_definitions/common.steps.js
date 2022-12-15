@@ -1,5 +1,8 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 const startPage = require("../page_objects/start.page");
+const checkYouCanRegisterPage = require("../page_objects/eligibility_questions/check-you-can-register.page");
+const siteInEnglandPage = require("../page_objects/eligibility_questions/site-in-england.page");
+const cannotContinuePage = require("../page_objects/eligibility_questions/cannot-continue.page");
 const applicantDetailsNamePage = require("../page_objects/applicant_details/name.page");
 const applicantDetailsRolePage = require("../page_objects/applicant_details/role.page");
 const applicantDetailsEmailPage = require("../page_objects/applicant_details/email.page");
@@ -31,16 +34,24 @@ const gridReferencePage = require("../page_objects/land_boundary/grid-reference.
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 const habitatWorksStartDatePage = require("../page_objects/management_plan/habitat-works-start-date.page");
 const monitoringStartDatePage = require("../page_objects/management_plan/monitoring-start-date.page");
+const resultsPage = require("../page_objects/eligibility_questions/results.page");
 
 const basePage = legalAgreementUploadPage;
 
 const pages = {
   start: startPage,
-  "name": applicantDetailsNamePage,
+  //eligibility questions
+  "check-you-can-register": checkYouCanRegisterPage,
+  "site-in-england": siteInEnglandPage,
+  "cannot-continue": cannotContinuePage,
+  "results": resultsPage,
+  //applicant details
+  "applicant-name": applicantDetailsNamePage,
   "role": applicantDetailsRolePage,
   "email": applicantDetailsEmailPage,
   "correct-email": applicantDetailsCorrectEmailPage,
   "check-your-details": applicantDetailsCheckYourDetailsPage,
+  //legal agreement
   "legal-agreement-upload": legalAgreementUploadPage,
   "legal-agreement-check": legalAgreementCheckFilePage,
   "legal-agreement-type": legalAgreementTypePage,
@@ -48,10 +59,12 @@ const pages = {
   "add-legal-agreement-parties": legalAgreementAddPartiesPage,
   "legal-agreement-start-date": legalAgreementStartDatePage,
   "check-legal-agreement-details": legalAgreementCheckDetailsPage,
+  //hmmp
   "management-plan-upload": managementPlanUploadPage,
   "management-plan-check": managementPlanCheckPage,
-  "register-land-task-list": taskListPage,
-  //Land boundary pages
+  "habitat-works-start-date": habitatWorksStartDatePage,
+  "monitoring-start-date": monitoringStartDatePage,
+  //Land boundary 
   "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
   "geospatial-upload": landBoundaryUploadGeospatialFilePage,
@@ -59,17 +72,18 @@ const pages = {
   "land-boundary-check": landBoundaryCheckImageFilePage,
   "geospatial-check": landBoundaryCheckGeospatialFilePage,
   "check-land-boundary-details": landBoundaryCheckImageDetailsPage,
-  //metric pages
+  "grid-reference": gridReferencePage,
+  "add-hectares": addHectaresPage,
+  //metric
   "metric-upload": metricUploadPage,
   "metric-check": metricCheckPage,
+  //land ownership
   "land-ownership-upload": landOwnershipUploadPage,
   "land-ownership-check": landOwnershipCheckPage,
   "registered-landowner": landownershipRegisteredLandownerPage,
   "add-landowners": landownershipAddLandowners,
-  "grid-reference": gridReferencePage,
-  "add-hectares": addHectaresPage,
-  "habitat-works-start-date": habitatWorksStartDatePage,
-  "monitoring-start-date": monitoringStartDatePage
+  //task-list
+  "register-land-task-list": taskListPage
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
