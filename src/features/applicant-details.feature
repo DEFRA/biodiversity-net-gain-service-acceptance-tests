@@ -5,9 +5,10 @@ Feature: BNGP-179, BNGP-1099 Site Provider applicant details
     I need to provide my personal details
     So that the Operator knows who is applying to register
 
-    Background: Start the journey and add user details
+    Background: Start the journey, skip eligibility questions and add user details
         Given I navigate to the "start" page
         And I start my registration
+        And I have everything I need to start my biodiversity gain site registration
         And I confirm my "fullname" as "BNGP-1469"
         And I confirm my role as a "landowner"
         And I confirm my "email address" as "test@example.com"
@@ -33,7 +34,7 @@ Feature: BNGP-179, BNGP-1099 Site Provider applicant details
 
     Scenario: check your answer page(s) : I can change/update all sections that I have entered
         When I choose to change the "fullname" answer
-        And I am returned to the "name" page
+        And I am returned to the "applicant-name" page
         And I update the "fullname" to "new name"
         Then I should see the "fullname" updated to "new name" on the "check-your-details" page
         And I should see the "role" shown as "landowner" on the "check-your-details" page
