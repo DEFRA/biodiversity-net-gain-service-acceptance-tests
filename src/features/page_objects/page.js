@@ -11,6 +11,10 @@ module.exports = class Page {
     return $("#continue");
   }
 
+  get eligibilityContinueButton(){
+    return $(".govuk-button");
+  }
+
   get govFileUpload() {
     return $(".govuk-file-upload");
   }
@@ -23,12 +27,16 @@ module.exports = class Page {
     return $(".govuk-error-summary");
   }
 
-  get radioYes() {
-    return $("[id$='correct-yes']");  
+  get radioYes() { 
+    return $("input[value='yes']"); 
   }
 
   get radioNo() {
-    return $("[id$='correct-no']");
+    return $("input[value='no']");
+  }
+
+  get radioNotSure() {
+    return $("input[value='not sure']");
   }
 
   get filesizeIndicator() {
