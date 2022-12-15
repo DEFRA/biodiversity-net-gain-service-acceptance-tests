@@ -17,6 +17,7 @@ Feature: Task List Page
     Scenario: BNGP-527 2, 5 - The sections on the task list page should show the status of progress.
         Given I navigate to the "start" page
         And I start my registration
+        And I have everything I need to start my biodiversity gain site registration
         And I confirm my "fullname" as "John Smith"
         And I confirm my role as a "landowner"
         And I confirm my "email address" as "test@example.com"
@@ -34,6 +35,7 @@ Feature: Task List Page
     Scenario: BNGP-1612 BUG - Task-list : Metric section initially showing as completed.
         Given I navigate to the "start" page
         And I start my registration
+        And I have everything I need to start my biodiversity gain site registration
         And I confirm my "fullname" as "John Smith"
         And I confirm my role as a "landowner"
         And I confirm my "email address" as "test@example.com"
