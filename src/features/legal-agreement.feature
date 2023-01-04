@@ -1,5 +1,5 @@
 @regression
-Feature: legal-agreement
+Feature: Legal Agreement
 
     As a Site Provider
     I need to answer questions about my legal agreement
@@ -11,8 +11,8 @@ Feature: legal-agreement
         Then I should be on the "<destination>" page
         Examples:
             | legal-agreement-type            | destination            |
-            | conservation covenant           | legal-agreement-upload |
-            | planning obligation             | legal-agreement-upload |
+            | Conservation covenant           | legal-agreement-upload |
+            | Planning obligation             | legal-agreement-upload |
             | I do not have a legal agreement | need-legal-agreement   |
 
     Scenario: BNGP-188 3 I should be able to add multiple legal parties
@@ -38,7 +38,7 @@ Feature: legal-agreement
 
     Scenario: BNGP-188 9 I can add a valid legal agreement start date
         Given I navigate to the "legal-agreement-start-date" page
-        When I enter a valid start date of "12/10/2022"
+        When I enter a valid "start" date of "12/10/2022"
         Then I should be on the "check-legal-agreement-details" page
 
     Scenario Outline: BNGP-188 9 I cannot add an invalid start date
@@ -57,7 +57,7 @@ Feature: legal-agreement
         And I add the legal party fullname or organisation as "legal party 1"
         And I add a legal party role as a "landowner"
         When I add another "legal party" as "legal party 2" and confirm
-        And I enter a valid start date of "12/10/2024"
+        And I enter a valid "start" date of "12/10/2024"
         Then I should be on the "check-legal-agreement-details" page
         And I should see the "parties involved" shown as "legal party 2" on the "check-legal-agreement-details" page
 
