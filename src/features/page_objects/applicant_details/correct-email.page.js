@@ -12,6 +12,11 @@ class ApplicantDetailsCorrectEmail extends Page {
   get emailTextbox() {
     return $("#emailAddress");
   }
+
+  async confirmEmailAddress() {
+    await (this.radioYes).click();
+    await (this.continueButton).click();
+  }
   
   open() {
     return super.open("land/email");
