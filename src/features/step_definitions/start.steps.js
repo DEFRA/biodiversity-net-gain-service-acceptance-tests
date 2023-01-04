@@ -5,14 +5,14 @@ Given("I am a returning user", async () => {
   return "pending";
 });
 
-When("I Sign In to the register", async () => {
-  return "pending";
-});
-
-When("I start my registration", async () => {
+Given ("I start my registration", async () => {
   // start
   await (await startPage.startButton).click();
 }) 
+
+When("I Sign In to the register", async () => {
+  return "pending";
+});
 
 Then(
   "I should be able to continue with my previous journey",
