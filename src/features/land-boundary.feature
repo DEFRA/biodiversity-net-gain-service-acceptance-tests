@@ -1,5 +1,5 @@
 @regression
-Feature: land-boundary
+Feature: Land Boundary
 
     As a Site Provider
     I need to provide the location and boundary of the land I am registering

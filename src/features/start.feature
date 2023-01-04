@@ -1,5 +1,5 @@
 @regression
-Feature: Start page
+Feature: Start Page
 
     As a Site Provider, I want to see all the relevant guidance
     I need to start a registration application

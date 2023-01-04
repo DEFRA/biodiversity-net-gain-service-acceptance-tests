@@ -1,5 +1,5 @@
 @regression
-Feature: upload documents
+Feature: Upload Documents
 
     As a Site Provider
     I need to upload copies of my evidence documents
