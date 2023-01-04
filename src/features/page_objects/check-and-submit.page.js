@@ -5,60 +5,85 @@ class CheckAndSubmit extends Page {
     return "Check your answers before submitting your information";
   }
 
-  get addDetails() {
-    return $("#add-your-details");
+  get changeFullname(){
+    return $("a[href='/land/name']");
   }
 
-  get addLandBoundary() {
-    return $("#add-your-landboundary");
+  get fullnameValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[1]/div[1]/dd[1]");
   }
 
-  get addLandOwnership() {
-    return $("#add-land-ownership");
+  get roleValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[1]/div[2]/dd[1]");
   }
 
-  get addMetric() {
-    return $("#add-habitat-information");
+  get emailAddressValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[1]/div[3]/dd[1]");
   }
 
-  get addHmmp(){
-    return $("#add-habitat-management");
+
+  get landBoundaryTypeValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[2]/div[1]/dd[1]/span");
   }
 
-  get addLegalAgreement() {
-    return $("#add-legal-agreement");
+  get landBoundaryFilenameValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[2]/div[2]/dd[1]/span");
   }
 
-  get submitInformation(){
-    return $("#check-your-answers");
+  get gridReferenceValue() {
+    return $("/html/body/div[1]/main/form/div/div/div/dl[2]/div[4]/dd[1]/span");
   }
 
-  get detailsStatus() {
-    return $("#add-your-details-status");
+  get hectaresValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[2]/div[5]/dd[1]/span");
   }
 
-  get landBoundaryStatus() {
-    return $("#add-your-landboundary-status");
+  get landOwnershipFileNameValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[3]/div[1]/dd[1]");
   }
 
-  get landOwnershipStatus() {
-    return $("#add-land-ownership-status");
+  get landOwnerNameValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[3]/div[2]/dd[1]");
   }
 
-  get metricStatus() {
-    return $("#add-habitat-information-status");
+  get metricFileNameValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[4]/div/dd[1]");
   }
 
-  get hmmpStatus(){
-    return $("#add-habitat-management-status");
+  get hmmpFileNameValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[5]/div[1]/dd[1]");
   }
 
-  get legalAgreementStatus() {
-    return $("#add-legal-agreement-status");
+  get hmmpStartDateValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[5]/div[2]/dd[1]");
   }
 
-  get submitStatus(){
-    return $("#check-your-answers-status");
+  get hmmp30YearStartDateValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[5]/div[3]/dd[1]");
+  }
+
+  get legalAgreementTypeValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[1]/dd[1]");
+  }
+
+  get legalAgreementFileNameValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[2]/dd[1]");
+  }
+
+  get legalPartyNameValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[3]/dd[1]");
+  }
+
+  get legalPartyRoleValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[3]/dd[1]");
+  }
+
+  get legalAgreementStartDateValue(){
+    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[4]/dd[1]");
+  }
+
+  get confirmAndSubmitBtn(){
+    return $(".govuk-button");
   }
 
   open() {
