@@ -15,165 +15,34 @@ import landOwnershipCheckPage from "../page_objects/land_ownership/land-ownershi
 
 let UploadPage = legalAgreementUploadPage;
 let CheckPage = legalAgreementCheckPage;
-
 let  basePage = legalAgreementUploadPage;
-
+//default test file
 let filename = "";
 let filePath = "";
 let remoteFilePath = "";
+let testFileName = "../../TestFiles/test_12kb.";
+let invalidFileName = "../../TestFiles/test.txt";
+let emptyfilepath = "../../TestFiles/test_1k_empty";
 
 When("I choose and upload a {string} file", async (document) => {
-  //default test file
-  filePath = join(__dirname, "../../TestFiles/test_12kb.docx");
-
-  switch (document) {
-    case "legal-agreement": {
-      UploadPage = legalAgreementUploadPage;
-      CheckPage = legalAgreementCheckPage;
-      break;
-    }
-    case "management-plan": {
-      UploadPage = managementPlanUploadPage;
-      CheckPage = managementPlanCheckPage;
-      break;
-    }
-    case "land-boundary": {
-      UploadPage = landBoundaryFileUploadPage;
-      CheckPage = landBoundaryFileCheckPage;
-      break;
-    }
-    case "geospatial": {
-      UploadPage = landBoundaryGeospatialUploadPage;
-      CheckPage = landBoundaryGeospatialCheckPage;
-
-      //default geospatial : esri file 
-      filePath = join(__dirname, "../../TestFiles/test_geospatial.zip");
-      break;
-    }
-    case "geospatial-geopackage": {
-      UploadPage = landBoundaryGeospatialUploadPage;
-      CheckPage = landBoundaryGeospatialCheckPage;
-
-      //Geopackage geospatial 
-      filePath = join(__dirname, "../../TestFiles/test_geospatial.gpkg");
-      break;
-    }
-    case "geospatial-geojson": {
-      UploadPage = landBoundaryGeospatialUploadPage;
-      CheckPage = landBoundaryGeospatialCheckPage;
-
-      //GeoJson geospatial 
-      filePath = join(__dirname, "../../TestFiles/test_geospatial.geojson");
-      break;
-    }
-    case "metric": {
-      UploadPage = metricUploadPage;
-      CheckPage = metricCheckPage;
-
-      //metric is .xlsx and .xslm files only
-      filePath = join(__dirname, "../../TestFiles/test_12kb.xlsx");
-      break;
-    }
-    case "land-ownership": {
-      UploadPage = landOwnershipUploadPage;
-      CheckPage = landOwnershipCheckPage;
-      break;
-    }
-  }
-
-  remoteFilePath = await browser.uploadFile(filePath);
-
-  // get the filename for assertions
-  var group = filePath.split("\\");
-  filename = basename(group[group.length - 1]);
-
-  // open the upload url page
-  await browser.url(UploadPage.path);
-
-  // set the remote path value to the upload element and continue
-  await UploadPage.govFileUpload.setValue(remoteFilePath);
-  await UploadPage.continueButton.click();
+    await chooseToUploadFile(document);
 });
 
 When("I choose and upload the same file", async () => {
-
-  remoteFilePath = await browser.uploadFile(filePath);
-
-  // get the filename for assertions
-  var group = filePath.split("\\");
-  filename = basename(group[group.length - 1]);
-
-  // open the upload url page
-  await browser.url(UploadPage.path);
-
-  // set the remote path value to the upload element and continue
-  await UploadPage.govFileUpload.setValue(remoteFilePath);
-  await UploadPage.continueButton.click();
-
+    await uploadFile();
 });
 
 Given("I should be able to upload all allowed filetypes", async (table) => {
-  //default test file
-  let testFileName = "../../TestFiles/test_12kb.";
-  
   const tableRows = table.hashes();
   for (const element of tableRows) {
-    switch (element.document) {
-      case "legal-agreement": {
-        UploadPage = legalAgreementUploadPage;
-        CheckPage = legalAgreementCheckPage;
-        break;
-      }
-      case "management-plan": {
-        UploadPage = managementPlanUploadPage;
-        CheckPage = managementPlanCheckPage;
-        break;
-      }
-      case "land-boundary": {
-        UploadPage = landBoundaryFileUploadPage;
-        CheckPage = landBoundaryFileCheckPage;
-        break;
-      }
-      case "metric": {
-        UploadPage = metricUploadPage;
-        CheckPage = metricCheckPage;
-        break;
-      }
-      case "land-ownership": {
-        UploadPage = landOwnershipUploadPage;
-        CheckPage = landOwnershipCheckPage;
-        break;
-      }
-      case "geospatial": {
-        UploadPage = landBoundaryGeospatialUploadPage;
-        CheckPage = landBoundaryGeospatialCheckPage;
-        //default geospatial test file
-        testFileName = "../../TestFiles/test_geospatial."
-        break;
-      }
-    }
-
-    await UploadPage.open();
-    await $("h1").waitForExist({ timeout: 5000 });
+    getUploadPages(element.document);
+  
+    // await UploadPage.open();
+    // await $("h1").waitForExist({ timeout: 5000 });
 
     filePath = join(__dirname, testFileName + element.filetype);
 
-    remoteFilePath = await browser.uploadFile(filePath);
-
-    // get the filename for assertions
-    var group = filePath.split("\\");
-    filename = basename(group[group.length - 1]);
-
-    // open the upload url page
-    browser.url(UploadPage.path);
-
-    await UploadPage.govFileUpload.setValue(remoteFilePath);
-    await UploadPage.continueButton.click();
-
-    await $("h1").waitForExist({ timeout: 5000 });
-
-    // assert against the page title
-    await expect(await browser.getTitle()).toContain(CheckPage.titleText);
+    await uploadFile();
   }
 });
 
@@ -198,7 +67,7 @@ Then("I should be able to see the filesize of the document as {string}", async (
 });
 
 When("I choose a file type that is not in the specified format", async () => {
-  const filePath = join(__dirname, "../../TestFiles/test.txt");
+  const filePath = join(__dirname, invalidFileName);
   const remoteFilePath = await browser.uploadFile(filePath);
 
   // open the upload url page
@@ -262,11 +131,11 @@ When("I confirm it is the correct file", async () => {
 When("I choose an empty file", async () => {
   switch (UploadPage) {
     case metricUploadPage: {
-      filePath = join(__dirname, "../../TestFiles/test_1k_empty.xlsx");
+      filePath = join(__dirname, emptyfilepath + ".xlsx");
       break;
     }
     default: {
-      filePath = join(__dirname, "../../TestFiles/test_1k_empty.pdf");
+      filePath = join(__dirname, emptyfilepath + ".pdf");
     }
   }
 
@@ -286,3 +155,95 @@ When("I choose an empty file", async () => {
 Then("The original document should be deleted", async function () {
   return "pending";
 });
+
+async function uploadFile() {
+  remoteFilePath = await browser.uploadFile(filePath);
+
+  // get the filename for assertions
+  var group = filePath.split("\\");
+  filename = basename(group[group.length - 1]);
+
+  // open the upload url page
+  browser.url(UploadPage.path);
+
+  await UploadPage.govFileUpload.setValue(remoteFilePath);
+  await UploadPage.continueButton.click();
+
+  await $("h1").waitForExist({ timeout: 5000 });
+
+  // assert against the page title
+  await expect(await browser.getTitle()).toContain(CheckPage.titleText);
+}
+
+async function chooseToUploadFile(document) {
+  //default test file
+  filePath = join(__dirname, "../../TestFiles/test_12kb.docx");
+
+  await getUploadPages(document);
+
+  await uploadFile();
+
+}
+
+function getUploadPages(document) {
+  testFileName = "../../TestFiles/test_12kb.";
+
+  switch (document) {
+    case "legal-agreement": {
+      UploadPage = legalAgreementUploadPage;
+      CheckPage = legalAgreementCheckPage;
+      break;
+    }
+    case "management-plan": {
+      UploadPage = managementPlanUploadPage;
+      CheckPage = managementPlanCheckPage;
+      break;
+    }
+    case "land-boundary": {
+      UploadPage = landBoundaryFileUploadPage;
+      CheckPage = landBoundaryFileCheckPage;
+      break;
+    }
+    case "geospatial": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+
+      //default geospatial : esri file 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial.zip");
+
+      //default geospatial test file for uploading all filetypes
+      testFileName = "../../TestFiles/test_geospatial."
+      break;
+    }
+    case "geospatial-geopackage": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+
+      //Geopackage geospatial 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial.gpkg");
+      break;
+    }
+    case "geospatial-geojson": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+
+      //GeoJson geospatial 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial.geojson");
+      break;
+    }
+    case "metric": {
+      UploadPage = metricUploadPage;
+      CheckPage = metricCheckPage;
+
+      //metric is .xlsx and .xslm files only
+      filePath = join(__dirname, "../../TestFiles/test_12kb.xlsx");
+      break;
+    }
+    case "land-ownership": {
+      UploadPage = landOwnershipUploadPage;
+      CheckPage = landOwnershipCheckPage;
+      break;
+    }
+  }
+}
+
