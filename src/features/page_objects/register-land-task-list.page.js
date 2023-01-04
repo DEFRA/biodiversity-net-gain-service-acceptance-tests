@@ -65,6 +65,10 @@ class TaskList extends Page {
     return $("#check-your-answers-status");
   }
 
+  get checkAndSubmitBtn(){
+    return $("a[href='/land/check-and-submit']");
+  }
+
   open() {
     return super.open("land/register-land-task-list");
   }

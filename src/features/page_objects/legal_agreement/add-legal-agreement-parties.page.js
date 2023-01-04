@@ -34,6 +34,12 @@ class LegalAgreementAddParties extends Page {
     return $("[id='organisation[1][role]']");
   }
 
+  async addLegalPartyRole(role) {
+    //Todo add further roles?  //Todo: currently no unique identifiers in code awaiting bug fixes in BNGP-1267
+    await this.legalPartyRole.waitForExist({ timeout: 5000 });
+    await this.legalPartyRole.click();
+  }
+
   open() {
     return super.open("land/add-legal-agreement-parties");
   }
