@@ -8,7 +8,7 @@ exports.config = {
   // We only need to override the Chrome configuration of capabilities
   capabilities: [
     {
-      maxInstances: 5,
+      maxInstances: 10,
       browserName: "chrome",
       acceptInsecureCerts: true,
       // We need to extends some Chrome flags in order to tell Chrome to run headless
