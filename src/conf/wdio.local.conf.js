@@ -2,7 +2,6 @@
 import cucumberJson from "wdio-cucumberjs-json-reporter";
 
 // Import the module https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#use-it-with-multiple-cucumber-html-reporter
-const { generate } = require('multiple-cucumber-html-reporter');
 const { removeSync } = require('fs-extra');
 
 exports.config = {
@@ -357,18 +356,6 @@ exports.config = {
    */
   onComplete: function(exitCode, config, capabilities, results) {
     // Generate the report when it all tests are done
-    generate({
-      // Required
-      // This part needs to be the same path where you store the JSON files
-      // default = '.tmp/json/'
-      jsonDir: '.tmp/cucumberjs-json/',
-      reportPath: '.tmp/report/',
-      openReportInBrowser: true,
-      hideMetadata: true,
-      displayReportTime: true,
-
-      // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
-    });
   },
   /**
    * Gets executed when a refresh happens.
