@@ -20,7 +20,7 @@ Feature: BNGP-156 Site Provider Eligibility check
         When I have answered yes to all eligibility questions
         Then I should be on the "results" page
 
-    Scenario: 8 If the applicant has answered No (or I’m not sure) to any of the questions, the confirmation page will list what they need to do
+    Scenario: 8 If the applicant has answered No (or I am not sure) to any of the questions, the confirmation page will list what they need to do
         When I have answered no or not sure to some of the eligibility questions
         And I am on the eligibility results page
 # Then I should be shown what I need to provide.
