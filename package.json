@@ -32,7 +32,7 @@
         "wdio-cucumberjs-json-reporter": "^4.4.3"
     },
     "dependencies": {
-        "@wdio/dot-reporter": "^7.26.0",
+        "@wdio/dot-reporter": "^8.1.2",
         "@wdio/junit-reporter": "^7.26.0"
     }
 }
