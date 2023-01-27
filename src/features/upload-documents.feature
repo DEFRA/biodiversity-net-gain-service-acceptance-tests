@@ -109,7 +109,6 @@ Feature: upload documents
             # | metric   |
             | land-ownership  |
 
-    @new
     Scenario Outline: I should be able to upload a .<filetype> filetype for <document> files
         Given I navigate to the "<document>-upload" page
         Then I should be able to upload a "<document>" file with a filetype of "<filetype>"
