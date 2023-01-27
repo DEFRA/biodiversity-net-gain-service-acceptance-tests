@@ -1,4 +1,4 @@
-@regression @new
+@regression
 Feature: Start Page
 
     As a Site Provider, I want to see all the relevant guidance

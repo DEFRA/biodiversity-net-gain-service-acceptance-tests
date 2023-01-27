@@ -9,94 +9,95 @@ const ownershipProofPage = require("../page_objects/eligibility_questions/owners
 const resultsPage = require("../page_objects/eligibility_questions/results.page");
 const siteInEnglandPage = require("../page_objects/eligibility_questions/site-in-england.page");
 
+const basePage = siteInEnglandPage;
 
 Given("I have everything I need to start my biodiversity gain site registration", async () => {
     // skip elgibility questions 
     await (checkYouCanRegisterPage.skipQuestions).click();
 })
 
-Given("I choose to check that I have everything I need to register", async () => {
+Given("I choose to check if I have everything I need to register", async () => {
     // continue to elgibility questions 
-    await (checkYouCanRegisterPage.CovButton).click();
+    await (basePage.govContinueButton).click();
 })
 
 When("I confirm that my site is not in england", async () => {
     await ((siteInEnglandPage.radioNo)).click();
-    await (siteInEnglandPage.CovButton).click();
+    await (basePage.govContinueButton).click();
 })
 
 When("I have answered yes to all eligibility questions", async () => {
     expect(await browser.getTitle()).toContain(siteInEnglandPage.titleText);
 
     await (siteInEnglandPage.radioYes).click();
-    await (siteInEnglandPage.CovButton).click();
+    await (basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(consentPage.titleText);
 
     await (consentPage.radioYes).click();
-    await (consentPage.CovButton).click();
+    await (basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(legalAgreementPage.titleText);
 
     await(legalAgreementPage.radioYes).click();
-    await(legalAgreementPage.CovButton).click();
+    await(basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(ownershipProofPage.titleText);
 
     await(ownershipProofPage.radioYes).click();
-    await(ownershipProofPage.CovButton).click();
+    await(basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(boundaryPage.titleText);
 
     await(boundaryPage.radioYes).click();
-    await(boundaryPage.CovButton).click();
+    await(basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(biodiversityMetricPage.titleText);
 
     await(biodiversityMetricPage.radioYes).click();
-    await(biodiversityMetricPage.CovButton).click();
+    await(basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(habitatManagementPlanPage.titleText);
 
     await(habitatManagementPlanPage.radioYes).click();
-    await(habitatManagementPlanPage.CovButton).click();
+    await(basePage.govContinueButton).click();
 })
 
 When("I have answered no or not sure to some of the eligibility questions", async () => {
     expect(await browser.getTitle()).toContain(siteInEnglandPage.titleText);
     
     await (siteInEnglandPage.radioYes).click();
-    await (siteInEnglandPage.CovButton).click();
+    await (basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(consentPage.titleText);
 
     await (consentPage.radioNo).click();
-    await (consentPage.CovButton).click();
+    await (basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(legalAgreementPage.titleText);
 
     await(legalAgreementPage.radioYes).click();
-    await(legalAgreementPage.CovButton).click();
+    await(basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(ownershipProofPage.titleText);
 
     await(ownershipProofPage.radioNo).click();
-    await(ownershipProofPage.CovButton).click();
+    await(basePage.govontinueButton).click();
 
     expect(await browser.getTitle()).toContain(boundaryPage.titleText);
 
     await(boundaryPage.radioYes).click();
-    await(boundaryPage.CovButton).click();
+    await(basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(biodiversityMetricPage.titleText);
 
     await(biodiversityMetricPage.radioNotSure).click();
-    await(biodiversityMetricPage.CovButton).click();
+    await(basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(habitatManagementPlanPage.titleText);
 
     await(habitatManagementPlanPage.radioYes).click();
-    await(habitatManagementPlanPage.CovButton).click();
+    await(basePage.govContinueButton).click();
 
 }) 
 

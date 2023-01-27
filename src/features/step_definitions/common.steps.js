@@ -17,6 +17,7 @@ const legalAgreementStartDatePage = require("../page_objects/legal_agreement/leg
 const legalAgreementCheckDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page");
 const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
+const taskListPage = require("../page_objects/register-land-task-list.page");
 const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundary/choose-land-boundary-upload.page");
 const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/upload-land-boundary.page");
 const landBoundaryUploadGeospatialFilePage = require("../page_objects/land_boundary/upload-geospatial-file.page");
@@ -36,9 +37,7 @@ const monitoringStartDatePage = require("../page_objects/management_plan/monitor
 const resultsPage = require("../page_objects/eligibility_questions/results.page");
 const managementMonitoringCheckDetailsPage = require("../page_objects/management_plan/check-management-monitoring-details.page");
 const landOwnershipCheckDetailsPage = require("../page_objects/land_ownership/check-ownership-details.page");
-const taskListPage = require("../page_objects/register-land-task-list.page");
 const checkAndSubmitPage = require("../page_objects/check-and-submit.page");
-const confirmationPage = require("../page_objects/registration-submitted.page")
 
 const basePage = legalAgreementUploadPage;
 
@@ -89,9 +88,7 @@ const pages = {
   //task-list
   "register-land-task-list": taskListPage,
   //summary
-  "check-and-submit": checkAndSubmitPage,
-   //confirmation
-   "registration-submitted": confirmationPage
+  "check-and-submit": checkAndSubmitPage
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
@@ -116,11 +113,6 @@ Then(/^I (?:am|should be) (?:on|returned to) the "(.*)" page$/, async (page) => 
 When("I continue without an action", async () => {
   // click continue
   await basePage.continueButton.click();
-});
-
-When("I confirm and submit my application", async () => {
-  // click continue
-  await basePage.govContinueButton.click();
 });
 
 When("I select {string} and continue", async (option) => {

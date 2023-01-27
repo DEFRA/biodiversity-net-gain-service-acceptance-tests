@@ -1,5 +1,5 @@
 //for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
-// import cucumberJson from "wdio-cucumberjs-json-reporter";
+import cucumberJson from "wdio-cucumberjs-json-reporter";
 
 // Import the module https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#use-it-with-multiple-cucumber-html-reporter
 const { removeSync } = require('fs-extra');
@@ -156,13 +156,13 @@ exports.config = {
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
     "spec",
-    // [
-    //   "cucumberjs-json",
-    //   {
-    //     jsonFolder: ".tmp/cucumberjs-json/",
-    //     reportFilePerRetry: true,
-    //   },
-    // ],
+    [
+      "cucumberjs-json",
+      {
+        jsonFolder: ".tmp/cucumberjs-json/",
+        reportFilePerRetry: true,
+      },
+    ],
   ],
 
   //
@@ -354,21 +354,9 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  // onComplete: function(exitCode, config, capabilities, results) {
-  //   // Generate the report when it all tests are done
-  //   // generate({
-  //   //   // Required
-  //   //   // This part needs to be the same path where you store the JSON files
-  //   //   // default = '.tmp/json/'
-  //   //   jsonDir: '.tmp/cucumberjs-json/',
-  //   //   reportPath: '.tmp/report/',
-  //   //   openReportInBrowser: true,
-  //   //   hideMetadata: true,
-  //   //   displayReportTime: true,
-
-  //   //   // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
-  //   // });
-  // },
+  onComplete: function(exitCode, config, capabilities, results) {
+    // Generate the report when it all tests are done
+  },
   /**
    * Gets executed when a refresh happens.
    * @param {String} oldSessionId session ID of the old session
