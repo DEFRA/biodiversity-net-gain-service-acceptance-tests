@@ -109,8 +109,11 @@ Feature: upload documents
             # | metric   |
             | land-ownership  |
 
-    Scenario Outline: I can upload all allowed filetypes
-        Then I should be able to upload all allowed filetypes
+    @new
+    Scenario Outline: I should be able to upload a .<filetype> filetype for <document> files
+        Given I navigate to the "<document>-upload" page
+        Then I should be able to upload a "<document>" file with a filetype of "<filetype>"
+        Examples:
             | document        | filetype |
             | legal-agreement | doc      |
             | legal-agreement | docx     |

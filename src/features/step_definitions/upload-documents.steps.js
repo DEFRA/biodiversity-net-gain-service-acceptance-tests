@@ -112,70 +112,83 @@ When("I choose and upload the same file", async () => {
 
 });
 
-Given("I should be able to upload all allowed filetypes", async (table) => {
-  //default test file
-  let testFileName = "../../TestFiles/test_12kb.";
+Then("I should be able to upload a {string} file with a filetype of {string}", async (document, filetype) => {
+
+  filePath = join(__dirname, "../../TestFiles/test_12kb." + filetype);
   
-  const tableRows = table.hashes();
-  for (const element of tableRows) {
-    switch (element.document) {
-      case "legal-agreement": {
-        UploadPage = legalAgreementUploadPage;
-        CheckPage = legalAgreementCheckPage;
-        break;
-      }
-      case "management-plan": {
-        UploadPage = managementPlanUploadPage;
-        CheckPage = managementPlanCheckPage;
-        break;
-      }
-      case "land-boundary": {
-        UploadPage = landBoundaryFileUploadPage;
-        CheckPage = landBoundaryFileCheckPage;
-        break;
-      }
-      case "metric": {
-        UploadPage = metricUploadPage;
-        CheckPage = metricCheckPage;
-        break;
-      }
-      case "land-ownership": {
-        UploadPage = landOwnershipUploadPage;
-        CheckPage = landOwnershipCheckPage;
-        break;
-      }
-      case "geospatial": {
-        UploadPage = landBoundaryGeospatialUploadPage;
-        CheckPage = landBoundaryGeospatialCheckPage;
-        //default geospatial test file
-        testFileName = "../../TestFiles/test_geospatial."
-        break;
-      }
+  switch (document) {
+    case "legal-agreement": {
+      UploadPage = legalAgreementUploadPage;
+      CheckPage = legalAgreementCheckPage;
+      break;
     }
-
-    await UploadPage.open();
-    await $("h1").waitForExist({ timeout: 5000 });
-
-    filePath = join(__dirname, testFileName + element.filetype);
-
-    remoteFilePath = await browser.uploadFile(filePath);
-
+    case "management-plan": {
+      UploadPage = managementPlanUploadPage;
+      CheckPage = managementPlanCheckPage;
+      break;
+    }
+    case "land-boundary": {
+      UploadPage = landBoundaryFileUploadPage;
+      CheckPage = landBoundaryFileCheckPage;
+      break;
+    }
+    case "geospatial": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+  
+      //default geospatial : esri file 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial." + filetype);
+      break;
+    }
+    case "geospatial-geopackage": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+  
+      //Geopackage geospatial 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial." + filetype);
+      break;
+    }
+    case "geospatial-geojson": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+  
+      //GeoJson geospatial 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial." + filetype);
+      break;
+    }
+    case "metric": {
+      UploadPage = metricUploadPage;
+      CheckPage = metricCheckPage;
+  
+      //metric is .xlsx and .xslm files only
+      filePath = join(__dirname, "../../TestFiles/test_12kb." + filetype);
+      break;
+    }
+    case "land-ownership": {
+      UploadPage = landOwnershipUploadPage;
+      CheckPage = landOwnershipCheckPage;
+      break;
+    }
+  }
+  
+  remoteFilePath = await browser.uploadFile(filePath);
+  
     // get the filename for assertions
     var group = filePath.split("\\");
     filename = basename(group[group.length - 1]);
-
+  
     // open the upload url page
-    browser.url(UploadPage.path);
-
+    await browser.url(UploadPage.path);
+  
+    // set the remote path value to the upload element and continue
     await UploadPage.govFileUpload.setValue(remoteFilePath);
     await UploadPage.continueButton.click();
-
+  
+     // assert against the page title
     await $("h1").waitForExist({ timeout: 5000 });
-
-    // assert against the page title
     await expect(await browser.getTitle()).toContain(CheckPage.titleText);
-  }
-});
+  
+  });
 
 Then("There should be a link to download the document", async () => {
   // wait for file to be uploaded and show an element on the check/confirm page
