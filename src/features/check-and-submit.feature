@@ -1,6 +1,6 @@
 @regression
 
-Feature: Summary
+Feature: Check and Submit
     As a Site Provider
     I need to review all the application details I have provided
     So that I can confirm I am satisfied with all the entered details and submit my application
