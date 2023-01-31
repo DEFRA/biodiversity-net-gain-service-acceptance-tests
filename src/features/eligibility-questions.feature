@@ -20,10 +20,7 @@ Feature: BNGP-156 Site Provider Eligibility check
         When I have answered yes to all eligibility questions
         Then I should be on the "results" page
 
-    @Skip()
     Scenario: 8 If the applicant has answered No (or I am not sure) to any of the questions, the confirmation page will list what they need to do
         When I have answered no or not sure to some of the eligibility questions
-        And I am on the eligibility results page
-# Then I should be shown what I need to provide.
-# When I continue without an action
-# Then I should be on the "applicant-name" page
+        Then I should be informed that I do not have everything I need to register
+#Todo: And I should be shown what I need to provide

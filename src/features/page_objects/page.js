@@ -11,7 +11,7 @@ module.exports = class Page {
     return $("#continue");
   }
 
-  get eligibilityContinueButton(){
+  get govContinueButton(){
     return $(".govuk-button");
   }
 

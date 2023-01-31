@@ -18,7 +18,7 @@ Given("I have everything I need to start my biodiversity gain site registration"
 
 Given("I choose to check if I have everything I need to register", async () => {
     // continue to elgibility questions 
-    await (basePage.govContinueButton).click();
+    await (checkYouCanRegisterPage.startQuestions).click();
 })
 
 When("I confirm that my site is not in england", async () => {
@@ -69,7 +69,7 @@ When("I have answered no or not sure to some of the eligibility questions", asyn
     await (siteInEnglandPage.radioYes).click();
     await (basePage.govContinueButton).click();
 
-    expect(await browser.getTitle()).toContain(consentPage.titleText);
+   expect(await browser.getTitle()).toContain(consentPage.titleText);
 
     await (consentPage.radioNo).click();
     await (basePage.govContinueButton).click();
@@ -82,7 +82,7 @@ When("I have answered no or not sure to some of the eligibility questions", asyn
     expect(await browser.getTitle()).toContain(ownershipProofPage.titleText);
 
     await(ownershipProofPage.radioNo).click();
-    await(basePage.govontinueButton).click();
+    await(basePage.govContinueButton).click();
 
     expect(await browser.getTitle()).toContain(boundaryPage.titleText);
 
@@ -101,10 +101,10 @@ When("I have answered no or not sure to some of the eligibility questions", asyn
 
 }) 
 
-Then(/^I (?:am|should be) (?:on|returned to) the eligibility results page$/, async () => {
-    await $("h1").waitForExist({ timeout: 5000 });
+Then("I should be informed that I do not have everything I need to register", async () => {
 
-    // assert against the page title
+    await $("h1").waitForExist({ timeout: 5000 });
+    // assert against the page title and incomplete prereqs
     expect(await browser.getTitle()).toContain(resultsPage.dontHaveEverythingTitleText);
 
 })
