@@ -9,6 +9,10 @@ class CheckYouCanRegisterPage extends Page {
     return $("a[href='/land/name']");
   }
 
+  get startQuestions(){
+    return $("a[href='/land/site-in-england']");
+  }
+
   open() {
     return super.open("land/check-you-can-register");
   }
