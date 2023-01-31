@@ -33,9 +33,8 @@ Feature: Summary
         And I choose and upload a "legal-agreement" file
         And I confirm it is the correct file
         And I have completed the legal-agreement section
-        And I confirm I have completed all sections and submit
+        And I confirm I have completed all sections
 
-    @e2e
     Scenario: BNGP-190 1 - I can review all sections I have completed
         Then I should be on the "check-and-submit" page
         And I should see the "fullname" on the summary shown as "John Smith"
@@ -55,8 +54,10 @@ Feature: Summary
         And I update the "fullname" to "new name"
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
-    @new
+
+    @skip()  #skip until ready to run e2e tag with - @e2e
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
-        When I confirm and submit my application
+        And I am on the "check-and-submit" page
+        When I submit my application
         Then I should be on the "registration-submitted" page
 # And the biodiversity gain site reference should be displayed

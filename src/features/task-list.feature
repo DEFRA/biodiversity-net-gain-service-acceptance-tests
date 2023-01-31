@@ -5,7 +5,6 @@ Feature: Task List Page
     I need to see the status of the sections I need to complete
     So that I can track the progress of my registration.
 
-    @skip()
     Scenario Outline: The task list page should show the correct status of tasks to complete
         Given I navigate to the "register-land-task-list" page
         And all sections are complete

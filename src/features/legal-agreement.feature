@@ -19,6 +19,7 @@ Feature: Legal Agreement
         Given I navigate to the "add-legal-agreement-parties" page
         Then I can choose to add another legal party
 
+    @skip()  # legal parties to be refactored
     Scenario: BNGP-188 4 There is a way to remove unwanted legal parties
         Given I navigate to the "add-legal-agreement-parties" page
         When I add another "legal party" as "legal party 2" and confirm

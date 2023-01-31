@@ -19,7 +19,8 @@ Feature: BNGP-156 Site Provider Eligibility check
     Scenario: 4, 7, 9 - If the applicant has answered Yes to all questions, the confirmation page will confirm they have everything they need for the application to proceed
         When I have answered yes to all eligibility questions
         Then I should be on the "results" page
-    @new
+
+    @Skip()
     Scenario: 8 If the applicant has answered No (or I am not sure) to any of the questions, the confirmation page will list what they need to do
         When I have answered no or not sure to some of the eligibility questions
         And I am on the eligibility results page

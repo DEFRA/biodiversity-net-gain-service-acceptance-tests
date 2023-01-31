@@ -5,8 +5,7 @@ Feature: Land Boundary
     I need to provide the location and boundary of the land I am registering
     So that I can provide the Register Operator with the data in a file type consistent with technology I already use
 
-    # temporarily skip test that is running locally pointing to the dev env, but not on ci
-    @skip()
+    @skip() # temporarily skip test that is running locally pointing to the dev env, but not on ci as this is a superficial test
     Scenario Outline: BNGP-1612 1 - There is an option to upload geospatial and non geospatial data
         Given I navigate to the "choose-land-boundary-upload" page
         When I choose to upload a "<fileType>" file
@@ -25,4 +24,3 @@ Feature: Land Boundary
         When I choose and upload the same file
         Then I should not see an error message displayed
         And I should be on the "check-geospatial-file" page
-
