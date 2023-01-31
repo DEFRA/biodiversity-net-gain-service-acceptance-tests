@@ -1,7 +1,7 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const TaskList = require("../page_objects/register-land-task-list.page");
 
-When("I confirm I have completed all sections and submit", async () => {
+When("I confirm I have completed all sections", async () => {
 
   await expect(TaskList.submitStatus).toHaveTextContaining("NOT STARTED YET")
   await (TaskList.checkAndSubmitBtn).click();

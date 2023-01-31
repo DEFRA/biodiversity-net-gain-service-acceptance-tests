@@ -327,8 +327,6 @@ Then("I can choose to remove the other {string}", async (option) => {
   if(option == "legal party") {
 
     await (legalAgreementAddPartiesPage.removeLegalParty2).click();
-
-    //check 2nd party details do not exist
     await expect(legalAgreementAddPartiesPage.legalPartyName2).not.toExist();
     await expect(legalAgreementAddPartiesPage.legalPartyRole2).not.toExist();
   }

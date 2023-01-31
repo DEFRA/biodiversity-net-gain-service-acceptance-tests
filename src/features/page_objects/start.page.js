@@ -13,6 +13,10 @@ class StartPage extends Page {
     return $(".govuk-button");
   }
 
+  get returnToSavedApplicationLink(){
+    return $("a[href='/land/continue-saved-registration']");
+  }
+
   open() {
     return super.open("");
   }
