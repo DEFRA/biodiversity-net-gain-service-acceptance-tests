@@ -90,6 +90,96 @@ Then("I should be able to upload a {string} file with a filetype of {string}", a
       break;
     }
   }
+
+  remoteFilePath = await browser.uploadFile(filePath);
+
+  // get the filename for assertions
+  var group = filePath.split("\\");
+  filename = basename(group[group.length - 1]);
+
+  // open the upload url page
+  await browser.url(UploadPage.path);
+
+  // set the remote path value to the upload element and continue
+  await UploadPage.govFileUpload.setValue(remoteFilePath);
+  await UploadPage.continueButton.click();
+});
+
+When("I choose and upload the same file", async () => {
+
+  remoteFilePath = await browser.uploadFile(filePath);
+
+  // get the filename for assertions
+  var group = filePath.split("\\");
+  filename = basename(group[group.length - 1]);
+
+  // open the upload url page
+  await browser.url(UploadPage.path);
+
+  // set the remote path value to the upload element and continue
+  await UploadPage.govFileUpload.setValue(remoteFilePath);
+  await UploadPage.continueButton.click();
+
+});
+
+Then("I should be able to upload a {string} file with a filetype of {string}", async (document, filetype) => {
+
+  filePath = join(__dirname, "../../TestFiles/test_12kb." + filetype);
+  
+  switch (document) {
+    case "legal-agreement": {
+      UploadPage = legalAgreementUploadPage;
+      CheckPage = legalAgreementCheckPage;
+      break;
+    }
+    case "management-plan": {
+      UploadPage = managementPlanUploadPage;
+      CheckPage = managementPlanCheckPage;
+      break;
+    }
+    case "land-boundary": {
+      UploadPage = landBoundaryFileUploadPage;
+      CheckPage = landBoundaryFileCheckPage;
+      break;
+    }
+    case "geospatial": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+  
+      //default geospatial : esri file 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial." + filetype);
+      break;
+    }
+    case "geospatial-geopackage": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+  
+      //Geopackage geospatial 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial." + filetype);
+      break;
+    }
+    case "geospatial-geojson": {
+      UploadPage = landBoundaryGeospatialUploadPage;
+      CheckPage = landBoundaryGeospatialCheckPage;
+  
+      //GeoJson geospatial 
+      filePath = join(__dirname, "../../TestFiles/test_geospatial." + filetype);
+      break;
+    }
+    case "metric": {
+      UploadPage = metricUploadPage;
+      CheckPage = metricCheckPage;
+  
+      //metric is .xlsx and .xslm files only
+      filePath = join(__dirname, "../../TestFiles/test_12kb." + filetype);
+      break;
+    }
+    case "land-ownership": {
+      UploadPage = landOwnershipUploadPage;
+      CheckPage = landOwnershipCheckPage;
+      break;
+    }
+  }
   
   remoteFilePath = await browser.uploadFile(filePath);
   
