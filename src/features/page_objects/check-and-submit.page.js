@@ -21,21 +21,20 @@ class CheckAndSubmit extends Page {
     return $("/html/body/div[1]/main/form/div/div/div/dl[1]/div[3]/dd[1]");
   }
 
-
   get landBoundaryTypeValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[2]/div[1]/dd[1]/span");
+    return $('*[data-testid="land-boundary-file-type-value"]');
   }
 
   get landBoundaryFilenameValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[2]/div[2]/dd[1]/span");
+    return $('*[data-testid="land-boundary-file-value"]');
   }
 
   get gridReferenceValue() {
-    return $("/html/body/div[1]/main/form/div/div/div/dl[2]/div[4]/dd[1]/span");
+    return $('*[data-testid="grid-reference-value"]');
   }
 
   get hectaresValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[2]/div[5]/dd[1]/span");
+    return $('*[data-testid="hectares-value"]');
   }
 
   get landOwnershipFileNameValue(){
