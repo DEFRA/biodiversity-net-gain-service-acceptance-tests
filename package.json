@@ -10,7 +10,8 @@
         "regression": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@regression'",
         "smoke": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@smoke'",
         "bug": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@bug'",
-        "eslint": "eslint ."
+        "eslint": "eslint .",
+        "lint": "standard"
     },
     "author": "Shaun Ricketts",
     "license": "ISC",
@@ -25,7 +26,8 @@
         "@wdio/selenium-standalone-service": "^7.20.3",
         "@wdio/spec-reporter": "^7.19.1",
         "chromedriver": "^109.0.0",
-        "eslint": "^8.18.0",
+        "eslint": "^8.26.0",
+        "standard": "^17.0.0",
         "eslint-plugin-wdio": "^8.0.7",
         "fs-extra": "^10.1.0",
         "wdio-chromedriver-service": "^8.0.0",
