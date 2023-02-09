@@ -1,4 +1,4 @@
-import { Given, When, Then } from "@cucumber/cucumber";
+import { When, Then } from "@cucumber/cucumber";
 import { join, basename } from "path";
 import managementPlanUploadPage from "../page_objects/management_plan/management-plan-upload.page";
 import managementPlanCheckPage from "../page_objects/management_plan/management-plan-check.page";

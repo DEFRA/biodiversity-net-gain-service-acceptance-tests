@@ -11,7 +11,7 @@ module.exports = class Page {
     return $("#continue");
   }
 
-  get eligibilityContinueButton(){
+  get govContinueButton(){
     return $(".govuk-button");
   }
 
@@ -61,6 +61,21 @@ module.exports = class Page {
   
   get otherRoleTextBox(){
     return $("#roleOther");
+  }
+
+  async enterValidDate(date) {
+    var arr = date.split('/');
+  
+    //clear values
+    await this.Day.clearValue();
+    await this.Month.clearValue();
+    await this.Year.clearValue();
+  
+    //add values
+    await this.Day.addValue(arr[0]);
+    await this.Month.addValue(arr[1]);
+    await this.Year.addValue(arr[2]);
+    await (await this.continueButton).click();
   }
 
   /**

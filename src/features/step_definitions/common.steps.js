@@ -35,6 +35,10 @@ const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page
 const habitatWorksStartDatePage = require("../page_objects/management_plan/habitat-works-start-date.page");
 const monitoringStartDatePage = require("../page_objects/management_plan/monitoring-start-date.page");
 const resultsPage = require("../page_objects/eligibility_questions/results.page");
+const managementMonitoringCheckDetailsPage = require("../page_objects/management_plan/check-management-monitoring-details.page");
+const landOwnershipCheckDetailsPage = require("../page_objects/land_ownership/check-ownership-details.page");
+const checkAndSubmitPage = require("../page_objects/check-and-submit.page");
+const confirmationPage = require("../page_objects/registration-submitted.page");
 
 const basePage = legalAgreementUploadPage;
 
@@ -83,7 +87,11 @@ const pages = {
   "registered-landowner": landownershipRegisteredLandownerPage,
   "add-landowners": landownershipAddLandowners,
   //task-list
-  "register-land-task-list": taskListPage
+  "register-land-task-list": taskListPage,
+  //summary
+  "check-and-submit": checkAndSubmitPage,
+  //Confirmation
+  "registration-submitted": confirmationPage
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
@@ -113,12 +121,12 @@ When("I continue without an action", async () => {
 When("I select {string} and continue", async (option) => {
 
   switch (option) {
-    case "conservation covenant": {
+    case "Conservation covenant": {
       await legalAgreementTypePage.conservationCovenant.click();
       await basePage.continueButton.click();
       break;
     }
-    case "planning obligation": {
+    case "Planning obligation": {
       await legalAgreementTypePage.planningObligation.click();
       await basePage.continueButton.click();
       break;
@@ -137,79 +145,105 @@ When("I select {string} and continue", async (option) => {
 });
 
 When("I confirm my role as a {string}", async (role) => {
-  switch (role) {
-    case "landowner": {
-      await applicantDetailsRolePage.landOwner.click();
-      await basePage.continueButton.click(); 
-      break;
-    }
-    case "other": {
-      await applicantDetailsRolePage.other.click(); 
-      await basePage.continueButton.click(); 
-      break;
-    }
-  }
-   
+  await applicantDetailsRolePage.confirmRole(role);  
 })
 
-When("I confirm the check {string} are correct", async (check) => {
+When("I confirm the check {string} details are correct", async (check) => {
   //confirm check your answer pages
-  if(check == "your details"){
-    await expect(applicantDetailsCheckYourDetailsPage.continueButton).toBeDisplayed();
+  switch (check) {
+    //applicant details
+    case "applicant":{
+        await confirmApplicantDetails();
+      break;
+    }
+    case "land boundary":{
+        await confirmLandBoundaryDetails();
+      break;
+    }
 
-    await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).not.toBeNull();
-    await expect(applicantDetailsCheckYourDetailsPage.roleValue).not.toBeNull();
-    await expect(applicantDetailsCheckYourDetailsPage.emailValue).not.toBeNull();
-
-    await (applicantDetailsCheckYourDetailsPage.continueButton).click();
+    case "land ownership":{
+        await confirmLandOwnershipDetails();
+      break;
+    }
+    case "management plan":{
+        await confirmManagementPlanDetails();
+      break;
+    }
+    case "legal agreement":{
+        await confirmLegalAgreementDetails();
+      break;
+    }
+    default:{
+      throw new Error("Section "+ check +" doesn't exist");
+    }
   }  
 })
 
-When("I enter a valid start date of {string}", async (date) => {
+async function confirmLegalAgreementDetails() {
+  await expect(legalAgreementCheckDetailsPage.acceptBtn).toBeDisplayed();
+  await (legalAgreementCheckDetailsPage.acceptBtn).click();
+}
 
-  var arr = date.split('/');
+async function confirmManagementPlanDetails() {
+  await expect(managementMonitoringCheckDetailsPage.continueButton).toBeDisplayed();
+  await (managementMonitoringCheckDetailsPage.continueButton).click();
+}
 
-  //clear values
-  await basePage.Day.clearValue();
-  await basePage.Month.clearValue();
-  await basePage.Year.clearValue();
+async function confirmLandOwnershipDetails() {
+  await expect(landOwnershipCheckDetailsPage.continueButton).toBeDisplayed();
+  await (landOwnershipCheckDetailsPage.continueButton).click();
+}
 
-  //add values
-  await basePage.Day.addValue(arr[0]);
-  await basePage.Month.addValue(arr[1]);
-  await basePage.Year.addValue(arr[2]);
-  await (await basePage.continueButton).click();
+async function confirmLandBoundaryDetails() {
+  await expect(landBoundaryCheckImageDetailsPage.continueButton).toBeDisplayed();
+  await (landBoundaryCheckImageDetailsPage.continueButton).click();
+}
+
+async function confirmApplicantDetails() {
+  await expect(applicantDetailsCheckYourDetailsPage.continueButton).toBeDisplayed();
+  await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).not.toBeNull();
+  await expect(applicantDetailsCheckYourDetailsPage.roleValue).not.toBeNull();
+  await expect(applicantDetailsCheckYourDetailsPage.emailValue).not.toBeNull();
+  await (applicantDetailsCheckYourDetailsPage.continueButton).click();
+}
+
+
+When(/^I enter a valid "(.*)" date of "(.*)"$/, async (name, date) => {
+
+  await basePage.enterValidDate(date);
  
 });
 
 When("I enter an invalid start date of {string}", async (date) => {
-  var arr = date.split('/');
-
-    //clear values
-    await basePage.Day.clearValue();
-    await basePage.Month.clearValue();
-    await basePage.Year.clearValue();
-
-    //add values
-    await basePage.Day.addValue(arr[0]);
-    await basePage.Month.addValue(arr[1]);
-    await basePage.Year.addValue(arr[2]);
-    await (await basePage.continueButton).click();
+  //Todo check are actual invalid dates being sent....
+  await basePage.enterValidDate(date);
 
 });
 
-When("I choose to change the {string} answer", async (option) => {
+When("I choose to change the {string} answer on the {string} page", async (option, page) => {
   switch (option) {
-    //applicant details
     case "fullname": {
-      await applicantDetailsCheckYourDetailsPage.changeFullname.click();
+      //switch to change the fullname for the applicant details cya page or the summary page (cya's)
+      switch (page) {
+        case "check-your-details":{
+          await applicantDetailsCheckYourDetailsPage.changeFullname.click();
+          break;
+        }
+        case "check-and-submit":{
+          await checkAndSubmitPage.changeFullname.click();
+          break;
+        }
+        default:{
+          throw new Error(`Page ${page} doesn't exist`);
+        } 
+    }
       break;
     }
     case "role": {
       await applicantDetailsCheckYourDetailsPage.changeRole.click();
       break;
     }
-    case "email": {
+    case "email address": {
       await applicantDetailsCheckYourDetailsPage.changeEmail.click();
       break;
     }
@@ -218,40 +252,46 @@ When("I choose to change the {string} answer", async (option) => {
       await legalAgreementCheckDetailsPage.changeParties.click();
       break;
     }
+    default:{
+      throw new Error("Section " + option + " doesn't exist");
+    }
   }
 });
 
 When("I update the {string} to {string}", async (option, value) => {
+    switch (option) {
+      //applicant details
+      case "fullname": {
+        // clear the original value
+        await (applicantDetailsNamePage.fullName).clearValue();
+        
+        // add the fullname
+        await applicantDetailsNamePage.fullName.addValue(value);
+      
+        await (basePage.continueButton).click();
+        break;
+      }
+      case "role": {
+        await applicantDetailsCheckYourDetailsPage.changeRole.click();
+        await (basePage.continueButton).click();
+        break;
+      }
+      case "email address": {
 
-  switch (option) {
-    //applicant details
-  case "fullname": {
-    // clear the original value
-    await (applicantDetailsNamePage.fullName).clearValue();
-    
-    // add the fullname
-    await applicantDetailsNamePage.fullName.addValue(value);
-  
-    await (basePage.continueButton).click();
-    break;
-  }
-  case "role": {
-    await applicantDetailsCheckYourDetailsPage.changeRole.click();
-    await (basePage.continueButton).click();
-    break;
-  }
-  case "email": {
+        await applicantDetailsEmailPage.addEmailAddress(value);
 
-    await applicantDetailsEmailPage.addEmailAddress(value);
+        // confirm the address is correct on the correct email page
+        await applicantDetailsCorrectEmailPage.radioYes.click();
+        await  applicantDetailsCorrectEmailPage.continueButton.click();
 
-    // confirm the address is correct on the correct email page
-    await applicantDetailsCorrectEmailPage.radioYes.click();
-    await  applicantDetailsCorrectEmailPage.continueButton.click();
-
-    break;
+        break;
+      }
+      default: {
+        throw new Error("Page " + option + " doesn't exist");
+      }
+    }
   }
-  }
-})
+)
 
 When("I add another {string} as {string} and confirm", async (option, value) => {
   if(option == "legal party") {
@@ -290,15 +330,13 @@ Then("I can choose to remove the other {string}", async (option) => {
   if(option == "legal party") {
 
     await (legalAgreementAddPartiesPage.removeLegalParty2).click();
-
-    //check 2nd party details do not exist
     await expect(legalAgreementAddPartiesPage.legalPartyName2).not.toExist();
     await expect(legalAgreementAddPartiesPage.legalPartyRole2).not.toExist();
   }
 })
 
 Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page$/, async (option, value, page) => {
-
+ 
   switch(page){
     case "check-your-details": {
       //Todo: check your details statement could add a function to aid readability
@@ -311,15 +349,14 @@ Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page
           await expect(applicantDetailsCheckYourDetailsPage.roleValue).toHaveTextContaining(value, {ignoreCase:true, asString:true});
           break;
         }
-        case "email": {
+        case "email address": {
           await expect (applicantDetailsCheckYourDetailsPage.emailValue).toHaveTextContaining(value);
           break;
         }
       }
       break;
     }
-    case "check-legal-agreement-details": {
-      
+    case "check-legal-agreement-details": {    
       switch (option) {
         case "parties involved": {
           await expect(legalAgreementCheckDetailsPage.legalPartiesValue).toHaveTextContaining(value);
@@ -328,6 +365,18 @@ Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page
       }
       break;
     }  
+    case "check-and-submit": {    
+      switch (option) {
+        case "fullname": {
+          await expect(checkAndSubmitPage.fullnameValue).toHaveTextContaining(value);
+          break;
+        }
+      }
+      break;
+    }
+    default:{
+      throw new Error("Page " + page + " doesn't exist");
+    }
   }    
 });
 

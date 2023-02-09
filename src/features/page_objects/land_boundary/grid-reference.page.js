@@ -9,6 +9,13 @@ class LandBoundaryGridReference extends Page {
     return $("#gridReference");
   }
 
+  async addGridReference(gridReference) {
+    await (await this.getGridRef).clearValue();
+    await this.getGridRef.addValue(gridReference);
+    await (await this.continueButton).click();
+    await expect(this.errorMsg).not.toBeDisplayed();
+  }
+
   open() {
     return super.open("land/add-grid-reference");
   }

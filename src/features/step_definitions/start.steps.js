@@ -5,19 +5,17 @@ Given("I am a returning user", async () => {
   return "pending";
 });
 
-When("I Sign In to the register", async () => {
-  return "pending";
-});
-
-When("I start my registration", async () => {
+Given ("I start my registration", async () => {
   // start
   await (await startPage.startButton).click();
 }) 
 
-Then(
-  "I should be able to continue with my previous journey",
-  async function () {
-    return "pending";
+When("I Sign In to the register", async () => {
+  return "pending";
+});
+
+Then("I should be able to continue with my previous journey", async () => {
+  return "pending";
   }
 );
 
@@ -25,5 +23,3 @@ Then("I should see the heading text {string}", async (message) => {
   await expect(startPage.getHeading).toBeExisting();
   await expect(startPage.getHeading).toHaveTextContaining(message);
 });
-
-

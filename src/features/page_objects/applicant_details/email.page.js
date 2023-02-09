@@ -9,19 +9,16 @@ class ApplicantDetailsEmail extends Page {
     return $("#emailAddress");
   }
 
-  addEmailAddress = async (value) => {
+  async addEmailAddress(value) {
 
     // clear the original value
-    (this.emailAddress).clearValue();
-
-   // add the email address 
-   // wait for focus on element before adding as addition is being skipped
-   await (this.emailAddress).isFocused();
-   await this.emailAddress.addValue(value);
-
-   await expect(this.emailAddress).toHaveValue(value);
-   await this.continueButton.click();
-
+    await (this.emailAddress).clearValue();
+    // add the email address 
+    // // wait for focus on element before adding as addition is being skipped
+    await (this.emailAddress).isFocused();
+    await this.emailAddress.addValue(value);
+    await expect(this.emailAddress).toHaveValue(value);
+    await (this.continueButton).click();
   }
   
   open() {

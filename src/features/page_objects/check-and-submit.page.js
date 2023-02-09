@@ -5,60 +5,84 @@ class CheckAndSubmit extends Page {
     return "Check your answers before submitting your information";
   }
 
-  get addDetails() {
-    return $("#add-your-details");
+  get changeFullname(){
+    return $("a[href='/land/name']");
   }
 
-  get addLandBoundary() {
-    return $("#add-your-landboundary");
+  get fullnameValue(){
+    return $('*[data-testid="applicant-full-name-value"]');
   }
 
-  get addLandOwnership() {
-    return $("#add-land-ownership");
+  get roleValue(){
+    return $('*[data-testid="applicant-role-value"]');
   }
 
-  get addMetric() {
-    return $("#add-habitat-information");
+  get emailAddressValue(){
+    return $('*[data-testid="applicant-emailaddress-value"]');
   }
 
-  get addHmmp(){
-    return $("#add-habitat-management");
+  get landBoundaryTypeValue(){
+    return $('*[data-testid="land-boundary-file-type-value"]');
   }
 
-  get addLegalAgreement() {
-    return $("#add-legal-agreement");
+  get landBoundaryFilenameValue(){
+    return $('*[data-testid="land-boundary-file-name-value"]');
   }
 
-  get submitInformation(){
-    return $("#check-your-answers");
+  get gridReferenceValue() {
+    return $('*[data-testid="grid-reference-value"]');
   }
 
-  get detailsStatus() {
-    return $("#add-your-details-status");
+  get hectaresValue(){
+    return $('*[data-testid="area-in-hectares-value"]');
   }
 
-  get landBoundaryStatus() {
-    return $("#add-your-landboundary-status");
+  get landOwnershipFileNameValue(){
+    return $('*[data-testid="proof-land-ownership-file-name-value"]');
   }
 
-  get landOwnershipStatus() {
-    return $("#add-land-ownership-status");
+  get landOwnerNameValue(){
+    return $('*[data-testid="land-owner-names-value"]');
   }
 
-  get metricStatus() {
-    return $("#add-habitat-information-status");
+  get metricFileNameValue(){
+    return $('*[data-testid="metric-file-name-value"]');
   }
 
-  get hmmpStatus(){
-    return $("#add-habitat-management-status");
+  get hmmpFileNameValue(){
+    return $('*[data-testid="habitat-plan-file-name-value"]');
   }
 
-  get legalAgreementStatus() {
-    return $("#add-legal-agreement-status");
+  get hmmpStartDateValue(){
+    return $('*[data-testid="habitat-work-start-date-value"]');
   }
 
-  get submitStatus(){
-    return $("#check-your-answers-status");
+  get hmmp30YearStartDateValue(){
+    return $('*[data-testid="management-monitoring-start-date-value"]');
+  }
+
+  get legalAgreementTypeValue(){
+    return $('*[data-testid="legal-agreement-type-value"]');
+  }
+
+  get legalAgreementFileNameValue(){
+    return $('*[data-testid="legal-agreement-file-name-value"]');
+  }
+
+  get legalPartyNameValue(){
+    return $('*[data-testid="legal-agreement-parties-value"]');
+  }
+
+  get legalPartyRoleValue(){
+    return $('*[data-testid="legal-agreement-parties-value"]');
+  }
+
+  get legalAgreementStartDateValue(){
+    return $('*[data-testid="legal-agreement-start-date-value"]');
+  }
+
+  get confirmAndSubmitBtn(){
+    return $(".govuk-button");
   }
 
   open() {

@@ -9,6 +9,13 @@ class LandBoundaryAddHectares extends Page {
     return $("#hectares");
   }
 
+  
+async addHectares(value) {
+  await (await this.getHectares).clearValue();
+  await this.getHectares.addValue(value);
+  await (await this.continueButton).click();
+}
+
   open() {
     return super.open("land/add-hectares");
   }

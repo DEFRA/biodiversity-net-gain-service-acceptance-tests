@@ -24,17 +24,25 @@ class LandBoundaryChooseUploadOption extends Page {
     return $("#landBoundaryUploadType-2+ .govuk-radios__label");
   }
 
-  async selectUploadTypeGeospatial() {
-    await this.geospatialOption.click();
-  }
-
-  async selectUploadTypeImage() {
-    await this.imageOption.click();
-  }
-
   get path() {
     return "land/choose-land-boundary-upload";
   }
+
+  async chooseLandboundaryFileType(fileType) {
+    switch (fileType) {
+      case "geospatial":
+        await expect(this.geospatialOption).toBeClickable;
+        (await this.geospatialOption).click();
+        break;
+      case "Document or Image":
+        await expect(this.imageOption).toBeClickable;
+        await (await this.imageOption).click();
+        break;
+    }
+  
+    await this.continueButton.click();
+  }
+  
 
   open() {
     return super.open(this.path);
