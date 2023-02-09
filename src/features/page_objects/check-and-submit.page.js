@@ -10,15 +10,15 @@ class CheckAndSubmit extends Page {
   }
 
   get fullnameValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[1]/div[1]/dd[1]");
+    return $('*[data-testid="applicant-full-name-value"]');
   }
 
   get roleValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[1]/div[2]/dd[1]");
+    return $('*[data-testid="applicant-role-value"]');
   }
 
   get emailAddressValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[1]/div[3]/dd[1]");
+    return $('*[data-testid="applicant-emailaddress-value"]');
   }
 
   get landBoundaryTypeValue(){
@@ -26,7 +26,7 @@ class CheckAndSubmit extends Page {
   }
 
   get landBoundaryFilenameValue(){
-    return $('*[data-testid="land-boundary-file-value"]');
+    return $('*[data-testid="land-boundary-file-name-value"]');
   }
 
   get gridReferenceValue() {
@@ -34,51 +34,51 @@ class CheckAndSubmit extends Page {
   }
 
   get hectaresValue(){
-    return $('*[data-testid="hectares-value"]');
+    return $('*[data-testid="area-in-hectares-value"]');
   }
 
   get landOwnershipFileNameValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[3]/div[1]/dd[1]");
+    return $('*[data-testid="proof-land-ownership-file-name-value"]');
   }
 
   get landOwnerNameValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[3]/div[2]/dd[1]");
+    return $('*[data-testid="land-owner-names-value"]');
   }
 
   get metricFileNameValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[4]/div/dd[1]");
+    return $('*[data-testid="metric-file-name-value"]');
   }
 
   get hmmpFileNameValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[5]/div[1]/dd[1]");
+    return $('*[data-testid="habitat-plan-file-name-value"]');
   }
 
   get hmmpStartDateValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[5]/div[2]/dd[1]");
+    return $('*[data-testid="habitat-work-start-date-value"]');
   }
 
   get hmmp30YearStartDateValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[5]/div[3]/dd[1]");
+    return $('*[data-testid="management-monitoring-start-date-value"]');
   }
 
   get legalAgreementTypeValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[1]/dd[1]");
+    return $('*[data-testid="legal-agreement-type-value"]');
   }
 
   get legalAgreementFileNameValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[2]/dd[1]");
+    return $('*[data-testid="legal-agreement-file-name-value"]');
   }
 
   get legalPartyNameValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[3]/dd[1]");
+    return $('*[data-testid="legal-agreement-parties-value"]');
   }
 
   get legalPartyRoleValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[3]/dd[1]");
+    return $('*[data-testid="legal-agreement-parties-value"]');
   }
 
   get legalAgreementStartDateValue(){
-    return $("/html/body/div[1]/main/form/div/div/div/dl[6]/div[4]/dd[1]");
+    return $('*[data-testid="legal-agreement-start-date-value"]');
   }
 
   get confirmAndSubmitBtn(){
