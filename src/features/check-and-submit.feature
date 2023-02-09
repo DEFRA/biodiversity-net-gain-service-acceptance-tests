@@ -55,9 +55,9 @@ Feature: Check and Submit
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
-    @skip()  #skip until ready to run e2e tag with - @e2e
+    @skip()  #skip until ready to run e2e with tag @e2e on pipeline
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
         And I am on the "check-and-submit" page
         When I submit my application
         Then I should be on the "registration-submitted" page
-# And the biodiversity gain site reference should be displayed
+        And the biodiversity gain site reference should be displayed

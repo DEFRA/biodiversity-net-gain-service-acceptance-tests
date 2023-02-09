@@ -38,6 +38,7 @@ const resultsPage = require("../page_objects/eligibility_questions/results.page"
 const managementMonitoringCheckDetailsPage = require("../page_objects/management_plan/check-management-monitoring-details.page");
 const landOwnershipCheckDetailsPage = require("../page_objects/land_ownership/check-ownership-details.page");
 const checkAndSubmitPage = require("../page_objects/check-and-submit.page");
+const confirmationPage = require("../page_objects/registration-submitted.page");
 
 const basePage = legalAgreementUploadPage;
 
@@ -88,7 +89,9 @@ const pages = {
   //task-list
   "register-land-task-list": taskListPage,
   //summary
-  "check-and-submit": checkAndSubmitPage
+  "check-and-submit": checkAndSubmitPage,
+  //Confirmation
+  "registration-submitted": confirmationPage
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {

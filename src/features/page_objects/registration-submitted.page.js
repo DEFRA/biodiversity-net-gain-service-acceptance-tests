@@ -5,8 +5,12 @@ class ConfirmationPage extends Page {
     return "Registration submitted";
   }
 
+  get referenceNumber(){
+    return $('*[data-testid="application-reference-value"]');
+  }
+
   open() {
-    return super.open("/registration-submitted");
+    return super.open("registration-submitted");
   }
 }
 module.exports = new ConfirmationPage();
