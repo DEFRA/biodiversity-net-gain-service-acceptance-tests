@@ -18,7 +18,7 @@
     "devDependencies": {
         "@wdio/dot-reporter": "^7.26.0",
         "@wdio/junit-reporter": "^7.26.0",
-        "@babel/cli": "^7.18.10",
+        "@babel/cli": "^7.20.7",
         "@babel/core": "^7.19.1",
         "@babel/preset-env": "^7.19.1",
         "@babel/register": "^7.18.9",
