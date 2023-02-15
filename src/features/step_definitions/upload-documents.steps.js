@@ -71,7 +71,7 @@ When("I choose and upload a {string} file", async (document) => {
       CheckPage = metricCheckPage;
 
       //metric is .xlsx and .xslm files only
-      filePath = join(__dirname, "../../TestFiles/test_12kb.xlsx");
+      filePath = join(__dirname, "../../TestFiles/test_metric.xlsx");
       break;
     }
     case "land-ownership": {
@@ -161,7 +161,7 @@ Then("I should be able to upload a {string} file with a filetype of {string}", a
       CheckPage = metricCheckPage;
   
       //metric is .xlsx and .xslm files only
-      filePath = join(__dirname, "../../TestFiles/test_12kb." + filetype);
+      filePath = join(__dirname, "../../TestFiles/test_metric." + filetype);
       break;
     }
     case "land-ownership": {
