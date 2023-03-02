@@ -207,14 +207,7 @@ async function confirmApplicantDetails() {
   await (applicantDetailsCheckYourDetailsPage.continueButton).click();
 }
 
-
-When(/^I enter a valid "(.*)" date of "(.*)"$/, async (name, date) => {
-
-  await basePage.enterValidDate(date);
- 
-});
-
-When("I enter an invalid start date of {string}", async (date) => {
+When("I enter a start date of {string}", async (date) => {
   //Todo check are actual invalid dates being sent....
   await basePage.enterValidDate(date);
 

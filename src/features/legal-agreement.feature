@@ -39,18 +39,38 @@ Feature: Legal Agreement
 
     Scenario: BNGP-188 9 I can add a valid legal agreement start date
         Given I navigate to the "legal-agreement-start-date" page
-        When I enter a valid "start" date of "12/10/2022"
+        When I enter a start date of "12/10/2022"
         Then I should be on the "check-legal-agreement-details" page
 
     Scenario Outline: BNGP-188 9 I cannot add an invalid start date
         Given I navigate to the "legal-agreement-start-date" page
-        When I enter an invalid start date of "<date>"
+        When I enter a start date of "<date>"
         Then I should see the error "Start date must be a real date"
         Examples:
             | date       |
             | 31/11/2022 |
             | 29/02/2022 |
             | 30/02/2022 |
+
+    Scenario Outline: BNGP-1851 <page>:  Add Minimum start dates for Legal Agreement and HMMP sections
+        Given I navigate to the "<page>" page
+        When I enter a start date of "29/01/2020"
+        Then I should see the error "Start date must be after 29 January 2020"
+        Examples:
+            | page                       |
+            | legal-agreement-start-date |
+            | monitoring-start-date      |
+            | habitat-works-start-date   |
+
+    Scenario Outline: BNGP-2172 - BUG - All date fields should be able to accept a 1 digit integer for day or month
+        Given I navigate to the "<page>" page
+        When I enter a start date of "15/1/2022"
+        Then I should not see an error message displayed
+        Examples:
+            | page                       |
+            | legal-agreement-start-date |
+            | monitoring-start-date      |
+            | habitat-works-start-date   |
 
     @bug
     Scenario: BNGP-1468 - BUG - Adding another legal party initially clears the role value
