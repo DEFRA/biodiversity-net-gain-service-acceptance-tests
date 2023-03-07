@@ -26,6 +26,7 @@ const landBoundaryCheckGeospatialFilePage = require("../page_objects/land_bounda
 const landBoundaryCheckImageDetailsPage = require("../page_objects/land_boundary/check-land-boundary-details.page");
 const metricUploadPage = require("../page_objects/metric/metric-upload.page");
 const metricCheckPage = require("../page_objects/metric/metric-check.page");
+const metricDisplayBaselinePage = require("../page_objects/metric/check-habitat-baseline.page");
 const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
 const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
 const landownershipRegisteredLandownerPage = require("../page_objects/land_ownership/registered-landowner.page");
@@ -81,6 +82,7 @@ const pages = {
   //metric
   "metric-upload": metricUploadPage,
   "metric-check": metricCheckPage,
+  "metric-display-baseline": metricDisplayBaselinePage,
   //land ownership
   "land-ownership-upload": landOwnershipUploadPage,
   "land-ownership-check": landOwnershipCheckPage,
