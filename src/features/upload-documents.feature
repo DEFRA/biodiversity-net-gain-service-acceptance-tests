@@ -19,7 +19,7 @@ Feature: Upload Documents
             | BNGP-765    | management-plan | habitat-works-start-date    |
             | BNGP-767    | land-boundary   | grid-reference              |
             | BNGP-526    | geospatial      | check-land-boundary-details |
-            | BNGP-524    | metric          | register-land-task-list     |
+            | BNGP-524    | metric          | metric-display-baseline     |
             | BNGP-515    | land-ownership  | add-landowners              |
 
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
