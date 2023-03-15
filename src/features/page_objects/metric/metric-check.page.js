@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class MetricCheck extends Page {
   get titleText() {
-    return "Check your Biodiversity Metric 4.0 file";
+    return "Check the Biodiversity Metric 4.0 file";
   }
 
   get downloadLink() {
