@@ -48,7 +48,7 @@ Feature: Upload Documents
             | BNGP-765    | management-plan | 0.01 MB   |
             | BNGP-767    | land-boundary   | 0.01 MB   |
             | BNGP-526    | geospatial      | 0.0010 MB |
-            | BNGP-524    | metric          | 4.84 MB   |
+            | BNGP-524    | metric          | 5.39 MB   |
             | BNGP-515    | land-ownership  | 0.01 MB   |
 
     Scenario Outline: <jira ticket> 4 - There is a way to choose a different <document> if necessary
