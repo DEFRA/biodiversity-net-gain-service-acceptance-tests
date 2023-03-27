@@ -135,3 +135,12 @@ Feature: Upload Documents
             | geospatial      | zip      |
             | geospatial      | geojson  |
             | geospatial      | gpkg     |
+
+    Scenario Outline: <jira ticket> 8 I cannot upload a <document> file that is larger than the maximum file size (currently 50MB)
+        Given I navigate to the "<document>-upload" page
+        When I choose a "<byteType>" file of "<filesize>" MB or "<byteSize>" Bytes
+        Then I should not be able to upload the file
+        Examples:
+            | jira ticket | document       | byteType | filesize | byteSize |
+            | BNGP-515    | land-ownership | binary   | 50.1     | 52533658 |
+            | BNGP-515    | land-ownership | decimal  | 50.1     | 50100000 |
