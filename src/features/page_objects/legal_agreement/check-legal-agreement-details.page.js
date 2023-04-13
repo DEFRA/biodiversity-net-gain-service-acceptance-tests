@@ -6,7 +6,7 @@ class LegalAgreementCheckDetails extends Page {
   }
 
   get acceptBtn(){
-    return $(".govuk-button");
+    return $("#accept");
   }
 
   get agreementTypeValue(){
