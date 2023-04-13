@@ -24,7 +24,7 @@ Feature: BNGP-785 Grid Reference
         Then I should see the error "<error-msg>"
         And I should see the error and the error summary displayed
         Examples:
-            | grid-reference    | error-msg                                                                                       |
-            | 006233            | Grid reference must start with two letters, followed by only numbers and spaces, like SE 170441 |
-            | TLSSSS            | Grid reference must start with two letters, followed by only numbers and spaces, like SE 170441 |
-            | TL 62551 33315 00 | Grid reference must be between 6 and 14 characters                                              |
+            | grid-reference  | error-msg                                                                                       |
+            | 006233          | Grid reference must start with two letters, followed by only numbers and spaces, like SE 170441 |
+            | TLSSSS          | Grid reference must start with two letters, followed by only numbers and spaces, like SE 170441 |
+            | TL6255133315000 | Grid reference must be between 6 and 14 characters                                              |

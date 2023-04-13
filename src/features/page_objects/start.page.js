@@ -10,7 +10,7 @@ class StartPage extends Page {
   }
 
   get startButton() {
-    return $(".govuk-button");
+    return $("a[href='/land/check-you-can-register']");
   }
 
   get returnToSavedApplicationLink(){
