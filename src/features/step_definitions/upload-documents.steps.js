@@ -296,6 +296,23 @@ When("I choose an empty file", async () => {
   await UploadPage.continueButton.click();
 });
 
+When("I choose a {string} file of {string} MB or {string} Bytes", async (byteType, filesize, byteSize) => {
+  filePath = join(__dirname, "../../TestFiles/test_50.1MB_"+ byteType +".pdf");
+
+  remoteFilePath = await browser.uploadFile(filePath);
+
+  // get the filename for assertions
+  var group = filePath.split("\\");
+  filename = basename(group[group.length - 1]);
+
+  // open the upload url page
+  browser.url(UploadPage.path);
+
+  await UploadPage.govFileUpload.setValue(remoteFilePath);
+  await UploadPage.continueButton.click();
+
+})
+
 Then("The original document should be deleted", async function () {
   return "pending";
 });
