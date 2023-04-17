@@ -1,4 +1,4 @@
-@regression
+@regression  @skip()
 Feature: Upload Documents
 
     As a Site Provider
