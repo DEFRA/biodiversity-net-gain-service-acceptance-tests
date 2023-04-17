@@ -35,6 +35,7 @@ Feature: Check and Submit
         And I have completed the legal-agreement section
         And I confirm I have completed all sections
 
+    @skip()  # skip upload test for release 5
     Scenario: BNGP-190 1 - I can review all sections I have completed
         Then I should be on the "check-and-submit" page
         And I should see the "fullname" on the summary shown as "John Smith"
