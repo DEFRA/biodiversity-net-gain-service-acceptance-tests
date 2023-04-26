@@ -1,4 +1,4 @@
-@regression  @skip()
+@regression
 Feature: Upload Documents
 
     As a Site Provider
@@ -10,7 +10,6 @@ Feature: Upload Documents
         When I choose and upload a "<document>" file
         And I confirm it is the correct file
         Then I should be on the "<destination>" page
-        @e2e
         Examples:
             | jira ticket | document        | destination                 |
             | BNGP-499    | legal-agreement | add-legal-agreement-parties |
@@ -136,6 +135,7 @@ Feature: Upload Documents
             | geospatial      | geojson  |
             | geospatial      | gpkg     |
 
+    # @new
     Scenario Outline: <jira ticket> 8 I cannot upload a <document> file that is larger than the maximum file size (currently 50MB)
         Given I navigate to the "<document>-upload" page
         When I choose a "<byteType>" file of "<filesize>" MB or "<byteSize>" Bytes
