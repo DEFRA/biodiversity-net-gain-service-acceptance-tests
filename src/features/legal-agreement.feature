@@ -78,7 +78,7 @@ Feature: Legal Agreement
         And I add the legal party fullname or organisation as "legal party 1"
         And I add a legal party role as a "landowner"
         When I add another "legal party" as "legal party 2" and confirm
-        And I enter a valid "start" date of "12/10/2024"
+        And I enter a start date of "12/10/2024"
         Then I should be on the "check-legal-agreement-details" page
         And I should see the "parties involved" shown as "legal party 2" on the "check-legal-agreement-details" page
 
