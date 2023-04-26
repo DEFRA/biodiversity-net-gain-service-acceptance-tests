@@ -10,7 +10,7 @@ Feature: Upload Documents
         When I choose and upload a "<document>" file
         And I confirm it is the correct file
         Then I should be on the "<destination>" page
-        @e2e
+
         Examples:
             | jira ticket | document        | destination                 |
             | BNGP-499    | legal-agreement | add-legal-agreement-parties |
