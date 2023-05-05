@@ -1,8 +1,12 @@
 //for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
-import cucumberJson from "wdio-cucumberjs-json-reporter";
+//Import the module https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#use-it-with-multiple-cucumber-html-reporter
+//https://www.npmjs.com/package/cucumber-html-reporter
+import cucumberJson from 'wdio-cucumberjs-json-reporter';
+//https://www.npmjs.com/package/wdio-rerun-service
+import RerunService from 'wdio-rerun-service';
+const { removeSync } = require("fs-extra");
+const dayjs = require('dayjs')
 
-// Import the module https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#use-it-with-multiple-cucumber-html-reporter
-const { removeSync } = require('fs-extra');
 
 exports.config = {
   // Browserstack Config
@@ -68,7 +72,7 @@ exports.config = {
       browserName: "chrome",
       acceptInsecureCerts: true,
       "goog:chromeOptions": {
-        args: ["--headless"],
+         args: ["--headless"],
       },
     },
 
@@ -132,6 +136,10 @@ exports.config = {
     
     "chromedriver",
     // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
+
+    [RerunService, {
+      rerunDataDir: './reports/rerun'
+    }],
   ],
 
   // Framework you want to run your specs with.
@@ -154,16 +162,30 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: [
-    "spec",
-    [
-      "cucumberjs-json",
-      {
-        jsonFolder: ".tmp/cucumberjs-json/",
+    reporters: [
+      'spec',
+      ['cucumberjs-json', {
+        jsonFolder: './reports/cucumberJson/',
+        screenshotsDirectory: '.reports/screenshots/',
+        storescreenshots: true,
         reportFilePerRetry: true,
-      },
+      }],
+      // ['allure', {
+      //     outputDir: './reports/allure-results',
+      //     disableWebdriverStepsReporting: true,
+      //     disableWebdriverScreenshotsReporting: true,
+      // }],
+      //
+      // ['json', {
+      //   outputDir: './reports/json-results'
+      //   }],
+      ['junit', {
+        outputDir: './reports/junit-results',
+        outputFileFormat: function (options) {
+          return `TEST-${options.cid}.xml`
+        }
+      }]
     ],
-  ],
 
   //
   // If you are using Cucumber you need to specify the location of your step definitions.
@@ -189,7 +211,7 @@ exports.config = {
     // <string> (expression) only execute the features or scenarios with tags matching the expression
     tagExpression: "@new",
     // <number> timeout for step definitions
-    timeout: 60000,
+    timeout: 60000, 
     // <boolean> Enable this config to treat undefined definitions as warnings.
     ignoreUndefinedDefinitions: true,
   },
@@ -208,8 +230,8 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    */
   onPrepare: function (config, capabilities) {
-    // Remove the `.tmp/` folder that holds the json and report files
-    removeSync('.tmp/');
+    // Remove the temporary folder that holds the json and report files
+    removeSync("./reports/cucumberJson");
   },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -301,7 +323,7 @@ exports.config = {
     if(error) {
         cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
     }
-   },
+  },
   /**
    *
    * Runs after a Cucumber Scenario.
@@ -312,8 +334,9 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-  // afterScenario: function (world, result, context) {
-  // },
+  afterScenario: async function (world, result, context) {
+    cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+   },
   /**
    *
    * Runs after a Cucumber Feature.
