@@ -5,8 +5,6 @@ import cucumberJson from 'wdio-cucumberjs-json-reporter';
 //https://www.npmjs.com/package/wdio-rerun-service
 import RerunService from 'wdio-rerun-service';
 const { removeSync } = require("fs-extra");
-const dayjs = require('dayjs')
-
 
 exports.config = {
   // Browserstack Config
@@ -380,9 +378,9 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  onComplete: function(exitCode, config, capabilities, results) {
-    // Generate the report when it all tests are done
-  },
+  // onComplete: function(exitCode, config, capabilities, results) {
+  //   // Generate the report when it all tests are done
+  // },
   /**
    * Gets executed when a refresh happens.
    * @param {String} oldSessionId session ID of the old session
