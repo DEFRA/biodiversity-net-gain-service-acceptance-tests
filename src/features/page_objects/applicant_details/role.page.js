@@ -1,42 +1,42 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class ApplicantDetailsRole extends Page {
   get titleText() {
-    return "What is your role?";
+    return 'What is your role?';
   }
 
   get fullName() {
-    return $("#fullName");
+    return $('#fullName');
   }
 
   get ecologist(){
-    return $("#role-1")
+    return $('#role-1')
   }
 
   get landagent(){
-    return $("#role-2");
+    return $('#role-2');
   }
 
   get landOwner(){
-    return $("#role-3");
+    return $('#role-3');
   }
 
   get leaseholder(){
-    return $("#role-4");
+    return $('#role-4');
   }
 
   get other(){
-    return $("#role-5");
+    return $('#role-5');
   }
 
   async confirmRole(role) {
     switch (role) {
-      case "Landowner": {
+      case 'Landowner': {
         await this.landOwner.click();
         await this.continueButton.click();
         break;
       }
-      case "Other": {
+      case 'Other': {
         await this.other.click();
         await this.continueButton.click();
         break;
@@ -45,7 +45,7 @@ class ApplicantDetailsRole extends Page {
   }
   
   open() {
-    return super.open("land/role");
+    return super.open('land/role');
   }
 }
 module.exports = new ApplicantDetailsRole();

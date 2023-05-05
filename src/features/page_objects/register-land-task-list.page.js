@@ -1,76 +1,76 @@
-const Page = require("./page");
+const Page = require('./page');
 
 class TaskList extends Page {
   get titleText() {
-    return "Register land as a biodiversity gain site";
+    return 'Register land as a biodiversity gain site';
   }
 
   get progressText(){
-    return $(".govuk-\\!-margin-bottom-4");
+    return $('.govuk-\\!-margin-bottom-4');
   }
 
   get addDetails() {
-    return $("#add-your-details");
+    return $('#add-your-details');
   }
 
   get addLandBoundary() {
-    return $("#add-your-landboundary");
+    return $('#add-your-landboundary');
   }
 
   get addLandOwnership() {
-    return $("#add-land-ownership");
+    return $('#add-land-ownership');
   }
 
   get addMetric() {
-    return $("#add-habitat-information");
+    return $('#add-habitat-information');
   }
 
   get addHmmp(){
-    return $("#add-habitat-management");
+    return $('#add-habitat-management');
   }
 
   get addLegalAgreement() {
-    return $("#add-legal-agreement");
+    return $('#add-legal-agreement');
   }
 
   get submitInformation(){
-    return $("#check-your-answers");
+    return $('#check-your-answers');
   }
 
   get detailsStatus() {
-    return $("#add-your-details-status");
+    return $('#add-your-details-status');
   }
 
   get landBoundaryStatus() {
-    return $("#add-land-boundary-status");
+    return $('#add-land-boundary-status');
   }
 
   get landOwnershipStatus() {
-    return $("#add-land-ownership-status");
+    return $('#add-land-ownership-status');
   }
 
   get metricStatus() {
-    return $("#add-habitat-information-status");
+    return $('#add-habitat-information-status');
   }
 
   get hmmpStatus(){
-    return $("#add-habitat-management-status");
+    return $('#add-habitat-management-status');
   }
 
   get legalAgreementStatus() {
-    return $("#add-legal-agreement-status");
+    return $('#add-legal-agreement-status');
   }
 
   get submitStatus(){
-    return $("#check-your-answers-status");
+    return $('#check-your-answers-status');
   }
 
   get checkAndSubmitBtn(){
-    return $("a[href='/land/check-and-submit']");
+    return $('a[href="/land/check-and-submit"]');
   }
 
   open() {
-    return super.open("land/register-land-task-list");
+    return super.open('land/register-land-task-list');
   }
 }
 module.exports = new TaskList();

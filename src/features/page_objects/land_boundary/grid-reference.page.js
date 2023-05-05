@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class LandBoundaryGridReference extends Page {
   get titleText() {
-    return "What is the grid reference?";
+    return 'What is the grid reference?';
   }
 
   get getGridRef() {
-    return $("#gridReference");
+    return $('#gridReference');
   }
 
   async addGridReference(gridReference) {
@@ -17,7 +17,7 @@ class LandBoundaryGridReference extends Page {
   }
 
   open() {
-    return super.open("land/add-grid-reference");
+    return super.open('land/add-grid-reference');
   }
 }
 module.exports = new LandBoundaryGridReference();

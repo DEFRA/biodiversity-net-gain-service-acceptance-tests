@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class ManagementPlanUpload extends Page {
   get titleText() {
-    return "Upload the habitat management and monitoring plan";
+    return 'Upload the habitat management and monitoring plan';
   }
 
   get path() {
-    return "land/upload-management-plan";
+    return 'land/upload-management-plan';
   }
 
   open() {

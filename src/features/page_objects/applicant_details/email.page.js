@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class ApplicantDetailsEmail extends Page {
   get titleText() {
-    return "What is your email address?";
+    return 'What is your email address?';
   }
 
   get emailAddress() {
-    return $("#emailAddress");
+    return $('#emailAddress');
   }
 
   async addEmailAddress(value) {
@@ -22,7 +22,7 @@ class ApplicantDetailsEmail extends Page {
   }
   
   open() {
-    return super.open("land/email");
+    return super.open('land/email');
   }
 }
 module.exports = new ApplicantDetailsEmail();

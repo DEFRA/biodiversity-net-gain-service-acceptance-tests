@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class ApplicantDetailsName extends Page {
   get titleText() {
-    return "What is your name?";
+    return 'What is your name?';
   }
 
   get fullName() {
-    return $("#fullName");
+    return $('#fullName');
   }
 
   async addFullName(value) {
@@ -17,7 +17,7 @@ class ApplicantDetailsName extends Page {
   }
  
   open() {
-    return super.open("land/name");
+    return super.open('land/name');
   }
 }
 module.exports = new ApplicantDetailsName();

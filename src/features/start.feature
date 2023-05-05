@@ -6,8 +6,8 @@ Feature: Start Page
     or to complete an unfinished one
 
     Scenario Outline: I can start an application:
-        Given I navigate to the "start" page
-        Then I should see the heading text "<message>"
+        Given I navigate to the 'start' page
+        Then I should see the heading text '<message>'
         Examples:
             | message                                   |
             | Register land as a biodiversity gain site |

@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class ApplicantDetailsCorrectEmail extends Page {
   get titleText() {
-    return "Is this email address correct?";
+    return 'Is this email address correct?';
   }
   
   get emailLabel(){
-    return $("#correctEmail-hint")
+    return $('#correctEmail-hint')
   }
 
   get emailTextbox() {
-    return $("#emailAddress");
+    return $('#emailAddress');
   }
 
   async confirmEmailAddress() {
@@ -19,7 +19,7 @@ class ApplicantDetailsCorrectEmail extends Page {
   }
   
   open() {
-    return super.open("land/email");
+    return super.open('land/email');
   }
 }
 module.exports = new ApplicantDetailsCorrectEmail();

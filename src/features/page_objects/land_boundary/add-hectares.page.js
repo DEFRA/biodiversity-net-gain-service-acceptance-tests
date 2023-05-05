@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class LandBoundaryAddHectares extends Page {
   get titleText() {
-    return "How many hectares is the land?";
+    return 'How many hectares is the land?';
   }
 
   get getHectares() {
-    return $("#hectares");
+    return $('#hectares');
   }
 
   
@@ -17,7 +17,7 @@ async addHectares(value) {
 }
 
   open() {
-    return super.open("land/add-hectares");
+    return super.open('land/add-hectares');
   }
 }
 module.exports = new LandBoundaryAddHectares();

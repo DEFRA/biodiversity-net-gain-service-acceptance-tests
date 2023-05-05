@@ -1,44 +1,44 @@
-const { When, Then } = require("@wdio/cucumber-framework");
-const TaskList = require("../page_objects/register-land-task-list.page");
+const { When, Then } = require('@wdio/cucumber-framework');
+const TaskList = require('../page_objects/register-land-task-list.page');
 
-When("I confirm I have completed all sections", async () => {
+When('I confirm I have completed all sections', async () => {
 
-  await expect(TaskList.submitStatus).toHaveTextContaining("NOT STARTED YET")
+  await expect(TaskList.submitStatus).toHaveTextContaining('NOT STARTED YET')
   await (TaskList.checkAndSubmitBtn).click();
 });
 
-Then("I should see my progress as {string}", async (value) => {
+Then('I should see my progress as {string}', async (value) => {
   await expect(TaskList.progressText).toHaveTextContaining(value);
 })
 
-Then("I should see the {string} section status as {string}", async (task, status)  => {
+Then('I should see the {string} section status as {string}', async (task, status)  => {
     
   switch (task) {
-    case "details": {
+    case 'details': {
       await expect(TaskList.detailsStatus).toHaveTextContaining(status);
       break;
     } 
-    case "land-boundary": {
+    case 'land-boundary': {
         await expect(TaskList.landBoundaryStatus).toHaveTextContaining(status);
       break;
     }
-    case "land-ownership": {
+    case 'land-ownership': {
       await expect(TaskList.landOwnershipStatus).toHaveTextContaining(status);
     break;
     }
-    case "metric": {
+    case 'metric': {
       await expect(TaskList.metricStatus).toHaveTextContaining(status);
     break;
     }
-    case "hmmp": {
+    case 'hmmp': {
       await expect(TaskList.hmmpStatus).toHaveTextContaining(status);
     break;
     }
-    case "legal-agreement": {
+    case 'legal-agreement': {
       await expect(TaskList.legalAgreementStatus).toHaveTextContaining(status);
     break;
     }
-    case "check-and-submit": {
+    case 'check-and-submit': {
       await expect(TaskList.submitStatus).toHaveTextContaining(status);
     break;
     }

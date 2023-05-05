@@ -12,7 +12,7 @@ module.exports = class Page {
   }
 
   get govContinueButton(){
-    return $('*[data-testid="continue"]');
+    return $("*[data-testid='continue']");
   }
 
   get govFileUpload() {

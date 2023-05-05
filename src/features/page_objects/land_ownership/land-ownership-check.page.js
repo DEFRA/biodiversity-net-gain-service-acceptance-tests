@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class LandOwnershipCheck extends Page {
   get titleText() {
-    return "Check the proof of land ownership file";
+    return 'Check the proof of land ownership file';
   }
 
   get downloadLink() {
-    return $("#document-download");
+    return $('#document-download');
   }
 
   open() {
-    return super.open("land/check-ownership-proof-file");
+    return super.open('land/check-ownership-proof-file');
   }
 }
 module.exports = new LandOwnershipCheck();

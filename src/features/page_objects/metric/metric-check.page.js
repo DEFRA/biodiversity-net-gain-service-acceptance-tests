@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class MetricCheck extends Page {
   get titleText() {
-    return "Check the Biodiversity Metric 4.0 file";
+    return 'Check the Biodiversity Metric 4.0 file';
   }
 
   get downloadLink() {
-    return $("#document-download");
+    return $('#document-download');
   }
 
   open() {
-    return super.open("land/check-metric-file");
+    return super.open('land/check-metric-file');
   }
 }
 module.exports = new MetricCheck();

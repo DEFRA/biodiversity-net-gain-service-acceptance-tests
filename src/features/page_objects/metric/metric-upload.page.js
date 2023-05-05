@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class MetricUpload extends Page {
   get titleText() {
-    return "Upload the Biodiversity Metric 4.0 calculations for the biodiversity gain site";
+    return 'Upload the Biodiversity Metric 4.0 calculations for the biodiversity gain site';
   }
 
   get path() {
-    return "land/upload-metric";
+    return 'land/upload-metric';
   }
 
   open() {

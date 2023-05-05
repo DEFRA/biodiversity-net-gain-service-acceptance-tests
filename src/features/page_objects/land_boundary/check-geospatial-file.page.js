@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class LandBoundaryCheckGeospatialFile extends Page {
   get titleText() {
-    return "Check the geospatial file";
+    return 'Check the geospatial file';
   }
 
   get downloadLink() {
-    return $("#document-download");
+    return $('#document-download');
   }
 
   get path() {
-    return "land/check-geospatial-file";
+    return 'land/check-geospatial-file';
   }
 
   open() {

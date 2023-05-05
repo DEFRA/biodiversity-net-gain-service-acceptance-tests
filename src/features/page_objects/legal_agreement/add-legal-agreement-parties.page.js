@@ -1,37 +1,37 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class LegalAgreementAddParties extends Page {
   get titleText() {
-    return "Add all parties listed on the legal agreement";
+    return 'Add all parties listed on the legal agreement';
   }
 
   get addAnotherLegalParty(){
-    return $("#addOtherOrganisation");
+    return $('#addOtherOrganisation');
   }
 
   get removeLegalParty2(){
-  return $("#remove1");
+  return $('#remove1');
   }
 
   get legalPartyFullName() {
-    return $("[id='organisation[0][organisationName]']");
+    return $('[id="organisation[0][organisationName]"]');
   }
 
   get legalPartyFullName2() {
-    return $("[id='organisation[1][organisationName]']");
+    return $('[id="organisation[1][organisationName]"]');
   }
     
   get legalPartyRole(){
-    return $("[id='landOwner[0][role]']");
+    return $('[id="landOwner[0][role]"]');
   }
 
   get otherLegalPartyRoleOption(){
-    return $("[id='other[0][role]'");
+    return $('[id="other[0][role]"');
   }
 
   get legalPartyRole2(){
     //Todo: switch for changing role
-    return $("[id='organisation[1][role]']");
+    return $('[id="organisation[1][role]"]');
   }
 
   async addLegalPartyRole(role) {
@@ -41,7 +41,7 @@ class LegalAgreementAddParties extends Page {
   }
 
   open() {
-    return super.open("land/add-legal-agreement-parties");
+    return super.open('land/add-legal-agreement-parties');
   }
 }
 module.exports = new LegalAgreementAddParties();

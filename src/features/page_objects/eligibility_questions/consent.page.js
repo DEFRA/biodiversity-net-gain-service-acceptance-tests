@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class ConsentPage extends Page {
   get titleText() {
-    return "Do you have consent to register the biodiversity gain site?";
+    return 'Do you have consent to register the biodiversity gain site?';
   }
 
   open() {
-    return super.open("land/consent");
+    return super.open('land/consent');
   }
 }
 module.exports = new ConsentPage();

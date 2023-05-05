@@ -1,36 +1,36 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class CheckYourDetails extends Page {
   get titleText() {
-    return "Check your details";
+    return 'Check your details';
   }
 
   get fullnameValue(){
-    return $("#fullname-value");
+    return $('#fullname-value');
   }
 
   get roleValue(){
-    return $("#role-value");
+    return $('#role-value');
   }
 
   get emailValue(){
-    return $("#email-value");
+    return $('#email-value');
   }
 
   get changeFullname(){
-    return $("#fullname");
+    return $('#fullname');
   }
 
   get changeRole(){
-    return $("#role");
+    return $('#role');
   }
 
   get changeEmail(){
-    return $("#email");
+    return $('#email');
   }
 
   open() {
-    return super.open("land/check-your-details");
+    return super.open('land/check-your-details');
   }
 }
 module.exports = new CheckYourDetails();

@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class LegalAgreementCheckFile extends Page {
   get titleText() {
-    return "Check the legal agreement file";
+    return 'Check the legal agreement file';
   }
 
   get downloadLink() {
-    return $("#document-download");
+    return $('#document-download');
   }
 
   open() {
-    return super.open("land/check-legal-agreement-file");
+    return super.open('land/check-legal-agreement-file');
   }
 }
 module.exports = new LegalAgreementCheckFile();

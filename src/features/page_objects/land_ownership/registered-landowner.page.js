@@ -1,20 +1,20 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class RegisteredLandowner extends Page {
   get titleText() {
-    return "Are you the only registered landowner?";
+    return 'Are you the only registered landowner?';
   }
   
   get onlyLandownerRadio(){
-    return $("#landownerOnly");
+    return $('#landownerOnly');
   }
 
   get otherLandownersRadio(){
-    return $("#landownerOnly-2");
+    return $('#landownerOnly-2');
   }
 
   get path() {
-    return "land/registered-landowner";
+    return 'land/registered-landowner';
   }
 
   open() {

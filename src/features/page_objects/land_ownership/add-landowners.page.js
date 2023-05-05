@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class AddLandowners extends Page {
   get titleText() {
-    return "Add all the registered landowners";
+    return 'Add all the registered landowners';
   }
 
   get path() {
-    return "land/add-landowners";
+    return 'land/add-landowners';
   }
 
   open() {

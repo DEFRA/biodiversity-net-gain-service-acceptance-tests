@@ -1,144 +1,144 @@
-const { Given, When, Then } = require("@wdio/cucumber-framework");
-const startPage = require("../page_objects/start.page");
-const checkYouCanRegisterPage = require("../page_objects/eligibility_questions/check-you-can-register.page");
-const siteInEnglandPage = require("../page_objects/eligibility_questions/site-in-england.page");
-const cannotContinuePage = require("../page_objects/eligibility_questions/cannot-continue.page");
-const applicantDetailsNamePage = require("../page_objects/applicant_details/name.page");
-const applicantDetailsRolePage = require("../page_objects/applicant_details/role.page");
-const applicantDetailsEmailPage = require("../page_objects/applicant_details/email.page");
-const applicantDetailsCorrectEmailPage = require("../page_objects/applicant_details/correct-email.page");
-const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_details/check-your-details.page");
-const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
-const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
-const legalAgreementUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement.page");
-const legalAgreementCheckFilePage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
-const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page");
-const legalAgreementStartDatePage = require("../page_objects/legal_agreement/legal-agreement-start-date.page");
-const legalAgreementCheckDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page");
-const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
-const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
-const taskListPage = require("../page_objects/register-land-task-list.page");
-const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundary/choose-land-boundary-upload.page");
-const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/upload-land-boundary.page");
-const landBoundaryUploadGeospatialFilePage = require("../page_objects/land_boundary/upload-geospatial-file.page");
-const landBoundaryCheckImageFilePage = require("../page_objects/land_boundary/check-land-boundary-file.page");
-const landBoundaryCheckGeospatialFilePage = require("../page_objects/land_boundary/check-geospatial-file.page")
-const landBoundaryCheckImageDetailsPage = require("../page_objects/land_boundary/check-land-boundary-details.page");
-const metricUploadPage = require("../page_objects/metric/metric-upload.page");
-const metricCheckPage = require("../page_objects/metric/metric-check.page");
-const metricDisplayBaselinePage = require("../page_objects/metric/check-habitat-baseline.page");
-const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
-const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
-const landownershipRegisteredLandownerPage = require("../page_objects/land_ownership/registered-landowner.page");
-const landownershipAddLandowners = require("../page_objects/land_ownership/add-landowners.page");
-const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
-const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
-const habitatWorksStartDatePage = require("../page_objects/management_plan/habitat-works-start-date.page");
-const monitoringStartDatePage = require("../page_objects/management_plan/monitoring-start-date.page");
-const resultsPage = require("../page_objects/eligibility_questions/results.page");
-const managementMonitoringCheckDetailsPage = require("../page_objects/management_plan/check-management-monitoring-details.page");
-const landOwnershipCheckDetailsPage = require("../page_objects/land_ownership/check-ownership-details.page");
-const checkAndSubmitPage = require("../page_objects/check-and-submit.page");
-const confirmationPage = require("../page_objects/registration-submitted.page");
+const { Given, When, Then } = require('@wdio/cucumber-framework');
+const startPage = require('../page_objects/start.page');
+const checkYouCanRegisterPage = require('../page_objects/eligibility_questions/check-you-can-register.page');
+const siteInEnglandPage = require('../page_objects/eligibility_questions/site-in-england.page');
+const cannotContinuePage = require('../page_objects/eligibility_questions/cannot-continue.page');
+const applicantDetailsNamePage = require('../page_objects/applicant_details/name.page');
+const applicantDetailsRolePage = require('../page_objects/applicant_details/role.page');
+const applicantDetailsEmailPage = require('../page_objects/applicant_details/email.page');
+const applicantDetailsCorrectEmailPage = require('../page_objects/applicant_details/correct-email.page');
+const applicantDetailsCheckYourDetailsPage = require('../page_objects/applicant_details/check-your-details.page');
+const legalAgreementTypePage = require('../page_objects/legal_agreement/legal-agreement-type.page');
+const legalAgreementNeedpage = require('../page_objects/legal_agreement/need-legal-agreement.page');
+const legalAgreementUploadPage = require('../page_objects/legal_agreement/upload-legal-agreement.page');
+const legalAgreementCheckFilePage = require('../page_objects/legal_agreement/check-legal-agreement-file.page');
+const legalAgreementAddPartiesPage = require('../page_objects/legal_agreement/add-legal-agreement-parties.page');
+const legalAgreementStartDatePage = require('../page_objects/legal_agreement/legal-agreement-start-date.page');
+const legalAgreementCheckDetailsPage = require('../page_objects/legal_agreement/check-legal-agreement-details.page');
+const managementPlanUploadPage = require('../page_objects/management_plan/management-plan-upload.page');
+const managementPlanCheckPage = require('../page_objects/management_plan/management-plan-check.page');
+const taskListPage = require('../page_objects/register-land-task-list.page');
+const landBoundaryChooseUploadOptionPage = require('../page_objects/land_boundary/choose-land-boundary-upload.page');
+const landBoundaryUploadImageFilePage = require('../page_objects/land_boundary/upload-land-boundary.page');
+const landBoundaryUploadGeospatialFilePage = require('../page_objects/land_boundary/upload-geospatial-file.page');
+const landBoundaryCheckImageFilePage = require('../page_objects/land_boundary/check-land-boundary-file.page');
+const landBoundaryCheckGeospatialFilePage = require('../page_objects/land_boundary/check-geospatial-file.page')
+const landBoundaryCheckImageDetailsPage = require('../page_objects/land_boundary/check-land-boundary-details.page');
+const metricUploadPage = require('../page_objects/metric/metric-upload.page');
+const metricCheckPage = require('../page_objects/metric/metric-check.page');
+const metricDisplayBaselinePage = require('../page_objects/metric/check-habitat-baseline.page');
+const landOwnershipUploadPage = require('../page_objects/land_ownership/land-ownership-upload.page');
+const landOwnershipCheckPage = require('../page_objects/land_ownership/land-ownership-check.page');
+const landownershipRegisteredLandownerPage = require('../page_objects/land_ownership/registered-landowner.page');
+const landownershipAddLandowners = require('../page_objects/land_ownership/add-landowners.page');
+const gridReferencePage = require('../page_objects/land_boundary/grid-reference.page');
+const addHectaresPage = require('../page_objects/land_boundary/add-hectares.page');
+const habitatWorksStartDatePage = require('../page_objects/management_plan/habitat-works-start-date.page');
+const monitoringStartDatePage = require('../page_objects/management_plan/monitoring-start-date.page');
+const resultsPage = require('../page_objects/eligibility_questions/results.page');
+const managementMonitoringCheckDetailsPage = require('../page_objects/management_plan/check-management-monitoring-details.page');
+const landOwnershipCheckDetailsPage = require('../page_objects/land_ownership/check-ownership-details.page');
+const checkAndSubmitPage = require('../page_objects/check-and-submit.page');
+const confirmationPage = require('../page_objects/registration-submitted.page');
 
 const basePage = legalAgreementUploadPage;
 
 const pages = {
   start: startPage,
   //eligibility questions
-  "check-you-can-register": checkYouCanRegisterPage,
-  "site-in-england": siteInEnglandPage,
-  "cannot-continue": cannotContinuePage,
-  "results": resultsPage,
+  'check-you-can-register': checkYouCanRegisterPage,
+  'site-in-england': siteInEnglandPage,
+  'cannot-continue': cannotContinuePage,
+  'results': resultsPage,
   //applicant details
-  "applicant-name": applicantDetailsNamePage,
-  "role": applicantDetailsRolePage,
-  "email": applicantDetailsEmailPage,
-  "correct-email": applicantDetailsCorrectEmailPage,
-  "check-your-details": applicantDetailsCheckYourDetailsPage,
+  'applicant-name': applicantDetailsNamePage,
+  'role': applicantDetailsRolePage,
+  'email': applicantDetailsEmailPage,
+  'correct-email': applicantDetailsCorrectEmailPage,
+  'check-your-details': applicantDetailsCheckYourDetailsPage,
   //legal agreement
-  "legal-agreement-upload": legalAgreementUploadPage,
-  "legal-agreement-check": legalAgreementCheckFilePage,
-  "legal-agreement-type": legalAgreementTypePage,
-  "need-legal-agreement": legalAgreementNeedpage,
-  "add-legal-agreement-parties": legalAgreementAddPartiesPage,
-  "legal-agreement-start-date": legalAgreementStartDatePage,
-  "check-legal-agreement-details": legalAgreementCheckDetailsPage,
+  'legal-agreement-upload': legalAgreementUploadPage,
+  'legal-agreement-check': legalAgreementCheckFilePage,
+  'legal-agreement-type': legalAgreementTypePage,
+  'need-legal-agreement': legalAgreementNeedpage,
+  'add-legal-agreement-parties': legalAgreementAddPartiesPage,
+  'legal-agreement-start-date': legalAgreementStartDatePage,
+  'check-legal-agreement-details': legalAgreementCheckDetailsPage,
   //hmmp
-  "management-plan-upload": managementPlanUploadPage,
-  "management-plan-check": managementPlanCheckPage,
-  "habitat-works-start-date": habitatWorksStartDatePage,
-  "monitoring-start-date": monitoringStartDatePage,
+  'management-plan-upload': managementPlanUploadPage,
+  'management-plan-check': managementPlanCheckPage,
+  'habitat-works-start-date': habitatWorksStartDatePage,
+  'monitoring-start-date': monitoringStartDatePage,
   //Land boundary 
-  "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
-  "land-boundary-upload": landBoundaryUploadImageFilePage,
-  "geospatial-upload": landBoundaryUploadGeospatialFilePage,
-  "check-geospatial-file": landBoundaryCheckGeospatialFilePage,
-  "land-boundary-check": landBoundaryCheckImageFilePage,
-  "geospatial-check": landBoundaryCheckGeospatialFilePage,
-  "check-land-boundary-details": landBoundaryCheckImageDetailsPage,
-  "grid-reference": gridReferencePage,
-  "add-hectares": addHectaresPage,
+  'choose-land-boundary-upload': landBoundaryChooseUploadOptionPage,
+  'land-boundary-upload': landBoundaryUploadImageFilePage,
+  'geospatial-upload': landBoundaryUploadGeospatialFilePage,
+  'check-geospatial-file': landBoundaryCheckGeospatialFilePage,
+  'land-boundary-check': landBoundaryCheckImageFilePage,
+  'geospatial-check': landBoundaryCheckGeospatialFilePage,
+  'check-land-boundary-details': landBoundaryCheckImageDetailsPage,
+  'grid-reference': gridReferencePage,
+  'add-hectares': addHectaresPage,
   //metric
-  "metric-upload": metricUploadPage,
-  "metric-check": metricCheckPage,
-  "metric-display-baseline": metricDisplayBaselinePage,
+  'metric-upload': metricUploadPage,
+  'metric-check': metricCheckPage,
+  'metric-display-baseline': metricDisplayBaselinePage,
   //land ownership
-  "land-ownership-upload": landOwnershipUploadPage,
-  "land-ownership-check": landOwnershipCheckPage,
-  "registered-landowner": landownershipRegisteredLandownerPage,
-  "add-landowners": landownershipAddLandowners,
+  'land-ownership-upload': landOwnershipUploadPage,
+  'land-ownership-check': landOwnershipCheckPage,
+  'registered-landowner': landownershipRegisteredLandownerPage,
+  'add-landowners': landownershipAddLandowners,
   //task-list
-  "register-land-task-list": taskListPage,
+  'register-land-task-list': taskListPage,
   //summary
-  "check-and-submit": checkAndSubmitPage,
+  'check-and-submit': checkAndSubmitPage,
   //Confirmation
-  "registration-submitted": confirmationPage
+  'registration-submitted': confirmationPage
 };
 
-Given(/^I navigate to the "(.*)" page$/, async (page) => {
+Given(/^I navigate to the '(.*)' page$/, async (page) => {
 
   // open the page requested from the list of pages
   page = page.toLowerCase();
   await pages[page].open();
 
-  await $("h1").waitForExist({ timeout: 5000 });
+  await $('h1').waitForExist({ timeout: 5000 });
 
   // assert against the page title
   expect(await browser.getTitle()).toContain(pages[page].titleText);
 });
 
-Then(/^I (?:am|should be) (?:on|returned to) the "(.*)" page$/, async (page) => {
-  await $("h1").waitForExist({ timeout: 5000 });
+Then(/^I (?:am|should be) (?:on|returned to) the '(.*)' page$/, async (page) => {
+  await $('h1').waitForExist({ timeout: 5000 });
 
   // assert against the page title
   expect(await browser.getTitle()).toContain(pages[page].titleText);
 });
 
-When("I continue without an action", async () => {
+When('I continue without an action', async () => {
   // click continue
   await basePage.continueButton.click();
 });
 
-When("I select {string} and continue", async (option) => {
+When('I select {string} and continue', async (option) => {
 
   switch (option) {
-    case "Conservation covenant": {
+    case 'Conservation covenant': {
       await legalAgreementTypePage.conservationCovenant.click();
       await basePage.continueButton.click();
       break;
     }
-    case "Planning obligation": {
+    case 'Planning obligation': {
       await legalAgreementTypePage.planningObligation.click();
       await basePage.continueButton.click();
       break;
     }
-    case "I do not have a legal agreement": {
+    case 'I do not have a legal agreement': {
       await legalAgreementTypePage.doNotHaveDocument.click();
       await basePage.continueButton.click();
       break;
     }
-    case "Other role": {
+    case 'Other role': {
       (await legalAgreementAddPartiesPage.otherLegalPartyRoleOption).click();
       await basePage.continueButton.click();
       break;
@@ -146,32 +146,32 @@ When("I select {string} and continue", async (option) => {
   }
 });
 
-When("I confirm my role as a {string}", async (role) => {
+When('I confirm my role as a {string}', async (role) => {
   await applicantDetailsRolePage.confirmRole(role);  
 })
 
-When("I confirm the check {string} details are correct", async (check) => {
+When('I confirm the check {string} details are correct', async (check) => {
   //confirm check your answer pages
   switch (check) {
     //applicant details
-    case "applicant":{
+    case 'applicant':{
         await confirmApplicantDetails();
       break;
     }
-    case "land boundary":{
+    case 'land boundary':{
         await confirmLandBoundaryDetails();
       break;
     }
 
-    case "land ownership":{
+    case 'land ownership':{
         await confirmLandOwnershipDetails();
       break;
     }
-    case "management plan":{
+    case 'management plan':{
         await confirmManagementPlanDetails();
       break;
     }
-    case "legal agreement":{
+    case 'legal agreement':{
         await confirmLegalAgreementDetails();
       break;
     }
@@ -209,22 +209,22 @@ async function confirmApplicantDetails() {
   await (applicantDetailsCheckYourDetailsPage.continueButton).click();
 }
 
-When("I enter a start date of {string}", async (date) => {
+When('I enter a start date of {string}', async (date) => {
   //Todo check are actual invalid dates being sent....
   await basePage.enterValidDate(date);
 
 });
 
-When("I choose to change the {string} answer on the {string} page", async (option, page) => {
+When('I choose to change the {string} answer on the {string} page', async (option, page) => {
   switch (option) {
-    case "fullname": {
+    case 'fullname': {
       //switch to change the fullname for the applicant details cya page or the summary page (cya's)
       switch (page) {
-        case "check-your-details":{
+        case 'check-your-details':{
           await applicantDetailsCheckYourDetailsPage.changeFullname.click();
           break;
         }
-        case "check-and-submit":{
+        case 'check-and-submit':{
           await checkAndSubmitPage.changeFullname.click();
           break;
         }
@@ -234,16 +234,16 @@ When("I choose to change the {string} answer on the {string} page", async (optio
     }
       break;
     }
-    case "role": {
+    case 'role': {
       await applicantDetailsCheckYourDetailsPage.changeRole.click();
       break;
     }
-    case "email address": {
+    case 'email address': {
       await applicantDetailsCheckYourDetailsPage.changeEmail.click();
       break;
     }
     //legal agreement 
-    case "parties involved": {
+    case 'parties involved': {
       await legalAgreementCheckDetailsPage.changeParties.click();
       break;
     }
@@ -253,10 +253,10 @@ When("I choose to change the {string} answer on the {string} page", async (optio
   }
 });
 
-When("I update the {string} to {string}", async (option, value) => {
+When('I update the {string} to {string}', async (option, value) => {
     switch (option) {
       //applicant details
-      case "fullname": {
+      case 'fullname': {
         // clear the original value
         await (applicantDetailsNamePage.fullName).clearValue();
         
@@ -266,12 +266,12 @@ When("I update the {string} to {string}", async (option, value) => {
         await (basePage.continueButton).click();
         break;
       }
-      case "role": {
+      case 'role': {
         await applicantDetailsCheckYourDetailsPage.changeRole.click();
         await (basePage.continueButton).click();
         break;
       }
-      case "email address": {
+      case 'email address': {
 
         await applicantDetailsEmailPage.addEmailAddress(value);
 
@@ -288,8 +288,8 @@ When("I update the {string} to {string}", async (option, value) => {
   }
 )
 
-When("I add another {string} as {string} and confirm", async (option, value) => {
-  if(option == "legal party") {
+When('I add another {string} as {string} and confirm', async (option, value) => {
+  if(option == 'legal party') {
     await legalAgreementAddPartiesPage.addAnotherLegalParty.click();
     await (legalAgreementAddPartiesPage.legalPartyFullName2).addValue(value);
     //Todo: role currently defaults to landowner
@@ -298,31 +298,31 @@ When("I add another {string} as {string} and confirm", async (option, value) => 
   }
 })
 
-Then("I should see the error {string}", async (message) => {
+Then('I should see the error {string}', async (message) => {
     // check errorMsg text
     await expect(basePage.errorMsg).toHaveTextContaining(message);
 });
 
-Then("I should see the error and the error summary displayed", async () => {
+Then('I should see the error and the error summary displayed', async () => {
   // check on error an errorMsg and error summary is displayed following Gov Design system guidelines
   // https://design-system.service.gov.uk/components/error-summary/
   await expect(basePage.errorMsg).toBeDisplayed();
   await expect(basePage.errorMsgSummary).toBeDisplayed();
 });
 
-Then("I should not see an error message displayed", async () => {
+Then('I should not see an error message displayed', async () => {
   await expect(basePage.errorMsg).not.toBeDisplayed();
   await expect(basePage.errorMsgSummary).not.toBeDisplayed();
   
 });
 
-Then("the other role value should not be {string}", async (input) => {
+Then('the other role value should not be {string}', async (input) => {
   await expect(basePage.otherRoleTextBox).not.toHaveValue(input);
 });
 
-Then("I can choose to remove the other {string}", async (option) => {
+Then('I can choose to remove the other {string}', async (option) => {
 
-  if(option == "legal party") {
+  if(option == 'legal party') {
 
     await (legalAgreementAddPartiesPage.removeLegalParty2).click();
     await expect(legalAgreementAddPartiesPage.legalPartyName2).not.toExist();
@@ -330,39 +330,39 @@ Then("I can choose to remove the other {string}", async (option) => {
   }
 })
 
-Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page$/, async (option, value, page) => {
+Then(/^I should see the '(.*)' (?:shown as|updated to) '(.*)' on the '(.*)' page$/, async (option, value, page) => {
  
   switch(page){
-    case "check-your-details": {
+    case 'check-your-details': {
       //Todo: check your details statement could add a function to aid readability
       switch (option) {
-        case "fullname": {
+        case 'fullname': {
           await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).toHaveTextContaining(value);
           break;
         }
-        case "role": {
+        case 'role': {
           await expect(applicantDetailsCheckYourDetailsPage.roleValue).toHaveTextContaining(value, {ignoreCase:true, asString:true});
           break;
         }
-        case "email address": {
+        case 'email address': {
           await expect (applicantDetailsCheckYourDetailsPage.emailValue).toHaveTextContaining(value);
           break;
         }
       }
       break;
     }
-    case "check-legal-agreement-details": {    
+    case 'check-legal-agreement-details': {    
       switch (option) {
-        case "parties involved": {
+        case 'parties involved': {
           await expect(legalAgreementCheckDetailsPage.legalPartiesValue).toHaveTextContaining(value);
           break;
         }
       }
       break;
     }  
-    case "check-and-submit": {    
+    case 'check-and-submit': {    
       switch (option) {
-        case "fullname": {
+        case 'fullname': {
           await expect(checkAndSubmitPage.fullnameValue).toHaveTextContaining(value);
           break;
         }

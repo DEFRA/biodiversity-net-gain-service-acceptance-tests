@@ -6,22 +6,22 @@ Feature: BNGP-785 Grid Reference
     So that the Operator is able to identify its location
 
     Background:
-        Given I navigate to the "grid-reference" page
+        Given I navigate to the 'grid-reference' page
 
     Scenario: BNGP-785 1 Grid reference cannot be blank
         When I continue without an action
-        Then I should see the error "Enter the grid reference"
+        Then I should see the error 'Enter the grid reference'
 
     Scenario Outline: BNGP-785 2 I can add a valid grid reference
-        When I add a valid grid reference "<grid-reference>"
-        Then I should be on the "add-hectares" page
+        When I add a valid grid reference '<grid-reference>'
+        Then I should be on the 'add-hectares' page
         Examples:
             | grid-reference |
             | TL6233         |
 
-    Scenario Outline: BNGP-785 2 I cannot enter an invalid grid reference "<grid-reference>"
-        When I add an invalid grid reference "<grid-reference>"
-        Then I should see the error "<error-msg>"
+    Scenario Outline: BNGP-785 2 I cannot enter an invalid grid reference '<grid-reference>'
+        When I add an invalid grid reference '<grid-reference>'
+        Then I should see the error '<error-msg>'
         And I should see the error and the error summary displayed
         Examples:
             | grid-reference  | error-msg                                                                                       |

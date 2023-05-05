@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class LegalAgreementUpload extends Page {
   get titleText() {
-    return "Upload the legal agreement";
+    return 'Upload the legal agreement';
   }
 
   get path() {
-    return "land/upload-legal-agreement";
+    return 'land/upload-legal-agreement';
   }
 
   open() {

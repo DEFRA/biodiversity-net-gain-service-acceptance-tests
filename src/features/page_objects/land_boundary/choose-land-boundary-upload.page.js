@@ -1,40 +1,40 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class LandBoundaryChooseUploadOption extends Page {
   get titleText() {
-    return "Choose how to add the land boundary details for the biodiversity gain site";
+    return 'Choose how to add the land boundary details for the biodiversity gain site';
   }
 
   get geospatialOption() {
     // location-options
-    return $("#landBoundaryUploadType");
+    return $('#landBoundaryUploadType');
   }
 
   get imageOption() {
 
     // location-options-2
-    return $("#landBoundaryUploadType-2");
+    return $('#landBoundaryUploadType-2');
   }
 
   get geospatialOptionLbl() {
-    return $("#landBoundaryUploadType+ .govuk-radios__label");
+    return $('#landBoundaryUploadType+ .govuk-radios__label');
   }
 
   get imageOptionLbl() {
-    return $("#landBoundaryUploadType-2+ .govuk-radios__label");
+    return $('#landBoundaryUploadType-2+ .govuk-radios__label');
   }
 
   get path() {
-    return "land/choose-land-boundary-upload";
+    return 'land/choose-land-boundary-upload';
   }
 
   async chooseLandboundaryFileType(fileType) {
     switch (fileType) {
-      case "geospatial":
+      case 'geospatial':
         await expect(this.geospatialOption).toBeClickable;
         (await this.geospatialOption).click();
         break;
-      case "Document or Image":
+      case 'Document or Image':
         await expect(this.imageOption).toBeClickable;
         await (await this.imageOption).click();
         break;

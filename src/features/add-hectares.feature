@@ -6,16 +6,16 @@ Feature: BNGP-786 Enter Area in hectares
     So the Operator can identify the full size of the site
 
     Background:
-        Given I navigate to the "add-hectares" page
+        Given I navigate to the 'add-hectares' page
 
     Scenario Outline: I can add the total hectares for my land
-        When I add total hectares as "<hectares>"
-        Then I should be on the "check-land-boundary-details" page
+        When I add total hectares as '<hectares>'
+        Then I should be on the 'check-land-boundary-details' page
         Examples:
             | hectares |
             | 1231.11  |
 
     Scenario: BNGP-786 1 I cannot add a total hectares value of 0
-        When I add total hectares as "0"
-        Then I should see the error "Size of the land must be more than 0.00 hectares"
+        When I add total hectares as '0'
+        Then I should see the error 'Size of the land must be more than 0.00 hectares'
         And I should see the error and the error summary displayed

@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page');
 
 class LandOwnershipUpload extends Page {
   get titleText() {
-    return "Upload proof of land ownership";
+    return 'Upload proof of land ownership';
   }
 
   get path() {
-    return "land/upload-ownership-proof";
+    return 'land/upload-ownership-proof';
   }
 
   open() {
