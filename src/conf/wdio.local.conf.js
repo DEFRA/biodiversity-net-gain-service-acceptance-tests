@@ -4,7 +4,7 @@
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
 //https://www.npmjs.com/package/wdio-rerun-service
 import RerunService from 'wdio-rerun-service';
-const { removeSync } = require("fs-extra");
+const { removeSync } = require('fs-extra');
 
 exports.config = {
   // Browserstack Config
@@ -16,7 +16,7 @@ exports.config = {
   // Runner Configuration
   // ====================
   //
-  runner: "local",
+  runner: 'local',
   //
   // ==================
   // Specify Test Files
@@ -33,7 +33,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./src/features/**/*.feature"],
+  specs: ['./src/features/**/*.feature'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -67,10 +67,10 @@ exports.config = {
       // 5 instances get started at a time.
       maxInstances: 10,
       //
-      browserName: "chrome",
+      browserName: 'chrome',
       acceptInsecureCerts: true,
-      "goog:chromeOptions": {
-         args: ["--headless"],
+      'goog:chromeOptions': {
+         args: ['--headless'],
       },
     },
 
@@ -86,7 +86,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: "error",
+  logLevel: 'error',
   //
   // Set specific log levels per logger
   // loggers:
@@ -111,7 +111,7 @@ exports.config = {
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
 
-  baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
+  baseUrl: process.env.SERVICE_URL || 'http://localhost:3000',
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -132,8 +132,8 @@ exports.config = {
   services: [
     // //if this is uncommented, don't need to run selenium-standalone start separately
     
-    "chromedriver",
-    // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
+    'chromedriver',
+    // ['browserstack', { browserstackLocal: true, preferScenarioName: true }],
 
     [RerunService, {
       rerunDataDir: './reports/rerun'
@@ -146,7 +146,7 @@ exports.config = {
   //
   // Make sure you have the wdio adapter package for the specific framework installed
   // before running any tests.
-  framework: "cucumber",
+  framework: 'cucumber',
   //
   // The number of times to retry the entire specfile when it fails as a whole
   // specFileRetries: 1,
@@ -192,7 +192,7 @@ exports.config = {
     require: ["./src/features/step_definitions/**/*.js"],
     // <boolean> show full backtrace for errors
     backtrace: true,
-    // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+    // <string[]> ('extension:module') require files with the given EXTENSION after requiring MODULE (repeatable)
     requireModule: ["@babel/register"],
     // <boolean> invoke formatters without executing steps
     dryRun: false,
@@ -229,7 +229,7 @@ exports.config = {
    */
   onPrepare: function (config, capabilities) {
     // Remove the temporary folder that holds the json and report files
-    removeSync("./reports/cucumberJson");
+    removeSync('./reports/cucumberJson');
   },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -268,11 +268,11 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-   before: function () {
-      browser.setCookies([
-        {name: 'seen_cookie_message', value: 'true'}
-  ])
-   },
+  //  before: function () {
+  //     browser.setCookies([
+  //       {name: 'seen_cookie_message', value: 'true'}
+  // ])
+  //  },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
