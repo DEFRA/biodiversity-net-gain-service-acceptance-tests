@@ -6,7 +6,14 @@ Feature: BNGP-785 Grid Reference
     So that the Operator is able to identify its location
 
     Background:
-        Given I navigate to the "grid-reference" page
+        Given I navigate to the "start" page
+        And I start my registration
+        # eligibility
+        And I have everything I need to start my biodiversity gain site registration
+        # applicant details
+        And I have completed the applicant details section
+        # grid reference page
+        And I navigate to the "grid-reference" page
 
     Scenario: BNGP-785 1 Grid reference cannot be blank
         When I continue without an action
