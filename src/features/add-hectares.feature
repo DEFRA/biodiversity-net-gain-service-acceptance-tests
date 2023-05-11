@@ -6,7 +6,15 @@ Feature: BNGP-786 Enter Area in hectares
     So the Operator can identify the full size of the site
 
     Background:
-        Given I navigate to the "add-hectares" page
+    Background:
+        Given I navigate to the "start" page
+        And I start my registration
+        # eligibility
+        And I have everything I need to start my biodiversity gain site registration
+        # applicant details
+        And I have completed the applicant details section
+        # grid hectares page
+        And I navigate to the "add-hectares" page
 
     Scenario Outline: I can add the total hectares for my land
         When I add total hectares as "<hectares>"

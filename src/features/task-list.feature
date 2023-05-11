@@ -5,8 +5,16 @@ Feature: Task List Page
     I need to see the status of the sections I need to complete
     So that I can track the progress of my registration.
 
+    Background:
+        Given I navigate to the "start" page
+        And I start my registration
+        # eligibility
+        And I have everything I need to start my biodiversity gain site registration
+        # applicant details
+        And I have completed the applicant details section
+
     Scenario Outline: The task list page should show the correct status of tasks to complete
-        Given I navigate to the "register-land-task-list" page
+        When I navigate to the "register-land-task-list" page
         And all sections are complete
         Then I should see the "<task>" section status as "<status>"
         Examples:
@@ -14,11 +22,7 @@ Feature: Task List Page
             | Planning obligation | Legal agreements | completed |
 
     Scenario: BNGP-527 2, 5 - The sections on the task list page should show the status of progress.
-        Given I navigate to the "start" page
-        And I start my registration
-        And I have everything I need to start my biodiversity gain site registration
-        When I have completed the applicant details section
-        And I am on the "register-land-task-list" page
+        When I am on the "register-land-task-list" page
         Then I should see the "details" section status as "COMPLETED"
         And I should see my progress as "You have completed 1 of 7 sections"
         And I should see the "land-boundary" section status as "NOT STARTED"
@@ -30,7 +34,7 @@ Feature: Task List Page
 
     @bug
     Scenario: BNGP-1612 BUG - Task-list : Metric section initially showing as completed.
-        Given I navigate to the "start" page
+        When I navigate to the "start" page
         And I start my registration
         And I have everything I need to start my biodiversity gain site registration
         And I have completed the applicant details section
