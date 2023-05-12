@@ -296,8 +296,8 @@ When("I choose an empty file", async () => {
   await UploadPage.continueButton.click();
 });
 
-When("I choose a {string} file of {string} MB or {string} Bytes", async (byteType, filesize, byteSize) => {
-  filePath = join(__dirname, "../../TestFiles/test_50.1MB_"+ byteType +".pdf");
+When("I choose a {string} file of {string} or {string} Bytes", async (byteType, filesize, byteSize) => {
+  filePath = join(__dirname, "../../TestFiles/test_"+ filesize +"_decimal.pdf");
 
   remoteFilePath = await browser.uploadFile(filePath);
 
