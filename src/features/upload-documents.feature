@@ -52,13 +52,13 @@ Feature: Upload Documents
         Then There should be a link to download the document
         And I should be able to see the filesize of the document as "<filesize>"
         Examples:
-            | jira ticket | document        | filesize  |
-            | BNGP-499    | legal-agreement | 0.01 MB   |
-            | BNGP-765    | management-plan | 0.01 MB   |
-            | BNGP-767    | land-boundary   | 0.01 MB   |
-            | BNGP-526    | geospatial      | 0.0010 MB |
-            | BNGP-524    | metric          | 5.39 MB   |
-            | BNGP-515    | land-ownership  | 0.01 MB   |
+            | jira ticket | document        | filesize |
+            | BNGP-499    | legal-agreement | 11.75 kB |
+            | BNGP-765    | management-plan | 11.75 kB |
+            | BNGP-767    | land-boundary   | 11.75 kB |
+            | BNGP-526    | geospatial      | 1.07 kB  |
+            | BNGP-524    | metric          | 5.39 MB  |
+            | BNGP-515    | land-ownership  | 11.75 kB |
 
     Scenario Outline: <jira ticket> 4 - There is a way to choose a different <document> if necessary
         When I navigate to the "<document>-upload" page
@@ -144,12 +144,11 @@ Feature: Upload Documents
             | geospatial      | zip      |
             | geospatial      | geojson  |
             | geospatial      | gpkg     |
-    @skip()
-    Scenario Outline: <jira ticket> 8 I cannot upload a <document> file that is larger than the maximum file size (currently 50MB)
+
+    Scenario Outline: <jira ticket> 8 I cannot upload a <document> file that is larger than the maximum file size (currently 50MB with 2.43 threshhold that allows for both binary and decimal interpretations of the upload limit)
         When I navigate to the "<document>-upload" page
-        And I choose a "<byteType>" file of "<filesize>" MB or "<byteSize>" Bytes
+        And I choose a '<byteType>' file of '<filesize>' or "<byteSize>" Bytes
         Then I should not be able to upload the file
         Examples:
             | jira ticket | document       | byteType | filesize | byteSize |
-            | BNGP-515    | land-ownership | binary   | 50.1     | 52533658 |
-            | BNGP-515    | land-ownership | decimal  | 50.1     | 50100000 |
+            | BNGP-515    | land-ownership | decimal  | 52.43MB  | 52430000 |
