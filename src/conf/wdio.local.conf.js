@@ -1,7 +1,6 @@
 //for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
+//https://www.npmjs.com/package/cucumber-html-reporter
 import cucumberJson from "wdio-cucumberjs-json-reporter";
-
-// Import the module https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#use-it-with-multiple-cucumber-html-reporter
 const { removeSync } = require('fs-extra');
 
 exports.config = {
@@ -160,7 +159,9 @@ exports.config = {
       "cucumberjs-json",
       {
         jsonFolder: ".tmp/cucumberjs-json/",
-        reportFilePerRetry: true,
+        screenshotsDirectory: './reports/screenshots/',
+        storeScreenshots: false,
+        reportFilePerRetry: true
       },
     ],
   ],
@@ -312,8 +313,9 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-  // afterScenario: function (world, result, context) {
-  // },
+   afterScenario: async function (world, result, context) {
+    cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+   },
   /**
    *
    * Runs after a Cucumber Feature.
