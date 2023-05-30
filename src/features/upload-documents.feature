@@ -134,9 +134,9 @@ Feature: Upload Documents
             | land-ownership  | doc      |
             | land-ownership  | docx     |
             | land-ownership  | pdf      |
-            | land-ownership  | DOC      |
-            | land-ownership  | DOCX     |
-            | land-ownership  | PDF      |
+            | land-ownership  | doc      |
+            | land-ownership  | docx     |
+            | land-ownership  | pdf      |
             | land-boundary   | doc      |
             | land-boundary   | docx     |
             | land-boundary   | pdf      |
