@@ -1,7 +1,6 @@
 //for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
+//https://www.npmjs.com/package/cucumber-html-reporter
 import cucumberJson from "wdio-cucumberjs-json-reporter";
-
-// Import the module https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#use-it-with-multiple-cucumber-html-reporter
 const { removeSync } = require('fs-extra');
 
 exports.config = {
@@ -143,13 +142,13 @@ exports.config = {
   framework: "cucumber",
   //
   // The number of times to retry the entire specfile when it fails as a whole
-  // specFileRetries: 1,
+     specFileRetries: 1,
   //
   // Delay in seconds between the spec file retry attempts
-  // specFileRetriesDelay: 0,
+     specFileRetriesDelay: 0,
   //
   // Whether or not retried specfiles should be retried immediately or deferred to the end of the queue
-  // specFileRetriesDeferred: false,
+     specFileRetriesDeferred: false,
   //
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
@@ -160,7 +159,9 @@ exports.config = {
       "cucumberjs-json",
       {
         jsonFolder: ".tmp/cucumberjs-json/",
-        reportFilePerRetry: true,
+        screenshotsDirectory: './reports/screenshots/',
+        storeScreenshots: false,
+        reportFilePerRetry: true
       },
     ],
   ],
@@ -312,8 +313,9 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-  // afterScenario: function (world, result, context) {
-  // },
+   afterScenario: async function (world, result, context) {
+    cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+   },
   /**
    *
    * Runs after a Cucumber Feature.
