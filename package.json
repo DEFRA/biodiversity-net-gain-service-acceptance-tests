@@ -19,7 +19,7 @@
     "devDependencies": {
         "@babel/cli": "^7.18.10",
         "@babel/core": "^7.19.1",
-        "@babel/preset-env": "^7.19.1",
+        "@babel/preset-env": "^7.22.5",
         "@babel/register": "^7.18.9",
         "@wdio/cli": "^7.19.2",
         "@wdio/cucumber-framework": "^7.19.2",
