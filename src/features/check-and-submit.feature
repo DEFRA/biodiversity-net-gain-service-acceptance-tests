@@ -33,7 +33,7 @@ Feature: Check and Submit
         And I choose and upload a "legal-agreement" file
         And I confirm it is the correct file
         And I have completed the legal-agreement section
-        And I confirm I have completed all sections
+        And I confirm I have completed all "landowner journey" sections
 
     @skip()  # skip upload test for release 5
     Scenario: BNGP-190 1 - I can review all sections I have completed
