@@ -6,7 +6,7 @@ class LandBoundaryConfirm extends Page {
   }
 
   open() {
-    return super.open("/land/confirm-land-boundary");
+    return super.open("land/confirm-land-boundary");
   }
 }
 module.exports = new LandBoundaryConfirm();
