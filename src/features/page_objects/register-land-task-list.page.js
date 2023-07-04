@@ -53,6 +53,24 @@ class TaskList extends Page {
     return $("#add-habitat-information-status");
   }
 
+
+  //developer sections
+  get uploadMetricFileStatus(){
+    return $("#upload-metric-file-status");
+  }
+
+  get confirmDevelopmentDetailsStatus(){
+    return $("#confirm-development-details-status");
+  }
+
+  get confirmOffSiteGainStatus(){
+    return $("#confirm-off-site-gain-status");
+  }
+  
+  get uploadConsentDocumentStatus() {
+    return $("#upload-consent-document-status");
+  }
+    
   get hmmpStatus(){
     return $("#add-habitat-management-status");
   }

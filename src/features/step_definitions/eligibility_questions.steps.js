@@ -11,9 +11,25 @@ const siteInEnglandPage = require("../page_objects/eligibility_questions/site-in
 
 const basePage = siteInEnglandPage;
 
+/**Developer Journey pages */
+const developerRoutingRegisterPage = require("../page_objects/developer/routing-register.page");
+const developerRoutingResultPage = require("../page_objects/developer/routing-result.page");
+
 Given("I have everything I need to start my biodiversity gain site registration", async () => {
     // skip elgibility questions 
     await (checkYouCanRegisterPage.skipQuestions).click();
+})
+
+
+Given("I have everything I need to record off-site biodiversity gain for my development project", async () => {
+    // skip developer elgibility questions 
+    await (developerRoutingResultPage.skipQuestions).click();
+})
+
+Given("I choose to record my off-site gain site", async () => {
+    // continue on the developer journey
+    await (developerRoutingRegisterPage.radioRecordOffsite).click();
+    await (basePage.continueButton).click();
 })
 
 Given("I choose to check if I have everything I need to register", async () => {

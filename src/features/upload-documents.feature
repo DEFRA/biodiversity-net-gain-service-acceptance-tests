@@ -13,23 +13,24 @@ Feature: Upload Documents
         # applicant details
         And I have completed the applicant details section
 
-
+    @skip() #skipped as covered by @e2e tests
     Scenario Outline: <jira ticket> 1 - There is an option of uploading a single <document>
         When I navigate to the "<document>-upload" page
         And I choose and upload a "<document>" file
         And I confirm it is the correct file
         Then I should be on the "<destination>" page
-
-        Examples:
+        Examples: Landowner Journey
             | jira ticket | document        | destination                 |
             | BNGP-499    | legal-agreement | add-legal-agreement-parties |
-        Examples:
-            | jira ticket | document        | destination                 |
             | BNGP-765    | management-plan | habitat-works-start-date    |
             | BNGP-767    | land-boundary   | grid-reference              |
             | BNGP-526    | geospatial      | check-land-boundary-details |
             | BNGP-524    | metric          | metric-display-baseline     |
             | BNGP-515    | land-ownership  | registered-landowner        |
+        Examples: Developer Journey
+            | jira ticket | document          | destination                 |
+            | BNGP-738    | developer-metric  | confirm-development-details |
+            | BNGP-2195   | consent-agreement | developer/tasklist          |
 
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
         When I navigate to the "<document>-upload" page

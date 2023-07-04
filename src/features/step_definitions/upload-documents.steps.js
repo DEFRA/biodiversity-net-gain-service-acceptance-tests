@@ -13,6 +13,13 @@ import metricCheckPage from "../page_objects/metric/metric-check.page";
 import landOwnershipUploadPage from "../page_objects/land_ownership/land-ownership-upload.page";
 import landOwnershipCheckPage from "../page_objects/land_ownership/land-ownership-check.page";
 
+//developer uploads
+import consentAgreementUploadPage from "../page_objects/developer/consent-agreement-upload.page";
+import consentAgreementCheckPage from "../page_objects/developer/consent-agreement-check.page";
+import uploadDeveloperMetricFilePage from "../page_objects/developer/upload-metric-file.page";
+import checkDeveloperMetricFilePage from "../page_objects/developer/check-metric-file.page";
+import DeveloperTaskListPage from "../page_objects/developer/tasklist.page";
+
 let UploadPage = legalAgreementUploadPage;
 let CheckPage = legalAgreementCheckPage;
 
@@ -79,6 +86,20 @@ When("I choose and upload a {string} file", async (document) => {
       CheckPage = landOwnershipCheckPage;
       break;
     }
+    //****DEVELOPER JOURNEY UPLOADS*****
+    case "developer-metric":{
+      UploadPage = uploadDeveloperMetricFilePage
+      CheckPage = checkDeveloperMetricFilePage
+
+      //metric is .xlsx and .xslm files only
+      filePath = join(__dirname, "../../TestFiles/test_developer_metric.xlsm");
+      break;
+    }
+    case "consent-agreement":{
+      UploadPage = consentAgreementUploadPage;
+      CheckPage = consentAgreementCheckPage;
+      break;
+    }
   }
 
   remoteFilePath = await browser.uploadFile(filePath);
@@ -92,8 +113,13 @@ When("I choose and upload a {string} file", async (document) => {
 
   // set the remote path value to the upload element and continue
   await UploadPage.govFileUpload.setValue(remoteFilePath);
-  await UploadPage.continueButton.click();
+  await UploadPage.uploadButton.click();
 });
+
+When("I want to upload the metric file", async () => {
+  await expect(DeveloperTaskListPage.uploadMetricFileBtn).toExist();
+  await DeveloperTaskListPage.uploadMetricFileBtn.click();
+})
 
 When("I choose and upload the same file", async () => {
 
@@ -242,17 +268,15 @@ Then("I am informed of what the allowed file types should be", async () => {
   let errorTxt = "";
 
   switch (UploadPage) {
-    case landBoundaryFileUploadPage: {
+    case landBoundaryFileUploadPage: 
       errorTxt = "The selected file must be a DOC, DOCX, JPG, PNG or PDF";
       break;
-    }
-    case metricUploadPage: {
+    case uploadDeveloperMetricFilePage: 
+    case metricUploadPage: 
       errorTxt = "The selected file must be an XLSM or XLSX";
-      break;
-    }
-    default: {
-      errorTxt = "The selected file must be a DOC, DOCX or PDF";
-    }
+      break;  
+    default: 
+      errorTxt = "The selected file must be a DOC, DOCX or PDF";    
   }
 
   // check errorMsg text

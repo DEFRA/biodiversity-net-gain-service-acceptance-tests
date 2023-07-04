@@ -11,6 +11,10 @@ module.exports = class Page {
     return $("#continue");
   }
 
+  get uploadButton() {
+    return $('*[data-testid="continue"]');
+  }
+
   get govContinueButton(){
     return $('*[data-testid="continue"]');
   }
