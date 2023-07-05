@@ -50,6 +50,7 @@ const DeveloperMetricUploadPage = require("../page_objects/developer/upload-metr
 const DeveloperConsentAgreementUploadPage = require("../page_objects/developer/consent-agreement-upload.page");  
 const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/developer/metric-confirm-development-details.page"); 
 const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answers.page");
+const DeveloperConfirmationPage = require("../page_objects/developer/confirm.page");
 
 const pages = {
   start: startPage,
@@ -111,6 +112,7 @@ const pages = {
   "consent-agreement-upload":  DeveloperConsentAgreementUploadPage,
   "confirm-development-details": DeveloperConfirmDevelopmentDetailsPage,
   "check-answers" : DeveloperCheckAnswersPage,
+  "confirm" : DeveloperConfirmationPage,
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {

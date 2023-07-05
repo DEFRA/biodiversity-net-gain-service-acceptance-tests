@@ -44,6 +44,6 @@ Feature: Developer Journey Tests
         # Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
         And I am on the "check-answers" page
         When I submit my developer information
-        Then I should be on the "registration-submitted" page
+        Then I should be on the "confirm" page
         And the biodiversity gain site reference should be displayed
 
