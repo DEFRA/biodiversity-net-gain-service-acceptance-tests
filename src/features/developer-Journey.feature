@@ -1,4 +1,4 @@
-@regression @new
+@regression
 Feature: Developer Journey Tests
 
     # As a developer
@@ -24,8 +24,9 @@ Feature: Developer Journey Tests
         And I should see the "Confirm off-site gain" section status as "NOT STARTED"
         And I should see the "Upload the consent document" section status as "NOT STARTED"
         And I should see the "submit" section status as "CANNOT START YET"
-    @new
-    Scenario: Complete all allocation tasks to submit and record my off-site development
+
+    # Check answers
+    Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
         # Developer Metric
         And I want to upload the metric file
         And I enter my off site gain reference number as "AZ12208461"
@@ -40,8 +41,6 @@ Feature: Developer Journey Tests
         #Additional emails (is this in the right place?)
         And I continue without adding email notifications for additional people
 
-        # Check answers
-        # Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
         And I am on the "check-answers" page
         When I submit my developer information
         Then I should be on the "confirm" page
