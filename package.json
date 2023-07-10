@@ -17,7 +17,7 @@
     "author": "Shaun Ricketts",
     "license": "ISC",
     "devDependencies": {
-        "@babel/cli": "^7.18.10",
+        "@babel/cli": "^7.22.6",
         "@babel/core": "^7.19.1",
         "@babel/preset-env": "^7.19.1",
         "@babel/register": "^7.18.9",
