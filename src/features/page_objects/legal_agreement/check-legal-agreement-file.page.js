@@ -1,3 +1,4 @@
+// copydeck CD74
 const Page = require("../page");
 
 class LegalAgreementCheckFile extends Page {

@@ -40,6 +40,9 @@ const managementMonitoringCheckDetailsPage = require("../page_objects/management
 const landOwnershipCheckDetailsPage = require("../page_objects/land_ownership/check-ownership-details.page");
 const checkAndSubmitPage = require("../page_objects/check-and-submit.page");
 const confirmationPage = require("../page_objects/registration-submitted.page");
+const LocalLandChargeUploadPage = require("../page_objects/local_land_charge/upload-local-land-charge.page");
+const LocalLandChargeCheckPage = require("../page_objects/local_land_charge/check-local-land-charge.page")
+const LocalLandChargeNeedPage = require("../page_objects/local_land_charge/need-local-land-charge.page")
 
 const basePage = legalAgreementUploadPage;
 
@@ -103,6 +106,10 @@ const pages = {
   "check-and-submit": checkAndSubmitPage,
   //Confirmation
   "registration-submitted": confirmationPage,
+  //Local land Charge search certificate
+  "local-land-charge-upload": LocalLandChargeUploadPage,
+  "local-land-charge-check": LocalLandChargeCheckPage,
+  "need-local-land-charge": LocalLandChargeNeedPage,
 
   //**DEVLOPER JOURNEY */
   //Start

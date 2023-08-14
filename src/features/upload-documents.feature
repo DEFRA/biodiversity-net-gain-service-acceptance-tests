@@ -20,13 +20,14 @@ Feature: Upload Documents
         And I confirm it is the correct file
         Then I should be on the "<destination>" page
         Examples: Landowner Journey
-            | jira ticket | document        | destination                 |
-            | BNGP-499    | legal-agreement | add-legal-agreement-parties |
-            | BNGP-765    | management-plan | habitat-works-start-date    |
-            | BNGP-767    | land-boundary   | grid-reference              |
-            | BNGP-526    | geospatial      | check-land-boundary-details |
-            | BNGP-524    | metric          | metric-display-baseline     |
-            | BNGP-515    | land-ownership  | registered-landowner        |
+            | jira ticket | document          | destination                 |
+            | BNGP-499    | legal-agreement   | add-legal-agreement-parties |
+            | BNGP-765    | management-plan   | habitat-works-start-date    |
+            | BNGP-767    | land-boundary     | grid-reference              |
+            | BNGP-526    | geospatial        | check-land-boundary-details |
+            | BNGP-524    | metric            | metric-display-baseline     |
+            | BNGP-515    | land-ownership    | registered-landowner        |
+            | BNGP-3094   | local-land-charge | register-land-task-list     |
         Examples: Developer Journey
             | jira ticket | document          | destination                 |
             | BNGP-738    | developer-metric  | confirm-development-details |
