@@ -27,6 +27,8 @@ const landBoundaryCheckImageDetailsPage = require("../page_objects/land_boundary
 const metricUploadPage = require("../page_objects/metric/metric-upload.page");
 const metricCheckPage = require("../page_objects/metric/metric-check.page");
 const metricDisplayBaselinePage = require("../page_objects/metric/check-habitat-baseline.page");
+const metricDisplayHabitatCreationPage = require("../page_objects/metric/check-habitat-created.page");
+const metricCheckDetailsPage = require("../page_objects/metric/check-metric-details.page"); 
 const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
 const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
 const landownershipRegisteredLandownerPage = require("../page_objects/land_ownership/registered-landowner.page");
@@ -94,7 +96,9 @@ const pages = {
   //metric
   "metric-upload": metricUploadPage,
   "metric-check": metricCheckPage,
-  "metric-display-baseline": metricDisplayBaselinePage,
+  "check-habitat-baseline": metricDisplayBaselinePage,
+  "check-habitat-created": metricDisplayHabitatCreationPage,
+  "check-metric-details": metricCheckDetailsPage,
   //land ownership
   "land-ownership-upload": landOwnershipUploadPage,
   "land-ownership-check": landOwnershipCheckPage,
@@ -111,7 +115,7 @@ const pages = {
   "local-land-charge-check": LocalLandChargeCheckPage,
   "need-local-land-charge": LocalLandChargeNeedPage,
 
-  //**DEVLOPER JOURNEY */
+  //**DEVELOPER JOURNEY */
   //Start
   "routing-register": developerStartPage,
   "developer/tasklist": DeveloperTaskListPage,
@@ -176,7 +180,7 @@ When("I confirm my role as a {string}", async (role) => {
   await applicantDetailsRolePage.confirmRole(role);  
 })
 
-When("I confirm the check {string} details are correct", async (check) => {
+When("I confirm the {string} information is correct", async (check) => {
   //confirm check your answer pages
   switch (check) {
     //applicant details
@@ -188,10 +192,21 @@ When("I confirm the check {string} details are correct", async (check) => {
         await confirmLandBoundaryDetails();
       break;
     }
-
     case "land ownership":{
         await confirmLandOwnershipDetails();
       break;
+    }
+    case "check-habitat-baseline":{
+      await confirmMetricBaselineDetails();
+    break;
+    }
+    case "check-habitat-creation":{
+      await confirmMetricHabitatCreationDetails();
+    break;
+    }
+    case "check-metric-details":{
+      await checkMetricDetails();
+    break;
     }
     case "management plan":{
         await confirmManagementPlanDetails();
@@ -212,14 +227,29 @@ async function confirmLegalAgreementDetails() {
   await (legalAgreementCheckDetailsPage.acceptBtn).click();
 }
 
-async function confirmManagementPlanDetails() {
-  await expect(managementMonitoringCheckDetailsPage.continueButton).toBeDisplayed();
-  await (managementMonitoringCheckDetailsPage.continueButton).click();
-}
-
 async function confirmLandOwnershipDetails() {
   await expect(landOwnershipCheckDetailsPage.continueButton).toBeDisplayed();
   await (landOwnershipCheckDetailsPage.continueButton).click();
+}
+
+async function checkMetricDetails() {
+  await expect(metricCheckDetailsPage.continueButton).toBeDisplayed();
+  await (metricCheckDetailsPage.continueButton).click();
+}
+
+async function confirmMetricBaselineDetails() {
+  await expect(metricDisplayBaselinePage.continueButton).toBeDisplayed();
+  await (metricDisplayBaselinePage.continueButton).click();
+}
+
+async function confirmMetricHabitatCreationDetails() {
+  await expect(metricDisplayHabitatCreationPage.continueButton).toBeDisplayed();
+  await (metricDisplayHabitatCreationPage.continueButton).click();
+}
+
+async function confirmManagementPlanDetails() {
+  await expect(managementMonitoringCheckDetailsPage.continueButton).toBeDisplayed();
+  await (managementMonitoringCheckDetailsPage.continueButton).click();
 }
 
 async function confirmLandBoundaryDetails() {
