@@ -22,6 +22,13 @@ import uploadDeveloperMetricFilePage from "../page_objects/developer/upload-metr
 import checkDeveloperMetricFilePage from "../page_objects/developer/check-metric-file.page";
 import DeveloperTaskListPage from "../page_objects/developer/tasklist.page";
 
+//developer uploads
+import consentAgreementUploadPage from "../page_objects/developer/consent-agreement-upload.page";
+import consentAgreementCheckPage from "../page_objects/developer/consent-agreement-check.page";
+import uploadDeveloperMetricFilePage from "../page_objects/developer/upload-metric-file.page";
+import checkDeveloperMetricFilePage from "../page_objects/developer/check-metric-file.page";
+import DeveloperTaskListPage from "../page_objects/developer/tasklist.page";
+
 let UploadPage = legalAgreementUploadPage;
 let CheckPage = legalAgreementCheckPage;
 
