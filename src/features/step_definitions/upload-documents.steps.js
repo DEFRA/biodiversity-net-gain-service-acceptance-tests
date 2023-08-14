@@ -12,6 +12,15 @@ import metricUploadPage from "../page_objects/metric/metric-upload.page";
 import metricCheckPage from "../page_objects/metric/metric-check.page";
 import landOwnershipUploadPage from "../page_objects/land_ownership/land-ownership-upload.page";
 import landOwnershipCheckPage from "../page_objects/land_ownership/land-ownership-check.page";
+import uploadLocalLandChargePage from "../page_objects/local_land_charge/upload-local-land-charge.page";
+import checkLocalLandChargePage from "../page_objects/local_land_charge/check-local-land-charge.page";
+
+//developer uploads
+import consentAgreementUploadPage from "../page_objects/developer/consent-agreement-upload.page";
+import consentAgreementCheckPage from "../page_objects/developer/consent-agreement-check.page";
+import uploadDeveloperMetricFilePage from "../page_objects/developer/upload-metric-file.page";
+import checkDeveloperMetricFilePage from "../page_objects/developer/check-metric-file.page";
+import DeveloperTaskListPage from "../page_objects/developer/tasklist.page";
 
 //developer uploads
 import consentAgreementUploadPage from "../page_objects/developer/consent-agreement-upload.page";
@@ -37,6 +46,11 @@ When("I choose and upload a {string} file", async (document) => {
     case "legal-agreement": {
       UploadPage = legalAgreementUploadPage;
       CheckPage = legalAgreementCheckPage;
+      break;
+    }
+    case "local-land-charge": {
+      UploadPage = uploadLocalLandChargePage;
+      CheckPage = checkLocalLandChargePage;
       break;
     }
     case "management-plan": {
@@ -293,7 +307,7 @@ When("I confirm it is the correct file", async () => {
   await basePage.radioYes.waitForExist({ timeout: 5000 });
   await basePage.radioYes.click();
   await basePage.continueButton.click();
-});
+  });
 
 
 When("I choose an empty file", async () => {
