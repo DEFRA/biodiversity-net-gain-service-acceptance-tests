@@ -3,7 +3,7 @@ const Page = require("../page");
 
 class LegalAgreementCheckFile extends Page {
   get titleText() {
-    return "Check the legal agreement file";
+    return "Check the planning obligation (section 106 agreement) file";
   }
 
   get downloadLink() {

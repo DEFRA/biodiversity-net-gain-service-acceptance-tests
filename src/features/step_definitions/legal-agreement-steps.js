@@ -1,6 +1,8 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import legalAgreementAddPartiesPage from "../page_objects/legal_agreement/add-legal-agreement-parties.page.js";
 import checkLegalAgreementDetailsPage from "../page_objects/legal_agreement/check-legal-agreement-details.page.js";
+import legalPartyListPage from "../page_objects/legal_agreement/legal-party-list.page.js";
+
 let  basePage = legalAgreementAddPartiesPage;
 
 Given("I have completed the legal-agreement section", async () => {
@@ -35,6 +37,12 @@ async function completeLegalAgreementSection(fullname, role, date) {
   // And I confirm the legal party role as a "<legal party role>"
   await legalAgreementAddPartiesPage.addLegalPartyRole(role);
   await legalAgreementAddPartiesPage.continueButton.click();
+
+  // Add another legal agreement party?
+    // go back to the add page
+  // say no and continue
+  await legalPartyListPage.radioNo.click();
+  await legalPartyListPage.continueButton.click();
 
   // And I enter a valid "legal agreement start" date of "<legal-agreement start date>"
   await basePage.enterValidDate(date);

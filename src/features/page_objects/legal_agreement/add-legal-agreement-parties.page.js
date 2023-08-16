@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class LegalAgreementAddParties extends Page {
   get titleText() {
-    return "Add all parties listed on the legal agreement";
+    return "Add all parties listed on the planning obligation (section 106 agreement)";
   }
 
   get addAnotherLegalParty(){
@@ -14,7 +14,7 @@ class LegalAgreementAddParties extends Page {
   }
 
   get legalPartyFullName() {
-    return $("[id='organisation[0][organisationName]']");
+    return $("[id='organisationName']");
   }
 
   get legalPartyFullName2() {
@@ -22,7 +22,7 @@ class LegalAgreementAddParties extends Page {
   }
     
   get legalPartyRole(){
-    return $("[id='landOwner[0][role]']");
+    return $("[id='landOwnerRole']");
   }
 
   get otherLegalPartyRoleOption(){
