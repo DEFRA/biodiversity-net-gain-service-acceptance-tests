@@ -9,6 +9,32 @@ Given("I have completed the legal-agreement section", async () => {
   await completeLegalAgreementSection("legal party 1", "Landowner", "12/10/2022");
 })
 
+When("I add the legal party {string} with a role of {string}", async (fullname, role) =>{
+    await addLegalParty(fullname, role);
+    await legalAgreementAddPartiesPage.continueButton.click();
+})
+
+When("I choose to add another legal party of {string} with a role of {string}", async (fullname, role) =>{
+  
+  // select to add another legal party
+  await basePage.radioYes.click();
+  await legalPartyListPage.continueButton.click();
+  
+  //add another legal party
+  await addLegalParty(fullname, role);
+  await legalAgreementAddPartiesPage.continueButton.click();
+
+}) 
+
+
+Then("I can should see the number of legal parties in the title as {string}", async (number) =>{
+  await $("h1").waitForExist({ timeout: 5000 });
+
+  // assert against the page title
+  expect(await browser.getTitle()).toContain(number);
+})
+
+// Redundant
 Then("I can choose to add another legal party", async () => {
   await legalAgreementAddPartiesPage.addAnotherLegalParty.click();
  
@@ -55,4 +81,14 @@ async function completeLegalAgreementSection(fullname, role, date) {
 
 async function addLegalPartyFullName(fullname) {
   await legalAgreementAddPartiesPage.legalPartyFullName.addValue(fullname);
+}
+
+
+async function addLegalParty(fullname, role) {
+  // And I add the legal party fullname or organisation as "<legal party name>"
+  await addLegalPartyFullName(fullname); 
+
+  // And I confirm the legal party role as a "<legal party role>"
+  await legalAgreementAddPartiesPage.addLegalPartyRole(role);
+ 
 }
