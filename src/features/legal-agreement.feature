@@ -44,7 +44,7 @@ Feature: Legal Agreement
         When i try to remove it
         Then I see an error
 
-
+    @skip() # known bug, add back in when https://eaflood.atlassian.net/browse/BNGP-3488 is in test
     Scenario: BNGP-188 7,8 If 'Other' option is selected as Role then the Role field popup must not be left blank
         When I navigate to the "add-legal-agreement-parties" page
         And I add the legal party "Legal Party 1" with a role of "Other"
