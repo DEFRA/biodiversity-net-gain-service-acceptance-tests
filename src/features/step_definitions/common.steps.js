@@ -11,7 +11,9 @@ const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_
 const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement.page");
+const legalAgreementCCUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement-conservation-covenant.page");
 const legalAgreementCheckFilePage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
+const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page");
 const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page");
 const legalAgreementStartDatePage = require("../page_objects/legal_agreement/legal-agreement-start-date.page");
 const legalAgreementCheckDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page");
@@ -56,6 +58,7 @@ const DeveloperConsentAgreementUploadPage = require("../page_objects/developer/c
 const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/developer/metric-confirm-development-details.page"); 
 const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answers.page");
 const DeveloperConfirmationPage = require("../page_objects/developer/confirm.page");
+const legalPartyRemovePage = require("../page_objects/legal_agreement/legal-party-remove.page");
 
 const pages = {
   start: startPage,
@@ -71,11 +74,13 @@ const pages = {
   "correct-email": applicantDetailsCorrectEmailPage,
   "check-your-details": applicantDetailsCheckYourDetailsPage,
   //legal agreement
-  "legal-agreement-upload": legalAgreementUploadPage,
+  "legal-agreement-po-upload": legalAgreementUploadPage,
+  "legal-agreement-cc-upload": legalAgreementCCUploadPage,
   "legal-agreement-check": legalAgreementCheckFilePage,
   "legal-agreement-type": legalAgreementTypePage,
   "need-legal-agreement": legalAgreementNeedpage,
   "add-legal-agreement-parties": legalAgreementAddPartiesPage,
+  "legal-party-list": legalPartyListPage,
   "legal-agreement-start-date": legalAgreementStartDatePage,
   "check-legal-agreement-details": legalAgreementCheckDetailsPage,
   //hmmp
@@ -376,13 +381,17 @@ Then("the other role value should not be {string}", async (input) => {
   await expect(basePage.otherRoleTextBox).not.toHaveValue(input);
 });
 
-Then("I can choose to remove the other {string}", async (option) => {
+Then("I can remove the other {string}", async (option) => {
 
   if(option == "legal party") {
+    // choose to remove the 2nd legal party in the list
+    await (legalPartyListPage.removeLegalParty1).click();
+    // confirm removal
+    await (legalPartyRemovePage.radioYes).click();
+    await (legalPartyRemovePage.continueButton).click();
+    // assert to check remove link for 2nd legal party doesn't exist anymore
+    await expect(legalPartyListPage.removeLegalParty1).not.toExist();
 
-    await (legalAgreementAddPartiesPage.removeLegalParty2).click();
-    await expect(legalAgreementAddPartiesPage.legalPartyName2).not.toExist();
-    await expect(legalAgreementAddPartiesPage.legalPartyRole2).not.toExist();
   }
 })
 
