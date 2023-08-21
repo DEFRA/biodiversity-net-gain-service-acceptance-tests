@@ -21,7 +21,7 @@ Feature: Legal Agreement
         Examples:
             | legal-agreement-type            | destination               |
             | Conservation covenant           | legal-agreement-cc-upload |
-            | Planning obligation             | legal-agreement-po-upload |
+            | Planning obligation             | legal-agreement-upload    |
             | I do not have a legal agreement | need-legal-agreement      |
 
     Scenario: BNGP-188 3 I should be able to add multiple legal parties
