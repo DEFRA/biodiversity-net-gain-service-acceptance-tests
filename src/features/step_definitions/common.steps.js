@@ -74,7 +74,7 @@ const pages = {
   "correct-email": applicantDetailsCorrectEmailPage,
   "check-your-details": applicantDetailsCheckYourDetailsPage,
   //legal agreement
-  "legal-agreement-po-upload": legalAgreementUploadPage,
+  "legal-agreement-upload": legalAgreementUploadPage,
   "legal-agreement-cc-upload": legalAgreementCCUploadPage,
   "legal-agreement-check": legalAgreementCheckFilePage,
   "legal-agreement-type": legalAgreementTypePage,
@@ -132,14 +132,21 @@ const pages = {
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
-
   // open the page requested from the list of pages
   page = page.toLowerCase();
-  await pages[page].open();
 
-  await $("h1").waitForExist({ timeout: 5000 });
-
+  // if a legal agreement upload page choose the type of agreement first before opening the page
+  if(page == "legal-agreement-upload"){
+    await pages["legal-agreement-type"].open()
+    await legalAgreementTypePage.planningObligation.click();
+    await legalAgreementTypePage.continueButton.click();
+  }
+  else{
+    await pages[page].open();
+  }
+  
   // assert against the page title
+  await $("h1").waitForExist({ timeout: 5000 });
   expect(await browser.getTitle()).toContain(pages[page].titleText);
 });
 
