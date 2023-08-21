@@ -9,10 +9,6 @@ class LegalAgreementAddParties extends Page {
     return $("#addOtherOrganisation");
   }
 
-  get removeLegalParty2(){
-  return $("#remove1");
-  }
-
   get legalPartyFullName() {
     return $("[id='organisationName']");
   }
