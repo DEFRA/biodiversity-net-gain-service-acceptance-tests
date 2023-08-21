@@ -24,7 +24,7 @@ Feature: Task List Page
     Scenario: BNGP-527 2, 5 - The sections on the task list page should show the status of progress.
         When I am on the "register-land-task-list" page
         Then I should see the "details" section status as "COMPLETED"
-        And I should see my progress as "You have completed 1 of 7 sections"
+        And I should see my progress as "You have completed 1 of 8 sections"
         And I should see the "land-boundary" section status as "NOT STARTED"
         And I should see the "land-ownership" section status as "NOT STARTED"
         And I should see the "metric" section status as "NOT STARTED"
