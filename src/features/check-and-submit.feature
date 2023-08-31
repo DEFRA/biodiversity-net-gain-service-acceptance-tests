@@ -67,5 +67,5 @@ Feature: Check and Submit
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
         And I am on the "check-and-submit" page
         When I submit my application
-        Then I should be on the "registration-submitted" page
+        Then I should be on the "application-submitted" page
         And the biodiversity gain site reference should be displayed
