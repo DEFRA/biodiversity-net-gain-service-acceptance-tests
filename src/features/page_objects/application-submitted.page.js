@@ -10,10 +10,8 @@ class ConfirmationPage extends Page {
   }
 
   get feeAmount(){
-    // return $('*[data-testid="fee-amount-value"]');
-      return $(".govuk-body-l");
-
-  }
+    return $('*[data-testid="fee-amount-value"]');
+ }
   
   get paymentRreference(){
     return $('*[data-testid="payment-reference-value"]');
