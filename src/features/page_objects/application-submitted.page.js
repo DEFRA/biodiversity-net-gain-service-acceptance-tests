@@ -7,8 +7,32 @@ class ConfirmationPage extends Page {
 
   get referenceNumber(){
     return $('*[data-testid="application-reference-value"]');
+  }
 
-    //return $(".govuk-panel__body govuk-!-font-size-27");
+  get feeAmount(){
+    // return $('*[data-testid="fee-amount-value"]');
+      return $(".govuk-body-l");
+
+  }
+  
+  get paymentRreference(){
+    return $('*[data-testid="payment-reference-value"]');
+  }
+
+  get accountName(){
+    return $('*[data-testid="account-name-value"]');
+  }
+
+  get sortCode(){
+    return $('*[data-testid="sort-code-value"]');
+  }
+
+  get accountNumber(){
+    return $('*[data-testid="account-number-value"]');
+  }
+
+  get swiftBicCode(){
+    return $('*[data-testid="swift-bic-code-value"]');
   }
 
   open() {
