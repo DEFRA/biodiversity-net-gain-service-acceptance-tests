@@ -83,6 +83,7 @@ const pages = {
   "management-plan-check": managementPlanCheckPage,
   "habitat-works-start-date": habitatWorksStartDatePage,
   "monitoring-start-date": monitoringStartDatePage,
+  "check-management-monitoring-details": managementMonitoringCheckDetailsPage,
   //Land boundary 
   "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
