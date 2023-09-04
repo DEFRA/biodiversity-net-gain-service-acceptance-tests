@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class MonitoringStartDate extends Page {
   get titleText() {
-    return "When will the 30 year management and monitoring period start?";
+    return "When will the 30-year management and monitoring period start?";
   }
 
   open() {
