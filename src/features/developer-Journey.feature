@@ -46,5 +46,5 @@ Feature: Developer Journey Tests
         When I submit my developer information
         Then I should be on the "application-submitted" page
         And the biodiversity gain site reference should be displayed
-        And the fee amount of "£45" should be displayed
+        And the fee amount of "£45.00" should be displayed
 
