@@ -65,7 +65,9 @@ Feature: Check and Submit
 
     @e2e
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
+        # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         And I am on the "check-and-submit" page
         When I submit my application
-        Then I should be on the "registration-submitted" page
+        Then I should be on the "application-submitted" page
         And the biodiversity gain site reference should be displayed
+        And the fee amount of "£639" should be displayed

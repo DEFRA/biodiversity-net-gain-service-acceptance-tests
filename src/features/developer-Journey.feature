@@ -27,6 +27,7 @@ Feature: Developer Journey Tests
     @e2e
     # Check answers
     Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
+        # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         # Developer Metric
         And I want to upload the metric file
         And I enter my off site gain reference number as "AZ12208461"
@@ -43,6 +44,7 @@ Feature: Developer Journey Tests
 
         And I am on the "check-answers" page
         When I submit my developer information
-        Then I should be on the "confirm" page
+        Then I should be on the "application-submitted" page
         And the biodiversity gain site reference should be displayed
+        And the fee amount of "£45" should be displayed
 
