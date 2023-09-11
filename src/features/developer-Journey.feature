@@ -1,4 +1,4 @@
-@regression @new
+@regression
 Feature: Developer Journey Tests
 
     # As a developer
@@ -24,7 +24,7 @@ Feature: Developer Journey Tests
         And I should see the "Confirm off-site gain" section status as "NOT STARTED"
         And I should see the "Upload the consent document" section status as "NOT STARTED"
         And I should see the "submit" section status as "CANNOT START YET"
-    @new
+
     Scenario: Complete all allocation tasks to submit and record my off-site development
         # Developer Metric
         And I want to upload the metric file

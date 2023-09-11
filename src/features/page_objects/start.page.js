@@ -10,7 +10,7 @@ class StartPage extends Page {
   }
 
   get startButton() {
-    return $("a[href='/land/check-you-can-register']");
+    return $("a[href=' /land/register-land-task-list']");
   }
 
   get returnToSavedApplicationLink(){
