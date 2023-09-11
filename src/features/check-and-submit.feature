@@ -64,8 +64,9 @@ Feature: Check and Submit
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
     @e2e
-    Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
+    # Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
+    Scenario: BNGP-2815 2 - The BNG Application Reference number is displayed
         And I am on the "check-and-submit" page
         When I submit my application
         Then I should be on the "registration-submitted" page
-        And the biodiversity gain site reference should be displayed
+        And the biodiversity gain site reference should be displayed with the BNG transaction type of "BNGREG"

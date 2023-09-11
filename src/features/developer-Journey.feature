@@ -44,5 +44,5 @@ Feature: Developer Journey Tests
         And I am on the "check-answers" page
         When I submit my developer information
         Then I should be on the "confirm" page
-        And the biodiversity gain site reference should be displayed
+        And the biodiversity gain site reference should be displayed with the BNG transaction type of "BNGREG"
 
