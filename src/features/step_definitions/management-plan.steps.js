@@ -5,7 +5,7 @@ let  basePage = monitoringStartDatePage;
 
 
 Given("I have completed the management-plan section", async () => {
-    await completeManagementPlanSection("12/10/2022", "13/10/2022");
+    await completeManagementPlanSection("13/10/2022");
   })
 
 Then("I should be able to enter a valid 30 year monitoring start date of {string}", async (date) => {
@@ -17,12 +17,9 @@ async function enter30YearMonitoringStartDate(date) {
     await expect(monitoringStartDatePage.errorMsg).not.toBeDisplayed();
 }
 
-async function completeManagementPlanSection(date, date2) { 
-    // And I enter a valid "start" date of "<hmmp start date>"
-    await basePage.enterValidDate(date);
-
+async function completeManagementPlanSection(date) { 
     // And I enter a valid "30 year monitoring start" date of "<30 year monitor date>"
-    await enter30YearMonitoringStartDate(date2);
+    await enter30YearMonitoringStartDate(date);
     
     // confirm on the cya page
     await (checkManagementMonitoringDetailsPage.continueButton).click();
