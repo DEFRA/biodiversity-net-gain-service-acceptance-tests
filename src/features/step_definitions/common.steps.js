@@ -37,7 +37,6 @@ const landownershipRegisteredLandownerPage = require("../page_objects/land_owner
 const landownershipAddLandowners = require("../page_objects/land_ownership/add-landowners.page");
 const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
-const habitatWorksStartDatePage = require("../page_objects/management_plan/habitat-works-start-date.page");
 const monitoringStartDatePage = require("../page_objects/management_plan/monitoring-start-date.page");
 const resultsPage = require("../page_objects/eligibility_questions/results.page");
 const managementMonitoringCheckDetailsPage = require("../page_objects/management_plan/check-management-monitoring-details.page");
@@ -86,7 +85,6 @@ const pages = {
   //hmmp
   "management-plan-upload": managementPlanUploadPage,
   "management-plan-check": managementPlanCheckPage,
-  "habitat-works-start-date": habitatWorksStartDatePage,
   "monitoring-start-date": monitoringStartDatePage,
   "check-management-monitoring-details": managementMonitoringCheckDetailsPage,
   //Land boundary 

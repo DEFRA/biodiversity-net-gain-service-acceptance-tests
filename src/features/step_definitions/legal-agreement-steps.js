@@ -22,25 +22,14 @@ When("I choose to add another legal party of {string} with a role of {string}", 
   
   //add another legal party
   await addLegalParty(fullname, role);
-  await legalAgreementAddPartiesPage.continueButton.click();
 
 }) 
-
 
 Then("I can should see the number of legal parties in the title as {string}", async (number) =>{
   await $("h1").waitForExist({ timeout: 5000 });
 
   // assert against the page title
   expect(await browser.getTitle()).toContain(number);
-})
-
-// Redundant
-Then("I can choose to add another legal party", async () => {
-  await legalAgreementAddPartiesPage.addAnotherLegalParty.click();
- 
- //check 2nd party details exist
- await expect(legalAgreementAddPartiesPage.legalPartyFullName2).toExist();
- await expect(legalAgreementAddPartiesPage.legalPartyRole2).toExist();
 })
 
 When("I confirm the legal party role as a {string}", async (role) => {
@@ -58,16 +47,12 @@ When("I add the legal party fullname or organisation as {string}", async (fullna
 
 async function completeLegalAgreementSection(fullname, role, date) { 
   // And I add the legal party fullname or organisation as "<legal party name>"
-  await addLegalPartyFullName(fullname); 
-  
-  // And I confirm the legal party role as a "<legal party role>"
-  await legalAgreementAddPartiesPage.addLegalPartyRole(role);
-  await legalAgreementAddPartiesPage.continueButton.click();
+  await addLegalParty(fullname, role); 
 
   // Add another legal agreement party?
-    // go back to the add page
-  // say no and continue
+  // say no 
   await legalPartyListPage.radioNo.click();
+  // and continue
   await legalPartyListPage.continueButton.click();
 
   // And I enter a valid "legal agreement start" date of "<legal-agreement start date>"
@@ -79,16 +64,16 @@ async function completeLegalAgreementSection(fullname, role, date) {
     
   }
 
-async function addLegalPartyFullName(fullname) {
-  await legalAgreementAddPartiesPage.legalPartyFullName.addValue(fullname);
-}
-
-
 async function addLegalParty(fullname, role) {
   // And I add the legal party fullname or organisation as "<legal party name>"
   await addLegalPartyFullName(fullname); 
 
   // And I confirm the legal party role as a "<legal party role>"
   await legalAgreementAddPartiesPage.addLegalPartyRole(role);
+  await legalAgreementAddPartiesPage.continueButton.click();
  
+}
+
+async function addLegalPartyFullName(fullname) {
+  await legalAgreementAddPartiesPage.legalPartyFullName.addValue(fullname);
 }

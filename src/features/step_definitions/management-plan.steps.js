@@ -18,10 +18,6 @@ async function enter30YearMonitoringStartDate(date) {
 }
 
 async function completeManagementPlanSection(date) { 
-    // removed in https://eaflood.atlassian.net/browse/BNGP-3141
-    // And I enter a valid "start" date of "<hmmp start date>"
-    // await basePage.enterValidDate(date);
-
     // And I enter a valid "30 year monitoring start" date of "<30 year monitor date>"
     await enter30YearMonitoringStartDate(date);
     

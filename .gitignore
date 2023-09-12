@@ -5,3 +5,5 @@ node_modules/
 # Test logs
 TEST-*.xml
 .tmp
+.lighthouseci/
+reports/

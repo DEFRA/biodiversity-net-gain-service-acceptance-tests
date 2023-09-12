@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class DeveloperConfirmationPage extends Page {
   get titleText() {
-    return "You’ve submitted your biodiversity details";
+    return "Application submitted";
   }
 
   get referenceNumber(){

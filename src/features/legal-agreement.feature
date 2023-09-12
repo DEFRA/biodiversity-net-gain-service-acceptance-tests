@@ -73,7 +73,6 @@ Feature: Legal Agreement
             | page                       |
             | legal-agreement-start-date |
             | monitoring-start-date      |
-            | habitat-works-start-date   |
 
     Scenario Outline: BNGP-2172 - BUG - All date fields should be able to accept a 1 digit integer for day or month
         When I navigate to the "<page>" page
@@ -83,4 +82,3 @@ Feature: Legal Agreement
             | page                       |
             | legal-agreement-start-date |
             | monitoring-start-date      |
-            | habitat-works-start-date   |
