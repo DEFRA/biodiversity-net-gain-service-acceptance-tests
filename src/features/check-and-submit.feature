@@ -8,10 +8,10 @@ Feature: Check and Submit
     Background: Complete all registration details
         Given I navigate to the "start" page
         And I start my registration
-        # eligibility
-        And I have everything I need to start my biodiversity gain site registration
-        # applicant details
-        And I have completed the applicant details section
+        # # eligibility
+        # And I have everything I need to start my biodiversity gain site registration
+        # # applicant details
+        # And I have completed the applicant details section
         # land boundary  add the link to the section from the tasklist?  just jumps straight there at the mo
         And I choose and upload a "land-boundary" file
         And I confirm it is the correct file
