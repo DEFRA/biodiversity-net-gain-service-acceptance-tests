@@ -1,15 +1,29 @@
+Feature: Biodiversity metric display/playback
 
+        As a Site provider registering a gain site
+        I need to be able to view the data from my uploaded metric file
+        So that I can check the habitat baseline and created and enhanced habitats I am registering are correct
 
-        Background
+        Background: start and add applicant details
+                Given I navigate to the "start" page
+                And I start my registration
+                # eligibility
+                And I have everything I need to start my biodiversity gain site registration
+                # applicant details
+                And I have completed the applicant details section
+                And I navigate to the "metric-upload" page
+                And I choose and upload a "metric" file
+                And I confirm it is the correct file
 
-        Given I choose and upload a "metric" file
-        And I confirm it is the correct file
+        Scenario Outline: BNGP-523 1a - The uploaded metric data on the <metricDisplayPage> page has correct totals for <HabitatType>
+                Given I navigate to the "<metricDisplayPage>" page
+                Then The total for "<HabitatType>" should be "<total>"
+                Examples:
+                        | metricDisplayPage      | HabitatType                 | total |
+                        | check-habitat-baseline | Habitat type and condition  | 3.50  |
+                        | check-habitat-baseline | Hedgerow type and condition | 0.60  |
+                        | check-habitat-baseline | River type and condition    | 0.60  |
+                        | check-habitat-created  | Habitat type and condition  | 3.50  |
+                        | check-habitat-created  | Hedgerow type and condition | 0.60  |
+                        | check-habitat-created  | River type and condition    | 0.30  |
 
-        When I check the habitat baseline information is correct
-        # Then I should see
-
-        When I check the created and enhanced information is correct
-        # Then I should see
-
-        When I confirm the "metric" details are correct
-# Then I should see
