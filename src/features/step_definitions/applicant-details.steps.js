@@ -13,11 +13,11 @@ import developerApplicantDetailsCorrectEmailPage from "../page_objects/developer
 import developerCheckYourDetailsPage from "../page_objects/developer/details-confirm.page";
 
 Given("I have completed the applicant details section", async () => {
-  await completeApplicantDetailsSection("John Smith", "Landowner", "test@Landowner.com");
+  await completeApplicantDetailsSection("John Smith", "Landowner", "landowner@example.com");
 })
 
 Given("I have completed the applicant details section for my development", async () => {
-  await completeApplicantDetailsSection("Christopher Wallace", "Developer", "test@developer.com");
+  await completeApplicantDetailsSection("Christopher Wallace", "Developer", "developer@example.com");
 })
 
 When("I select other role", async () => {

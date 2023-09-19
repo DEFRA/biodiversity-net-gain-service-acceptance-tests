@@ -23,6 +23,9 @@ Feature: Check and Submit
         # Metric
         And I choose and upload a "metric" file
         And I confirm it is the correct file
+        And I confirm the "check-habitat-baseline" information is correct
+        And I confirm the "check-habitat-creation" information is correct
+        And I confirm the "check-metric-details" information is correct
         # HMMP
         And I choose and upload a "management-plan" file
         And I confirm it is the correct file
@@ -33,6 +36,10 @@ Feature: Check and Submit
         And I choose and upload a "legal-agreement" file
         And I confirm it is the correct file
         And I have completed the legal-agreement section
+        # Local land Charges
+        And I choose and upload a "local-land-charge" file
+        And I confirm it is the correct file
+        # Confirm all sections complete
         And I confirm I have completed all "landowner journey" sections
 
     @skip()  # skip upload test for release 5
@@ -56,10 +63,11 @@ Feature: Check and Submit
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
-
     @e2e
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
+        # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         And I am on the "check-and-submit" page
         When I submit my application
-        Then I should be on the "registration-submitted" page
+        Then I should be on the "application-submitted" page
         And the biodiversity gain site reference should be displayed
+        And the fee amount of "£639.00" should be displayed

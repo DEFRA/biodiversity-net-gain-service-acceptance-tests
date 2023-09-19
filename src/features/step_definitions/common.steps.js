@@ -11,7 +11,9 @@ const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_
 const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement.page");
+const legalAgreementCCUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement-conservation-covenant.page");
 const legalAgreementCheckFilePage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
+const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page");
 const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page");
 const legalAgreementStartDatePage = require("../page_objects/legal_agreement/legal-agreement-start-date.page");
 const legalAgreementCheckDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page");
@@ -27,19 +29,23 @@ const landBoundaryCheckImageDetailsPage = require("../page_objects/land_boundary
 const metricUploadPage = require("../page_objects/metric/metric-upload.page");
 const metricCheckPage = require("../page_objects/metric/metric-check.page");
 const metricDisplayBaselinePage = require("../page_objects/metric/check-habitat-baseline.page");
+const metricDisplayHabitatCreationPage = require("../page_objects/metric/check-habitat-created.page");
+const metricCheckDetailsPage = require("../page_objects/metric/check-metric-details.page"); 
 const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
 const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
 const landownershipRegisteredLandownerPage = require("../page_objects/land_ownership/registered-landowner.page");
 const landownershipAddLandowners = require("../page_objects/land_ownership/add-landowners.page");
 const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
-const habitatWorksStartDatePage = require("../page_objects/management_plan/habitat-works-start-date.page");
 const monitoringStartDatePage = require("../page_objects/management_plan/monitoring-start-date.page");
 const resultsPage = require("../page_objects/eligibility_questions/results.page");
 const managementMonitoringCheckDetailsPage = require("../page_objects/management_plan/check-management-monitoring-details.page");
 const landOwnershipCheckDetailsPage = require("../page_objects/land_ownership/check-ownership-details.page");
 const checkAndSubmitPage = require("../page_objects/check-and-submit.page");
-const confirmationPage = require("../page_objects/registration-submitted.page");
+const confirmationPage = require("../page_objects/application-submitted.page");
+const LocalLandChargeUploadPage = require("../page_objects/local_land_charge/upload-local-land-charge.page");
+const LocalLandChargeCheckPage = require("../page_objects/local_land_charge/check-local-land-charge.page")
+const LocalLandChargeNeedPage = require("../page_objects/local_land_charge/need-local-land-charge.page")
 
 const basePage = legalAgreementUploadPage;
 
@@ -50,6 +56,7 @@ const DeveloperMetricUploadPage = require("../page_objects/developer/upload-metr
 const DeveloperConsentAgreementUploadPage = require("../page_objects/developer/consent-agreement-upload.page");  
 const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/developer/metric-confirm-development-details.page"); 
 const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answers.page");
+const legalPartyRemovePage = require("../page_objects/legal_agreement/legal-party-remove.page");
 
 const pages = {
   start: startPage,
@@ -66,17 +73,19 @@ const pages = {
   "check-your-details": applicantDetailsCheckYourDetailsPage,
   //legal agreement
   "legal-agreement-upload": legalAgreementUploadPage,
+  "legal-agreement-cc-upload": legalAgreementCCUploadPage,
   "legal-agreement-check": legalAgreementCheckFilePage,
   "legal-agreement-type": legalAgreementTypePage,
   "need-legal-agreement": legalAgreementNeedpage,
   "add-legal-agreement-parties": legalAgreementAddPartiesPage,
+  "legal-party-list": legalPartyListPage,
   "legal-agreement-start-date": legalAgreementStartDatePage,
   "check-legal-agreement-details": legalAgreementCheckDetailsPage,
   //hmmp
   "management-plan-upload": managementPlanUploadPage,
   "management-plan-check": managementPlanCheckPage,
-  "habitat-works-start-date": habitatWorksStartDatePage,
   "monitoring-start-date": monitoringStartDatePage,
+  "check-management-monitoring-details": managementMonitoringCheckDetailsPage,
   //Land boundary 
   "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
@@ -90,7 +99,9 @@ const pages = {
   //metric
   "metric-upload": metricUploadPage,
   "metric-check": metricCheckPage,
-  "metric-display-baseline": metricDisplayBaselinePage,
+  "check-habitat-baseline": metricDisplayBaselinePage,
+  "check-habitat-created": metricDisplayHabitatCreationPage,
+  "check-metric-details": metricCheckDetailsPage,
   //land ownership
   "land-ownership-upload": landOwnershipUploadPage,
   "land-ownership-check": landOwnershipCheckPage,
@@ -101,27 +112,38 @@ const pages = {
   //summary
   "check-and-submit": checkAndSubmitPage,
   //Confirmation
-  "registration-submitted": confirmationPage,
+  "application-submitted": confirmationPage,
+  //Local land Charge search certificate
+  "local-land-charge-upload": LocalLandChargeUploadPage,
+  "local-land-charge-check": LocalLandChargeCheckPage,
+  "need-local-land-charge": LocalLandChargeNeedPage,
 
-  //**DEVLOPER JOURNEY */
+  //**DEVELOPER JOURNEY */
   //Start
   "routing-register": developerStartPage,
   "developer/tasklist": DeveloperTaskListPage,
   "developer-metric-upload": DeveloperMetricUploadPage,
   "consent-agreement-upload":  DeveloperConsentAgreementUploadPage,
   "confirm-development-details": DeveloperConfirmDevelopmentDetailsPage,
-  "check-answers" : DeveloperCheckAnswersPage,
+  "check-answers" : DeveloperCheckAnswersPage
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
-
   // open the page requested from the list of pages
   page = page.toLowerCase();
-  await pages[page].open();
 
-  await $("h1").waitForExist({ timeout: 5000 });
-
+  // if a legal agreement upload page choose the type of agreement first before opening the page
+  if(page == "legal-agreement-upload"){
+    await pages["legal-agreement-type"].open()
+    await legalAgreementTypePage.planningObligation.click();
+    await legalAgreementTypePage.continueButton.click();
+  }
+  else{
+    await pages[page].open();
+  }
+  
   // assert against the page title
+  await $("h1").waitForExist({ timeout: 5000 });
   expect(await browser.getTitle()).toContain(pages[page].titleText);
 });
 
@@ -167,7 +189,7 @@ When("I confirm my role as a {string}", async (role) => {
   await applicantDetailsRolePage.confirmRole(role);  
 })
 
-When("I confirm the check {string} details are correct", async (check) => {
+When("I confirm the {string} information is correct", async (check) => {
   //confirm check your answer pages
   switch (check) {
     //applicant details
@@ -179,10 +201,21 @@ When("I confirm the check {string} details are correct", async (check) => {
         await confirmLandBoundaryDetails();
       break;
     }
-
     case "land ownership":{
         await confirmLandOwnershipDetails();
       break;
+    }
+    case "check-habitat-baseline":{
+      await confirmMetricBaselineDetails();
+    break;
+    }
+    case "check-habitat-creation":{
+      await confirmMetricHabitatCreationDetails();
+    break;
+    }
+    case "check-metric-details":{
+      await checkMetricDetails();
+    break;
     }
     case "management plan":{
         await confirmManagementPlanDetails();
@@ -203,14 +236,29 @@ async function confirmLegalAgreementDetails() {
   await (legalAgreementCheckDetailsPage.acceptBtn).click();
 }
 
-async function confirmManagementPlanDetails() {
-  await expect(managementMonitoringCheckDetailsPage.continueButton).toBeDisplayed();
-  await (managementMonitoringCheckDetailsPage.continueButton).click();
-}
-
 async function confirmLandOwnershipDetails() {
   await expect(landOwnershipCheckDetailsPage.continueButton).toBeDisplayed();
   await (landOwnershipCheckDetailsPage.continueButton).click();
+}
+
+async function checkMetricDetails() {
+  await expect(metricCheckDetailsPage.continueButton).toBeDisplayed();
+  await (metricCheckDetailsPage.continueButton).click();
+}
+
+async function confirmMetricBaselineDetails() {
+  await expect(metricDisplayBaselinePage.continueButton).toBeDisplayed();
+  await (metricDisplayBaselinePage.continueButton).click();
+}
+
+async function confirmMetricHabitatCreationDetails() {
+  await expect(metricDisplayHabitatCreationPage.continueButton).toBeDisplayed();
+  await (metricDisplayHabitatCreationPage.continueButton).click();
+}
+
+async function confirmManagementPlanDetails() {
+  await expect(managementMonitoringCheckDetailsPage.continueButton).toBeDisplayed();
+  await (managementMonitoringCheckDetailsPage.continueButton).click();
 }
 
 async function confirmLandBoundaryDetails() {
@@ -337,13 +385,17 @@ Then("the other role value should not be {string}", async (input) => {
   await expect(basePage.otherRoleTextBox).not.toHaveValue(input);
 });
 
-Then("I can choose to remove the other {string}", async (option) => {
+Then("I can remove the other {string}", async (option) => {
 
   if(option == "legal party") {
+    // choose to remove the 2nd legal party in the list
+    await (legalPartyListPage.removeLegalParty1).click();
+    // confirm removal
+    await (legalPartyRemovePage.radioYes).click();
+    await (legalPartyRemovePage.continueButton).click();
+    // assert to check remove link for 2nd legal party doesn't exist anymore
+    await expect(legalPartyListPage.removeLegalParty1).not.toExist();
 
-    await (legalAgreementAddPartiesPage.removeLegalParty2).click();
-    await expect(legalAgreementAddPartiesPage.legalPartyName2).not.toExist();
-    await expect(legalAgreementAddPartiesPage.legalPartyRole2).not.toExist();
   }
 })
 

@@ -5,11 +5,13 @@ const DeveloperTaskListPage = require("../page_objects/developer/tasklist.page")
 When("I confirm I have completed all {string} sections", async (journey) => {
 switch(journey){
   case "developer journey":{
+    await expect(DeveloperTaskListPage.submitStatus).not.toHaveTextContaining("CANNOT START YET")
   await expect(DeveloperTaskListPage.submitStatus).toHaveTextContaining("NOT STARTED YET")
   await (DeveloperTaskListPage.additionalEmailBtn).click();
   break;
   }
   case "landowner journey":{
+    await expect(TaskList.submitStatus).not.toHaveTextContaining("CANNOT START YET")
     await expect(TaskList.submitStatus).toHaveTextContaining("NOT STARTED YET")
     await (TaskList.checkAndSubmitBtn).click();
     break;

@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class LegalAgreementUpload extends Page {
   get titleText() {
-    return "Upload the legal agreement";
+    return "Upload the planning obligation (section 106 agreement)";
   }
 
   get path() {

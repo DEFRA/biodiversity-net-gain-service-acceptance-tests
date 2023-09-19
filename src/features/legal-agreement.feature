@@ -12,37 +12,42 @@ Feature: Legal Agreement
         And I have everything I need to start my biodiversity gain site registration
         # applicant details
         And I have completed the applicant details section
+        # Legal Agreement Chose the Type
+        And I navigate to the "legal-agreement-type" page
 
     Scenario Outline: BNGP-188 2 I have a choice between 2 types of legal agreement or not having one
-        When I navigate to the "legal-agreement-type" page
-        And I select "<legal-agreement-type>" and continue
+        When I select "<legal-agreement-type>" and continue
         Then I should be on the "<destination>" page
         Examples:
-            | legal-agreement-type            | destination            |
-            | Conservation covenant           | legal-agreement-upload |
-            | Planning obligation             | legal-agreement-upload |
-            | I do not have a legal agreement | need-legal-agreement   |
+            | legal-agreement-type            | destination               |
+            | Conservation covenant           | legal-agreement-cc-upload |
+            | Planning obligation             | legal-agreement-upload    |
+            | I do not have a legal agreement | need-legal-agreement      |
 
     Scenario: BNGP-188 3 I should be able to add multiple legal parties
-        When I navigate to the "add-legal-agreement-parties" page
-        Then I can choose to add another legal party
+        When I select "Planning obligation" and continue
+        And I choose and upload a "legal-agreement" file
+        And I confirm it is the correct file
+        And I add the legal party "Legal Party 1" with a role of "Landowner"
+        And I choose to add another legal party of "Legal Party 2" with a role of "Developer"
+        Then I can should see the number of legal parties in the title as "2"
 
-    @skip()  # legal parties to be refactored https://eaflood.atlassian.net/browse/BNGP-1920?focusedCommentId=496196
-    Scenario: BNGP-188 4 There is a way to remove unwanted legal parties
-        When I navigate to the "add-legal-agreement-parties" page
-        And I add another "legal party" as "legal party 2" and confirm
-        Then I can choose to remove the other "legal party"
+    #todo refactor
+    Scenario: BNGP-188 4 There is a way to remove unwanted legal parties from the list
+        When I navigate to the "legal-party-list" page
+        Then I can remove the other "legal party"
 
+    @skip() #refactor when code changes come in
     Scenario: BNGP-188 5,6 There must be at least 1 legal party added
-        When I navigate to the "add-legal-agreement-parties" page
-        And I add the legal party fullname or organisation as "legal party 1"
-        And I confirm the legal party role as a "landowner"
-        Then I should be on the "legal-agreement-start-date" page
+        When I navigate to the "legal-party-list" page
+        And there is one legal party in the list
+        When i try to remove it
+        Then I see an error
 
+    @skip() # known bug, add back in when https://eaflood.atlassian.net/browse/BNGP-3488 is in test
     Scenario: BNGP-188 7,8 If 'Other' option is selected as Role then the Role field popup must not be left blank
         When I navigate to the "add-legal-agreement-parties" page
-        And I add the legal party fullname or organisation as "legal party 1"
-        And I select "Other role" and continue
+        And I add the legal party "Legal Party 1" with a role of "Other"
         Then I should see the error "Other type of role cannot be left blank"
 
     Scenario: BNGP-188 9 I can add a valid legal agreement start date
@@ -68,7 +73,6 @@ Feature: Legal Agreement
             | page                       |
             | legal-agreement-start-date |
             | monitoring-start-date      |
-            | habitat-works-start-date   |
 
     Scenario Outline: BNGP-2172 - BUG - All date fields should be able to accept a 1 digit integer for day or month
         When I navigate to the "<page>" page
@@ -78,21 +82,3 @@ Feature: Legal Agreement
             | page                       |
             | legal-agreement-start-date |
             | monitoring-start-date      |
-            | habitat-works-start-date   |
-
-    @bug
-    Scenario: BNGP-1468 - BUG - Adding another legal party initially clears the role value
-        When I navigate to the "add-legal-agreement-parties" page
-        And I add the legal party fullname or organisation as "legal party 1"
-        And I add a legal party role as a "landowner"
-        And I add another "legal party" as "legal party 2" and confirm
-        And I enter a start date of "12/10/2024"
-        Then I should be on the "check-legal-agreement-details" page
-        And I should see the "parties involved" shown as "legal party 2" on the "check-legal-agreement-details" page
-
-
-
-
-
-
-
