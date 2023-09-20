@@ -67,6 +67,18 @@ module.exports = class Page {
     return $("#roleOther");
   }
 
+  get habitatTotal(){
+   return $('*[data-testid="habitatTotal"]'); 
+  }
+
+  get hedgeTotal(){
+    return $('*[data-testid="hedgeTotal"]'); 
+   }
+
+   get riverTotal(){
+    return $('*[data-testid="riverTotal"]'); 
+   }
+
   async enterValidDate(date) {
     var arr = date.split('/');
   
