@@ -4,7 +4,7 @@ const applicationSubmittedPage = require("../page_objects/application-submitted.
 Then("the biodiversity gain site reference should be displayed", async ()  => {
 
         await expect(applicationSubmittedPage.referenceNumber).toBeDisplayed();
-        await expect(applicationSubmittedPage.referenceNumber).toHaveTextContaining("REF");
+        await expect(applicationSubmittedPage.referenceNumber).toHaveTextContaining("BNGREG");
 });
 
 Then("the fee amount of {string} should be displayed", async(fee) =>{
