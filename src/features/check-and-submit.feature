@@ -6,20 +6,20 @@ Feature: Check and Submit
     So that I can confirm I am satisfied with all the entered details and submit my application
 
     Background: Complete all registration details
+        #Start Page
         Given I navigate to the "start" page
         And I start my registration
-        # # eligibility
-        # And I have everything I need to start my biodiversity gain site registration
-        # # applicant details
-        # And I have completed the applicant details section
-        # land boundary  add the link to the section from the tasklist?  just jumps straight there at the mo
-        And I choose and upload a "land-boundary" file
-        And I confirm it is the correct file
-        And I have completed the land-boundary section
+        # DefraID
+        And I login to the Government Gateway
+        And I am logged in to the service
         # land ownership
         And I choose and upload a "land-ownership" file
         And I confirm it is the correct file
         And I have completed the land-ownership section
+        # land boundary  add the link to the section from the tasklist?  just jumps straight there at the mo
+        And I choose and upload a "land-boundary" file
+        And I confirm it is the correct file
+        And I have completed the land-boundary section
         # Metric
         And I choose and upload a "metric" file
         And I confirm it is the correct file
