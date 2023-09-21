@@ -6,14 +6,19 @@ Feature: Developer Journey Tests
     # So that I can track the progress of my registration.
 
     Background: Complete applicant details
-
+        # Developer Journey start page
         Given I navigate to the "routing-register" page
-        # BNGP-2182
-        And I choose to record my off-site gain site
-        # Eligibility BNGP-2193
-        And I have everything I need to record off-site biodiversity gain for my development project
-        # applicant details BNGP-2173
-        And I have completed the applicant details section for my development
+        # DefraID
+        And I login to the Government Gateway
+        And I am logged in to the service
+
+    # Given I navigate to the "routing-register" page
+    # # BNGP-2182
+    # And I choose to record my off-site gain site
+    # # Eligibility BNGP-2193
+    # And I have everything I need to record off-site biodiversity gain for my development project
+    # # applicant details BNGP-2173
+    # And I have completed the applicant details section for my development
 
     Scenario: BNGP-2194 2, 5 - The sections on the task list page should show the status of progress.
         When I am on the "developer/tasklist" page
@@ -24,7 +29,7 @@ Feature: Developer Journey Tests
         And I should see the "Confirm off-site gain" section status as "NOT STARTED"
         And I should see the "Upload the consent document" section status as "NOT STARTED"
         And I should see the "submit" section status as "CANNOT START YET"
-    @e2e
+    @new
     # Check answers
     Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
