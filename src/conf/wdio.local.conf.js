@@ -1,7 +1,7 @@
 //for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
 //https://www.npmjs.com/package/cucumber-html-reporter
-import cucumberJson from "wdio-cucumberjs-json-reporter";
-const { removeSync } = require('fs-extra');
+// import cucumberJson from "wdio-cucumberjs-json-reporter";
+// const { removeSync } = require('fs-extra');
 
 exports.config = {
   // Browserstack Config
@@ -62,13 +62,16 @@ exports.config = {
       // maxInstances can get overwritten per capability. So if you have an in-house Selenium
       // grid with only 5 firefox instances available you can make sure that not more than
       // 5 instances get started at a time.
-      maxInstances: 10,
+      // maxInstances: 10,
       //
+     
       browserName: "chrome",
-      acceptInsecureCerts: true,
-      "goog:chromeOptions": {
-        args: ["--headless", "--disable-logging"],
-      },
+      // browserVersion: "117.0.5938.92",
+      // browserVersion: "stable",
+      // acceptInsecureCerts: true,
+      // "goog:chromeOptions": {
+      //   args: ["--headless", "--disable-logging"],
+      // },
     },
 
     // If outputDir is provided WebdriverIO can capture driver session logs
@@ -83,7 +86,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: "error",
+  logLevel: "info",
   //
   // Set specific log levels per logger
   // loggers:
@@ -126,12 +129,12 @@ exports.config = {
   // commands. Instead, they hook themselves up into the test process.
 
   // ...
-  services: [
-    // //if this is uncommented, don't need to run selenium-standalone start separately
+  // services: [
+  //   // //if this is uncommented, don't need to run selenium-standalone start separately
     
-    "chromedriver",
-    // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
-  ],
+  //   "chromedriver",
+  //   // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
+  // ],
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
@@ -155,15 +158,15 @@ exports.config = {
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
     "spec",
-    [
-      "cucumberjs-json",
-      {
-        jsonFolder: ".tmp/cucumberjs-json/",
-        screenshotsDirectory: './reports/screenshots/',
-        storeScreenshots: false,
-        reportFilePerRetry: true
-      },
-    ],
+    // [
+    //   "cucumberjs-json",
+    //   {
+    //     jsonFolder: ".tmp/cucumberjs-json/",
+    //     screenshotsDirectory: './reports/screenshots/',
+    //     storeScreenshots: false,
+    //     reportFilePerRetry: true
+    //   },
+    // ],
   ],
 
   //
@@ -174,7 +177,7 @@ exports.config = {
     // <boolean> show full backtrace for errors
     backtrace: true,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-    requireModule: ["@babel/register"],
+    requireModule: [],
     // <boolean> invoke formatters without executing steps
     dryRun: false,
     // <boolean> abort the run on first failure
@@ -188,7 +191,7 @@ exports.config = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tagExpression: "@new",
+    tags: "@new",
     // <number> timeout for step definitions
     timeout: 60000,
     // <boolean> Enable this config to treat undefined definitions as warnings.
@@ -208,10 +211,10 @@ exports.config = {
    * @param {Object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  onPrepare: function (config, capabilities) {
-    // Remove the `.tmp/` folder that holds the json and report files
-    removeSync('.tmp/');
-  },
+  // onPrepare: function (config, capabilities) {
+  //   // Remove the `.tmp/` folder that holds the json and report files
+  //   // removeSync('.tmp/');
+  // },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
    * for that worker as well as modify runtime environments in an async fashion.
@@ -249,11 +252,11 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-   before: function () {
-      browser.setCookies([
-        {name: 'seen_cookie_message', value: 'true'}
-  ])
-   },
+  //  before: function () {
+  //     browser.setCookies([
+  //       {name: 'seen_cookie_message', value: 'true'}
+  // ])
+  //  },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
@@ -298,11 +301,11 @@ exports.config = {
    * @param {number}             result.duration  duration of scenario in milliseconds
    * @param {Object}             context          Cucumber World object
    */
-   afterStep: async function (step, context, { error, result, duration, passed, retries }) {
-    if(error) {
-        cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
-    }
-   },
+  //  afterStep: async function (step, context, { error, result, duration, passed, retries }) {
+  //   if(error) {
+  //       cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+  //   }
+  //  },
   /**
    *
    * Runs after a Cucumber Scenario.
@@ -313,9 +316,9 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-   afterScenario: async function (world, result, context) {
-    cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
-   },
+  //  afterScenario: async function (world, result, context) {
+  //   cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+  //  },
   /**
    *
    * Runs after a Cucumber Feature.
@@ -359,9 +362,9 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  onComplete: function(exitCode, config, capabilities, results) {
-    // Generate the report when it all tests are done
-  },
+  // onComplete: function(exitCode, config, capabilities, results) {
+  //   // Generate the report when it all tests are done
+  // },
   /**
    * Gets executed when a refresh happens.
    * @param {String} oldSessionId session ID of the old session

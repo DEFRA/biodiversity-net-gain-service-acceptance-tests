@@ -1,4 +1,4 @@
-@regression     @new
+@regression
 Feature: Task List Page
 
     As a Site Provider

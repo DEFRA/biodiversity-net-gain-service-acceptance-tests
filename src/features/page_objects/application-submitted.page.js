@@ -1,6 +1,6 @@
 const Page = require("./page");
 
-class ConfirmationPage extends Page {
+class ApplicationSubmittedPage extends Page {
   get titleText() {
     return "Application submitted";
   }
@@ -37,4 +37,4 @@ class ConfirmationPage extends Page {
     return super.open("application-submitted");
   }
 }
-module.exports = new ConfirmationPage();
+module.exports = new ApplicationSubmittedPage();
