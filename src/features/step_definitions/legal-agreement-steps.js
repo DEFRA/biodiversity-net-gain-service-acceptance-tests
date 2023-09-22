@@ -1,7 +1,7 @@
-import { Given, When, Then } from "@cucumber/cucumber";
-import legalAgreementAddPartiesPage from "../page_objects/legal_agreement/add-legal-agreement-parties.page.js";
-import checkLegalAgreementDetailsPage from "../page_objects/legal_agreement/check-legal-agreement-details.page.js";
-import legalPartyListPage from "../page_objects/legal_agreement/legal-party-list.page.js";
+const { Given, When, Then } = require('@wdio/cucumber-framework');
+const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page.js");
+const checkLegalAgreementDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page.js");
+const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page.js");
 
 let  basePage = legalAgreementAddPartiesPage;
 

@@ -3,6 +3,7 @@ const landboundaryFileChoices = require("../page_objects/land_boundary/choose-la
 const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 const checkLandBoundaryDetailsPage = require("../page_objects/land_boundary/check-land-boundary-details.page");
+const tasklistPage = require("../page_objects/developer/tasklist.page");
 
 Given("I have completed the land-boundary section", async () => {
   await completeLandBoundarySection("fileType", "TL6233", "1231.11");
@@ -19,6 +20,9 @@ async function completeLandBoundarySection(fileType, gridreference, hectares) {
   
   // confirm on the cya page
   await (checkLandBoundaryDetailsPage.continueButton).click();
+
+  // confirm section complete on Task list
+
   
 }
 

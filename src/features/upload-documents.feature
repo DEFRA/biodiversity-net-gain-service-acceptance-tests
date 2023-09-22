@@ -10,6 +10,7 @@ Feature: Upload Documents
         And I start my registration
         # DefraID
         And I login to the Government Gateway
+        And I am logged in to the service
 
     @skip() #skipped as covered by @e2e tests
     Scenario Outline: <jira ticket> 1 - There is an option of uploading a single <document>

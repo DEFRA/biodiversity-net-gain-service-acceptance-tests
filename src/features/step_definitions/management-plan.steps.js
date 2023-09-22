@@ -1,6 +1,6 @@
-import { Given, Then } from "@cucumber/cucumber";
-import checkManagementMonitoringDetailsPage from "../page_objects/management_plan/check-management-monitoring-details.page";
-import monitoringStartDatePage from "../page_objects/management_plan/monitoring-start-date.page";
+const { Given, When, Then } = require('@wdio/cucumber-framework');
+const checkManagementMonitoringDetailsPage = require("../page_objects/management_plan/check-management-monitoring-details.page");
+const monitoringStartDatePage = require ("../page_objects/management_plan/monitoring-start-date.page");
 let  basePage = monitoringStartDatePage;
 
 

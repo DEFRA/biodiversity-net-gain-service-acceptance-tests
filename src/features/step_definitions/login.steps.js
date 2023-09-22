@@ -1,5 +1,5 @@
-import { When, Then } from "@cucumber/cucumber";
-import LoginPage from "../page_objects/login.page";
+const { Given, When, Then } = require('@wdio/cucumber-framework');
+const LoginPage = require("../page_objects/login.page");
 
 When ("I login to the Government Gateway", async () => {
     await $("h1").waitForExist();

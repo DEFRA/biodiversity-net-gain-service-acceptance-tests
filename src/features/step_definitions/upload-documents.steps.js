@@ -1,26 +1,52 @@
-import { When, Then } from "@cucumber/cucumber";
-import { join, basename } from "path";
-import managementPlanUploadPage from "../page_objects/management_plan/management-plan-upload.page";
-import managementPlanCheckPage from "../page_objects/management_plan/management-plan-check.page";
-import legalAgreementUploadPage from "../page_objects/legal_agreement/upload-legal-agreement.page";
-import legalAgreementCheckPage from "../page_objects/legal_agreement/check-legal-agreement-file.page";
-import landBoundaryFileUploadPage from "../page_objects/land_boundary/upload-land-boundary.page";
-import landBoundaryGeospatialUploadPage from "../page_objects/land_boundary/upload-geospatial-file.page";
-import landBoundaryFileCheckPage from "../page_objects/land_boundary/check-land-boundary-file.page";
-import landBoundaryGeospatialCheckPage from "../page_objects/land_boundary/check-geospatial-file.page";
-import metricUploadPage from "../page_objects/metric/metric-upload.page";
-import metricCheckPage from "../page_objects/metric/metric-check.page";
-import landOwnershipUploadPage from "../page_objects/land_ownership/land-ownership-upload.page";
-import landOwnershipCheckPage from "../page_objects/land_ownership/land-ownership-check.page";
-import uploadLocalLandChargePage from "../page_objects/local_land_charge/upload-local-land-charge.page";
-import checkLocalLandChargePage from "../page_objects/local_land_charge/check-local-land-charge.page"
+const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { join, basename } = require("node:path");
+const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
+const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
+const legalAgreementUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement.page");
+const legalAgreementCheckPage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
+const landBoundaryFileUploadPage = require("../page_objects/land_boundary/upload-land-boundary.page");
+const landBoundaryGeospatialUploadPage = require("../page_objects/land_boundary/upload-geospatial-file.page");
+const landBoundaryFileCheckPage = require("../page_objects/land_boundary/check-land-boundary-file.page");
+const landBoundaryGeospatialCheckPage = require("../page_objects/land_boundary/check-geospatial-file.page");
+const metricUploadPage = require("../page_objects/metric/metric-upload.page");
+const metricCheckPage = require("../page_objects/metric/metric-check.page");
+const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
+const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
+const uploadLocalLandChargePage = require("../page_objects/local_land_charge/upload-local-land-charge.page");
+const checkLocalLandChargePage = require("../page_objects/local_land_charge/check-local-land-charge.page");
 
 //developer uploads
-import consentAgreementUploadPage from "../page_objects/developer/consent-agreement-upload.page";
-import consentAgreementCheckPage from "../page_objects/developer/consent-agreement-check.page";
-import uploadDeveloperMetricFilePage from "../page_objects/developer/upload-metric-file.page";
-import checkDeveloperMetricFilePage from "../page_objects/developer/check-metric-file.page";
-import DeveloperTaskListPage from "../page_objects/developer/tasklist.page";
+const consentAgreementUploadPage = require("../page_objects/developer/consent-agreement-upload.page");
+const consentAgreementCheckPage = require("../page_objects/developer/consent-agreement-check.page");
+const uploadDeveloperMetricFilePage = require("../page_objects/developer/upload-metric-file.page");
+const checkDeveloperMetricFilePage= require("../page_objects/developer/check-metric-file.page");
+const DeveloperTaskListPage = require( "../page_objects/developer/tasklist.page");
+
+
+
+
+// import { join, basename } from "path";
+// import managementPlanUploadPage from "../page_objects/management_plan/management-plan-upload.page";
+// import managementPlanCheckPage from "../page_objects/management_plan/management-plan-check.page";
+// import legalAgreementUploadPage from "../page_objects/legal_agreement/upload-legal-agreement.page";
+// import legalAgreementCheckPage from "../page_objects/legal_agreement/check-legal-agreement-file.page";
+// import landBoundaryFileUploadPage from "../page_objects/land_boundary/upload-land-boundary.page";
+// import landBoundaryGeospatialUploadPage from "../page_objects/land_boundary/upload-geospatial-file.page";
+// import landBoundaryFileCheckPage from "../page_objects/land_boundary/check-land-boundary-file.page";
+// import landBoundaryGeospatialCheckPage from "../page_objects/land_boundary/check-geospatial-file.page";
+// import metricUploadPage from "../page_objects/metric/metric-upload.page";
+// import metricCheckPage from "../page_objects/metric/metric-check.page";
+// import landOwnershipUploadPage from "../page_objects/land_ownership/land-ownership-upload.page";
+// import landOwnershipCheckPage from "../page_objects/land_ownership/land-ownership-check.page";
+// import uploadLocalLandChargePage from "../page_objects/local_land_charge/upload-local-land-charge.page";
+// import checkLocalLandChargePage from "../page_objects/local_land_charge/check-local-land-charge.page"
+
+// //developer uploads
+// import consentAgreementUploadPage from "../page_objects/developer/consent-agreement-upload.page";
+// import consentAgreementCheckPage from "../page_objects/developer/consent-agreement-check.page";
+// import uploadDeveloperMetricFilePage from "../page_objects/developer/upload-metric-file.page";
+// import checkDeveloperMetricFilePage from "../page_objects/developer/check-metric-file.page";
+// import DeveloperTaskListPage from "../page_objects/developer/tasklist.page";
 
 let UploadPage = legalAgreementUploadPage;
 let CheckPage = legalAgreementCheckPage;
