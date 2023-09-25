@@ -50,8 +50,8 @@ Then("I should be able to create a new role of {string}", async (value) => {
       await (applicantDetailsRolePage.continueButton).click();
 });
 
-async function completeApplicantDetailsSection(fullname, role, email) { 
-      if(role == "Developer") {
+async function completeApplicantDetailsSection(fullname, journey, email) { 
+      if(journey == "Developer") {
       await developerApplicantDetailsNamePage.addFullName(fullname);
       await developerApplicantDetailsEmailPage.addEmailAddress(email);
 
