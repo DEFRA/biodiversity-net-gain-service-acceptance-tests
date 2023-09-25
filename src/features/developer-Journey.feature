@@ -1,4 +1,4 @@
-@regression
+@regression @e2e
 Feature: Developer Journey Tests
 
     # As a developer
@@ -6,11 +6,17 @@ Feature: Developer Journey Tests
     # So that I can track the progress of my registration.
 
     Background: Complete applicant details
-        # Developer Journey start page
-        Given I navigate to the "routing-register" page
+
+        #Start Page
+        Given I navigate to the "start" page
+        And I start my registration
         # DefraID
         And I login to the Government Gateway
         And I am logged in to the service
+        # Developer Journey task list
+        And I navigate to the "developer/tasklist" page
+
+
 
     # Given I navigate to the "routing-register" page
     # # BNGP-2182
@@ -33,6 +39,9 @@ Feature: Developer Journey Tests
     # Check answers
     Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
+        #****applicant details section shouldn't exist for the DEFRAID for dev journey but currently does***
+        And I navigate to the "developer-details-name" page
+        And I have completed the applicant details section for my development
         # Developer Metric
         And I want to upload the metric file
         And I enter my off site gain reference number as "AZ12208461"

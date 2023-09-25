@@ -44,8 +44,9 @@ const landOwnershipCheckDetailsPage = require("../page_objects/land_ownership/ch
 const checkAndSubmitPage = require("../page_objects/check-and-submit.page");
 const confirmationPage = require("../page_objects/application-submitted.page");
 const LocalLandChargeUploadPage = require("../page_objects/local_land_charge/upload-local-land-charge.page");
-const LocalLandChargeCheckPage = require("../page_objects/local_land_charge/check-local-land-charge.page")
-const LocalLandChargeNeedPage = require("../page_objects/local_land_charge/need-local-land-charge.page")
+const LocalLandChargeCheckPage = require("../page_objects/local_land_charge/check-local-land-charge.page");
+const LocalLandChargeNeedPage = require("../page_objects/local_land_charge/need-local-land-charge.page");
+const legalPartyRemovePage = require("../page_objects/legal_agreement/legal-party-remove.page");
 
 const basePage = legalAgreementUploadPage;
 
@@ -56,7 +57,7 @@ const DeveloperMetricUploadPage = require("../page_objects/developer/upload-metr
 const DeveloperConsentAgreementUploadPage = require("../page_objects/developer/consent-agreement-upload.page");  
 const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/developer/metric-confirm-development-details.page"); 
 const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answers.page");
-const legalPartyRemovePage = require("../page_objects/legal_agreement/legal-party-remove.page");
+const  DeveloperDetailsName = require("../page_objects/developer/details-name.page");
 
 const pages = {
   start: startPage,
@@ -125,7 +126,8 @@ const pages = {
   "developer-metric-upload": DeveloperMetricUploadPage,
   "consent-agreement-upload":  DeveloperConsentAgreementUploadPage,
   "confirm-development-details": DeveloperConfirmDevelopmentDetailsPage,
-  "check-answers" : DeveloperCheckAnswersPage
+  "check-answers" : DeveloperCheckAnswersPage,
+  "developer-details-name": DeveloperDetailsName
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
