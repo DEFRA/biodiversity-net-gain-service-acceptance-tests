@@ -69,5 +69,5 @@ Feature: Check and Submit
         And I am on the "check-and-submit" page
         When I submit my application
         Then I should be on the "application-submitted" page
-        And the biodiversity gain site reference should be displayed
-        And the fee amount of "£639.00" should be displayed
+        And The biodiversity gain site reference should be displayed
+        And The fee amount of "£639.00" should be displayed
