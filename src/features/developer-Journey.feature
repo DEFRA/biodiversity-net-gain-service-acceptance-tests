@@ -35,7 +35,6 @@ Feature: Developer Journey Tests
         And I should see the "Confirm off-site gain" section status as "NOT STARTED"
         And I should see the "Upload the consent document" section status as "NOT STARTED"
         And I should see the "submit" section status as "CANNOT START YET"
-
     @e2e
     # Check answers
     Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
@@ -60,6 +59,6 @@ Feature: Developer Journey Tests
         And I am on the "check-answers" page
         When I submit my developer information
         Then I should be on the "application-submitted" page
-        And the biodiversity gain site reference should be displayed
-        And the fee amount of "£45.00" should be displayed
+        And The biodiversity gain site reference should be displayed
+        And The fee amount of "£45.00" should be displayed
 
