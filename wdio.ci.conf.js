@@ -17,6 +17,9 @@ exports.config = {
       },
     },
   ],
+
+  logLevel: "error",
+
   reporters: [
     'spec',
     ['junit', {
