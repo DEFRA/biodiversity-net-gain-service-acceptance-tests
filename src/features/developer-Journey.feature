@@ -7,13 +7,14 @@ Feature: Developer Journey Tests
 
     Background: Complete applicant details
 
-        Given I navigate to the "routing-register" page
-        # BNGP-2182
-        And I choose to record my off-site gain site
-        # Eligibility BNGP-2193
-        And I have everything I need to record off-site biodiversity gain for my development project
-        # applicant details BNGP-2173
-        And I have completed the applicant details section for my development
+        #Start Page
+        Given I navigate to the "start" page
+        And I start my registration
+        # DefraID
+        And I login to the Government Gateway
+        And I am logged in to the service
+        # Developer Journey task list
+        And I navigate to the "developer/tasklist" page
 
     Scenario: BNGP-2194 2, 5 - The sections on the task list page should show the status of progress.
         When I am on the "developer/tasklist" page
@@ -28,6 +29,9 @@ Feature: Developer Journey Tests
     # Check answers
     Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
+        #****applicant details section shouldn't exist for the DEFRAID for dev journey but currently does***
+        And I navigate to the "developer-details-name" page
+        And I have completed the applicant details section for my development
         # Developer Metric
         And I want to upload the metric file
         And I enter my off site gain reference number as "AZ12208461"
@@ -45,6 +49,6 @@ Feature: Developer Journey Tests
         And I am on the "check-answers" page
         When I submit my developer information
         Then I should be on the "application-submitted" page
-        And the biodiversity gain site reference should be displayed
-        And the fee amount of "£45.00" should be displayed
+        And The biodiversity gain site reference should be displayed
+        And The fee amount of "£45.00" should be displayed
 

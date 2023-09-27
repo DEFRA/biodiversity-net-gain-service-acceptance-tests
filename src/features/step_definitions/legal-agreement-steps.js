@@ -1,7 +1,8 @@
-import { Given, When, Then } from "@cucumber/cucumber";
-import legalAgreementAddPartiesPage from "../page_objects/legal_agreement/add-legal-agreement-parties.page.js";
-import checkLegalAgreementDetailsPage from "../page_objects/legal_agreement/check-legal-agreement-details.page.js";
-import legalPartyListPage from "../page_objects/legal_agreement/legal-party-list.page.js";
+const { Given, When, Then } = require('@wdio/cucumber-framework');
+const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page.js");
+const checkLegalAgreementDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page.js");
+const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page.js");
+const tasklistPage = require("../page_objects/register-land-task-list.page");
 
 let  basePage = legalAgreementAddPartiesPage;
 
@@ -61,7 +62,9 @@ async function completeLegalAgreementSection(fullname, role, date) {
   // And I confirm the check "legal agreement" details are correct
   // confirm on the cya page
   await (checkLegalAgreementDetailsPage.acceptBtn).click();
-    
+
+  //tasklist section shows as complete
+ await expect(tasklistPage.legalAgreementStatus).toHaveTextContaining("COMPLETED");    
   }
 
 async function addLegalParty(fullname, role) {

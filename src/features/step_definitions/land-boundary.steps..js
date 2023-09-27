@@ -3,23 +3,23 @@ const landboundaryFileChoices = require("../page_objects/land_boundary/choose-la
 const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 const checkLandBoundaryDetailsPage = require("../page_objects/land_boundary/check-land-boundary-details.page");
+const tasklistPage = require("../page_objects/register-land-task-list.page");
 
 Given("I have completed the land-boundary section", async () => {
   await completeLandBoundarySection("fileType", "TL6233", "1231.11");
 })
 
 async function completeLandBoundarySection(fileType, gridreference, hectares) {
-  // And I choose and upload a "land-boundary" file
-  //       And I confirm it is the correct file
-  //       And I add a valid grid reference "<grid reference>"
-  //       And I add total hectares as "<hectares>"
-  //       And I confirm the check "land boundary" details are correct
+
   await gridReferencePage.addGridReference(gridreference);
   await addHectaresPage.addHectares(hectares);
   
   // confirm on the cya page
   await (checkLandBoundaryDetailsPage.continueButton).click();
-  
+
+   //tasklist section shows as complete
+   await expect(tasklistPage.landBoundaryStatus).toHaveTextContaining("COMPLETED");  
+
 }
 
 When("I add a valid grid reference {string}", async (gridreference) => {

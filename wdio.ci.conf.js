@@ -1,4 +1,4 @@
-const basicConfig = require("../../wdio.conf");
+const basicConfig = require("./wdio.conf");
 
 // Need longer timeout for dev environment uploads to pass AV scanning
 basicConfig.config.cucumberOpts.timeout = 300000
@@ -17,6 +17,9 @@ exports.config = {
       },
     },
   ],
+
+  logLevel: "error",
+
   reporters: [
     'spec',
     ['junit', {

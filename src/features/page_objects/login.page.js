@@ -1,20 +1,24 @@
 const Page = require("./page");
 
-class StartPage extends Page {
+class LoginPage extends Page {
   get titleText() {
     return "Sign in using Government Gateway";
   }
 
-get UserID(){
-    return $("[id$='user_id']");
-}
+  get UserID(){
+    return $("#user_id");
+  }
 
-get Password(){
-    return $("[id$='password']");
-}
+  get Password(){
+    return $("#password");
+  }
+
+  get SignInBtn() {
+    return $("#continue");
+  }
 
   open() {
     return super.open("https://www.ete.access.service.gov.uk/login/signin/creds");
   }
 }
-module.exports = new StartPage();
+module.exports = new LoginPage();

@@ -1,6 +1,7 @@
-import { Given, Then } from "@cucumber/cucumber";
-import checkManagementMonitoringDetailsPage from "../page_objects/management_plan/check-management-monitoring-details.page";
-import monitoringStartDatePage from "../page_objects/management_plan/monitoring-start-date.page";
+const { Given, When, Then } = require('@wdio/cucumber-framework');
+const checkManagementMonitoringDetailsPage = require("../page_objects/management_plan/check-management-monitoring-details.page");
+const monitoringStartDatePage = require ("../page_objects/management_plan/monitoring-start-date.page");
+const tasklistPage = require("../page_objects/register-land-task-list.page");
 let  basePage = monitoringStartDatePage;
 
 
@@ -27,5 +28,8 @@ async function completeManagementPlanSection(date) {
     
     // confirm on the cya page
     await (checkManagementMonitoringDetailsPage.continueButton).click();
+
+ //tasklist section shows as complete
+ await expect(tasklistPage.hmmpStatus).toHaveTextContaining("COMPLETED");  
     
   }

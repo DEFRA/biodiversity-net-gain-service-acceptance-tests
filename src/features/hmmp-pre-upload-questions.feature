@@ -1,4 +1,4 @@
-@regression @new
+@regression
 Feature: BNGP-799 Habitat Management and Monitoring Plan pre-upload questions
 
     As a Site Provider

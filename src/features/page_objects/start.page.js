@@ -1,6 +1,10 @@
 const Page = require("./page");
 
 class StartPage extends Page {
+  // get AcceptCookiesBtn(){
+  //   return $(".govuk-button js-cookies-button-accept")
+  // }
+
   get titleText() {
     return "Register land as a biodiversity gain site";
   }
@@ -10,7 +14,7 @@ class StartPage extends Page {
   }
 
   get startButton() {
-    return $("a[href='/land/check-you-can-register']");
+    return $("a[href='/land/register-land-task-list']");
   }
 
   get returnToSavedApplicationLink(){

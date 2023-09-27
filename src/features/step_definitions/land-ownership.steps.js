@@ -1,25 +1,26 @@
 const { Given, When } = require("@wdio/cucumber-framework");
 const checkOwnershipDetailsPage = require("../page_objects/land_ownership/check-ownership-details.page");
-const registeredLandownerPage = require("../page_objects/land_ownership/registered-landowner.page");
+const addLandownersPage = require("../page_objects/land_ownership/add-landowners.page");
+const landOwnerConsentPage = require("../page_objects/land_ownership/land-owner-consent.page");
+const tasklistPage = require("../page_objects/register-land-task-list.page");
 
 Given("I have completed the land-ownership section", async () => {
     await completeLandOwnershipSection();
   })
 
-When("I confirm I am the only landowner", async() => {
-    await confirmOnlyLandowner();
-});
-
-async function confirmOnlyLandowner() {
-    (await registeredLandownerPage.onlyLandownerRadio).click();
-    (await registeredLandownerPage.continueButton).click();
-}
-
 async function completeLandOwnershipSection() {
-    await confirmOnlyLandowner();
-    
-    // confirm on the cya page
-    await (checkOwnershipDetailsPage.continueButton).click();
-    
+
+  //Add a single landowner
+  await addLandownersPage.addlandowner("John Smith");
+
+  //confirm authenticated users consent for landowner on the consent page
+  await (landOwnerConsentPage.landownerConsentChkBox).click();
+  await landOwnerConsentPage.continueButton.click();
+
+  // confirm on the cya page
+  await (checkOwnershipDetailsPage.continueButton).click();
+
+  //tasklist section shows as complete
+  await expect(tasklistPage.landOwnershipStatus).toHaveTextContaining("COMPLETED");  
   }
 

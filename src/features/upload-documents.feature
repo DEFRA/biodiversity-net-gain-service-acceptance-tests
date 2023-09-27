@@ -8,10 +8,9 @@ Feature: Upload Documents
     Background: start and add applicant details
         Given I navigate to the "start" page
         And I start my registration
-        # eligibility
-        And I have everything I need to start my biodiversity gain site registration
-        # applicant details
-        And I have completed the applicant details section
+        # DefraID
+        And I login to the Government Gateway
+        And I am logged in to the service
 
     @skip() #skipped as covered by @e2e tests
     Scenario Outline: <jira ticket> 1 - There is an option of uploading a single <document>

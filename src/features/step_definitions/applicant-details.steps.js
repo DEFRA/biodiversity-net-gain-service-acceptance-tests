@@ -1,16 +1,17 @@
-import { Given, When, Then } from "@cucumber/cucumber";
-import applicantDetailsNamePage from "../page_objects/applicant_details/name.page";
-import applicantDetailsRolePage from "../page_objects/applicant_details/role.page";
-import applicantDetailsEmailPage from "../page_objects/applicant_details/email.page";
-import applicantDetailsCorrectEmailPage from "../page_objects/applicant_details/correct-email.page";
-import checkYourDetailsPage from "../page_objects/applicant_details/check-your-details.page";
+const { Given, When, Then } = require('@wdio/cucumber-framework');
+const applicantDetailsNamePage = require("../page_objects/applicant_details/name.page");
+const applicantDetailsRolePage = require("../page_objects/applicant_details/role.page");
+const applicantDetailsEmailPage = require("../page_objects/applicant_details/email.page");
+const applicantDetailsCorrectEmailPage = require("../page_objects/applicant_details/correct-email.page");
+const checkYourDetailsPage = require("../page_objects/applicant_details/check-your-details.page");
 
 
 // Developer journey 
-import developerApplicantDetailsNamePage from "../page_objects/developer/details-name.page";
-import developerApplicantDetailsEmailPage from "../page_objects/developer/details-email.page";
-import developerApplicantDetailsCorrectEmailPage from "../page_objects/developer/details-email-confirm.page";
-import developerCheckYourDetailsPage from "../page_objects/developer/details-confirm.page";
+const developerApplicantDetailsNamePage = require("../page_objects/developer/details-name.page");
+const developerApplicantDetailsEmailPage = require("../page_objects/developer/details-email.page");
+const developerApplicantDetailsCorrectEmailPage = require("../page_objects/developer/details-email-confirm.page");
+const developerCheckYourDetailsPage = require("../page_objects/developer/details-confirm.page");
+const developerTaskListPage = require("../page_objects/developer/tasklist.page.js")
 
 Given("I have completed the applicant details section", async () => {
   await completeApplicantDetailsSection("John Smith", "Landowner", "landowner@example.com");
@@ -18,6 +19,8 @@ Given("I have completed the applicant details section", async () => {
 
 Given("I have completed the applicant details section for my development", async () => {
   await completeApplicantDetailsSection("Christopher Wallace", "Developer", "developer@example.com");
+
+  await expect(developerTaskListPage.detailsStatus).toHaveTextContaining("COMPLETED");
 })
 
 When("I select other role", async () => {
@@ -50,8 +53,8 @@ Then("I should be able to create a new role of {string}", async (value) => {
       await (applicantDetailsRolePage.continueButton).click();
 });
 
-async function completeApplicantDetailsSection(fullname, role, email) { 
-      if(role == "Developer") {
+async function completeApplicantDetailsSection(fullname, journey, email) { 
+      if(journey == "Developer") {
       await developerApplicantDetailsNamePage.addFullName(fullname);
       await developerApplicantDetailsEmailPage.addEmailAddress(email);
 
