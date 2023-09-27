@@ -11,6 +11,7 @@ const developerApplicantDetailsNamePage = require("../page_objects/developer/det
 const developerApplicantDetailsEmailPage = require("../page_objects/developer/details-email.page");
 const developerApplicantDetailsCorrectEmailPage = require("../page_objects/developer/details-email-confirm.page");
 const developerCheckYourDetailsPage = require("../page_objects/developer/details-confirm.page");
+const developerTaskListPage = require("../page_objects/developer/tasklist.page.js")
 
 Given("I have completed the applicant details section", async () => {
   await completeApplicantDetailsSection("John Smith", "Landowner", "landowner@example.com");
@@ -18,6 +19,8 @@ Given("I have completed the applicant details section", async () => {
 
 Given("I have completed the applicant details section for my development", async () => {
   await completeApplicantDetailsSection("Christopher Wallace", "Developer", "developer@example.com");
+
+  await expect(developerTaskListPage.confirmDevelopmentDetailsStatus).toHaveTextContaining("COMPLETED");
 })
 
 When("I select other role", async () => {

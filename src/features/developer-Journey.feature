@@ -16,16 +16,6 @@ Feature: Developer Journey Tests
         # Developer Journey task list
         And I navigate to the "developer/tasklist" page
 
-
-
-    # Given I navigate to the "routing-register" page
-    # # BNGP-2182
-    # And I choose to record my off-site gain site
-    # # Eligibility BNGP-2193
-    # And I have everything I need to record off-site biodiversity gain for my development project
-    # # applicant details BNGP-2173
-    # And I have completed the applicant details section for my development
-
     Scenario: BNGP-2194 2, 5 - The sections on the task list page should show the status of progress.
         When I am on the "developer/tasklist" page
         Then I should see the "details" section status as "COMPLETED"

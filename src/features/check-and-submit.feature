@@ -26,6 +26,7 @@ Feature: Check and Submit
         And I confirm the "check-habitat-baseline" information is correct
         And I confirm the "check-habitat-creation" information is correct
         And I confirm the "check-metric-details" information is correct
+        And I should see the "metric" section status as "COMPLETED"
         # HMMP
         And I choose and upload a "management-plan" file
         And I confirm it is the correct file

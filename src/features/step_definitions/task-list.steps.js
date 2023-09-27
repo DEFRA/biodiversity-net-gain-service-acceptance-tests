@@ -13,7 +13,7 @@ switch(journey){
   case "landowner journey":{
     // check all section statuses 
 
-
+    // /make sure cannot start status for the cya section has changed to not started yet
     await expect(TaskList.submitStatus).not.toHaveTextContaining("CANNOT START YET")
     await expect(TaskList.submitStatus).toHaveTextContaining("NOT STARTED YET")
     await (TaskList.checkAndSubmitBtn).click();
