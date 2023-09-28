@@ -316,9 +316,10 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-  //  afterScenario: async function (world, result, context) {
-  //   cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
-  //  },
+   afterScenario: async function (world, result, context) {
+    // cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+    await browser.reloadSession();
+   },
   /**
    *
    * Runs after a Cucumber Feature.
@@ -353,6 +354,7 @@ exports.config = {
    * @param {Array.<String>} specs List of spec file paths that ran
    */
   // afterSession: function (config, capabilities, specs) {
+    
   // },
   /**
    * Gets executed after all workers got shut down and the process is about to exit. An error

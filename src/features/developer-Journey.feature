@@ -43,9 +43,6 @@ Feature: Developer Journey Tests
         And I choose and upload a "consent-agreement" file
         And I confirm it is the correct file
         And I confirm I have completed all "developer journey" sections
-        #Additional emails (is this in the right place?)
-        And I continue without adding email notifications for additional people
-
         And I am on the "check-answers" page
         When I submit my developer information
         Then I should be on the "application-submitted" page

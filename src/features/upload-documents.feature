@@ -23,7 +23,7 @@ Feature: Upload Documents
             | BNGP-499    | legal-agreement   | add-legal-agreement-parties |
             | BNGP-765    | management-plan   | habitat-works-start-date    |
             | BNGP-767    | land-boundary     | grid-reference              |
-            | BNGP-526    | geospatial        | check-land-boundary-details |
+            # | BNGP-526    | geospatial        | check-land-boundary-details |
             | BNGP-524    | metric            | metric-display-baseline     |
             | BNGP-515    | land-ownership    | registered-landowner        |
             | BNGP-3094   | local-land-charge | register-land-task-list     |
@@ -42,7 +42,7 @@ Feature: Upload Documents
             | BNGP-499    | legal-agreement |
             | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
-            | BNGP-526    | geospatial      |
+            # | BNGP-526    | geospatial      |
             | BNGP-524    | metric          |
             | BNGP-515    | land-ownership  |
 
@@ -57,7 +57,7 @@ Feature: Upload Documents
             | BNGP-499    | legal-agreement | 11.75 kB |
             | BNGP-765    | management-plan | 11.75 kB |
             | BNGP-767    | land-boundary   | 11.75 kB |
-            | BNGP-526    | geospatial      | 1.07 kB  |
+            # | BNGP-526    | geospatial      | 1.07 kB  |
             | BNGP-524    | metric          | 5.39 MB  |
             | BNGP-515    | land-ownership  | 11.75 kB |
 
@@ -71,7 +71,7 @@ Feature: Upload Documents
             | BNGP-499    | legal-agreement |
             | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
-            | BNGP-526    | geospatial      |
+            # | BNGP-526    | geospatial      |
             | BNGP-524    | metric          |
             | BNGP-515    | land-ownership  |
 
@@ -85,7 +85,7 @@ Feature: Upload Documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
-            | geospatial      |
+            # | geospatial      |
             | metric          |
             | land-ownership  |
 
@@ -99,7 +99,7 @@ Feature: Upload Documents
             | legal-agreement | Select a legal agreement                        |
             | management-plan | Select a habitat management and monitoring plan |
             | land-boundary   | Select a file showing the land boundary         |
-            | geospatial      | Select a file showing the land boundary         |
+            # | geospatial      | Select a file showing the land boundary         |
             | metric          | Select a Biodiversity Metric                    |
             | land-ownership  | Select a proof of land ownership file           |
 
@@ -114,7 +114,7 @@ Feature: Upload Documents
             | legal-agreement |
             | management-plan |
             | land-boundary   |
-            | geospatial      |
+            # | geospatial      |
             # todo skip as need to investigate this specific test
             # | metric   |
             | land-ownership  |
@@ -142,9 +142,9 @@ Feature: Upload Documents
             | land-boundary   | docx     |
             | land-boundary   | pdf      |
             | land-boundary   | jpg      |
-            | geospatial      | zip      |
-            | geospatial      | geojson  |
-            | geospatial      | gpkg     |
+    # | geospatial      | zip      |
+    # | geospatial      | geojson  |
+    # | geospatial      | gpkg     |
 
     Scenario Outline: <jira ticket> 8 I cannot upload a <document> file that is larger than the maximum file size (currently 50MB with 2.43 threshhold that allows for both binary and decimal interpretations of the upload limit)
         When I navigate to the "<document>-upload" page

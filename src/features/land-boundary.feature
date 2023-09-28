@@ -8,10 +8,10 @@ Feature: Land Boundary
     Background:
         Given I navigate to the "start" page
         And I start my registration
-        # eligibility
-        And I have everything I need to start my biodiversity gain site registration
-        # applicant details
-        And I have completed the applicant details section
+        # DefraID
+        And I login to the Government Gateway
+        And I am logged in to the service
+
 
     @skip() # temporarily skip test that is running locally pointing to the dev env, but not on ci as this is a superficial test
     Scenario Outline: BNGP-526 1 - There is an option to upload geospatial and non geospatial data
