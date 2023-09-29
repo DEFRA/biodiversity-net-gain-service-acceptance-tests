@@ -7,7 +7,8 @@ switch(journey){
   case "developer journey":{
     await expect(DeveloperTaskListPage.submitStatus).not.toHaveTextContaining("CANNOT START YET")
   await expect(DeveloperTaskListPage.submitStatus).toHaveTextContaining("NOT STARTED YET")
-  await (DeveloperTaskListPage.additionalEmailBtn).click();
+
+  await DeveloperTaskListPage.submitInformation.click();
   break;
   }
   case "landowner journey":{

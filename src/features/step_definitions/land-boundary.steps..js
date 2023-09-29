@@ -6,10 +6,10 @@ const checkLandBoundaryDetailsPage = require("../page_objects/land_boundary/chec
 const tasklistPage = require("../page_objects/register-land-task-list.page");
 
 Given("I have completed the land-boundary section", async () => {
-  await completeLandBoundarySection("fileType", "TL6233", "1231.11");
+  await completeLandBoundarySection("TL6233", "1231.11");
 })
 
-async function completeLandBoundarySection(fileType, gridreference, hectares) {
+async function completeLandBoundarySection(gridreference, hectares) {
 
   await gridReferencePage.addGridReference(gridreference);
   await addHectaresPage.addHectares(hectares);
