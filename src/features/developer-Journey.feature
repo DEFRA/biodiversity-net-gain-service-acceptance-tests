@@ -25,7 +25,7 @@ Feature: Developer Journey Tests
         And I should see the "Confirm off-site gain" section status as "NOT STARTED"
         And I should see the "Upload the consent document" section status as "NOT STARTED"
         And I should see the "submit" section status as "CANNOT START YET"
-    @e2e
+
     # Check answers
     Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
