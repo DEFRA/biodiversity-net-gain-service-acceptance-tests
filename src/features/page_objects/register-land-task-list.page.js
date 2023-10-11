@@ -14,7 +14,7 @@ class TaskList extends Page {
   }
 
   get addLandBoundary() {
-    return $("#add-your-landboundary");
+    return $("#add-land-boundary");
   }
 
   get addLandOwnership() {

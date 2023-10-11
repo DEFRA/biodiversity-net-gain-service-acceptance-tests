@@ -12,11 +12,17 @@ Feature: Check and Submit
         # DefraID
         And I login to the Government Gateway
         And I am logged in to the service
+        #Landing page - tasklist for new session (TODO refine after)
+        And I navigate to the "register-land-task-list" page
         # land ownership
+        And I choose to add "land-ownership" details
+        And I am on the "land-ownership-upload" page
         And I choose and upload a "land-ownership" file
         And I confirm it is the correct file
         And I have completed the land-ownership section
         # land boundary  add the link to the section from the tasklist?  just jumps straight there at the mo
+        And I choose to add "land-boundary" details
+        And I am on the "land-boundary-upload" page
         And I choose and upload a "land-boundary" file
         And I confirm it is the correct file
         And I have completed the land-boundary section

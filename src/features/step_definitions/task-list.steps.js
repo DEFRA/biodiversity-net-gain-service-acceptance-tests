@@ -2,6 +2,38 @@ const { When, Then } = require("@wdio/cucumber-framework");
 const TaskList = require("../page_objects/register-land-task-list.page");
 const DeveloperTaskListPage = require("../page_objects/developer/tasklist.page");
 
+
+When ("I choose to add {string} details", async (task) => {
+  switch (task) {
+    case "land-ownership": {     
+      await expect(TaskList.landOwnershipStatus).toHaveTextContaining("NOT STARTED");
+      await TaskList.addLandOwnership.click();  
+    break;
+    }
+    case "land-boundary": {
+      await expect(TaskList.landBoundaryStatus).toHaveTextContaining("NOT STARTED");
+      await TaskList.addLandBoundary.click();
+    break;
+  }
+  //   case "metric": {
+  //     await expect(TaskList.metricStatus).toHaveTextContaining(status);
+  //   break;
+  //   }
+  //   case "hmmp": {
+  //     await expect(TaskList.hmmpStatus).toHaveTextContaining(status);
+  //   break;
+  //   }
+  //   case "legal-agreement": {
+  //     await expect(TaskList.legalAgreementStatus).toHaveTextContaining(status);
+  //   break;
+  //   }
+  //   case "check-and-submit": {
+  //     await expect(TaskList.submitStatus).toHaveTextContaining(status);
+  //   break;
+  //   }
+  }
+});
+
 When("I confirm I have completed all {string} sections", async (journey) => {
 switch(journey){
   case "developer journey":{
