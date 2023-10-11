@@ -27,6 +27,8 @@ Feature: Check and Submit
         And I confirm it is the correct file
         And I have completed the land-boundary section
         # Metric
+        And I choose to add "metric" details
+        And I am on the "metric-upload" page
         And I choose and upload a "metric" file
         And I confirm it is the correct file
         And I confirm the "check-habitat-baseline" information is correct
@@ -34,16 +36,22 @@ Feature: Check and Submit
         And I confirm the "check-metric-details" information is correct
         And I should see the "metric" section status as "COMPLETED"
         # HMMP
+        And I choose to add "management-plan" details
+        And I am on the "management-plan-upload" page
         And I choose and upload a "management-plan" file
         And I confirm it is the correct file
         And I have completed the management-plan section
         # Legal Agreement
-        And I navigate to the "legal-agreement-type" page
+        And I choose to add "legal-agreement" details
+        And I am on the "legal-agreement-type" page
+        # And I navigate to the "legal-agreement-type" page
         And I select "Planning obligation" and continue
         And I choose and upload a "legal-agreement" file
         And I confirm it is the correct file
         And I have completed the legal-agreement section
         # Local land Charges
+        And I choose to add "local-land-charge" details
+        And I am on the "local-land-charge-upload" page
         And I choose and upload a "local-land-charge" file
         And I confirm it is the correct file
         # Confirm all sections complete
