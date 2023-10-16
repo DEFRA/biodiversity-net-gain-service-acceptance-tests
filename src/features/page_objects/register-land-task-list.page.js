@@ -14,7 +14,7 @@ class TaskList extends Page {
   }
 
   get addLandBoundary() {
-    return $("#add-your-landboundary");
+    return $("#add-land-boundary");
   }
 
   get addLandOwnership() {
@@ -33,6 +33,10 @@ class TaskList extends Page {
     return $("#add-legal-agreement");
   }
 
+  get addLocallandCharge() {
+    return $("#add-local-land-charge-search-certificate");
+  }
+  
   get submitInformation(){
     return $("#check-your-answers");
   }
@@ -53,6 +57,17 @@ class TaskList extends Page {
     return $("#add-habitat-information-status");
   }
 
+  get hmmpStatus(){
+    return $("#add-habitat-management-status");
+  }
+
+  get legalAgreementStatus() {
+    return $("#add-legal-agreement-status");
+  }
+
+  get localLandChargeStatus() {
+    return $("#add-local-land-charge-search-certificate-status");
+  }
 
   //developer sections
   get uploadMetricFileStatus(){
@@ -70,14 +85,7 @@ class TaskList extends Page {
   get uploadConsentDocumentStatus() {
     return $("#upload-consent-document-status");
   }
-    
-  get hmmpStatus(){
-    return $("#add-habitat-management-status");
-  }
-
-  get legalAgreementStatus() {
-    return $("#add-legal-agreement-status");
-  }
+  //////////////////////
 
   get submitStatus(){
     return $("#check-your-answers-status");

@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class LandBoundaryChooseUploadOption extends Page {
   get titleText() {
-    return "Choose how to add the land boundary details for the biodiversity gain site";
+    return "Choose how to add the biodiversity gain site boundary";
   }
 
   get geospatialOption() {
