@@ -32,3 +32,19 @@ Feature: Land Boundary
         And I choose and upload the same file
         Then I should not see an error message displayed
         And I should be on the "check-geospatial-file" page
+
+    @bug
+    Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-3755 status not updating when geospatial disabled.
+        And I am on the "register-land-task-list" page
+        And I choose to add "<section>" details
+        And I am on the "<section>" page
+        When I go back to the previous page
+        Then I should see the "<section>" section status as "IN PROGRESS"
+        Examples:
+            | section           |
+            | land-ownership    |
+            | land-boundary     |
+            | metric            |
+            | management-plan   |
+            | legal-agreement   |
+            | local-land-charge |
