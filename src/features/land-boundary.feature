@@ -35,7 +35,7 @@ Feature: Land Boundary
 
     @bug
     Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-3755 status not updating when geospatial disabled.
-        And I am on the "register-land-task-list" page
+        And I navigate to the "register-land-task-list" page
         And I choose to add "<section>" details
         And I am on the "<section>" page
         When I go back to the previous page
