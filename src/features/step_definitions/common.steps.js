@@ -10,8 +10,8 @@ const applicantDetailsCorrectEmailPage = require("../page_objects/applicant_deta
 const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_details/check-your-details.page");
 const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
-const legalAgreementUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement.page");
-const legalAgreementCCUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement-conservation-covenant.page");
+const legalAgreementUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
+const legalAgreementCCUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
 const legalAgreementCheckFilePage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
 const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page");
 const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page");
@@ -72,21 +72,11 @@ const pages = {
   "email": applicantDetailsEmailPage,
   "correct-email": applicantDetailsCorrectEmailPage,
   "check-your-details": applicantDetailsCheckYourDetailsPage,
-  //legal agreement
-  "legal-agreement-upload": legalAgreementUploadPage,
-  "legal-agreement-cc-upload": legalAgreementCCUploadPage,
-  "legal-agreement-check": legalAgreementCheckFilePage,
-  "legal-agreement-type": legalAgreementTypePage,
-  "need-legal-agreement": legalAgreementNeedpage,
-  "add-legal-agreement-parties": legalAgreementAddPartiesPage,
-  "legal-party-list": legalPartyListPage,
-  "legal-agreement-start-date": legalAgreementStartDatePage,
-  "check-legal-agreement-details": legalAgreementCheckDetailsPage,
-  //hmmp
-  "management-plan-upload": managementPlanUploadPage,
-  "management-plan-check": managementPlanCheckPage,
-  "monitoring-start-date": monitoringStartDatePage,
-  "check-management-monitoring-details": managementMonitoringCheckDetailsPage,
+  //land ownership
+  "land-ownership-upload": landOwnershipUploadPage,
+  "land-ownership-check": landOwnershipCheckPage,
+  "registered-landowner": landownershipRegisteredLandownerPage,
+  "add-landowners": landownershipAddLandowners,
   //Land boundary 
   "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
@@ -103,21 +93,39 @@ const pages = {
   "check-habitat-baseline": metricDisplayBaselinePage,
   "check-habitat-created": metricDisplayHabitatCreationPage,
   "check-metric-details": metricCheckDetailsPage,
-  //land ownership
-  "land-ownership-upload": landOwnershipUploadPage,
-  "land-ownership-check": landOwnershipCheckPage,
-  "registered-landowner": landownershipRegisteredLandownerPage,
-  "add-landowners": landownershipAddLandowners,
-  //task-list
-  "register-land-task-list": taskListPage,
-  //summary
-  "check-and-submit": checkAndSubmitPage,
-  //Confirmation
-  "application-submitted": confirmationPage,
+  //hmmp
+  "management-plan-upload": managementPlanUploadPage,
+  "management-plan-check": managementPlanCheckPage,
+  "monitoring-start-date": monitoringStartDatePage,
+  "check-management-monitoring-details": managementMonitoringCheckDetailsPage,
+  //legal agreement
+  "legal-agreement-upload": legalAgreementUploadPage,
+  "legal-agreement-cc-upload": legalAgreementCCUploadPage,
+  "legal-agreement-check": legalAgreementCheckFilePage,
+  "legal-agreement-type": legalAgreementTypePage,
+  "need-legal-agreement": legalAgreementNeedpage,
+  "add-legal-agreement-parties": legalAgreementAddPartiesPage,
+  "legal-party-list": legalPartyListPage,
+  "legal-agreement-start-date": legalAgreementStartDatePage,
+  "check-legal-agreement-details": legalAgreementCheckDetailsPage,
   //Local land Charge search certificate
   "local-land-charge-upload": LocalLandChargeUploadPage,
   "local-land-charge-check": LocalLandChargeCheckPage,
   "need-local-land-charge": LocalLandChargeNeedPage,
+  // task-list
+  "register-land-task-list": taskListPage,
+  //// tasklist sections
+  "land-ownership" : landOwnershipUploadPage,
+  "land-boundary" : landBoundaryUploadImageFilePage,
+  "metric": metricUploadPage,
+  "management-plan": managementPlanUploadPage,
+  "legal-agreement": legalAgreementTypePage,
+  "local-land-charge": LocalLandChargeUploadPage,
+  //summary
+  "check-and-submit": checkAndSubmitPage,
+  //Confirmation
+  "application-submitted": confirmationPage,
+  
 
   //**DEVELOPER JOURNEY */
   //Start
@@ -127,7 +135,7 @@ const pages = {
   "consent-agreement-upload":  DeveloperConsentAgreementUploadPage,
   "confirm-development-details": DeveloperConfirmDevelopmentDetailsPage,
   "check-answers" : DeveloperCheckAnswersPage,
-  "developer-details-name": DeveloperDetailsName
+  "developer-details-name": DeveloperDetailsName, 
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
@@ -160,6 +168,12 @@ When("I continue without an action", async () => {
   // click continue
   await basePage.continueButton.click();
 });
+
+
+When("I go back to the previous page", async () => {
+  // service back button
+  await basePage.backButton.click();
+}) 
 
 When("I select {string} and continue", async (option) => {
 

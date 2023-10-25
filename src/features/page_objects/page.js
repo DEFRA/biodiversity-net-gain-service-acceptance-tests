@@ -11,6 +11,10 @@ module.exports = class Page {
     return $("#continue");
   }
 
+  get backButton() {
+    return $(".govuk-back-link");
+  }
+
   get uploadButton() {
     return $('*[data-testid="continue"]');
   }
@@ -63,6 +67,18 @@ module.exports = class Page {
     return $("[id$='StartDate-year']");
   }
   
+  get firstName() {
+    return $("[id='firstName']");
+  }
+
+  get middleName() {
+    return $("[id='middleName']");
+  }
+
+  get lastName() {
+    return $("[id='lastName']");
+  }
+
   get otherRoleTextBox(){
     return $("#roleOther");
   }
