@@ -141,9 +141,6 @@ When("I choose and upload a {string} file", async (document) => {
   var group = filePath.split("\\");
   filename = basename(group[group.length - 1]);
 
-  // open the upload url page
-  // await browser.url(UploadPage.path);
-
   // set the remote path value to the upload element and continue
   await UploadPage.govFileUpload.setValue(remoteFilePath);
   await UploadPage.uploadButton.click();
@@ -161,9 +158,6 @@ When("I choose and upload the same file", async () => {
   // get the filename for assertions
   var group = filePath.split("\\");
   filename = basename(group[group.length - 1]);
-
-  // open the upload url page
-  await browser.url(UploadPage.path);
 
   // set the remote path value to the upload element and continue
   await UploadPage.govFileUpload.setValue(remoteFilePath);
