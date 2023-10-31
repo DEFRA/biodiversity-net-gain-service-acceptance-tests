@@ -8,7 +8,7 @@ class LandownerIndividualOrOrganisationCCPage extends Page {
   }
 
   get radioOrganisation() { 
-    return $("input[value='organization']"); 
+    return $("input[value='organisation']"); 
   }
 
   get radioIndividual() {

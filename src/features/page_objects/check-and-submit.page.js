@@ -45,6 +45,10 @@ class CheckAndSubmit extends Page {
     return $('*[data-testid="land-owner-names-value"]');
   }
 
+  get landOwnerNameConsentValue(){
+    return $('*[data-testid="land-owner-consent-value"]');
+  }
+
   get metricFileNameValue(){
     return $('*[data-testid="metric-file-name-value"]');
   }
