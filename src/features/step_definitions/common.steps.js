@@ -10,6 +10,8 @@ const applicantDetailsCorrectEmailPage = require("../page_objects/applicant_deta
 const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_details/check-your-details.page");
 const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
+const needAddAllLegalFilesPage = require("../page_objects/legal_agreement/planning_obligation/need-add-all-legal-files.page.js");
+const needAddAllLegalFilesCCPage = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-legal-files-cc.page.js")
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
 const legalAgreementCCUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
 const legalAgreementCheckFilePage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
@@ -145,8 +147,9 @@ Given(/^I navigate to the "(.*)" page$/, async (page) => {
   // if a legal agreement upload page choose the type of agreement first before opening the page
   if(page == "legal-agreement-upload"){
     await pages["legal-agreement-type"].open()
-    await legalAgreementTypePage.planningObligation.click();
+    await legalAgreementTypePage.conservationCovenant.click();
     await legalAgreementTypePage.continueButton.click();
+    await needAddAllLegalFilesCCPage.continueButton.click();
   }
   else{
     await pages[page].open();
