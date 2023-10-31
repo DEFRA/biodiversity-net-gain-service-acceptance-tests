@@ -1,8 +1,8 @@
-const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { Given, When, Then, BeforeAll } = require('@wdio/cucumber-framework');
 const { join, basename } = require("node:path");
 const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
-const legalAgreementUploadPage = require("../page_objects/legal_agreement/upload-legal-agreement.page");
+const legalAgreementUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
 const legalAgreementCheckPage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
 const landBoundaryFileUploadPage = require("../page_objects/land_boundary/upload-land-boundary.page");
 const landBoundaryGeospatialUploadPage = require("../page_objects/land_boundary/upload-geospatial-file.page");
@@ -142,7 +142,7 @@ When("I choose and upload a {string} file", async (document) => {
   filename = basename(group[group.length - 1]);
 
   // open the upload url page
-  await browser.url(UploadPage.path);
+  // await browser.url(UploadPage.path);
 
   // set the remote path value to the upload element and continue
   await UploadPage.govFileUpload.setValue(remoteFilePath);

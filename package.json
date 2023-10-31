@@ -4,8 +4,8 @@
     "description": "BNG Register web app Accpetance tests",
     "main": "index.js",
     "scripts": {
-        "test:ci": "wdio run wdio.ci.conf.js --cucumberOpts.tags",
         "test": "wdio run wdio.conf.js",
+        "test:ci": "wdio run wdio.ci.conf.js --cucumberOpts.tags",
         "e2e": "wdio run wdio.conf.js --cucumberOpts.tags='@e2e'",
         "regression": "wdio run wdio.conf.js --cucumberOpts.tags='@regression'",
         "smoke": "wdio run wdio.conf.js --cucumberOpts.tags='@smoke'",

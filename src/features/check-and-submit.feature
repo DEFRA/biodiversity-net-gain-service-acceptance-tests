@@ -44,8 +44,8 @@ Feature: Check and Submit
         # Legal Agreement
         And I choose to add "legal-agreement" details
         And I am on the "legal-agreement-type" page
-        # And I navigate to the "legal-agreement-type" page
-        And I select "Planning obligation" and continue
+        And I select "Conservation covenant" and continue
+        And I am Informed I have to add all "Conservation covenant" files
         And I choose and upload a "legal-agreement" file
         And I confirm it is the correct file
         And I have completed the legal-agreement section
@@ -60,13 +60,27 @@ Feature: Check and Submit
     @skip()  # skip upload test for release 5
     Scenario: BNGP-190 1 - I can review all sections I have completed
         Then I should be on the "check-and-submit" page
-        And I should see the "fullname" on the summary shown as "John Smith"
-        And I should see the "role" on the summary shown as "Landowner"
-        And I should see the "email address" on the summary shown as "test@example.com"
+        #---- Applicant information
+        # And I should see the "fullname" on the summary shown as "John Smith"
+        # And I should see the "role" on the summary shown as "Landowner"
+        # And I should see the "email address" on the summary shown as "test@example.com"
+        #---- Land ownership
+        And I should see the "Proof of land ownership file uploaded" on the summary shown as "test_12kb.docx"
+        #---- Biodiversity gain site boundary
+        And I should see the "Land boundary file uploaded" on the summary shown as "test_12kb.docx"
         And I should see the "grid reference" on the summary shown as "TL6233"
         And I should see the "hectares" on the summary shown as "1231.11"
-        And I should see the "hmmp start date" on the summary shown as "12 October 2022"
-        And I should see the "30 year monitor date" on the summary shown as "13 October 2022"
+        #---- Statutory biodiversity metric and habitat declarations
+
+        And I should see the "Biodiversity Metric file uploaded" on the summary shown as "test_metric.xlsm"
+        And I should see the "Habitat baseline information is correct" on the summary shown as "Yes"
+        And I should see the "Habitat creation and enhancement information is correct" on the summary shown as "Yes"
+
+        #---- Legal information
+        # And I should see the "Landowner consent" on the summary shown as "Yes"
+        And I should see the "Habitat management and monitoring plan uploaded" on the summary shown as "test_12kb.docx"
+        And I should see the "Start date of the 30 year management and monitoring period" on the summary shown as "13 October 2022"
+        And I should see the "Landowner name" on the summary shown as "John Smith"
         And I should see the "legal-agreement type" on the summary shown as "Planning obligation"
         And I should see the "legal party name" on the summary shown as "legal party 1"
         And I should see the "legal party role" on the summary shown as "Landowner"
@@ -86,3 +100,12 @@ Feature: Check and Submit
         Then I should be on the "application-submitted" page
         And The biodiversity gain site reference should be displayed
         And The fee amount of "£639.00" should be displayed
+
+# Scenario: BNGP-3635 - On submission if the confirmation page is refreshed the details are not resubmitted or shown on the page
+#     And I am on the "check-and-submit" page
+#     And I submit my application
+#     And I am on the "application-submitted" page
+#     When I refresh the page
+#     Then the title should be ""
+#     And the fee amount is not displayed
+
