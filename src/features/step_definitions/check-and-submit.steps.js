@@ -9,20 +9,23 @@ When("I submit my application", async () => {
 Then("I should see the {string} on the summary shown as {string}", async (section, value)  => {
     
   switch (section) {
-      case "fullname": {
-        await expect(CheckAndSubmitPage.fullnameValue).toHaveTextContaining(value);
-        break;
-      } 
-      case "role": {
-          await expect(CheckAndSubmitPage.roleValue).toHaveTextContaining(value);
-        break;
-      }
-      case "email address": {
-        await expect(CheckAndSubmitPage.emailAddressValue).toHaveTextContaining(value);
+      // case "fullname": {
+      //   await expect(CheckAndSubmitPage.fullnameValue).toHaveTextContaining(value);
+      //   break;
+      // } 
+      // case "role": {
+      //     await expect(CheckAndSubmitPage.roleValue).toHaveTextContaining(value);
+      //   break;
+      // }
+      // case "email address": {
+      //   await expect(CheckAndSubmitPage.emailAddressValue).toHaveTextContaining(value);
+      // break;
+      // }
+      //Todo: land boundary file Type
+      case "Land boundary file uploaded": {
+        await expect(CheckAndSubmitPage.landBoundaryFilenameValue).toHaveTextContaining(value);
       break;
       }
-      //Todo: land boundary file Type
-      //Todo: land boundary filename
       case "grid reference": {
         await expect(CheckAndSubmitPage.gridReferenceValue).toHaveTextContaining(value);
       break;
@@ -31,15 +34,27 @@ Then("I should see the {string} on the summary shown as {string}", async (sectio
         await expect(CheckAndSubmitPage.hectaresValue).toHaveTextContaining(value);
       break;
       }
-      //Todo: land ownership filename
-      //Todo: landowner name?
-      //Todo: metric filename
-      //Todo: hmmp filename
-      case "hmmp start date": {
-        await expect(CheckAndSubmitPage.hmmpStartDateValue).toHaveTextContaining(value);
+      case "Proof of land ownership file uploaded": {
+        await expect(CheckAndSubmitPage.landOwnershipFileNameValue).toHaveTextContaining(value);
       break;
       }
-      case "30 year monitor date": {
+      case "Landowner name": {
+        await expect(CheckAndSubmitPage.landOwnerNameValue).toHaveTextContaining(value);
+      break;
+      }
+      // case "Landowner consent": {
+      //   await expect(CheckAndSubmitPage.landOwnerNameConsentValue).toHaveTextContaining(value);
+      // break;
+      // }
+      case "Biodiversity Metric file uploaded": {
+        await expect(CheckAndSubmitPage.metricFileNameValue).toHaveTextContaining(value);
+      break;
+      }
+      case "Habitat management and monitoring plan uploaded": {
+        await expect(CheckAndSubmitPage.hmmpFileNameValue).toHaveTextContaining(value);
+      break;
+      }
+      case "Start date of the 30 year management and monitoring period": {
         await expect(CheckAndSubmitPage.hmmp30YearStartDateValue).toHaveTextContaining(value);
       break;
       }

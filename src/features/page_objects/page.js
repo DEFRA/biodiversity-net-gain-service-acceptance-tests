@@ -79,6 +79,10 @@ module.exports = class Page {
     return $("[id='lastName']");
   }
 
+  get organisationName() {
+    return $("[id='organisationName']");
+  }
+
   get otherRoleTextBox(){
     return $("#roleOther");
   }
