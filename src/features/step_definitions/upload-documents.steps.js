@@ -264,6 +264,17 @@ Then("I should be able to see the filesize of the document as {string}", async (
   await expect(CheckPage.filesizeIndicator).toHaveTextContaining(filesize);
 });
 
+When("I upload a file that contains malware or a virus", async () => {
+  const filePath = join(__dirname, "../../TestFiles/test_eicar-adobe-acrobat-attachment.pdf");
+  const remoteFilePath = await browser.uploadFile(filePath);
+
+  // open the upload url page
+  browser.url(UploadPage.path);
+
+  await UploadPage.govFileUpload.setValue(remoteFilePath);
+  await UploadPage.continueButton.click();
+})
+
 When("I choose a file type that is not in the specified format", async () => {
   const filePath = join(__dirname, "../../TestFiles/test.txt");
   const remoteFilePath = await browser.uploadFile(filePath);
