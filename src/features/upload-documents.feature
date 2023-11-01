@@ -153,7 +153,7 @@ Feature: Upload Documents
         Examples:
             | jira ticket | document       | byteType | filesize | byteSize |
             | BNGP-515    | land-ownership | decimal  | 52.43MB  | 52430000 |
-    @new
+
     Scenario: BNGP-3637 malware/virus uploads should display the error message
         When I navigate to the "management-plan-upload" page
         And I upload a file that contains malware or a virus
