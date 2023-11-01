@@ -4,6 +4,7 @@ const managementPlanUploadPage = require("../page_objects/management_plan/manage
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
 const legalAgreementCheckPage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
+const legalAgreementCheckCCPage = require("../page_objects/legal_agreement/conservation_covenant/check-legal-agreement-file-cc.page");
 const landBoundaryFileUploadPage = require("../page_objects/land_boundary/upload-land-boundary.page");
 const landBoundaryGeospatialUploadPage = require("../page_objects/land_boundary/upload-geospatial-file.page");
 const landBoundaryFileCheckPage = require("../page_objects/land_boundary/check-land-boundary-file.page");
@@ -49,7 +50,7 @@ const DeveloperTaskListPage = require( "../page_objects/developer/tasklist.page"
 // import DeveloperTaskListPage from "../page_objects/developer/tasklist.page";
 
 let UploadPage = legalAgreementUploadPage;
-let CheckPage = legalAgreementCheckPage;
+let CheckPage = legalAgreementCheckCCPage;
 
 let  basePage = legalAgreementUploadPage;
 
@@ -64,7 +65,7 @@ When("I choose and upload a {string} file", async (document) => {
   switch (document) {
     case "legal-agreement": {
       UploadPage = legalAgreementUploadPage;
-      CheckPage = legalAgreementCheckPage;
+      CheckPage = legalAgreementCheckCCPage;
       break;
     }
     case "local-land-charge": {
@@ -141,9 +142,6 @@ When("I choose and upload a {string} file", async (document) => {
   var group = filePath.split("\\");
   filename = basename(group[group.length - 1]);
 
-  // open the upload url page
-  // await browser.url(UploadPage.path);
-
   // set the remote path value to the upload element and continue
   await UploadPage.govFileUpload.setValue(remoteFilePath);
   await UploadPage.uploadButton.click();
@@ -162,9 +160,6 @@ When("I choose and upload the same file", async () => {
   var group = filePath.split("\\");
   filename = basename(group[group.length - 1]);
 
-  // open the upload url page
-  await browser.url(UploadPage.path);
-
   // set the remote path value to the upload element and continue
   await UploadPage.govFileUpload.setValue(remoteFilePath);
   await UploadPage.continueButton.click();
@@ -178,7 +173,7 @@ Then("I should be able to upload a {string} file with a filetype of {string}", a
   switch (document) {
     case "legal-agreement": {
       UploadPage = legalAgreementUploadPage;
-      CheckPage = legalAgreementCheckPage;
+      CheckPage = legalAgreementCheckCCPage;
       break;
     }
     case "management-plan": {
@@ -268,6 +263,17 @@ Then("I should be able to see the filesize of the document as {string}", async (
   // get actual filesize of test file
   await expect(CheckPage.filesizeIndicator).toHaveTextContaining(filesize);
 });
+
+When("I upload a file that contains malware or a virus", async () => {
+  const filePath = join(__dirname, "../../TestFiles/test_eicar-adobe-acrobat-attachment.pdf");
+  const remoteFilePath = await browser.uploadFile(filePath);
+
+  // open the upload url page
+  browser.url(UploadPage.path);
+
+  await UploadPage.govFileUpload.setValue(remoteFilePath);
+  await UploadPage.continueButton.click();
+})
 
 When("I choose a file type that is not in the specified format", async () => {
   const filePath = join(__dirname, "../../TestFiles/test.txt");

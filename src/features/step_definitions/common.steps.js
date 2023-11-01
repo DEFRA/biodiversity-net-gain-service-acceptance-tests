@@ -10,9 +10,12 @@ const applicantDetailsCorrectEmailPage = require("../page_objects/applicant_deta
 const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_details/check-your-details.page");
 const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
+const needAddAllLegalFilesPage = require("../page_objects/legal_agreement/planning_obligation/need-add-all-legal-files.page.js");
+const needAddAllLegalFilesCCPage = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-legal-files-cc.page.js")
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
 const legalAgreementCCUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
 const legalAgreementCheckFilePage = require("../page_objects/legal_agreement/check-legal-agreement-file.page");
+const legalAgreementCheckFileCCPage = require("../page_objects/legal_agreement/conservation_covenant/check-legal-agreement-file-cc.page");
 const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page");
 const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page");
 const legalAgreementStartDatePage = require("../page_objects/legal_agreement/legal-agreement-start-date.page");
@@ -101,13 +104,14 @@ const pages = {
   //legal agreement
   "legal-agreement-upload": legalAgreementUploadPage,
   "legal-agreement-cc-upload": legalAgreementCCUploadPage,
-  "legal-agreement-check": legalAgreementCheckFilePage,
+  "legal-agreement-check": legalAgreementCheckFileCCPage,
   "legal-agreement-type": legalAgreementTypePage,
   "need-legal-agreement": legalAgreementNeedpage,
   "add-legal-agreement-parties": legalAgreementAddPartiesPage,
   "legal-party-list": legalPartyListPage,
   "legal-agreement-start-date": legalAgreementStartDatePage,
   "check-legal-agreement-details": legalAgreementCheckDetailsPage,
+  "check-legal-agreement-cc-details": legalAgreementCheckFileCCPage,
   //Local land Charge search certificate
   "local-land-charge-upload": LocalLandChargeUploadPage,
   "local-land-charge-check": LocalLandChargeCheckPage,
@@ -145,8 +149,9 @@ Given(/^I navigate to the "(.*)" page$/, async (page) => {
   // if a legal agreement upload page choose the type of agreement first before opening the page
   if(page == "legal-agreement-upload"){
     await pages["legal-agreement-type"].open()
-    await legalAgreementTypePage.planningObligation.click();
+    await legalAgreementTypePage.conservationCovenant.click();
     await legalAgreementTypePage.continueButton.click();
+    await needAddAllLegalFilesPage.continueButton.click();
   }
   else{
     await pages[page].open();
