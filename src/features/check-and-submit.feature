@@ -13,8 +13,13 @@ Feature: Check and Submit
         And I login to the Government Gateway
         And I am logged in to the service
         #Landing page - tasklist for new session (TODO refine after)
-        And I navigate to the "register-land-task-list" page
-        # land ownership
+        And I choose to manage my biodiversity gains
+        # And I am on the "manage-biodiversity-gains" page
+        And I choose to manage my gain sites
+        # And I am on the "biodiversity-gain-sites" page
+        And I choose to start a new registration
+        # And I navigate to the "register-land-task-list" page
+        # # land ownership
         And I choose to add "land-ownership" details
         And I am on the "land-ownership-upload" page
         And I choose and upload a "land-ownership" file
