@@ -1,5 +1,7 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 const startPage = require("../page_objects/start.page");
+const manageBngPage = require("../page_objects/manage-biodiversity-gains.page");
+const biodiversityGainSitesPage = require("../page_objects/biodiversity-gain-sites.page");
 const checkYouCanRegisterPage = require("../page_objects/eligibility_questions/check-you-can-register.page");
 const siteInEnglandPage = require("../page_objects/eligibility_questions/site-in-england.page");
 const cannotContinuePage = require("../page_objects/eligibility_questions/cannot-continue.page");
@@ -64,6 +66,9 @@ const  DeveloperDetailsName = require("../page_objects/developer/details-name.pa
 
 const pages = {
   start: startPage,
+//Dashboard
+  "manage-biodiversity-gains" : manageBngPage,
+  "biodiversity-gain-sites" : biodiversityGainSitesPage,
   //eligibility questions
   "check-you-can-register": checkYouCanRegisterPage,
   "site-in-england": siteInEnglandPage,
