@@ -27,6 +27,11 @@ module.exports = class Page {
     return $(".govuk-file-upload");
   }
 
+get manageBngNavLink(){
+  return $("#link-manage-account");
+}
+
+
   get errorMsg() {
     return $(".govuk-error-message");
   }
