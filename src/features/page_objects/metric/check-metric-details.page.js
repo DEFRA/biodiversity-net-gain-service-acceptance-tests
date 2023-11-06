@@ -2,7 +2,7 @@ const Page = require('../page')
 
 class MetricCheckDetails extends Page {
   get titleText () {
-    return 'Check Biodiversity Metric 4.0 and habitat declaration'
+    return 'Check Biodiversity Metric 4.1 and habitat declaration'
   }
 
   open () {

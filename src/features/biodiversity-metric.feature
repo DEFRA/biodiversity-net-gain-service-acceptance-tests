@@ -1,4 +1,4 @@
-@regression
+@regression @new
 Feature: Biodiversity metric display/playback
 
         As a Site provider registering a gain site
@@ -6,12 +6,12 @@ Feature: Biodiversity metric display/playback
         So that I can check the habitat baseline and created and enhanced habitats I am registering are correct
 
         Background: start and add applicant details
+        Background: start and add applicant details
                 Given I navigate to the "start" page
                 And I start my registration
-                # eligibility
-                And I have everything I need to start my biodiversity gain site registration
-                # applicant details
-                And I have completed the applicant details section
+                # DefraID
+                And I login to the Government Gateway
+                And I am logged in to the service
                 And I navigate to the "metric-upload" page
                 And I choose and upload a "metric" file
                 And I confirm it is the correct file
@@ -21,10 +21,10 @@ Feature: Biodiversity metric display/playback
                 Then The total for "<HabitatType>" should be "<total>"
                 Examples:
                         | metricDisplayPage      | HabitatType                 | total |
-                        | check-habitat-baseline | Habitat type and condition  | 3.50  |
-                        | check-habitat-baseline | Hedgerow type and condition | 0.60  |
-                        | check-habitat-baseline | River type and condition    | 0.60  |
-                        | check-habitat-created  | Habitat type and condition  | 3.50  |
-                        | check-habitat-created  | Hedgerow type and condition | 0.60  |
-                        | check-habitat-created  | River type and condition    | 0.30  |
+                        | check-habitat-baseline | Habitat type and condition  | 5.12  |
+                        | check-habitat-baseline | Hedgerow type and condition | 0.30  |
+                        | check-habitat-baseline | River type and condition    | 1.00  |
+                        | check-habitat-created  | Habitat type and condition  | 5.12  |
+                        | check-habitat-created  | Hedgerow type and condition | 0.30  |
+                        | check-habitat-created  | River type and condition    | 1.00  |
 
