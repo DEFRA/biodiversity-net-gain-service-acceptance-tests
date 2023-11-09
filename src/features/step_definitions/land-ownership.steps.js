@@ -11,10 +11,15 @@ async function completeLandOwnershipSection() {
   
   //And I confirm i have added allproof of landownership files
   // multiple file addition page_object needs adding
+  // assert against the page title
+  await $("h1").waitForExist({ timeout: 5000 });
+  expect(await browser.getTitle()).toContain(landOwnershipProofListPage.titleText);
+
   await landOwnershipProofListPage.radioYes.click();
   await landOwnershipProofListPage.continueButton.click();
 
   //tasklist section shows as complete
+  expect(await browser.getTitle()).toContain(tasklistPage.titleText);
   await expect(tasklistPage.landOwnershipStatus).toHaveTextContaining("COMPLETED");  
   }
 
