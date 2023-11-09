@@ -6,7 +6,6 @@ Feature: Biodiversity metric display/playback
         So that I can check the habitat baseline and created and enhanced habitats I am registering are correct
 
         Background: start and add applicant details
-        Background: start and add applicant details
                 Given I navigate to the "start" page
                 And I start my registration
                 # DefraID
