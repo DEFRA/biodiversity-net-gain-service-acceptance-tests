@@ -6,11 +6,18 @@ Feature: Biodiversity metric display/playback
         So that I can check the habitat baseline and created and enhanced habitats I am registering are correct
 
         Background: start and add applicant details
+                #Start Page
                 Given I navigate to the "start" page
                 And I start my registration
                 # DefraID
                 And I login to the Government Gateway
                 And I am logged in to the service
+                #Landing page - tasklist for new session (TODO refine after)
+                And I choose to manage my biodiversity gains
+                # And I am on the "manage-biodiversity-gains" page
+                And I choose to manage my gain sites
+                # And I am on the "biodiversity-gain-sites" page
+                And I choose to start a new registration
                 And I navigate to the "metric-upload" page
                 And I choose and upload a "metric" file
                 And I confirm it is the correct file
