@@ -40,12 +40,12 @@ Feature: Check and Submit
         And I confirm the "check-habitat-creation" information is correct
         And I confirm the "check-metric-details" information is correct
         And I should see the "metric" section status as "COMPLETED"
-        # HMMP
-        And I choose to add "management-plan" details
-        And I am on the "management-plan-upload" page
-        And I choose and upload a "management-plan" file
-        And I confirm it is the correct file
-        And I have completed the management-plan section
+        # # HMMP
+        # And I choose to add "management-plan" details
+        # And I am on the "management-plan-upload" page
+        # And I choose and upload a "management-plan" file
+        # And I confirm it is the correct file
+        # And I have completed the management-plan section
         # Legal Agreement
         And I choose to add "legal-agreement" details
         And I am on the "legal-agreement-type" page

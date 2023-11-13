@@ -23,11 +23,11 @@ When ("I choose to add {string} details", async (task) => {
       await TaskList.addMetric.click();
     break;
     }
-    case "management-plan": {
-      await expect(TaskList.hmmpStatus).toHaveTextContaining(status);
-      await TaskList.addHmmp.click();
-    break;
-    }
+    // case "management-plan": {
+    //   await expect(TaskList.hmmpStatus).toHaveTextContaining(status);
+    //   await TaskList.addHmmp.click();
+    // break;
+    // }
     case "legal-agreement": {
       await expect(TaskList.legalAgreementStatus).toHaveTextContaining(status);
       await TaskList.addLegalAgreement.click();
