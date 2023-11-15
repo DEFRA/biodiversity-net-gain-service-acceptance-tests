@@ -5,7 +5,6 @@ class MetricDisplayBaseline extends Page {
     return "Check the habitat baseline information - GOV.UK";
   }
 
-  
   open() {
     return super.open("land/check-habitat-baseline");
   }

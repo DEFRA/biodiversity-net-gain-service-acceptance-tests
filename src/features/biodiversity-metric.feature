@@ -6,25 +6,47 @@ Feature: Biodiversity metric display/playback
         So that I can check the habitat baseline and created and enhanced habitats I am registering are correct
 
         Background: start and add applicant details
+                #Start Page
                 Given I navigate to the "start" page
                 And I start my registration
-                # eligibility
-                And I have everything I need to start my biodiversity gain site registration
-                # applicant details
-                And I have completed the applicant details section
+                # DefraID
+                And I login to the Government Gateway
+                And I am logged in to the service
+                # Landing page - tasklist for new session (TODO refine after)
+                And I choose to manage my biodiversity gains
+                # And I am on the "manage-biodiversity-gains" page
+                And I choose to manage my gain sites
+                # And I am on the "biodiversity-gain-sites" page
+                And I choose to start a new registration
                 And I navigate to the "metric-upload" page
-                And I choose and upload a "metric" file
-                And I confirm it is the correct file
+
 
         Scenario Outline: BNGP-523 1a - The uploaded metric data on the <metricDisplayPage> page has correct totals for <HabitatType>
-                Given I navigate to the "<metricDisplayPage>" page
+                Given I choose and upload a "metric" file
+                And I confirm it is the correct file
+                And I navigate to the "<metricDisplayPage>" page
                 Then The total for "<HabitatType>" should be "<total>"
                 Examples:
                         | metricDisplayPage      | HabitatType                 | total |
-                        | check-habitat-baseline | Habitat type and condition  | 3.50  |
-                        | check-habitat-baseline | Hedgerow type and condition | 0.60  |
-                        | check-habitat-baseline | River type and condition    | 0.60  |
-                        | check-habitat-created  | Habitat type and condition  | 3.50  |
-                        | check-habitat-created  | Hedgerow type and condition | 0.60  |
-                        | check-habitat-created  | River type and condition    | 0.30  |
+                        | check-habitat-baseline | Habitat type and condition  | 5.12  |
+                        | check-habitat-baseline | Hedgerow type and condition | 0.30  |
+                        | check-habitat-baseline | River type and condition    | 1.00  |
+                        | check-habitat-created  | Habitat type and condition  | 5.12  |
+                        | check-habitat-created  | Hedgerow type and condition | 0.30  |
+                        | check-habitat-created  | River type and condition    | 1.00  |
+
+        Scenario Outline: BNGP-3674 1, 4 metric files that are version <version> are rejected
+                # CD08 https://docs.google.com/document/d/1PVBCPrs7ijLhG48Qs9XNEeTqyTYYkU7bjXBNAoyXOaM/edit
+                Given I navigate to the "metric-upload" page
+                And I choose to upload a "<version>" metric file
+                Then I should not be able to upload the file
+                And I should see the error "The selected file must use Biodiversity Metric version 4.1"
+                Examples:
+                        | version |
+                        | 3.0     |
+                        | 4.0     |
+
+
+
+
 
