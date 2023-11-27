@@ -8,6 +8,11 @@ When ("I choose to add {string} details", async (task) => {
   const status = "NOT STARTED"
 
   switch (task) {
+    case "applicant-info": {     
+      await expect(TaskList.applicantInfoStatus).toHaveTextContaining(status);
+      await TaskList.addApplicantInfo.click();  
+    break;
+    }
     case "land-ownership": {     
       await expect(TaskList.landOwnershipStatus).toHaveTextContaining(status);
       await TaskList.addLandOwnership.click();  
