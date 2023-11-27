@@ -10,6 +10,8 @@ const applicantDetailsRolePage = require("../page_objects/applicant_details/role
 const applicantDetailsEmailPage = require("../page_objects/applicant_details/email.page");
 const applicantDetailsCorrectEmailPage = require("../page_objects/applicant_details/correct-email.page");
 const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_details/check-your-details.page");
+const uploadWrittenAuthorisationPage = require("../page_objects/applicant_info/upload-written-authorisation.page.js");
+const checkApplicantInfoPage = require("../page_objects/applicant_info/check-applicant-information.page.js");
 const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
 const needAddAllLegalFilesPage = require("../page_objects/legal_agreement/planning_obligation/need-add-all-legal-files.page.js");
@@ -80,6 +82,9 @@ const pages = {
   "email": applicantDetailsEmailPage,
   "correct-email": applicantDetailsCorrectEmailPage,
   "check-your-details": applicantDetailsCheckYourDetailsPage,
+  //applicant info
+  "written-authorisation-upload": uploadWrittenAuthorisationPage,
+  "check-applicant-info": checkApplicantInfoPage,
   //land ownership
   "land-ownership-upload": landOwnershipUploadPage,
   "land-ownership-check": landOwnershipCheckPage,

@@ -1,5 +1,7 @@
 const { Given, When, Then, BeforeAll } = require('@wdio/cucumber-framework');
 const { join, basename } = require("node:path");
+const uploadWrittenAuthorisationPage = require("../page_objects/applicant_info/upload-written-authorisation.page.js");
+const checkWrittenAuthorisationPage = require("../page_objects/applicant_info/check-written-authorisation-file.page.js");
 const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
@@ -63,6 +65,11 @@ When("I choose and upload a {string} file", async (document) => {
   filePath = join(__dirname, "../../TestFiles/test_12kb.docx");
 
   switch (document) {
+    case "written-authorisation": {
+      UploadPage = uploadWrittenAuthorisationPage;
+      CheckPage = checkWrittenAuthorisationPage;
+      break;
+    }
     case "legal-agreement": {
       UploadPage = legalAgreementUploadPage;
       CheckPage = legalAgreementCheckCCPage;
@@ -171,6 +178,11 @@ Then("I should be able to upload a {string} file with a filetype of {string}", a
   filePath = join(__dirname, "../../TestFiles/test_12kb." + filetype);
   
   switch (document) {
+    case "written-authorisation": {
+      UploadPage = uploadWrittenAuthorisationPage;
+      CheckPage = checkWrittenAuthorisationPage;
+      break;
+    }
     case "legal-agreement": {
       UploadPage = legalAgreementUploadPage;
       CheckPage = legalAgreementCheckCCPage;
