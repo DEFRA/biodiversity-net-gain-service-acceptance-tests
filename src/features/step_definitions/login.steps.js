@@ -7,7 +7,12 @@ When ("I login to the Government Gateway", async () => {
     // assert against the page title
     expect(await browser.getTitle()).toContain(LoginPage.titleText);
 
-    await login("894836023882", "ChristopherWallace");
+
+      //user associated to just an individual
+    await login("528250494194", "ChristopherWallace");
+
+    //user associated to an org
+    // await login("894836023882", "ChristopherWallace");
   })
 
   Then("I am logged in to the service", async () => {
@@ -18,6 +23,10 @@ When ("I login to the Government Gateway", async () => {
     //check that we are logged in and not still on the sign in page
     var pageUrl = browser.getUrl();
     expect(await pageUrl).not.toContain('https://www.ete.access.service.gov.uk/login/signin/creds')
+
+    // expect(await LoginPage.titleHeader).toContain("Who do you want to represent?");
+    // await LoginPage.radioDefraIdChooseIndiviual.click();
+    // await LoginPage.continuButtonReplacement.click();
   })
 
   async function login(gatewayid, password) {
