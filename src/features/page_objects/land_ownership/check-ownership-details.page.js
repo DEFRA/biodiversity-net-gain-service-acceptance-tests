@@ -1,6 +1,6 @@
 const Page = require("../page");
 
-class LandOwnershipCheckDetails extends Page {
+class LandOwnershipCheckDetailsPage extends Page {
   get titleText() {
     return "Check the land ownership details";
   }
@@ -9,4 +9,4 @@ class LandOwnershipCheckDetails extends Page {
     return super.open("land/check-ownership-details");
   }
 }
-module.exports = new LandOwnershipCheckDetails();
+module.exports = new LandOwnershipCheckDetailsPage();

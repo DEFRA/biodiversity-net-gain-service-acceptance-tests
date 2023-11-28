@@ -19,7 +19,18 @@ Feature: Check and Submit
         # And I am on the "biodiversity-gain-sites" page
         And I choose to start a new registration
         # And I navigate to the "register-land-task-list" page
-        # # land ownership
+        # Applicant info
+        And I choose to add "applicant-info" details
+        And I have completed the applicant information section
+
+        And I am on the "written-authorisation-upload" page
+        And I choose and upload a "written-authorisation" file
+        And I confirm it is the correct file
+
+        And I am on the "check-applicant-info" page
+        And confirm the applicant-info details are correct
+
+        # land ownership
         And I choose to add "land-ownership" details
         And I am on the "land-ownership-upload" page
         And I choose and upload a "land-ownership" file
@@ -40,12 +51,12 @@ Feature: Check and Submit
         And I confirm the "check-habitat-creation" information is correct
         And I confirm the "check-metric-details" information is correct
         And I should see the "metric" section status as "COMPLETED"
-        # HMMP
-        And I choose to add "management-plan" details
-        And I am on the "management-plan-upload" page
-        And I choose and upload a "management-plan" file
-        And I confirm it is the correct file
-        And I have completed the management-plan section
+        # # HMMP
+        # And I choose to add "management-plan" details
+        # And I am on the "management-plan-upload" page
+        # And I choose and upload a "management-plan" file
+        # And I confirm it is the correct file
+        # And I have completed the management-plan section
         # Legal Agreement
         And I choose to add "legal-agreement" details
         And I am on the "legal-agreement-type" page

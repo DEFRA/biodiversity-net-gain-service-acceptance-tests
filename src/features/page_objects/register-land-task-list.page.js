@@ -9,8 +9,8 @@ class TaskList extends Page {
     return $(".govuk-\\!-margin-bottom-4");
   }
 
-  get addDetails() {
-    return $("#add-your-details");
+  get addApplicantInfo() {
+    return $("#add-applicant-information");
   }
 
   get addLandBoundary() {
@@ -41,8 +41,8 @@ class TaskList extends Page {
     return $("#check-your-answers");
   }
 
-  get detailsStatus() {
-    return $("#add-your-details-status");
+  get applicantInfoStatus() {
+    return $("#add-applicant-information-status");
   }
 
   get landBoundaryStatus() {

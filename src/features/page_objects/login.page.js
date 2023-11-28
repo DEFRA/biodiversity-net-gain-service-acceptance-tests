@@ -16,6 +16,22 @@ class LoginPage extends Page {
   get SignInBtn() {
     return $("#continue");
   }
+  
+  get radioDefraIdChooseIndiviual(){
+    return $("input[label='dc5d6426-c119-ee11-8f6d-6045bd90523f']");
+  }
+
+  get radioDefraIdChooseOrg(){
+    return $("input[label='b7f8e793-1d7e-ee11-8179-6045bd905c11']");
+  }
+
+  get continuButtonReplacement(){
+    return $('#continueReplacement');
+  }
+
+  get titleHeader(){
+    return $('#header');
+  }
 
   open() {
     return super.open("https://www.ete.access.service.gov.uk/login/signin/creds");
