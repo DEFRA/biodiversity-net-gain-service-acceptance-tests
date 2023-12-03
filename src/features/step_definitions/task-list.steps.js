@@ -8,6 +8,11 @@ When ("I choose to add {string} details", async (task) => {
   const status = "NOT STARTED"
 
   switch (task) {
+    case "applicant-info": {     
+      await expect(TaskList.applicantInfoStatus).toHaveTextContaining(status);
+      await TaskList.addApplicantInfo.click();  
+    break;
+    }
     case "land-ownership": {     
       await expect(TaskList.landOwnershipStatus).toHaveTextContaining(status);
       await TaskList.addLandOwnership.click();  
@@ -23,11 +28,11 @@ When ("I choose to add {string} details", async (task) => {
       await TaskList.addMetric.click();
     break;
     }
-    case "management-plan": {
-      await expect(TaskList.hmmpStatus).toHaveTextContaining(status);
-      await TaskList.addHmmp.click();
-    break;
-    }
+    // case "management-plan": {
+    //   await expect(TaskList.hmmpStatus).toHaveTextContaining(status);
+    //   await TaskList.addHmmp.click();
+    // break;
+    // }
     case "legal-agreement": {
       await expect(TaskList.legalAgreementStatus).toHaveTextContaining(status);
       await TaskList.addLegalAgreement.click();

@@ -8,8 +8,13 @@ When ("I login to the Government Gateway", async () => {
     
     // assert against the page title
     expect(await browser.getTitle()).toContain(LoginPage.titleText);
-    
-    await LoginPage.login("528250494194", "ChristopherWallace");
+
+
+      //user associated to just an individual
+    await login("528250494194", "ChristopherWallace");
+
+    //user associated to an org
+    // await login("894836023882", "ChristopherWallace");
   })
 
   Then("I am logged in to the service", async () => {
@@ -29,6 +34,10 @@ When ("I login to the Government Gateway", async () => {
     // await $("h1").waitForExist();
     // expect(await browser.getTitle()).toContain(TaskListPage.titleText);
 
+
+    // expect(await LoginPage.titleHeader).toContain("Who do you want to represent?");
+    // await LoginPage.radioDefraIdChooseIndiviual.click();
+    // await LoginPage.continuButtonReplacement.click();
   })
 
 

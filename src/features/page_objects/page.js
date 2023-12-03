@@ -52,6 +52,14 @@ get manageBngNavLink(){
     return $("input[value='not sure']");
   }
 
+  get radioIndividual() { 
+    return $("input[value='individual']"); 
+  }
+
+  get radioOrganisation() { 
+    return $("input[value='organisation']"); 
+  }
+
   get filesizeIndicator() {
     return $("#filesize");
   }
@@ -73,7 +81,8 @@ get manageBngNavLink(){
   }
   
   get firstName() {
-    return $("[id='firstName']");
+    // return $("[id='firstName']");
+    return $("#firstName");
   }
 
   get middleName() {
@@ -86,6 +95,34 @@ get manageBngNavLink(){
 
   get organisationName() {
     return $("[id='organisationName']");
+  }
+
+  get addr1(){
+    return $("#addressLine1")
+  }
+
+  get addr2(){
+    return $("#addressLine2")
+  }
+
+  get town(){
+    return $("#town")
+  }
+
+  get county(){
+    return $("#county")
+  }
+
+  get postCode(){
+    return $("#postcode")
+  }
+
+  get phone() {
+    return $("#phone");
+  }
+
+  get emailAddress() {
+    return $("#email");
   }
 
   get otherRoleTextBox(){
@@ -103,6 +140,71 @@ get manageBngNavLink(){
    get riverTotal(){
     return $('*[data-testid="riverTotal"]'); 
    }
+
+   async addFirstName(value) {
+    await (this.firstName).clearValue();
+    await this.firstName.addValue(value);
+    await expect(this.firstName).toHaveValue(value);
+  }
+
+  async addMiddleName(value) {
+    await (this.middleName).clearValue();
+    await this.middleName.addValue(value);
+    await expect(this.middleName).toHaveValue(value);
+  }
+
+  async addLastName(value) {
+    await (this.lastName).clearValue();
+    await this.lastName.addValue(value);
+    await expect(this.lastName).toHaveValue(value);
+  }
+
+  async addAddr1(value) {
+    await (this.addr1).clearValue();
+    await this.addr1.addValue(value);
+    await expect(this.addr1).toHaveValue(value);
+  }
+
+  async addAddr2(value) {
+    await (this.addr2).clearValue();
+    await this.addr2.addValue(value);
+    await expect(this.addr2).toHaveValue(value);
+  }
+
+  async addTown(value) {
+    await (this.town).clearValue();
+    await this.town.addValue(value);
+    await expect(this.town).toHaveValue(value);
+  }
+
+  async addCounty(value) {
+    await (this.county).clearValue();
+    await this.county.addValue(value);
+    await expect(this.county).toHaveValue(value);
+  }
+
+  async addPostcode(value) {
+    await (this.postCode).clearValue();
+    await this.postCode.addValue(value);
+    await expect(this.postCode).toHaveValue(value);
+  }
+
+  async addPhone(value) {
+    await (this.phone).clearValue();
+    await this.phone.addValue(value);
+    await expect(this.phone).toHaveValue(value);
+  }
+
+  async addEmailAddress(value) {
+
+    // clear the original value
+    await (this.emailAddress).clearValue();
+    // add the email address 
+    // // wait for focus on element before adding as addition is being skipped
+    await (this.emailAddress).isFocused();
+    await this.emailAddress.addValue(value);
+    await expect(this.emailAddress).toHaveValue(value);
+  }
 
   async enterValidDate(date) {
     var arr = date.split('/');
@@ -126,4 +228,5 @@ get manageBngNavLink(){
   open(path) {
     return browser.url(`./${path}`);
   }
+
 };
