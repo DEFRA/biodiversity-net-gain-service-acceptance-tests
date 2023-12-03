@@ -37,14 +37,24 @@ Feature: Biodiversity metric display/playback
 
         Scenario Outline: BNGP-3674 1, 4 metric files that are version <version> are rejected
                 # CD08 https://docs.google.com/document/d/1PVBCPrs7ijLhG48Qs9XNEeTqyTYYkU7bjXBNAoyXOaM/edit
-                Given I navigate to the "metric-upload" page
-                And I choose to upload a "<version>" metric file
+                When I choose to upload a "<version>" metric file
                 Then I should not be able to upload the file
                 And I should see the error "The selected file must use Biodiversity Metric version 4.1"
                 Examples:
                         | version |
                         | 3.0     |
                         | 4.0     |
+
+        Scenario: BNGP-524 2 I cannot upload a file that is not in the specified format (is not a metric file)
+                When I choose an empty "metric" file
+                Then I should not be able to upload the file
+                And I am informed that the file is empty
+
+        Scenario: BNGP-2031 2 I cannot upload an empty metric file (no data)
+                When I choose a metric file with no data
+                Then I should not be able to upload the file
+                And I am informed that the selected file does not have enough data
+
 
 
 
