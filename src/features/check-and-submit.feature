@@ -6,13 +6,13 @@ Feature: Check and Submit
     So that I can confirm I am satisfied with all the entered details and submit my application
 
     Background: Complete all registration details
-        #Start Page
-        Given I navigate to the "start" page
-        And I start my registration
-        # DefraID
-        And I login to the Government Gateway
+        # #Start Page
+        # Given I navigate to the "start" page
+        # And I start my registration
+        # # DefraID
+        # And I login to the Government Gateway
         And I am logged in to the service
-        #Landing page - tasklist for new session (TODO refine after)
+        #Landing page - tasklist for new session (TODO refine after as random landing at the moment)
         And I choose to manage my biodiversity gains
         # And I am on the "manage-biodiversity-gains" page
         And I choose to manage my gain sites
@@ -40,12 +40,6 @@ Feature: Check and Submit
         And I confirm the "check-habitat-creation" information is correct
         And I confirm the "check-metric-details" information is correct
         And I should see the "metric" section status as "COMPLETED"
-        # HMMP
-        And I choose to add "management-plan" details
-        And I am on the "management-plan-upload" page
-        And I choose and upload a "management-plan" file
-        And I confirm it is the correct file
-        And I have completed the management-plan section
         # Legal Agreement
         And I choose to add "legal-agreement" details
         And I am on the "legal-agreement-type" page
@@ -97,7 +91,7 @@ Feature: Check and Submit
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
-    @e2e
+    @e2e @new
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         And I am on the "check-and-submit" page
