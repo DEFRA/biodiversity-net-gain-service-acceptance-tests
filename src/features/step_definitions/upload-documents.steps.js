@@ -321,7 +321,14 @@ Then("I am informed that the selected file does not have enough data", async () 
   );
 });
 
+Then("I am informed that the selected file is not a valid Metric", async () =>{
+    // wait for error message
+    await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
 
+    await expect(UploadPage.errorMsg).toHaveTextContaining(
+      "The selected file is not a valid Metric"
+);
+})
 
 Then("I am informed of what the allowed file types should be", async () => {
   // wait for error message

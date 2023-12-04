@@ -45,10 +45,10 @@ Feature: Biodiversity metric display/playback
                         | 3.0     |
                         | 4.0     |
 
-        Scenario: BNGP-524 2 I cannot upload a file that is not in the specified format (is not a metric file)
+        Scenario: BNGP-524 2, BNGP 4099 I cannot upload a file that is not in the specified format (is not a metric file)
                 When I choose an empty "metric" file
                 Then I should not be able to upload the file
-                And I am informed that the file is empty
+                And I am informed that the selected file is not a valid Metric
 
         Scenario: BNGP-2031 2 I cannot upload an empty metric file (no data)
                 When I choose a metric file with no data
