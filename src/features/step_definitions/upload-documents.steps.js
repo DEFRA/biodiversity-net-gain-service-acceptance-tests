@@ -312,6 +312,24 @@ Then("I am informed that the file is empty", async () => {
   );
 });
 
+Then("I am informed that the selected file does not have enough data", async () => {
+  // wait for error message
+  await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
+
+  await expect(UploadPage.errorMsg).toHaveTextContaining(
+    "The selected file does not have enough data"
+  );
+});
+
+Then("I am informed that the selected file is not a valid Metric", async () =>{
+    // wait for error message
+    await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
+
+    await expect(UploadPage.errorMsg).toHaveTextContaining(
+      "The selected file is not a valid Metric"
+);
+})
+
 Then("I am informed of what the allowed file types should be", async () => {
   // wait for error message
   await (await UploadPage.errorMsg).waitForDisplayed({ timeout: 5000 });
@@ -347,13 +365,16 @@ When("I confirm it is the correct file", async () => {
   });
 
 
-When("I choose an empty file", async () => {
-  switch (UploadPage) {
-    case metricUploadPage: {
-      filePath = join(__dirname, "../../TestFiles/test_metric_empty.xlsm");
+When("I choose an empty {string} file", async (document) => {
+  switch (document) {
+    case "metric": {
+       UploadPage = metricUploadPage
+      
+      filePath = join(__dirname, "../../TestFiles/test_empty_non_metric.xlsx");
       break;
     }
-    default: {
+    case "land-ownership": {
+      UploadPage = landOwnershipUploadPage
       filePath = join(__dirname, "../../TestFiles/test_1k_empty.pdf");
     }
   }
@@ -369,6 +390,23 @@ When("I choose an empty file", async () => {
 
   await UploadPage.govFileUpload.setValue(remoteFilePath);
   await UploadPage.continueButton.click();
+});
+
+When("I choose a metric file with no data", async () => {
+  filePath = join(__dirname, "../../TestFiles/test_metric_empty.xlsm");
+   
+
+  remoteFilePath = await browser.uploadFile(filePath);
+
+  // get the filename for assertions
+  var group = filePath.split("\\");
+  filename = basename(group[group.length - 1]);
+
+  // open the upload url page
+  browser.url(metricUploadPage.path);
+
+  await metricUploadPage.govFileUpload.setValue(remoteFilePath);
+  await metricUploadPage.continueButton.click();
 });
 
 When("I choose a {string} file of {string} or {string} Bytes", async (byteType, filesize, byteSize) => {
