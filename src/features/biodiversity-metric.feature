@@ -20,7 +20,6 @@ Feature: Biodiversity metric display/playback
                 And I choose to start a new registration
                 And I navigate to the "metric-upload" page
 
-
         Scenario Outline: BNGP-523 1a - The uploaded metric data on the <metricDisplayPage> page has correct totals for <HabitatType>
                 Given I choose and upload a "metric" file
                 And I confirm it is the correct file
@@ -39,7 +38,7 @@ Feature: Biodiversity metric display/playback
                 # CD08 https://docs.google.com/document/d/1PVBCPrs7ijLhG48Qs9XNEeTqyTYYkU7bjXBNAoyXOaM/edit
                 When I choose to upload a "<version>" metric file
                 Then I should not be able to upload the file
-                And I should see the error "The selected file must use Biodiversity Metric version 4.1"
+                And I should see the error "The selected file must use the statutory biodiversity metric"
                 Examples:
                         | version |
                         | 3.0     |
