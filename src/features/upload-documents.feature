@@ -99,7 +99,7 @@ Feature: Upload Documents
             | management-plan | Select a habitat management and monitoring plan |
             | land-boundary   | Select a file showing the land boundary         |
             # | geospatial      | Select a file showing the land boundary         |
-            | metric          | Select a Biodiversity Metric                    |
+            | metric          | Select a statutory biodiversity metric          |
             | land-ownership  | Select a proof of land ownership file           |
 
     Scenario Outline: I cannot continue without confirming the uploaded <document>

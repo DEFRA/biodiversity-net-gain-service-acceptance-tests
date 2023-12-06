@@ -1,12 +1,13 @@
+// CD57
 const Page = require('../page')
 
 class MetricCheckDetails extends Page {
   get titleText () {
-    return 'Check Biodiversity Metric 4.1 and habitat declaration'
+    return 'Check stautory biodiversity metric details'
   }
 
   open () {
-    return super.open('land/check-habitat-baseline')
+    return super.open('land/check-metric-details')
   }
 }
 module.exports = new MetricCheckDetails()

@@ -1,8 +1,9 @@
+// CD55
 const Page = require("../page");
 
 class MetricDisplayBaseline extends Page {
   get titleText() {
-    return "Check the habitat baseline information - GOV.UK";
+    return "Check the habitat baseline information";
   }
 
   open() {
