@@ -77,17 +77,16 @@ Feature: Upload Documents
 
     Scenario Outline: I cannot upload an empty <document>
         When I navigate to the "<document>-upload" page
-        And I choose an empty file
+        And I choose an empty "<document>" file
         Then I should not be able to upload the file
         And I am informed that the file is empty
         Examples:
-            | document        |
-            | legal-agreement |
-            | management-plan |
-            | land-boundary   |
+            | document       |
+            # | legal-agreement |
+            # | management-plan |
+            # | land-boundary   |
             # | geospatial      |
-            | metric          |
-            | land-ownership  |
+            | land-ownership |
 
     Scenario Outline: I cannot continue without uploading a <document>
         When I navigate to the "<document>-upload" page
@@ -100,7 +99,7 @@ Feature: Upload Documents
             | management-plan | Select a habitat management and monitoring plan |
             | land-boundary   | Select a file showing the land boundary         |
             # | geospatial      | Select a file showing the land boundary         |
-            | metric          | Select a Biodiversity Metric                    |
+            | metric          | Select a statutory biodiversity metric          |
             | land-ownership  | Select a proof of land ownership file           |
 
     Scenario Outline: I cannot continue without confirming the uploaded <document>

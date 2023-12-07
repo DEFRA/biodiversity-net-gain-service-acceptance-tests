@@ -1,8 +1,9 @@
+//CD08
 const Page = require("../page");
 
 class MetricUpload extends Page {
   get titleText() {
-    return "Upload the Biodiversity Metric 4.1 calculations for the biodiversity gain site";
+    return "Upload the statutory biodiversity metric calculations for the biodiversity gain site";
   }
 
   get path() {

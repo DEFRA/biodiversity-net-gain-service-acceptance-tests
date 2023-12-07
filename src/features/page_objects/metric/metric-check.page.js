@@ -1,8 +1,9 @@
+// CD09
 const Page = require("../page");
 
 class MetricCheck extends Page {
   get titleText() {
-    return "Check the Biodiversity Metric 4.1 file";
+    return "Check the statutory biodiversity metric file";
   }
 
   get downloadLink() {
