@@ -3,7 +3,7 @@ const Page = require("../../page");
 
 class NeedAddAllLandownersCCPage extends Page {
   get titleText() {
-    return "You need to add all landowners listed on the conservation covenant";
+    return "You need to add all landowners or leaseholders listed on the conservation covenant";
   }
 
   open() {
