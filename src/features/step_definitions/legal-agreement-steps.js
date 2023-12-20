@@ -1,6 +1,7 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 
 const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page.js");
+const legalAgreementCheckAddedAllFilesPage = require("../page_objects/legal_agreement/check-you-added-all-legal-files.page.js")
 const checkLegalAgreementDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page.js");
 const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page.js");
 const tasklistPage = require("../page_objects/register-land-task-list.page");
@@ -31,20 +32,21 @@ Given("I have completed the legal-agreement section", async () => {
 })
 
 Given("I am Informed I have to add all {string} files", async (filetype)=> {
+  
   //page object defaults to CC at the moment  
-  //Todo check the title string 
-  needAddAllLegalFilesPage.continueButton.click();
-})
-
-When("I add the legal party {string} with a role of {string}", async (fullname, role) =>{
-    await addLegalParty(fullname, role);
-    await legalAgreementAddPartiesPage.continueButton.click();
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(NeedAddAllLegalFilesCCPage.titleText);
+  NeedAddAllLegalFilesCCPage.continueButton.click();
 })
 
 When("I choose to add another legal party of {string} with a role of {string}", async (fullname, role) =>{
   
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(legalPartyListPage.titleText);
   // select to add another legal party
-  await basePage.radioYes.click();
+  await legalPartyListPage.radioYes.click();
   await legalPartyListPage.continueButton.click();
   
   //add another legal party
@@ -68,19 +70,25 @@ When("I add a legal party role as a {string}", async (role) => {
   await legalAgreementAddPartiesPage.addLegalPartyRole(role);
 })
 
-When("I add the legal party fullname or organisation as {string}", async (fullname) => {
-  await addLegalPartyFullName(fullname); 
-})
+// When("I add the legal party fullname or organisation as {string}", async (fullname) => {
+//   // await addLegalPartyFullName(fullname); 
+// })
 
 async function completeLegalAgreementSection(fullname, date) { 
   
   //**** Conservation Covenant default at the moment ****
   
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(legalAgreementCheckAddedAllFilesPage.titleText);
   //And I confirm i have added all legal agreement files
   // multiple file addition page_object needs adding
-  await basePage.radioYes.click();
-  await basePage.continueButton.click();
+  await legalAgreementCheckAddedAllFilesPage.radioYes.click();
+  await legalAgreementCheckAddedAllFilesPage.continueButton.click();
 
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(needAddAllResponsibleBodies.titleText);
   // And I am informed that I have to add all responsible bodies to the legal agreement
   await needAddAllResponsibleBodies.continueButton.click();
 
@@ -91,13 +99,22 @@ async function completeLegalAgreementSection(fullname, date) {
   // And I add the responsible body listed on the conservation covenant
   await addResponsibleBody(fullname); 
 
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(checkResponsibleBodiesPage.titleText);
   //And I choose that I have added all responsible bodies
   await checkResponsibleBodiesPage.radioYes.click();
   await checkResponsibleBodiesPage.continueButton.click();
 
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(needAddAllLandownersCCPage.titleText);
   // And I am informed that I need to add all landowners or leaseholders listed on the conservation covenant
   await needAddAllLandownersCCPage.continueButton.click();
 
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(landownerIndividualOrOrganisationCCPage.titleText);
   //And I choose to confimr that the leasholder or lanowner listed on the concervation covenant is an organisation
   await landownerIndividualOrOrganisationCCPage.radioOrganisation.click();
   await landownerIndividualOrOrganisationCCPage.continueButton.click();
@@ -106,19 +123,31 @@ async function completeLegalAgreementSection(fullname, date) {
   // await addLegalParty(fullname); 
   await addOrganisationName(fullname); 
 
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(legalAgreementCheckLandownersPage.titleText);
   await legalAgreementCheckLandownersPage.radioYes.click();
   await legalAgreementCheckLandownersPage.continueButton.click();
 
-
+// assert against the page title
+await $("h1").waitForExist();
+expect(await browser.getTitle()).toContain(habitatPlanLegalAgreementPage.titleText);
   //Is the habitat managenment plan included in the legal agreement
   // yes
   await habitatPlanLegalAgreementPage.radioYes.click();
   await habitatPlanLegalAgreementPage.continueButton.click();
 
+ 
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(enhancementWorksStartDatePage.titleText);
   // have the habitat enhancement works started yet
   await enhancementWorksStartDatePage.radioNo.click();
   await enhancementWorksStartDatePage.continueButton.click();
-
+  
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(legalAgreementEndDatePage.titleText);
   // does the legal agrement have an end date?
   await legalAgreementEndDatePage.radioNo.click();
   await legalAgreementEndDatePage.continueButton.click();
@@ -136,6 +165,10 @@ async function completeLegalAgreementSection(fullname, date) {
   }
   
 async function addResponsibleBody(fullname) {
+// assert against the page title
+await $("h1").waitForExist();
+expect(await browser.getTitle()).toContain(addResponsibleBodyConservationCovenantPage.titleText);
+
     //Add a conservation covenant responsible body
   await addResponsibleBodyConservationCovenantPage.responsibleBodyName.addValue(fullname);
 
@@ -145,6 +178,10 @@ async function addResponsibleBody(fullname) {
 }
 
 async function addOrganisationName(fullname) {
+
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(addLandownerOrganisationCCPage.titleText);
   
   //add the organisation name 
   await addLandownerOrganisationCCPage.organisationName.addValue(fullname);
