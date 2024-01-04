@@ -3,7 +3,7 @@ const Page = require("../../page");
 
 class CheckResponsibleBodiesPage extends Page {
   get titleText() {
-    return "You have added [number] responsible body[/bodies]";
+    return "You have added 1 responsible body";
   }
 
   open() {

@@ -3,7 +3,7 @@ const Page = require("../page");
 
 class LegalAgreementCheckAddedAllFilesPage extends Page {
   get titleText() {
-    return "You have added [number] legal agreement file[/files]";
+    return "You have added 1 legal agreement file";
   }
 
   get downloadLink() {

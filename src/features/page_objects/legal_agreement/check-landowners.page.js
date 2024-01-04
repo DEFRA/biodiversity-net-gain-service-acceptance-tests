@@ -3,7 +3,7 @@ const Page = require("../page");
 
 class LegalAgreementCheckLandownersPage extends Page {
   get titleText() {
-    return "You have added [number] landowner[/landowners] or leaseholder[/leaseholders]";
+    return "You have added 1 landowner or leaseholder";
   }
 
   open() {
