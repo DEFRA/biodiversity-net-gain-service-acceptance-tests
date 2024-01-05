@@ -85,6 +85,10 @@ class CheckAndSubmit extends Page {
     return $('*[data-testid="legal-agreement-start-date-value"]');
   }
 
+  get confirmTermsAndConditionsChkBox(){
+    return $("input[value='Yes']");
+  }
+
   get confirmAndSubmitBtn(){
     return $(".govuk-button");
   }
