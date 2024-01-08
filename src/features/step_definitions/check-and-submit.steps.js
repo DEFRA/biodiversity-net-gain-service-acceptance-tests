@@ -1,6 +1,15 @@
-const { When, Then } = require("@wdio/cucumber-framework");
+const { Given, When, Then } = require("@wdio/cucumber-framework");
 const basePage = require("../page_objects/check-and-submit.page");
 const CheckAndSubmitPage = require("../page_objects/check-and-submit.page");
+
+Given("I have agreed to the terms and conditions", async () => {
+  
+  // assert against the page title 
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(CheckAndSubmitPage.titleText);
+  await CheckAndSubmitPage.confirmTermsAndConditionsChkBox.click();
+
+})
 
 When("I submit my application", async () => {
   await basePage.govContinueButton.click();
