@@ -24,6 +24,7 @@ const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-
 const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page");
 const legalAgreementStartDatePage = require("../page_objects/legal_agreement/legal-agreement-start-date.page");
 const legalAgreementCheckDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page");
+const legalAgreementAnyOtherLandownersPage = require("../page_objects/legal_agreement/any-other-landowners.page.js");
 const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
 const taskListPage = require("../page_objects/register-land-task-list.page");
@@ -122,6 +123,7 @@ const pages = {
   "legal-agreement-start-date": legalAgreementStartDatePage,
   "check-legal-agreement-details": legalAgreementCheckDetailsPage,
   "check-legal-agreement-cc-details": legalAgreementCheckFileCCPage,
+  "any-other-landowners": legalAgreementAnyOtherLandownersPage,
   //Local land Charge search certificate
   "local-land-charge-upload": LocalLandChargeUploadPage,
   "local-land-charge-check": LocalLandChargeCheckPage,
