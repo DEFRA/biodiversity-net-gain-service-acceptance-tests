@@ -42,7 +42,6 @@ const metricCheckDetailsPage = require("../page_objects/metric/check-metric-deta
 const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
 const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
 const landownershipRegisteredLandownerPage = require("../page_objects/land_ownership/registered-landowner.page");
-const landownershipAddLandowners = require("../page_objects/land_ownership/add-landowners.page");
 const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 const monitoringStartDatePage = require("../page_objects/management_plan/monitoring-start-date.page");
@@ -90,7 +89,6 @@ const pages = {
   "land-ownership-upload": landOwnershipUploadPage,
   "land-ownership-check": landOwnershipCheckPage,
   "registered-landowner": landownershipRegisteredLandownerPage,
-  "add-landowners": landownershipAddLandowners,
   //Land boundary 
   "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
