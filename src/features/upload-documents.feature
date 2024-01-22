@@ -24,7 +24,7 @@ Feature: Upload Documents
             | jira ticket | document          | destination                 |
             | BNGP-738    | developer-metric  | confirm-development-details |
             | BNGP-2195   | consent-agreement | developer/tasklist          |
-
+    @new
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
         When I navigate to the "<document>-upload" page
         And I choose a file type that is not in the specified format
