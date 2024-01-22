@@ -6,7 +6,7 @@ class StartPage extends Page {
   // }
 
   get titleText() {
-    return "Register land as a biodiversity gain site";
+    return "Register a biodiversity gain site";
   }
 
   get getHeading() {
