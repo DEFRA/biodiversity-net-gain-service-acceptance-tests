@@ -1,4 +1,4 @@
-@regression
+
 Feature: BNGP-156 Site Provider Eligibility check
 
     As a Site Provider
@@ -20,4 +20,3 @@ Feature: BNGP-156 Site Provider Eligibility check
     Scenario: 8 If the applicant has answered No (or I am not sure) to any of the questions, the confirmation page will list what they need to do
         When I have answered no or not sure to some of the eligibility questions
         Then I should be informed that I do not have everything I need to register
-#Todo: And I should be shown what I need to provide
