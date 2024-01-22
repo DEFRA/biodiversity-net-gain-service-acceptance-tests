@@ -168,7 +168,7 @@ Given(/^I navigate to the "(.*)" page$/, async (page) => {
   }
   
   // assert against the page title
-  await $("h1").waitForExist({ timeout: 5000 });
+  await $("h1").waitForExist();
   expect(await browser.getTitle()).toContain(pages[page].titleText);
 });
 
