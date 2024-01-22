@@ -366,6 +366,9 @@ When("I confirm it is the correct file", async () => {
 
 
 When("I choose an empty {string} file", async (document) => {
+
+  filePath = join(__dirname, "../../TestFiles/test_1k_empty.pdf");
+
   switch (document) {
     case "metric": {
        UploadPage = metricUploadPage
@@ -375,7 +378,15 @@ When("I choose an empty {string} file", async (document) => {
     }
     case "land-ownership": {
       UploadPage = landOwnershipUploadPage
-      filePath = join(__dirname, "../../TestFiles/test_1k_empty.pdf");
+      break;
+    }
+    case "land-boundary": {
+      UploadPage = landOwnershipUploadPage
+      break;
+    }
+    case "legal-agreement": {
+      UploadPage = landOwnershipUploadPage
+      break;
     }
   }
 

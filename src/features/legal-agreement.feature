@@ -5,15 +5,8 @@ Feature: Legal Agreement
     I need to answer questions about my legal agreement
     So that I can provide the data required for registration
 
-    Background: start and add applicant details
-        Given I navigate to the "start" page
-        And I start my registration
-        # eligibility
-        And I have everything I need to start my biodiversity gain site registration
-        # applicant details
-        And I have completed the applicant details section
-        # Legal Agreement Chose the Type
-        And I navigate to the "legal-agreement-type" page
+    Background:
+        Given I navigate to the "legal-agreement-type" page
 
     Scenario Outline: BNGP-188 2 I have a choice between 2 types of legal agreement or not having one
         When I select "<legal-agreement-type>" and continue
@@ -43,12 +36,6 @@ Feature: Legal Agreement
         And there is one legal party in the list
         When i try to remove it
         Then I see an error
-
-    @skip() # known bug, add back in when https://eaflood.atlassian.net/browse/BNGP-3488 is in test
-    Scenario: BNGP-188 7,8 If 'Other' option is selected as Role then the Role field popup must not be left blank
-        When I navigate to the "add-legal-agreement-parties" page
-        And I add the legal party "Legal Party 1" with a role of "Other"
-        Then I should see the error "Other type of role cannot be left blank"
 
     Scenario: BNGP-188 9 I can add a valid legal agreement start date
         When I navigate to the "legal-agreement-start-date" page

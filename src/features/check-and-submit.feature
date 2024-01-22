@@ -6,19 +6,8 @@ Feature: Check and Submit
     So that I can confirm I am satisfied with all the entered details and submit my application
 
     Background: Complete all registration details
-        # #Start Page
-        # Given I navigate to the "start" page
-        # And I start my registration
-        # # DefraID
-        # And I login to the Government Gateway
-        And I am logged in to the service
-        #Landing page - tasklist for new session (TODO refine after as random landing at the moment)
-        And I choose to manage my biodiversity gains
-        # And I am on the "manage-biodiversity-gains" page
-        And I choose to manage my gain sites
-        # And I am on the "biodiversity-gain-sites" page
-        And I choose to start a new registration
-        # And I navigate to the "register-land-task-list" page
+        Given I am on the "register-land-task-list" page
+
         # Applicant info
         And I choose to add "applicant-info" details
         And I have completed the applicant information section
@@ -102,7 +91,7 @@ Feature: Check and Submit
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
-    @e2e
+    @e2e     @new
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         And I am on the "check-and-submit" page

@@ -6,10 +6,7 @@ Feature: BNGP-156 Site Provider Eligibility check
     So that I can be certain I am eligible and can proceed with my application in confidence
 
     Background: Start the journey
-        Given I navigate to the "start" page
-        And I start my registration
-        And I am on the "check-you-can-register" page
-        And I choose to check if I have everything I need to register
+        Given I choose to check if I have everything I need to register
 
     Scenario: 1, 5  I cannot continue if the site is not in England
         And I am on the "site-in-england" page

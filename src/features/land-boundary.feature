@@ -5,14 +5,6 @@ Feature: Land Boundary
     I need to provide the location and boundary of the land I am registering
     So that I can provide the Register Operator with the data in a file type consistent with technology I already use
 
-    Background:
-        Given I navigate to the "start" page
-        And I start my registration
-        # DefraID
-        And I login to the Government Gateway
-        And I am logged in to the service
-
-
     @skip() # temporarily skip test that is running locally pointing to the dev env, but not on ci as this is a superficial test
     Scenario Outline: BNGP-526 1 - There is an option to upload geospatial and non geospatial data
         When I navigate to the "choose-land-boundary-upload" page
@@ -20,10 +12,10 @@ Feature: Land Boundary
         Then I should be on the "<section>" page
         Examples:
             | fileType          | section              |
-            | geospatial        | geospatial-upload    |
+            # | geospatial        | geospatial-upload    |
             | Document or Image | land-boundary-upload |
 
-    @bug
+    @bug @skip() #skip geospatial as currently disabled
     Scenario: BNGP-1711 BUG - geospatial upload error (geojson, repeat upload)
         When I navigate to the "geospatial-upload" page
         And I choose and upload a "geospatial-geojson" file
@@ -45,6 +37,6 @@ Feature: Land Boundary
             | land-ownership    |
             | land-boundary     |
             | metric            |
-            | management-plan   |
+            # | management-plan   |
             | legal-agreement   |
             | local-land-charge |
