@@ -31,7 +31,7 @@ Feature: Land Boundary
         And I choose to add "<section>" details
         And I am on the "<section>" page
         When I go back to the previous page
-        Then I should see the "<section>" section status as "IN PROGRESS"
+        Then I should see the "<section>" section status as "NOT STARTED"
         Examples:
             | section           |
             | land-ownership    |
