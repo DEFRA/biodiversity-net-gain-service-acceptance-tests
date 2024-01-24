@@ -268,16 +268,16 @@ exports.config = {
     // BeforeFeature({ tags: '@login' }, async (context) => {
 
       // Retrieve the baseUrl from the WebdriverIO configuration
-  // const baseUrl = browser.config.baseUrl;
+  const baseUrl = process.env.SERVICE_URL;
   // const baseUrl = browser.config.baseUrl || 'http://localhost:3000';
 
   // Replace the following with the path to your login page relative to the baseUrl
   const startPagePath = '/start';
 
   // Combine the baseUrl and startPagePath to get the complete login page URL
-  const startPageUrl = 'http://localhost:3000' + startPagePath;
+  //const startPageUrl = 'http://localhost:3000' + startPagePath;
 
-  // const startPageUrl = baseUrl + startPagePath;
+  const startPageUrl = baseUrl + startPagePath;
   
 
   console.log(`Navigating to: ${startPageUrl}`);
