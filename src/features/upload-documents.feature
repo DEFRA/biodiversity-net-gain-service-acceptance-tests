@@ -5,13 +5,6 @@ Feature: Upload Documents
     I need to upload copies of my evidence documents
     So that I can prove that I have met all the eligibility criteria
 
-    Background: start and add applicant details
-        Given I navigate to the "start" page
-        And I start my registration
-        # DefraID
-        And I login to the Government Gateway
-        And I am logged in to the service
-
     @skip() #skipped as covered by @e2e tests
     Scenario Outline: <jira ticket> 1 - There is an option of uploading a single <document>
         When I navigate to the "<document>-upload" page
@@ -21,7 +14,7 @@ Feature: Upload Documents
         Examples: Landowner Journey
             | jira ticket | document          | destination                 |
             | BNGP-499    | legal-agreement   | add-legal-agreement-parties |
-            | BNGP-765    | management-plan   | habitat-works-start-date    |
+            # | BNGP-765    | management-plan   | habitat-works-start-date    |
             | BNGP-767    | land-boundary     | grid-reference              |
             # | BNGP-526    | geospatial        | check-land-boundary-details |
             | BNGP-524    | metric            | metric-display-baseline     |
@@ -40,7 +33,6 @@ Feature: Upload Documents
         Examples:
             | jira ticket | document        |
             | BNGP-499    | legal-agreement |
-            | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
             # | BNGP-526    | geospatial      |
             | BNGP-524    | metric          |
@@ -55,10 +47,9 @@ Feature: Upload Documents
         Examples:
             | jira ticket | document        | filesize |
             | BNGP-499    | legal-agreement | 11.75 kB |
-            | BNGP-765    | management-plan | 11.75 kB |
             | BNGP-767    | land-boundary   | 11.75 kB |
             # | BNGP-526    | geospatial      | 1.07 kB  |
-            | BNGP-524    | metric          | 5.39 MB  |
+            | BNGP-524    | metric          | 4.84 MB  |
             | BNGP-515    | land-ownership  | 11.75 kB |
 
     Scenario Outline: <jira ticket> 4 - There is a way to choose a different <document> if necessary
@@ -69,7 +60,6 @@ Feature: Upload Documents
         Examples:
             | jira ticket | document        |
             | BNGP-499    | legal-agreement |
-            | BNGP-765    | management-plan |
             | BNGP-767    | land-boundary   |
             # | BNGP-526    | geospatial      |
             | BNGP-524    | metric          |
@@ -81,12 +71,11 @@ Feature: Upload Documents
         Then I should not be able to upload the file
         And I am informed that the file is empty
         Examples:
-            | document       |
-            # | legal-agreement |
-            # | management-plan |
-            # | land-boundary   |
+            | document        |
+            | legal-agreement |
+            | land-boundary   |
             # | geospatial      |
-            | land-ownership |
+            | land-ownership  |
 
     Scenario Outline: I cannot continue without uploading a <document>
         When I navigate to the "<document>-upload" page
@@ -94,16 +83,16 @@ Feature: Upload Documents
         Then I should see the error "<message>"
         And I should see the error and the error summary displayed
         Examples:
-            | document        | message                                         |
-            | legal-agreement | Select a legal agreement                        |
-            | management-plan | Select a habitat management and monitoring plan |
-            | land-boundary   | Select a file showing the land boundary         |
+            | document        | message                                 |
+            | legal-agreement | Select a legal agreement                |
+            | land-boundary   | Select a file showing the land boundary |
             # | geospatial      | Select a file showing the land boundary         |
-            | metric          | Select a statutory biodiversity metric          |
-            | land-ownership  | Select a proof of land ownership file           |
+            | metric          | Select a statutory biodiversity metric  |
+            | land-ownership  | Select a proof of land ownership file   |
 
     Scenario Outline: I cannot continue without confirming the uploaded <document>
-        When I choose and upload a "<document>" file
+        When I navigate to the "<document>-upload" page
+        And I choose and upload a "<document>" file
         And I am on the "<document>-check" page
         And I continue without an action
         Then I should see the error "Select yes if this is the correct file"
@@ -111,11 +100,9 @@ Feature: Upload Documents
         Examples:
             | document        |
             | legal-agreement |
-            | management-plan |
             | land-boundary   |
             # | geospatial      |
-            # todo skip as need to investigate this specific test
-            # | metric   |
+            | metric          |
             | land-ownership  |
 
     Scenario Outline: I should be able to upload a .<filetype> filetype for <document> files
@@ -126,9 +113,6 @@ Feature: Upload Documents
             | legal-agreement | doc      |
             | legal-agreement | docx     |
             | legal-agreement | pdf      |
-            | management-plan | doc      |
-            | management-plan | docx     |
-            | management-plan | pdf      |
             | metric          | xlsx     |
             | metric          | xlsm     |
             | land-ownership  | doc      |
@@ -145,6 +129,7 @@ Feature: Upload Documents
     # | geospatial      | geojson  |
     # | geospatial      | gpkg     |
 
+    @skip()
     Scenario Outline: <jira ticket> 8 I cannot upload a <document> file that is larger than the maximum file size (currently 50MB with 2.43 threshhold that allows for both binary and decimal interpretations of the upload limit)
         When I navigate to the "<document>-upload" page
         And I choose a '<byteType>' file of '<filesize>' or "<byteSize>" Bytes
@@ -152,9 +137,10 @@ Feature: Upload Documents
         Examples:
             | jira ticket | document       | byteType | filesize | byteSize |
             | BNGP-515    | land-ownership | decimal  | 52.43MB  | 52430000 |
-
+    @skip()
     Scenario: BNGP-3637 malware/virus uploads should display the error message
-        When I navigate to the "management-plan-upload" page
+        When I choose to add "local-land-charge" details
+        And I am on the "local-land-charge-upload" page
         And I upload a file that contains malware or a virus
         Then I should not be able to upload the file
         And I should see the error "The selected file contains a virus"

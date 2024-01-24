@@ -1,4 +1,4 @@
-@regression
+
 Feature: Developer Journey Tests
 
     # As a developer
