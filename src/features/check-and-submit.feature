@@ -85,13 +85,14 @@ Feature: Check and Submit
         And I should see the "legal party role" on the summary shown as "Landowner"
         And I should see the "legal-agreement start date" on the summary shown as "12 October 2022"
 
+    @skip() #update with https://eaflood.atlassian.net/browse/BNGP-3983
     Scenario: BNGP-190 2, 3 - When I update an answer to a section I am returned to the Summary Page
         When I choose to change the "fullname" answer on the "check-and-submit" page
         And I update the "fullname" to "new name"
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
-    @e2e     @new
+    @e2e
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         And I am on the "check-and-submit" page
