@@ -117,6 +117,8 @@ const pages = {
   "legal-agreement-cc-upload": legalAgreementCCUploadPage,
   "legal-agreement-check": legalAgreementCheckFileCCPage,
   "legal-agreement-type": legalAgreementTypePage,
+  "need-add-all-legal-files": needAddAllLegalFilesPage,
+  "need-add-all-legal-files-cc": needAddAllLegalFilesCCPage,
   "need-legal-agreement": legalAgreementNeedpage,
   "add-legal-agreement-parties": legalAgreementAddPartiesPage,
   "legal-party-list": legalPartyListPage,
@@ -124,6 +126,7 @@ const pages = {
   "check-legal-agreement-details": legalAgreementCheckDetailsPage,
   "check-legal-agreement-cc-details": legalAgreementCheckFileCCPage,
   "any-other-landowners": legalAgreementAnyOtherLandownersPage,
+  
   //Local land Charge search certificate
   "local-land-charge-upload": LocalLandChargeUploadPage,
   "local-land-charge-check": LocalLandChargeCheckPage,
@@ -206,8 +209,7 @@ When("I select {string} and continue", async (option) => {
       break;
     }
     case "I do not have a legal agreement": {
-      await legalAgreementTypePage.doNotHaveDocument.click();
-      await basePage.continueButton.click();
+      await legalAgreementTypePage.doNotHaveLegalDocument.click();
       break;
     }
     case "Other role": {

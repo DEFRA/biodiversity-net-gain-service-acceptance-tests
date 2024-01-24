@@ -1,4 +1,4 @@
-@regression
+
 Feature: Legal Agreement
 
     As a Site Provider
@@ -12,10 +12,10 @@ Feature: Legal Agreement
         When I select "<legal-agreement-type>" and continue
         Then I should be on the "<destination>" page
         Examples:
-            | legal-agreement-type            | destination               |
-            | Conservation covenant           | legal-agreement-cc-upload |
-            | Planning obligation             | legal-agreement-upload    |
-            | I do not have a legal agreement | need-legal-agreement      |
+            | legal-agreement-type            | destination                 |
+            | Conservation covenant           | need-add-all-legal-files-cc |
+            | Planning obligation             | need-add-all-legal-files    |
+            | I do not have a legal agreement | need-legal-agreement        |
 
     Scenario: BNGP-188 3 I should be able to add multiple legal parties
         When I select "Planning obligation" and continue
@@ -69,3 +69,5 @@ Feature: Legal Agreement
             | page                       |
             | legal-agreement-start-date |
             | monitoring-start-date      |
+
+    Scenario: BNGP-3863
