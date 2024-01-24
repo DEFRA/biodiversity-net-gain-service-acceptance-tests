@@ -74,9 +74,9 @@ exports.config = {
       // browserVersion: "117.0.5938.92",
       // browserVersion: "stable",
       // acceptInsecureCerts: true,
-      // "goog:chromeOptions": {
-      //   args: ["--headless", "--disable-logging"],
-      // },
+      "goog:chromeOptions": {
+        args: ["--headless", "--disable-logging"],
+      },
     },
 
     // If outputDir is provided WebdriverIO can capture driver session logs
@@ -91,7 +91,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: "debug",
+  logLevel: "error",
   //
   // Set specific log levels per logger
   // loggers:
@@ -275,7 +275,7 @@ exports.config = {
   const startPagePath = '/start';
 
   // Combine the baseUrl and startPagePath to get the complete login page URL
-  const startPageUrl = 'https://pocbngweb001.azurewebsites.net' + startPagePath;
+  const startPageUrl = 'http://localhost:3000' + startPagePath;
 
   // const startPageUrl = baseUrl + startPagePath;
   
