@@ -21,7 +21,8 @@ const legalAgreementRemoveFilePage = require("../page_objects/legal_agreement/re
 const legalAgreementCheckLandownersPage = require("../page_objects/legal_agreement/check-landowners.page.js")
 const habitatPlanLegalAgreementPage = require("../page_objects/management_plan/habitat-plan-legal-agreement.page.js");
 const enhancementWorksStartDatePage = require('../page_objects/management_plan/enhancement-works-start-date.page.js');
-
+const legalAgreementEndDatePage = require('../page_objects/legal_agreement/habitat-enhancements-end-date.page.js');
+const legalAgreementAnyOtherLandownersPage = require("../page_objects/legal_agreement/any-other-landowners.page.js");
 
 
 
@@ -106,9 +107,16 @@ async function completeLegalAgreementSection(fullname, date) {
   await checkResponsibleBodiesPage.radioYes.click();
   await checkResponsibleBodiesPage.continueButton.click();
 
-  // And I am informed that I need to add all landowners or leaseholders listed on the conservation covenant
-  await needAddAllLandownersCCPage.continueButton.click();
-
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(legalAgreementAnyOtherLandownersPage.titleText);
+  // And I am confirm if any other landowners or leaseholders are listed on the "legal agreement"
+  await legalAgreementAnyOtherLandownersPage.radioYes.click();
+  await legalAgreementAnyOtherLandownersPage.continueButton.click();
+  
+  // assert against the page title
+  await $("h1").waitForExist();
+  expect(await browser.getTitle()).toContain(landownerIndividualOrOrganisationCCPage.titleText);
   //And I choose to confimr that the leasholder or lanowner listed on the concervation covenant is an organisation
   await landownerIndividualOrOrganisationCCPage.radioOrganisation.click();
   await landownerIndividualOrOrganisationCCPage.continueButton.click();
