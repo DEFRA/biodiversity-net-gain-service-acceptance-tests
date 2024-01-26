@@ -313,46 +313,6 @@ exports.config = {
    * @param {GherkinDocument.IFeature} feature  Cucumber feature object
    */
   // beforeFeature: async (uri, feature, scenarios) => {
-  //   const loginPage = require("../features/page_objects/login.page");
-  //   const startPage = require("../features/page_objects/start.page");
-    
-  //   // BeforeFeature({ tags: '@login' }, async (context) => {
-
-  //     // Retrieve the baseUrl from the WebdriverIO configuration
-  // // const baseUrl = browser.config.baseUrl;
-  // // const baseUrl = browser.config.baseUrl || 'http://localhost:3000';
-
-  // // Replace the following with the path to your login page relative to the baseUrl
-  // const startPagePath = '/start';
-
-  // // Combine the baseUrl and startPagePath to get the complete login page URL
-  // const startPageUrl = 'http://localhost:3000' + startPagePath;
-
-  // console.log(`Navigating to: ${startPageUrl}`);
-
-  // // Navigate to the login page URL before the feature
-  // await browser.url(startPageUrl);
-
-  //     await $("h1").waitForExist();
-  //     // assert against the page title
-  //     await expect(await browser.getTitle()).toContain(startPage.titleText);
-
-  //     // And I start my registration
-  //       await (await startPage.startButton).click();
-    
-  //      // Initialize the LoginPage class or module
-  //     //  const loginPage = new LoginPage();
-    
-  //     await $("h1").waitForExist();
-  //     // assert against the page title
-  //     await expect(await browser.getTitle()).toContain(loginPage.titleText);
-
-  //     const username = '528250494194';
-  //     const password = 'ChristopherWallace';
-    
-  //     // Log in the user before the feature
-  //     await loginPage.login(username, password);
-  //   // });
   // },
   /**
    *
