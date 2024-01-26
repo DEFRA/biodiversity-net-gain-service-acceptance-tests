@@ -1,5 +1,4 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-const startPage = require("../page_objects/start.page");
 const manageBngPage = require("../page_objects/manage-biodiversity-gains.page");
 const biodiversityGainSitesPage = require("../page_objects/biodiversity-gain-sites.page");
 const checkYouCanRegisterPage = require("../page_objects/eligibility_questions/check-you-can-register.page");
@@ -67,8 +66,7 @@ const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answe
 const  DeveloperDetailsName = require("../page_objects/developer/details-name.page");
 
 const pages = {
-  start: startPage,
-//Dashboard
+  //Dashboard
   "manage-biodiversity-gains" : manageBngPage,
   "biodiversity-gain-sites" : biodiversityGainSitesPage,
   //eligibility questions
@@ -175,11 +173,26 @@ Given(/^I navigate to the "(.*)" page$/, async (page) => {
   expect(await browser.getTitle()).toContain(pages[page].titleText);
 });
 
-Then(/^I (?:am|should be) (?:on|returned to) the "(.*)" page$/, async (page) => {
-  await $("h1").waitForExist({ timeout: 5000 });
+Given("I try to navigate to the {string} page", async (path) => {
+  const pageUrl = browser.options.baseUrl + path
+  console.log(`Navigating to: ${pageUrl}`);
 
-  // assert against the page title
-  expect(await browser.getTitle()).toContain(pages[page].titleText);
+  await browser.url(pageUrl);
+});
+
+When(/^I (?:am|should be) (?:shown|on|returned to) the "(.*)" page$/, async (page) => {
+  
+  if(page === "404"){
+    expect(await browser.getTitle()).toContain("Page not found");
+  }
+    else
+  {
+  
+    await $("h1").waitForExist({ timeout: 5000 });
+
+    // assert against the page title
+    expect(await browser.getTitle()).toContain(pages[page].titleText);
+  }
 });
 
 When("I continue without an action", async () => {

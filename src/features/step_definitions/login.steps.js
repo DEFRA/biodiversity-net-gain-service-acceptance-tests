@@ -21,3 +21,7 @@ When ("I login to the Government Gateway", async () => {
     await LoginPage.isLoggedIn();
   })
 
+  Then("I should be able to continue with my previous journey", async () => {
+    return "pending";
+    })
+

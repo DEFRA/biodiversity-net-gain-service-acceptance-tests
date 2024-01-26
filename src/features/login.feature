@@ -1,14 +1,15 @@
+@regression
 Feature: Login
     As an Authenticated User
-    I need to be directed to/ from the login page
-    So that I can continue with my journey
+    I need to be directed to the correct landing page
+    So that I can start or continue with a journey
 
-    Scenario: Attempting to login to the "landowner journey" with valid credentials
-        Given I navigate to the "start" page
-        And I start my registration
-        When I login to the Government Gateway
-        Then I am logged in to the service
-# Then I should be returned to the "start" page
-# Then I should be returned to the "register-land-task-list" page
-# Then I should be returned to the "register-land-task-list" page
+    @skip() #skip as not ready yet until save and return BNGP-201
+    Scenario: As a returning BNG user I want to login and continue with my previous journey
+        Given I am a returning user
+        When I Sign In to the register
+        Then I should be able to continue with my previous journey
 
+    Scenario: https://eaflood.atlassian.net/browse/BNGP-4486 remove legacy start page
+        Given I try to navigate to the "/start" page
+        Then I should be shown the "404" page
