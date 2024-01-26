@@ -264,44 +264,22 @@ exports.config = {
       const startPage = require("../features/page_objects/start.page");
       const manageBngPage = require("../features/page_objects/manage-biodiversity-gains.page");
       const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page")
-    
-    // BeforeFeature({ tags: '@login' }, async (context) => {
-
-      // Retrieve the baseUrl from the WebdriverIO configuration
-  const baseUrl = process.env.SERVICE_URL;
-  // const baseUrl = browser.config.baseUrl || 'http://localhost:3000';
-
-  // Replace the following with the path to your login page relative to the baseUrl
-  const startPagePath = '/start';
-
-  // Combine the baseUrl and startPagePath to get the complete login page URL
-  //const startPageUrl = 'http://localhost:3000' + startPagePath;
-
-  const startPageUrl = baseUrl + startPagePath;
-  
-
-  console.log(`Navigating to: ${startPageUrl}`);
-
-  // Navigate to the login page URL before the feature
-  await browser.url(startPageUrl);
-
-      await $("h1").waitForExist();
-      // assert against the page title
-      await expect(await browser.getTitle()).toContain(startPage.titleText);
-
-      // And I start my registration
-        await (await startPage.startButton).click();
-    
-       // Initialize the LoginPage class or module
-      //  const loginPage = new LoginPage();
-    
+      const username = '528250494194';
+      const password = 'ChristopherWallace';
+      // Set the baseUrl 
+      const baseUrl = process.env.SERVICE_URL || 'https://pocbngweb001.azurewebsites.net'
+      // BNGP-4486 - /signin redirects to gov gateway
+      const startPagePath = '/signin';
+      // Combine the baseUrl and startPagePath to get the complete login page URL
+      const startPageUrl = baseUrl + startPagePath;
+      console.log(`Navigating to: ${startPageUrl}`);
+      
+      // Navigate to the login page URL 
+      await browser.url(startPageUrl);
       await $("h1").waitForExist();
       // assert against the page title
       await expect(await browser.getTitle()).toContain(loginPage.titleText);
 
-      const username = '528250494194';
-      const password = 'ChristopherWallace';
-    
       // Log in the user before the feature
       await loginPage.login(username, password);
     
@@ -310,11 +288,11 @@ exports.config = {
       //#Landing page - tasklist for new session (TODO refine after as random landing at the moment)
       
       // And I choose to manage my biodiversity gains
-      // nav bar manage link should really be baserurl
+      // nav bar manage link should really be baseurl
       await manageBngPage.manageBngNavLink.click();
 
       // And I choose to manage my gain sites
-        // # And I am on the "biodiversity-gain-sites" page
+      // # And I am on the "biodiversity-gain-sites" page
       await manageBngPage.manageGainSiteslink.click();
 
       // And I choose to start a new registration
@@ -335,46 +313,6 @@ exports.config = {
    * @param {GherkinDocument.IFeature} feature  Cucumber feature object
    */
   // beforeFeature: async (uri, feature, scenarios) => {
-  //   const loginPage = require("../features/page_objects/login.page");
-  //   const startPage = require("../features/page_objects/start.page");
-    
-  //   // BeforeFeature({ tags: '@login' }, async (context) => {
-
-  //     // Retrieve the baseUrl from the WebdriverIO configuration
-  // // const baseUrl = browser.config.baseUrl;
-  // // const baseUrl = browser.config.baseUrl || 'http://localhost:3000';
-
-  // // Replace the following with the path to your login page relative to the baseUrl
-  // const startPagePath = '/start';
-
-  // // Combine the baseUrl and startPagePath to get the complete login page URL
-  // const startPageUrl = 'http://localhost:3000' + startPagePath;
-
-  // console.log(`Navigating to: ${startPageUrl}`);
-
-  // // Navigate to the login page URL before the feature
-  // await browser.url(startPageUrl);
-
-  //     await $("h1").waitForExist();
-  //     // assert against the page title
-  //     await expect(await browser.getTitle()).toContain(startPage.titleText);
-
-  //     // And I start my registration
-  //       await (await startPage.startButton).click();
-    
-  //      // Initialize the LoginPage class or module
-  //     //  const loginPage = new LoginPage();
-    
-  //     await $("h1").waitForExist();
-  //     // assert against the page title
-  //     await expect(await browser.getTitle()).toContain(loginPage.titleText);
-
-  //     const username = '528250494194';
-  //     const password = 'ChristopherWallace';
-    
-  //     // Log in the user before the feature
-  //     await loginPage.login(username, password);
-  //   // });
   // },
   /**
    *
