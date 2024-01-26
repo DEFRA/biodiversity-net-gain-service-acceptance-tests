@@ -6,8 +6,6 @@
 // const { BeforeFeature } = require('@cucumber/cucumber');
 // const { loginPage } = require('../features/page_objects/login.page'); 
 
-// const {StartPage} = require("../features/page_objects/start.page");
-
 exports.config = {
   // Browserstack Config
   // user: process.env.BROWSERSTACK_USERNAME,
@@ -261,7 +259,6 @@ exports.config = {
    before: async (uri, feature, scenarios) => {
       // browser.setCookies([{name: 'seen_cookie_message', value: 'true'}])
       const loginPage = require("../features/page_objects/login.page");
-      const startPage = require("../features/page_objects/start.page");
       const manageBngPage = require("../features/page_objects/manage-biodiversity-gains.page");
       const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page")
       const username = '528250494194';
