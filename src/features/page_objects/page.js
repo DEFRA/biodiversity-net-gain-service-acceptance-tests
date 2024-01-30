@@ -64,8 +64,8 @@ get manageBngNavLink(){
     return $("#filesize");
   }
 
-  get doNotHaveDocument() {
-    return $("#dont-have-document");
+  get doNotHaveLegalDocument() {
+    return $("a[href='/land/need-legal-agreement']");
   }
 
   get Day() {

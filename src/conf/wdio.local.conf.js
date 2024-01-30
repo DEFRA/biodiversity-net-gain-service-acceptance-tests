@@ -3,6 +3,9 @@
 // import cucumberJson from "wdio-cucumberjs-json-reporter";
 // const { removeSync } = require('fs-extra');
 
+// const { BeforeFeature } = require('@cucumber/cucumber');
+// const { loginPage } = require('../features/page_objects/login.page'); 
+
 exports.config = {
   // Browserstack Config
   // user: process.env.BROWSERSTACK_USERNAME,
@@ -51,7 +54,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 10,
+  maxInstances: 5,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -69,9 +72,9 @@ exports.config = {
       // browserVersion: "117.0.5938.92",
       // browserVersion: "stable",
       // acceptInsecureCerts: true,
-      // "goog:chromeOptions": {
-      //   args: ["--headless", "--disable-logging"],
-      // },
+      "goog:chromeOptions": {
+        args: ["--headless", "--disable-logging"],
+      },
     },
 
     // If outputDir is provided WebdriverIO can capture driver session logs
@@ -86,7 +89,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: "info",
+  logLevel: "error",
   //
   // Set specific log levels per logger
   // loggers:
@@ -112,7 +115,8 @@ exports.config = {
   // gets prepended directly.
 
   baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
-  //
+  // "http://localhost:3000",
+  //"https://tstbngwebwa2401.azurewebsites.net"
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
   //
@@ -243,7 +247,7 @@ exports.config = {
    * @param {Array.<String>} specs List of spec file paths that are to be run
    * @param {String} cid worker id (e.g. 0-0)
    */
-  // beforeSession: function (config, capabilities, specs, cid) {
+  //  beforeSession: function (config, capabilities, specs, cid) {
   // },
   /**
    * Gets executed before test execution begins. At this point you can access to all global
@@ -252,11 +256,45 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-  //  before: function () {
-  //     browser.setCookies([
-  //       {name: 'seen_cookie_message', value: 'true'}
-  // ])
-  //  },
+   before: async (uri, feature, scenarios) => {
+      // browser.setCookies([{name: 'seen_cookie_message', value: 'true'}])
+      const loginPage = require("../features/page_objects/login.page");
+      const manageBngPage = require("../features/page_objects/manage-biodiversity-gains.page");
+      const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page")
+      const username = '528250494194';
+      const password = 'ChristopherWallace';
+      // Set the baseUrl 
+      const baseUrl = process.env.SERVICE_URL || 'https://pocbngweb001.azurewebsites.net'
+      // BNGP-4486 - /signin redirects to gov gateway
+      const startPagePath = '/signin';
+      // Combine the baseUrl and startPagePath to get the complete login page URL
+      const startPageUrl = baseUrl + startPagePath;
+      console.log(`Navigating to: ${startPageUrl}`);
+      
+      // Navigate to the login page URL 
+      await browser.url(startPageUrl);
+      await $("h1").waitForExist();
+      // assert against the page title
+      await expect(await browser.getTitle()).toContain(loginPage.titleText);
+
+      // Log in the user before the feature
+      await loginPage.login(username, password);
+    
+      //And I am logged in to the service
+      await loginPage.isLoggedIn();
+      //#Landing page - tasklist for new session (TODO refine after as random landing at the moment)
+      
+      // And I choose to manage my biodiversity gains
+      // nav bar manage link should really be baseurl
+      await manageBngPage.manageBngNavLink.click();
+
+      // And I choose to manage my gain sites
+      // # And I am on the "biodiversity-gain-sites" page
+      await manageBngPage.manageGainSiteslink.click();
+
+      // And I choose to start a new registration
+      await biodiversityGainSitesPage.registerNewGainSitelink.click();
+   },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
@@ -271,7 +309,7 @@ exports.config = {
    * @param {String}                   uri      path to feature file
    * @param {GherkinDocument.IFeature} feature  Cucumber feature object
    */
-  // beforeFeature: function (uri, feature) {
+  // beforeFeature: async (uri, feature, scenarios) => {
   // },
   /**
    *
@@ -316,10 +354,10 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-   afterScenario: async function (world, result, context) {
-    // cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
-    await browser.reloadSession();
-   },
+  //  afterScenario: async function (world, result, context) {
+  //   // cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+  //   await browser.reloadSession();
+  //  },
   /**
    *
    * Runs after a Cucumber Feature.

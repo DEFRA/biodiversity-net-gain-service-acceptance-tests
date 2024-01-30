@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class CheckYouCanRegisterPage extends Page {
   get titleText() {
-    return "Check you have everything to register a biodiversity gain site";
+    return "Check you have everything to Register a biodiversity gain site";
   }
 
   get skipQuestions(){

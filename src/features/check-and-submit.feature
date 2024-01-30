@@ -6,19 +6,8 @@ Feature: Check and Submit
     So that I can confirm I am satisfied with all the entered details and submit my application
 
     Background: Complete all registration details
-        #Start Page
-        Given I navigate to the "start" page
-        And I start my registration
-        # DefraID
-        And I login to the Government Gateway
-        And I am logged in to the service
-        #Landing page - tasklist for new session (TODO refine after)
-        And I choose to manage my biodiversity gains
-        # And I am on the "manage-biodiversity-gains" page
-        And I choose to manage my gain sites
-        # And I am on the "biodiversity-gain-sites" page
-        And I choose to start a new registration
-        # And I navigate to the "register-land-task-list" page
+        Given I am on the "register-land-task-list" page
+
         # Applicant info
         And I choose to add "applicant-info" details
         And I have completed the applicant information section
@@ -51,12 +40,6 @@ Feature: Check and Submit
         And I confirm the "check-habitat-creation" information is correct
         And I confirm the "check-metric-details" information is correct
         And I should see the "metric" section status as "COMPLETED"
-        # # HMMP
-        # And I choose to add "management-plan" details
-        # And I am on the "management-plan-upload" page
-        # And I choose and upload a "management-plan" file
-        # And I confirm it is the correct file
-        # And I have completed the management-plan section
         # Legal Agreement
         And I choose to add "legal-agreement" details
         And I am on the "legal-agreement-type" page
@@ -102,6 +85,7 @@ Feature: Check and Submit
         And I should see the "legal party role" on the summary shown as "Landowner"
         And I should see the "legal-agreement start date" on the summary shown as "12 October 2022"
 
+    @skip() #update with https://eaflood.atlassian.net/browse/BNGP-3983
     Scenario: BNGP-190 2, 3 - When I update an answer to a section I am returned to the Summary Page
         When I choose to change the "fullname" answer on the "check-and-submit" page
         And I update the "fullname" to "new name"

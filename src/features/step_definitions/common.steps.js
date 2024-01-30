@@ -1,5 +1,4 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-const startPage = require("../page_objects/start.page");
 const manageBngPage = require("../page_objects/manage-biodiversity-gains.page");
 const biodiversityGainSitesPage = require("../page_objects/biodiversity-gain-sites.page");
 const checkYouCanRegisterPage = require("../page_objects/eligibility_questions/check-you-can-register.page");
@@ -42,7 +41,6 @@ const metricCheckDetailsPage = require("../page_objects/metric/check-metric-deta
 const landOwnershipUploadPage = require("../page_objects/land_ownership/land-ownership-upload.page");
 const landOwnershipCheckPage = require("../page_objects/land_ownership/land-ownership-check.page");
 const landownershipRegisteredLandownerPage = require("../page_objects/land_ownership/registered-landowner.page");
-const landownershipAddLandowners = require("../page_objects/land_ownership/add-landowners.page");
 const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 const monitoringStartDatePage = require("../page_objects/management_plan/monitoring-start-date.page");
@@ -68,8 +66,7 @@ const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answe
 const  DeveloperDetailsName = require("../page_objects/developer/details-name.page");
 
 const pages = {
-  start: startPage,
-//Dashboard
+  //Dashboard
   "manage-biodiversity-gains" : manageBngPage,
   "biodiversity-gain-sites" : biodiversityGainSitesPage,
   //eligibility questions
@@ -90,7 +87,6 @@ const pages = {
   "land-ownership-upload": landOwnershipUploadPage,
   "land-ownership-check": landOwnershipCheckPage,
   "registered-landowner": landownershipRegisteredLandownerPage,
-  "add-landowners": landownershipAddLandowners,
   //Land boundary 
   "choose-land-boundary-upload": landBoundaryChooseUploadOptionPage,
   "land-boundary-upload": landBoundaryUploadImageFilePage,
@@ -117,6 +113,8 @@ const pages = {
   "legal-agreement-cc-upload": legalAgreementCCUploadPage,
   "legal-agreement-check": legalAgreementCheckFileCCPage,
   "legal-agreement-type": legalAgreementTypePage,
+  "need-add-all-legal-files": needAddAllLegalFilesPage,
+  "need-add-all-legal-files-cc": needAddAllLegalFilesCCPage,
   "need-legal-agreement": legalAgreementNeedpage,
   "add-legal-agreement-parties": legalAgreementAddPartiesPage,
   "legal-party-list": legalPartyListPage,
@@ -124,6 +122,7 @@ const pages = {
   "check-legal-agreement-details": legalAgreementCheckDetailsPage,
   "check-legal-agreement-cc-details": legalAgreementCheckFileCCPage,
   "any-other-landowners": legalAgreementAnyOtherLandownersPage,
+  
   //Local land Charge search certificate
   "local-land-charge-upload": LocalLandChargeUploadPage,
   "local-land-charge-check": LocalLandChargeCheckPage,
@@ -170,15 +169,30 @@ Given(/^I navigate to the "(.*)" page$/, async (page) => {
   }
   
   // assert against the page title
-  await $("h1").waitForExist({ timeout: 5000 });
+  await $("h1").waitForExist();
   expect(await browser.getTitle()).toContain(pages[page].titleText);
 });
 
-Then(/^I (?:am|should be) (?:on|returned to) the "(.*)" page$/, async (page) => {
-  await $("h1").waitForExist({ timeout: 5000 });
+Given("I try to navigate to the {string} page", async (path) => {
+  const pageUrl = browser.options.baseUrl + path
+  console.log(`Navigating to: ${pageUrl}`);
 
-  // assert against the page title
-  expect(await browser.getTitle()).toContain(pages[page].titleText);
+  await browser.url(pageUrl);
+});
+
+When(/^I (?:am|should be) (?:shown|on|returned to) the "(.*)" page$/, async (page) => {
+  
+  if(page === "404"){
+    expect(await browser.getTitle()).toContain("Page not found");
+  }
+    else
+  {
+  
+    await $("h1").waitForExist({ timeout: 5000 });
+
+    // assert against the page title
+    expect(await browser.getTitle()).toContain(pages[page].titleText);
+  }
 });
 
 When("I continue without an action", async () => {
@@ -206,8 +220,7 @@ When("I select {string} and continue", async (option) => {
       break;
     }
     case "I do not have a legal agreement": {
-      await legalAgreementTypePage.doNotHaveDocument.click();
-      await basePage.continueButton.click();
+      await legalAgreementTypePage.doNotHaveLegalDocument.click();
       break;
     }
     case "Other role": {

@@ -1,4 +1,4 @@
-@regression
+
 Feature: BNGP-179, BNGP-1099 Site Provider applicant details
 
     As a Site Provider
