@@ -206,6 +206,16 @@ When("I go back to the previous page", async () => {
   await basePage.backButton.click();
 }) 
 
+
+When("I refresh the page", async () => {
+  await browser.execute(() => { window.foobar = 'not refreshed yet' })
+  expect(await browser.execute(() => window.foobar )).toBe('not refreshed yet')
+  await browser.refresh();
+  await browser.pause(200) // wait for page refresh to happen
+  expect(await browser.execute(() => window.foobar )).toBe(null)
+})
+
+
 When("I select {string} and continue", async (option) => {
 
   switch (option) {
@@ -275,6 +285,10 @@ When("I confirm the {string} information is correct", async (check) => {
       throw new Error("Section "+ check +" doesn't exist");
     }
   }  
+})
+
+Then("The page title should be {string}", async(pageTitle) =>{
+  expect(await browser.getTitle()).toContain(pageTitle);
 })
 
 async function confirmLegalAgreementDetails() {

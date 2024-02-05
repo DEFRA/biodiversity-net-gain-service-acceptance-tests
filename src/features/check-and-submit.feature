@@ -6,8 +6,11 @@ Feature: Check and Submit
     So that I can confirm I am satisfied with all the entered details and submit my application
 
     Background: Complete all registration details
-        Given I am on the "register-land-task-list" page
 
+        Given I choose to manage my biodiversity gains
+        # // nav bar manage link should really be baseurl
+        And I choose to manage my gain sites
+        And I choose to start a new registration
         # Applicant info
         And I choose to add "applicant-info" details
         And I have completed the applicant information section
@@ -18,14 +21,13 @@ Feature: Check and Submit
 
         And I am on the "check-applicant-info" page
         And confirm the applicant-info details are correct
-
         # land ownership
         And I choose to add "land-ownership" details
         And I am on the "land-ownership-upload" page
         And I choose and upload a "land-ownership" file
         And I confirm it is the correct file
         And I have completed the land-ownership section
-        # land boundary  add the link to the section from the tasklist?  just jumps straight there at the mo
+        # land boundary
         And I choose to add "land-boundary" details
         And I am on the "land-boundary-upload" page
         And I choose and upload a "land-boundary" file
@@ -102,11 +104,20 @@ Feature: Check and Submit
         And The biodiversity gain site reference should be displayed
         And The fee amount of "£639.00" should be displayed
 
-# Scenario: BNGP-3635 - On submission if the confirmation page is refreshed the details are not resubmitted or shown on the page
-#     And I am on the "check-and-submit" page
-#     And I submit my application
-#     And I am on the "application-submitted" page
-#     When I refresh the page
-#     Then the title should be ""
-#     And the fee amount is not displayed
+    Scenario: BNGP-3635 - On submission if the confirmation page is refreshed the details are not resubmitted or shown on the page
+        And I am on the "check-and-submit" page
+        And I have agreed to the terms and conditions
+        And I submit my application
+        And I am on the "application-submitted" page
+        When I refresh the page
+        Then The page title should be "You’ve submitted your application"
+        And the fee amount should not be displayed
 
+    Scenario: https://eaflood.atlassian.net/browse/BNGP-4336 BACS payment details
+        And I am on the "check-and-submit" page
+        And I have agreed to the terms and conditions
+        When I submit my application
+        And I am on the "application-submitted" page
+        Then The sort code "60 70 80" should be displayed
+        And The account number "10026630" should be displayed
+        And The swift code "NWBKGB2L" should be displayed
