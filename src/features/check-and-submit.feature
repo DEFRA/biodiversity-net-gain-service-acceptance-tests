@@ -103,6 +103,9 @@ Feature: Check and Submit
         Then I should be on the "application-submitted" page
         And The biodiversity gain site reference should be displayed
         And The fee amount of "£639.00" should be displayed
+        And The sort code "60 70 80" should be displayed
+        And The account number "10026630" should be displayed
+        And The swift code "NWBKGB2L" should be displayed
 
     Scenario: BNGP-3635 - On submission if the confirmation page is refreshed the details are not resubmitted or shown on the page
         And I am on the "check-and-submit" page
