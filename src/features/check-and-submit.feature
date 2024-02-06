@@ -6,16 +6,11 @@ Feature: Check and Submit
     So that I can confirm I am satisfied with all the entered details and submit my application
 
     Background: Complete all registration details
-<<<<<<< HEAD
 
         Given I choose to manage my biodiversity gains
         # // nav bar manage link should really be baseurl
         And I choose to manage my gain sites
         And I choose to start a new registration
-=======
-        Given I am on the "register-land-task-list" page
-
->>>>>>> main
         # Applicant info
         And I choose to add "applicant-info" details
         And I have completed the applicant information section
