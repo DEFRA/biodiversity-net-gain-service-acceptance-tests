@@ -1,4 +1,4 @@
-//for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
+// for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
 //https://www.npmjs.com/package/cucumber-html-reporter
 // import cucumberJson from "wdio-cucumberjs-json-reporter";
 // const { removeSync } = require('fs-extra');
@@ -16,7 +16,7 @@ exports.config = {
   // Runner Configuration
   // ====================
   //
-  runner: "local",
+  runner: 'local',
   //
   // ==================
   // Specify Test Files
@@ -263,8 +263,8 @@ exports.config = {
       const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page")
       const username = '528250494194';
       const password = 'ChristopherWallace';
-      // Set the baseUrl 
-      const baseUrl = process.env.SERVICE_URL || 'https://pocbngweb001.azurewebsites.net'
+      // Set the baseUrl
+      const baseUrl = process.env.SERVICE_URL || 'https://devbngwebwa1401.azurewebsites.net'
       // BNGP-4486 - /signin redirects to gov gateway
       const startPagePath = '/signin';
       // Combine the baseUrl and startPagePath to get the complete login page URL
