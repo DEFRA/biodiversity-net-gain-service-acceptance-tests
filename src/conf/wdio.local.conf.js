@@ -69,8 +69,7 @@ exports.config = {
       //
      
       browserName: "chrome",
-      browserVersion: "dev",
-      // browserVersion: "stable",
+      //browserVersion: "dev",
       // acceptInsecureCerts: true,
       "goog:chromeOptions": {
         args: ["--headless", "--disable-logging"],
@@ -262,16 +261,19 @@ exports.config = {
       const manageBngPage = require("../features/page_objects/manage-biodiversity-gains.page");
       const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page")
       const username = '528250494194';
+      // const username = '894836023882';
       const password = 'ChristopherWallace';
+
       // Set the baseUrl
       const baseUrl = process.env.SERVICE_URL || 'http://localhost:3000'
       // BNGP-4486 - /signin redirects to gov gateway
       const startPagePath = '/signin';
       // Combine the baseUrl and startPagePath to get the complete login page URL
       const startPageUrl = baseUrl + startPagePath;
-      console.log(`Navigating to: ${startPageUrl}`);
+      
       
       // Navigate to the login page URL 
+      console.log(`Navigating to: ${startPageUrl}`);
       await browser.url(startPageUrl);
       await $("h1").waitForExist();
       // assert against the page title
@@ -279,6 +281,12 @@ exports.config = {
 
       // Log in the user before the feature
       await loginPage.login(username, password);
+
+
+      // //Org associated user choose Individual option
+      // await loginPage.radioDefraIdChooseIndiviual.click();
+      // await loginPage.defraIdContinuButtonReplacement.click();
+
     
       //And I am logged in to the service
       await loginPage.isLoggedIn();
