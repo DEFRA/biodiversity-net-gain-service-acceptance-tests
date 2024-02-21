@@ -69,7 +69,7 @@ exports.config = {
       //
      
       browserName: "chrome",
-      //browserVersion: "dev",
+      browserVersion: "122.0.6258.0",
       // acceptInsecureCerts: true,
       "goog:chromeOptions": {
         args: ["--headless", "--disable-logging"],
