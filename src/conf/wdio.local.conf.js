@@ -69,7 +69,7 @@ exports.config = {
       //
      
       browserName: "chrome",
-      browserVersion: "122.0.6258.0",
+      // browserVersion: "122.0.6258.0",
       // browserVersion: "stable",
       // acceptInsecureCerts: true,
       "goog:chromeOptions": {
