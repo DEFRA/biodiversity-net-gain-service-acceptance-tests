@@ -69,7 +69,7 @@ exports.config = {
       //
      
       browserName: "chrome",
-      // browserVersion: "117.0.5938.92",
+      // browserVersion: "122.0.6258.0",
       // browserVersion: "stable",
       // acceptInsecureCerts: true,
       "goog:chromeOptions": {
@@ -264,7 +264,7 @@ exports.config = {
       const username = '528250494194';
       const password = 'ChristopherWallace';
       // Set the baseUrl
-      const baseUrl = process.env.SERVICE_URL || 'https://devbngwebwa1401.azurewebsites.net'
+      const baseUrl = process.env.SERVICE_URL || 'http://localhost:3000'
       // BNGP-4486 - /signin redirects to gov gateway
       const startPagePath = '/signin';
       // Combine the baseUrl and startPagePath to get the complete login page URL

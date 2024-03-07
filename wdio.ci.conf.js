@@ -10,6 +10,7 @@ exports.config = {
     {
       maxInstances: 10,
       browserName: "chrome",
+      browserVersion: "122.0.6258.0",
       acceptInsecureCerts: true,
       // We need to extends some Chrome flags in order to tell Chrome to run headless
       "goog:chromeOptions": {
