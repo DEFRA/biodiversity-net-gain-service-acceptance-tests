@@ -291,17 +291,6 @@ exports.config = {
       //And I am logged in to the service
       await loginPage.isLoggedIn();
       //#Landing page - tasklist for new session (TODO refine after as random landing at the moment)
-      
-      // And I choose to manage my biodiversity gains
-      // nav bar manage link should really be baseurl
-      await manageBngPage.manageBngNavLink.click();
-
-      // And I choose to manage my gain sites
-      // # And I am on the "biodiversity-gain-sites" page
-      await manageBngPage.manageGainSiteslink.click();
-
-      // And I choose to start a new registration
-      await biodiversityGainSitesPage.registerNewGainSitelink.click();
    },
   /**
    * Runs before a WebdriverIO command gets executed.
