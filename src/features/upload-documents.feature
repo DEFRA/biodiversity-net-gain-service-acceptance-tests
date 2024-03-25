@@ -25,9 +25,11 @@ Feature: Upload Documents
             | BNGP-738    | developer-metric  | confirm-development-details |
             | BNGP-2195   | consent-agreement | developer/tasklist          |
 
+
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
         When I navigate to the "<document>-upload" page
         And I choose a file type that is not in the specified format
+        #todo needs mulitiple unspecified
         Then I should not be able to upload the file
         And I am informed of what the allowed file types should be
         Examples:
@@ -76,7 +78,8 @@ Feature: Upload Documents
             | land-boundary   |
             # | geospatial      |
             | land-ownership  |
-    @new
+
+    # https://eaflood.atlassian.net/browse/BNGP-4756
     Scenario Outline: I cannot continue without uploading a <document>
         When I navigate to the "<document>-upload" page
         And I upload without choosing a file
@@ -91,7 +94,6 @@ Feature: Upload Documents
             | land-ownership          | Select a proof of land ownership file   |
             | credits-purchase-metric | Select a statutory biodiversity metric  |
 
-    # https://eaflood.atlassian.net/browse/BNGP-4756
     Scenario Outline: I cannot continue without confirming the uploaded <document>
         When I navigate to the "<document>-upload" page
         And I choose and upload a "<document>" file
