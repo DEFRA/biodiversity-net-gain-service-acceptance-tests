@@ -65,6 +65,12 @@ const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/develope
 const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answers.page");
 const  DeveloperDetailsName = require("../page_objects/developer/details-name.page");
 
+
+//**Credits Purchase Journey pages */
+const AddStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/add-statutory-biodiversity-credits.page");
+const EstimatedCostStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/estimated-cost-statutory-biodiversity-credits.page");
+const uploadMetricFilePage = require("../page_objects/credits-purchase/upload-metric-file.page.js");
+
 const pages = {
   //Dashboard
   "manage-biodiversity-gains" : manageBngPage,
@@ -151,6 +157,11 @@ const pages = {
   "confirm-development-details": DeveloperConfirmDevelopmentDetailsPage,
   "check-answers" : DeveloperCheckAnswersPage,
   "developer-details-name": DeveloperDetailsName, 
+
+//**CREDITS PURCHASE JOURNEY */
+  "add-credits" : AddStatutoryBiodiversityCreditsPage,
+  "estimate-cost-of-credits" : EstimatedCostStatutoryBiodiversityCreditsPage,
+  "credits-purchase-metric-upload" : uploadMetricFilePage
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
@@ -199,6 +210,13 @@ When("I continue without an action", async () => {
   // click continue
   await basePage.continueButton.click();
 });
+
+When("I upload without choosing a file", async () => {
+  // click continue
+  await basePage.uploadButton.click();
+});
+
+
 
 
 When("I go back to the previous page", async () => {

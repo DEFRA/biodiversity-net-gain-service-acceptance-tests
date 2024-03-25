@@ -76,20 +76,22 @@ Feature: Upload Documents
             | land-boundary   |
             # | geospatial      |
             | land-ownership  |
-
+    @new
     Scenario Outline: I cannot continue without uploading a <document>
         When I navigate to the "<document>-upload" page
-        And I continue without an action
+        And I upload without choosing a file
         Then I should see the error "<message>"
         And I should see the error and the error summary displayed
         Examples:
-            | document        | message                                 |
-            | legal-agreement | Select a legal agreement                |
-            | land-boundary   | Select a file showing the land boundary |
+            | document                | message                                 |
+            | legal-agreement         | Select a legal agreement                |
+            | land-boundary           | Select a file showing the land boundary |
             # | geospatial      | Select a file showing the land boundary         |
-            | metric          | Select a statutory biodiversity metric  |
-            | land-ownership  | Select a proof of land ownership file   |
+            | metric                  | Select a statutory biodiversity metric  |
+            | land-ownership          | Select a proof of land ownership file   |
+            | credits-purchase-metric | Select a statutory biodiversity metric  |
 
+    # https://eaflood.atlassian.net/browse/BNGP-4756
     Scenario Outline: I cannot continue without confirming the uploaded <document>
         When I navigate to the "<document>-upload" page
         And I choose and upload a "<document>" file
@@ -144,3 +146,6 @@ Feature: Upload Documents
         And I upload a file that contains malware or a virus
         Then I should not be able to upload the file
         And I should see the error "The selected file contains a virus"
+
+
+
