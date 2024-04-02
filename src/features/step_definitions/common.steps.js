@@ -70,6 +70,10 @@ const  DeveloperDetailsName = require("../page_objects/developer/details-name.pa
 const AddStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/add-statutory-biodiversity-credits.page");
 const EstimatedCostStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/estimated-cost-statutory-biodiversity-credits.page");
 const uploadMetricFilePage = require("../page_objects/credits-purchase/upload-metric-file.page.js");
+const CreditsPurchaseTaskListPage = require("../page_objects/credits-purchase/tasklist.page.js");
+const CreditsPurchaseConfirmDevelopmentDetailsPage = require("../page_objects/credits-purchase/confirm-development-details.page.js");
+const CreditsPurchaseCheckAndSubmitPage = require("../page_objects/credits-purchase/check-and-submit.page.js");
+const CreditsPurchaseApplicationSubmittedPage = require("../page_objects/credits-purchase/application-submitted.page.js");
 
 const pages = {
   //Dashboard
@@ -161,7 +165,11 @@ const pages = {
 //**CREDITS PURCHASE JOURNEY */
   "add-credits" : AddStatutoryBiodiversityCreditsPage,
   "estimate-cost-of-credits" : EstimatedCostStatutoryBiodiversityCreditsPage,
-  "credits-purchase-metric-upload" : uploadMetricFilePage
+  "credits-purchase-metric-upload" : uploadMetricFilePage,
+  "credits-purchase-task-list": CreditsPurchaseTaskListPage,
+  "development-details": CreditsPurchaseConfirmDevelopmentDetailsPage,
+  "credits-purchase-check-and-submit": CreditsPurchaseCheckAndSubmitPage,
+  "credits-purchase-application-submitted": CreditsPurchaseApplicationSubmittedPage
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {
@@ -263,6 +271,7 @@ When("I confirm my role as a {string}", async (role) => {
   await applicantDetailsRolePage.confirmRole(role);  
 })
 
+
 When("I confirm the {string} information is correct", async (check) => {
   //confirm check your answer pages
   switch (check) {
@@ -299,6 +308,13 @@ When("I confirm the {string} information is correct", async (check) => {
         await confirmLegalAgreementDetails();
       break;
     }
+    case "development-details":{
+      expect(await browser.getTitle()).toContain(CreditsPurchaseConfirmDevelopmentDetailsPage.titleText);
+      await(CreditsPurchaseConfirmDevelopmentDetailsPage.radioYes).click();
+      await expect(CreditsPurchaseConfirmDevelopmentDetailsPage.continueButton).toBeDisplayed();
+      await (CreditsPurchaseConfirmDevelopmentDetailsPage.continueButton).click();
+    break;
+  }
     default:{
       throw new Error("Section "+ check +" doesn't exist");
     }
@@ -443,7 +459,7 @@ When("I add another {string} as {string} and confirm", async (option, value) => 
 
 Then("I should see the error {string}", async (message) => {
     // check errorMsg text
-    await expect(basePage.errorMsg).toHaveTextContaining(message);
+    await expect(basePage.errorMsg).toHaveText(message);
 });
 
 Then("I should see the error and the error summary displayed", async () => {
@@ -484,15 +500,15 @@ Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page
       //Todo: check your details statement could add a function to aid readability
       switch (option) {
         case "fullname": {
-          await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).toHaveTextContaining(value);
+          await expect(applicantDetailsCheckYourDetailsPage.fullnameValue).toHaveText(value);
           break;
         }
         case "role": {
-          await expect(applicantDetailsCheckYourDetailsPage.roleValue).toHaveTextContaining(value, {ignoreCase:true, asString:true});
+          await expect(applicantDetailsCheckYourDetailsPage.roleValue).toHaveText(value, {ignoreCase:true, asString:true});
           break;
         }
         case "email address": {
-          await expect (applicantDetailsCheckYourDetailsPage.emailValue).toHaveTextContaining(value);
+          await expect (applicantDetailsCheckYourDetailsPage.emailValue).toHaveText(value);
           break;
         }
       }
@@ -501,7 +517,7 @@ Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page
     case "check-legal-agreement-details": {    
       switch (option) {
         case "parties involved": {
-          await expect(legalAgreementCheckDetailsPage.legalPartiesValue).toHaveTextContaining(value);
+          await expect(legalAgreementCheckDetailsPage.legalPartiesValue).toHaveText(value);
           break;
         }
       }
@@ -510,7 +526,7 @@ Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page
     case "check-and-submit": {    
       switch (option) {
         case "fullname": {
-          await expect(checkAndSubmitPage.fullnameValue).toHaveTextContaining(value);
+          await expect(checkAndSubmitPage.fullnameValue).toHaveText(value);
           break;
         }
       }

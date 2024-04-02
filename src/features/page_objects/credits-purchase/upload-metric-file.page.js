@@ -1,6 +1,6 @@
 const Page = require("../page");
 
-class uploadMetricFilePage extends Page {
+class CreditsMetricUploadPage extends Page {
   get titleText() {
     return "Upload the statutory biodiversity metric";
   }
@@ -9,4 +9,6 @@ class uploadMetricFilePage extends Page {
     return super.open("credits-purchase/upload-metric-file");
   }
 }
-module.exports = new uploadMetricFilePage();
+module.exports = new CreditsMetricUploadPage();
+
+

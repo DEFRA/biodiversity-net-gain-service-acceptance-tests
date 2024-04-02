@@ -259,13 +259,13 @@ exports.config = {
       // browser.setCookies([{name: 'seen_cookie_message', value: 'true'}])
       const loginPage = require("../features/page_objects/login.page");
       const manageBngPage = require("../features/page_objects/manage-biodiversity-gains.page");
-      const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page")
+      const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page");
       const username = '528250494194';
       // const username = '894836023882';
       const password = 'ChristopherWallace';
 
       // Set the baseUrl
-      const baseUrl = process.env.SERVICE_URL || 'http://localhost:3000'
+      const baseUrl = process.env.SERVICE_URL || 'https://pocbngweb001.azurewebsites.net'
       // BNGP-4486 - /signin redirects to gov gateway
       const startPagePath = '/signin';
       // Combine the baseUrl and startPagePath to get the complete login page URL

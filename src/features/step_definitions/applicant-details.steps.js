@@ -20,7 +20,7 @@ Given("I have completed the applicant details section", async () => {
 Given("I have completed the applicant details section for my development", async () => {
   await completeApplicantDetailsSection("Christopher Wallace", "Developer", "developer@example.com");
 
-  await expect(developerTaskListPage.detailsStatus).toHaveTextContaining("COMPLETED");
+  await expect(developerTaskListPage.detailsStatus).toHaveText("COMPLETED");
 })
 
 When("I select other role", async () => {

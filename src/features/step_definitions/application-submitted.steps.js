@@ -1,10 +1,23 @@
 const {Then} = require("@wdio/cucumber-framework");
 const applicationSubmittedPage = require("../page_objects/application-submitted.page");
+const CreditsPurchaseApplicationSubmittedPage = require("../page_objects/credits-purchase/application-submitted.page.js");
 
-Then("The biodiversity gain site reference should be displayed", async () => {
-        await expect(applicationSubmittedPage.referenceNumber).toBeDisplayed();
-        await expect(applicationSubmittedPage.referenceNumber).toHaveTextContaining("BNGREG");
-});
+Then("The {string} reference should be displayed", async (refnumber) => {
+        switch (refnumber) {
+        case "biodiversity gain site": {
+                await expect(applicationSubmittedPage.referenceNumber).toBeDisplayed();
+                await expect(applicationSubmittedPage.referenceNumber).toHaveText(expect.stringContaining("BNGREG"));
+        break;
+        }
+        case "biodiversity credit": {
+                await expect(CreditsPurchaseApplicationSubmittedPage.referenceNumber).toBeDisplayed();
+                await expect(CreditsPurchaseApplicationSubmittedPage.referenceNumber).toHaveText(expect.stringContaining("BNGCRD"));
+        break;
+        }
+        default:{
+                throw new Error(`BNG reference number ${refnumber} doesn't exist`);
+              } 
+}});
 
 Then("The fee amount of {string} should be displayed", async(fee) =>{
         await expect(applicationSubmittedPage.feeAmount).toBeDisplayed()
