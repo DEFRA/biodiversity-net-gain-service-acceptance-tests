@@ -69,7 +69,8 @@ exports.config = {
       //
      
       browserName: "chrome",
-      browserVersion: "122.0.6258.0",
+      // browserVersion: "122.0.6258.0",
+      // browserVersion: "stable",
       // acceptInsecureCerts: true,
       "goog:chromeOptions": {
         args: ["--headless", "--disable-logging"],
@@ -259,21 +260,18 @@ exports.config = {
       // browser.setCookies([{name: 'seen_cookie_message', value: 'true'}])
       const loginPage = require("../features/page_objects/login.page");
       const manageBngPage = require("../features/page_objects/manage-biodiversity-gains.page");
-      const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page");
+      const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page")
       const username = '528250494194';
-      // const username = '894836023882';
       const password = 'ChristopherWallace';
-
       // Set the baseUrl
-      const baseUrl = process.env.SERVICE_URL || 'https://pocbngweb001.azurewebsites.net'
+      const baseUrl = process.env.SERVICE_URL || 'http://localhost:3000'
       // BNGP-4486 - /signin redirects to gov gateway
       const startPagePath = '/signin';
       // Combine the baseUrl and startPagePath to get the complete login page URL
       const startPageUrl = baseUrl + startPagePath;
-      
+      console.log(`Navigating to: ${startPageUrl}`);
       
       // Navigate to the login page URL 
-      console.log(`Navigating to: ${startPageUrl}`);
       await browser.url(startPageUrl);
       await $("h1").waitForExist();
       // assert against the page title
@@ -281,16 +279,21 @@ exports.config = {
 
       // Log in the user before the feature
       await loginPage.login(username, password);
-
-
-      // //Org associated user choose Individual option
-      // await loginPage.radioDefraIdChooseIndiviual.click();
-      // await loginPage.defraIdContinuButtonReplacement.click();
-
     
       //And I am logged in to the service
       await loginPage.isLoggedIn();
       //#Landing page - tasklist for new session (TODO refine after as random landing at the moment)
+      
+      // And I choose to manage my biodiversity gains
+      // nav bar manage link should really be baseurl
+      await manageBngPage.manageBngNavLink.click();
+
+      // And I choose to manage my gain sites
+      // # And I am on the "biodiversity-gain-sites" page
+      await manageBngPage.manageGainSiteslink.click();
+
+      // And I choose to start a new registration
+      await biodiversityGainSitesPage.registerNewGainSitelink.click();
    },
   /**
    * Runs before a WebdriverIO command gets executed.
