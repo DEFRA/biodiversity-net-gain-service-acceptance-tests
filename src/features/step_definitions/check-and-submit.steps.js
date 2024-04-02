@@ -19,69 +19,69 @@ Then("I should see the {string} on the summary shown as {string}", async (sectio
     
   switch (section) {
       // case "fullname": {
-      //   await expect(CheckAndSubmitPage.fullnameValue).toHaveTextContaining(value);
+      //   await expect(CheckAndSubmitPage.fullnameValue).toHaveText(value);
       //   break;
       // } 
       // case "role": {
-      //     await expect(CheckAndSubmitPage.roleValue).toHaveTextContaining(value);
+      //     await expect(CheckAndSubmitPage.roleValue).toHaveText(value);
       //   break;
       // }
       // case "email address": {
-      //   await expect(CheckAndSubmitPage.emailAddressValue).toHaveTextContaining(value);
+      //   await expect(CheckAndSubmitPage.emailAddressValue).toHaveText(value);
       // break;
       // }
       //Todo: land boundary file Type
       case "Land boundary file uploaded": {
-        await expect(CheckAndSubmitPage.landBoundaryFilenameValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.landBoundaryFilenameValue).toHaveText(value);
       break;
       }
       case "grid reference": {
-        await expect(CheckAndSubmitPage.gridReferenceValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.gridReferenceValue).toHaveText(value);
       break;
       }
       case "hectares": {
-        await expect(CheckAndSubmitPage.hectaresValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.hectaresValue).toHaveText(value);
       break;
       }
       case "Proof of land ownership file uploaded": {
-        await expect(CheckAndSubmitPage.landOwnershipFileNameValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.landOwnershipFileNameValue).toHaveText(value);
       break;
       }
       case "Landowner name": {
-        await expect(CheckAndSubmitPage.landOwnerNameValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.landOwnerNameValue).toHaveText(value);
       break;
       }
       // case "Landowner consent": {
-      //   await expect(CheckAndSubmitPage.landOwnerNameConsentValue).toHaveTextContaining(value);
+      //   await expect(CheckAndSubmitPage.landOwnerNameConsentValue).toHaveText(value);
       // break;
       // }
       case "Biodiversity Metric file uploaded": {
-        await expect(CheckAndSubmitPage.metricFileNameValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.metricFileNameValue).toHaveText(value);
       break;
       }
       case "Habitat management and monitoring plan uploaded": {
-        await expect(CheckAndSubmitPage.hmmpFileNameValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.hmmpFileNameValue).toHaveText(value);
       break;
       }
       case "Start date of the 30 year management and monitoring period": {
-        await expect(CheckAndSubmitPage.hmmp30YearStartDateValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.hmmp30YearStartDateValue).toHaveText(value);
       break;
       }
       case "legal-agreement type": {
-        await expect(CheckAndSubmitPage.legalAgreementTypeValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.legalAgreementTypeValue).toHaveText(value);
       break;
       }
       //Todo: legal-agreement filename
       case "legal party name": {
-        await expect(CheckAndSubmitPage.legalPartyNameValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.legalPartyNameValue).toHaveText(value);
       break;
       }
       case "legal party role": {
-        await expect(CheckAndSubmitPage.legalPartyRoleValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.legalPartyRoleValue).toHaveText(value);
       break;
       }
       case "legal-agreement start date": {
-        await expect(CheckAndSubmitPage.legalAgreementStartDateValue).toHaveTextContaining(value);
+        await expect(CheckAndSubmitPage.legalAgreementStartDateValue).toHaveText(value);
       break;
       }
       default:{

@@ -30,6 +30,6 @@ async function completeManagementPlanSection(date) {
     await (checkManagementMonitoringDetailsPage.continueButton).click();
 
  //tasklist section shows as complete
- await expect(tasklistPage.hmmpStatus).toHaveTextContaining("COMPLETED");  
+ await expect(tasklistPage.hmmpStatus).toHaveText("COMPLETED");  
     
   }

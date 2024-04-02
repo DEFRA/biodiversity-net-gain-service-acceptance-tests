@@ -25,9 +25,11 @@ Feature: Upload Documents
             | BNGP-738    | developer-metric  | confirm-development-details |
             | BNGP-2195   | consent-agreement | developer/tasklist          |
 
+
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
         When I navigate to the "<document>-upload" page
         And I choose a file type that is not in the specified format
+        #todo needs mulitiple unspecified
         Then I should not be able to upload the file
         And I am informed of what the allowed file types should be
         Examples:
@@ -77,18 +79,20 @@ Feature: Upload Documents
             # | geospatial      |
             | land-ownership  |
 
+    # https://eaflood.atlassian.net/browse/BNGP-4756
     Scenario Outline: I cannot continue without uploading a <document>
         When I navigate to the "<document>-upload" page
-        And I continue without an action
+        And I upload without choosing a file
         Then I should see the error "<message>"
         And I should see the error and the error summary displayed
         Examples:
-            | document        | message                                 |
-            | legal-agreement | Select a legal agreement                |
-            | land-boundary   | Select a file showing the land boundary |
+            | document                | message                                 |
+            | legal-agreement         | Select a legal agreement                |
+            | land-boundary           | Select a file showing the land boundary |
             # | geospatial      | Select a file showing the land boundary         |
-            | metric          | Select a statutory biodiversity metric  |
-            | land-ownership  | Select a proof of land ownership file   |
+            | metric                  | Select a statutory biodiversity metric  |
+            | land-ownership          | Select a proof of land ownership file   |
+            | credits-purchase-metric | Select a statutory biodiversity metric  |
 
     Scenario Outline: I cannot continue without confirming the uploaded <document>
         When I navigate to the "<document>-upload" page
@@ -144,3 +148,6 @@ Feature: Upload Documents
         And I upload a file that contains malware or a virus
         Then I should not be able to upload the file
         And I should see the error "The selected file contains a virus"
+
+
+

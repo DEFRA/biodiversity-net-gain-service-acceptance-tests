@@ -4,6 +4,25 @@ class DeveloperTaskListPage extends Page {
   get titleText() {
     return "Record off-site biodiversity gains for a development project";
   }
+  
+  //developer sections
+  get uploadMetricFileStatus(){
+    return $("#upload-metric-file-status");
+  }
+
+  get confirmDevelopmentDetailsStatus(){
+    return $("#confirm-development-details-status");
+  }
+
+  get confirmOffSiteGainStatus(){
+    return $("#confirm-off-site-gain-status");
+  }
+  
+  get uploadConsentDocumentStatus() {
+    return $("#upload-consent-document-status");
+  }
+  //////////////////////
+
   // from Landowner Journey taskList
   get progressText(){
     return $(".govuk-\\!-margin-bottom-4");

@@ -37,15 +37,15 @@ When("I choose to upload a {string} metric file", async (version) => {
 Then("The total for {string} should be {string}", async (HabitatType, total) => {
   switch (HabitatType) {
     case "Habitat type and condition": {
-      await expect(basePage.habitatTotal).toHaveTextContaining(total);
+      await expect(basePage.habitatTotal).toHaveText(total);
       break;
     }
     case "Hedgerow type and condition": {
-      await expect(basePage.hedgeTotal).toHaveTextContaining(total);
+      await expect(basePage.hedgeTotal).toHaveText(total);
       break;
     }
     case "River type and condition": {
-      await expect(basePage.riverTotal).toHaveTextContaining(total);
+      await expect(basePage.riverTotal).toHaveText(total);
       break;
     }
   }

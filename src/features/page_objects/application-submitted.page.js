@@ -5,10 +5,6 @@ class ApplicationSubmittedPage extends Page {
     return "Application submitted";
   }
 
-  get referenceNumber(){
-    return $('*[data-testid="application-reference-value"]');
-  }
-
   get feeAmount(){
     return $('*[data-testid="fee-amount-value"]');
  }
