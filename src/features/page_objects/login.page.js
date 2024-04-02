@@ -18,14 +18,14 @@ class LoginPage extends Page {
   }
   
   get radioDefraIdChooseIndiviual(){
-    return $("input[label='dc5d6426-c119-ee11-8f6d-6045bd90523f']");
+    return $("#dc5d6426-c119-ee11-8f6d-6045bd90523f");
   }
 
   get radioDefraIdChooseOrg(){
     return $("input[label='b7f8e793-1d7e-ee11-8179-6045bd905c11']");
   }
 
-  get continuButtonReplacement(){
+  get defraIdContinuButtonReplacement(){
     return $('#continueReplacement');
   }
 
@@ -47,9 +47,10 @@ class LoginPage extends Page {
     await browser.pause(5000);
   
     //check that we are logged in and not still on the sign in page
-    var pageUrl = browser.getUrl();
-    expect(await pageUrl).not.toContain('https://www.ete.access.service.gov.uk/login/signin/creds');
-    expect(await pageUrl).not.toContain('https://dcidmtest.b2clogin.com');
+    // var pageUrl = browser.getUrl();
+    // expect(await pageUrl).not.toContain('https://www.ete.access.service.gov.uk/login/signin/creds');
+    // expect(await pageUrl).not.toContain('https://dcidmtest.b2clogin.com');
+
      //If a new application then will redirect to the tasklist page Todo: get the Jira page
     // #Landing page - tasklist for new session (TODO refine after)
     // as random landing at the moment

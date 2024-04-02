@@ -56,7 +56,7 @@ Feature: Check and Submit
         And I choose and upload a "local-land-charge" file
         And I confirm it is the correct file
         # Confirm all sections complete
-        And I confirm I have completed all "landowner journey" sections
+        And I confirm I have completed all "landowner" journey sections
 
     @skip()  # skip upload test for release 5
     Scenario: BNGP-190 1 - I can review all sections I have completed
@@ -101,11 +101,12 @@ Feature: Check and Submit
         And I have agreed to the terms and conditions
         When I submit my application
         Then I should be on the "application-submitted" page
-        And The biodiversity gain site reference should be displayed
+        And The "biodiversity gain site" reference should be displayed
         And The fee amount of "£639.00" should be displayed
         And The sort code "60 70 80" should be displayed
         And The account number "10026630" should be displayed
         And The swift code "NWBKGB2L" should be displayed
+
 
     Scenario: BNGP-3635 - On submission if the confirmation page is refreshed the details are not resubmitted or shown on the page
         And I am on the "check-and-submit" page

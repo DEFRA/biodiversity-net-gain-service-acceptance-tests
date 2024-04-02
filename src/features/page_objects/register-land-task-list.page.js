@@ -5,10 +5,6 @@ class TaskList extends Page {
     return "Register a biodiversity gain site";
   }
 
-  get progressText(){
-    return $(".govuk-\\!-margin-bottom-4");
-  }
-
   get addApplicantInfo() {
     return $("#add-applicant-information");
   }
@@ -19,10 +15,6 @@ class TaskList extends Page {
 
   get addLandOwnership() {
     return $("#add-land-ownership");
-  }
-
-  get addMetric() {
-    return $("#add-habitat-information");
   }
 
   get addHmmp(){
@@ -68,24 +60,6 @@ class TaskList extends Page {
   get localLandChargeStatus() {
     return $("#add-local-land-charge-search-certificate-status");
   }
-
-  //developer sections
-  get uploadMetricFileStatus(){
-    return $("#upload-metric-file-status");
-  }
-
-  get confirmDevelopmentDetailsStatus(){
-    return $("#confirm-development-details-status");
-  }
-
-  get confirmOffSiteGainStatus(){
-    return $("#confirm-off-site-gain-status");
-  }
-  
-  get uploadConsentDocumentStatus() {
-    return $("#upload-consent-document-status");
-  }
-  //////////////////////
 
   get submitStatus(){
     return $("#check-your-answers-status");

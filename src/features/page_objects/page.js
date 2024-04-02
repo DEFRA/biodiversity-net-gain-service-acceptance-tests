@@ -141,6 +141,18 @@ get manageBngNavLink(){
     return $('*[data-testid="riverTotal"]'); 
    }
 
+   get addMetric() {
+    return $("#add-habitat-information");
+  }
+
+  get progressText(){
+    return $(".govuk-\\!-margin-bottom-4");
+  }
+
+  get referenceNumber(){
+    return $('*[data-testid="application-reference-value"]');
+  }
+
    async addFirstName(value) {
     await (this.firstName).clearValue();
     await this.firstName.addValue(value);

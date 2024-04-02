@@ -5,7 +5,7 @@ class BiodiversityGainSitePage extends Page {
     return "Biodiversity gain sites";
   }
 
-  get registerNewGainSitelink() {
+  get registerNewGainSiteLink() {
     return $("#create-registration");
   }
 

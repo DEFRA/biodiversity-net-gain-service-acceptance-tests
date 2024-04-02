@@ -4,6 +4,7 @@ const DeveloperMetricUploadPage = require("../page_objects/developer/biodiversit
 const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/developer/metric-confirm-development-details.page");
 const DeveloperAdditionalEmails = require("../page_objects/developer/email-entry.page");
 const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answers.page");
+const DevelopmentProjectsPage = require("../page_objects/developer/development-projects.page");
 
 Given("I enter my off site gain reference number as {string}", async (refNumber) => {
     await DeveloperMetricUploadPage.offSiteReferenceNumber.clearValue();
@@ -31,3 +32,7 @@ Given("I enter my off site gain reference number as {string}", async (refNumber)
  When("I submit my developer information", async() => {
     await DeveloperCheckAnswersPage.continueButton.click();
 }) 
+
+When("I choose to record off-site gains for a new development", async() => {
+    await DevelopmentProjectsPage.createNewOffSiteDevelopmentGainslink.click();
+})  

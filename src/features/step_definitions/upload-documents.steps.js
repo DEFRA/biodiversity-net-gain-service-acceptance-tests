@@ -25,6 +25,11 @@ const uploadDeveloperMetricFilePage = require("../page_objects/developer/upload-
 const checkDeveloperMetricFilePage= require("../page_objects/developer/check-metric-file.page");
 const DeveloperTaskListPage = require( "../page_objects/developer/tasklist.page");
 
+//credits purchase uploads
+const uploadCreditsPurchaseMetricFilePage = require("../page_objects/credits-purchase/upload-metric-file.page.js");
+const checkCreditsPurchaseMetricFilePage= require("../page_objects/credits-purchase/check-metric-file.page.js");
+const CreditsPurchaseTaskListPage = require( "../page_objects/credits-purchase/tasklist.page.js");
+
 
 
 
@@ -133,7 +138,7 @@ When("I choose and upload a {string} file", async (document) => {
       CheckPage = checkDeveloperMetricFilePage
 
       //metric is .xlsx and .xslm files only
-      filePath = join(__dirname, "../../TestFiles/test_developer_metric.xlsm");
+      filePath = join(__dirname, "../../TestFiles/test_DEV_Mutant_metric.xlsm");
       break;
     }
     case "consent-agreement":{
@@ -141,6 +146,18 @@ When("I choose and upload a {string} file", async (document) => {
       CheckPage = consentAgreementCheckPage;
       break;
     }
+    //****CREDIT Purchase UPLOADS*****
+    case "credits-purchase-metric":{
+      UploadPage = uploadCreditsPurchaseMetricFilePage
+      CheckPage = checkCreditsPurchaseMetricFilePage
+
+      //metric is .xlsx and .xslm files only
+      filePath = join(__dirname, "../../TestFiles/test_DEV_Mutant_metric.xlsm");
+      break;
+    }
+    default:{
+      throw new Error(`Document section ${document} doesn't exist`);
+    } 
   }
 
   remoteFilePath = await browser.uploadFile(filePath);
@@ -273,7 +290,7 @@ Then("There should be a link to download the document", async () => {
 
 Then("I should be able to see the filesize of the document as {string}", async (filesize) => {
   // get actual filesize of test file
-  await expect(CheckPage.filesizeIndicator).toHaveTextContaining(filesize);
+  await expect(CheckPage.filesizeIndicator).toHaveText(filesize);
 });
 
 When("I upload a file that contains malware or a virus", async () => {
@@ -307,7 +324,7 @@ Then("I am informed that the file is empty", async () => {
   // wait for error message
   await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
 
-  await expect(UploadPage.errorMsg).toHaveTextContaining(
+  await expect(UploadPage.errorMsg).toHaveText(
     "The selected file is empty"
   );
 });
@@ -316,7 +333,7 @@ Then("I am informed that the selected file does not have enough data", async () 
   // wait for error message
   await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
 
-  await expect(UploadPage.errorMsg).toHaveTextContaining(
+  await expect(UploadPage.errorMsg).toHaveText(
     "The selected file does not have enough data"
   );
 });
@@ -325,7 +342,7 @@ Then("I am informed that the selected file is not a valid Metric", async () =>{
     // wait for error message
     await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
 
-    await expect(UploadPage.errorMsg).toHaveTextContaining(
+    await expect(UploadPage.errorMsg).toHaveText(
       "The selected file is not a valid Metric"
 );
 })
@@ -349,7 +366,7 @@ Then("I am informed of what the allowed file types should be", async () => {
   }
 
   // check errorMsg text
-  await expect(UploadPage.errorMsg).toHaveTextContaining(errorTxt);
+  await expect(UploadPage.errorMsg).toHaveText(errorTxt);
 });
 
 When("I choose a different file", async () => {
