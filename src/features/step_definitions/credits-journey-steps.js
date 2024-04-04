@@ -146,7 +146,7 @@ async function completePurchaseOrderSection(value) {
      expect(await browser.getTitle()).toContain(checkPurchaseOrderPage.titleText);
      await checkPurchaseOrderPage.radioYes.click();
      await checkPurchaseOrderPage.purchaseOrderNumber.addValue(value);
-     await checkPurchaseOrderPage.saveAndContinueButton.click();
+     await checkPurchaseOrderPage.continueButton.click();
 
      //tasklist add po number section shows as complete
      expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
