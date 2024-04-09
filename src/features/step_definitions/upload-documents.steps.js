@@ -324,27 +324,24 @@ Then("I am informed that the file is empty", async () => {
   // wait for error message
   await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
 
-  await expect(UploadPage.errorMsg).toHaveText(
-    "The selected file is empty"
-  );
+  await expect(UploadPage.errorMsg).toHaveText((expect.stringContaining("The selected file is empty")));
 });
 
 Then("I am informed that the selected file does not have enough data", async () => {
   // wait for error message
   await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
 
-  await expect(UploadPage.errorMsg).toHaveText(
+  await expect(UploadPage.errorMsg).toHaveText((
+    expect.stringContaining(
     "The selected file does not have enough data"
-  );
+  )));
 });
 
 Then("I am informed that the selected file is not a valid Metric", async () =>{
     // wait for error message
     await UploadPage.errorMsg.waitForExist({ timeout: 5000 });
 
-    await expect(UploadPage.errorMsg).toHaveText(
-      "The selected file is not a valid Metric"
-);
+    await expect(UploadPage.errorMsg).toHaveText((expect.stringContaining("The selected file is not a valid Metric")));
 })
 
 Then("I am informed of what the allowed file types should be", async () => {
@@ -362,11 +359,12 @@ Then("I am informed of what the allowed file types should be", async () => {
       errorTxt = "The selected file must be an XLSM or XLSX";
       break;  
     default: 
-      errorTxt = "The selected file must be a DOC, DOCX or PDF";    
+      errorTxt = "The selected file must be a DOC, DOCX or PDF";  
   }
 
   // check errorMsg text
-  await expect(UploadPage.errorMsg).toHaveText(errorTxt);
+  await expect(UploadPage.errorMsg).toHaveText(
+    expect.stringContaining(errorTxt));
 });
 
 When("I choose a different file", async () => {

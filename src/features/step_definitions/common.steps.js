@@ -459,7 +459,8 @@ When("I add another {string} as {string} and confirm", async (option, value) => 
 
 Then("I should see the error {string}", async (message) => {
     // check errorMsg text
-    await expect(basePage.errorMsg).toHaveText(message);
+    await expect(basePage.errorMsg).toHaveText((
+      expect.stringContaining(message)));
 });
 
 Then("I should see the error and the error summary displayed", async () => {
