@@ -85,10 +85,6 @@ get manageBngNavLink(){
     return $("#firstName");
   }
 
-  get middleName() {
-    return $("[id='middleName']");
-  }
-
   get lastName() {
     return $("[id='lastName']");
   }
@@ -159,11 +155,11 @@ get manageBngNavLink(){
     await expect(this.firstName).toHaveValue(value);
   }
 
-  async addMiddleName(value) {
-    await (this.middleName).clearValue();
-    await this.middleName.addValue(value);
-    await expect(this.middleName).toHaveValue(value);
-  }
+  // async addMiddleName(value) {
+  //   await (this.middleName).clearValue();
+  //   await this.middleName.addValue(value);
+  //   await expect(this.middleName).toHaveValue(value);
+  // }
 
   async addLastName(value) {
     await (this.lastName).clearValue();
