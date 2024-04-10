@@ -1,3 +1,4 @@
+@regression
 Feature: Credit Purchase Journey Tests
 
     As a developer
@@ -48,14 +49,14 @@ Feature: Credit Purchase Journey Tests
         When I add a value of "<credits>" to the habitat "<unit>"
         Then I should see the estimated cost of "<value>" for the "<unit>"
         Examples:
-            | credits | unit | value   |
-            | 1       | A1   | £42,000 |
-            | 1       | A2   | 48,000  |
-            | 1       | A3   | 66,000  |
-            | 1       | A4   | 125,000 |
-            | 1       | A5   | 650,000 |
-            | 2       | H    | 88,000  |
-            | 1       | W    | 230,000 |
+            | credits | unit | value    |
+            | 1       | A1   | £42,000  |
+            | 1       | A2   | £48,000  |
+            | 1       | A3   | £66,000  |
+            | 1       | A4   | £125,000 |
+            | 1       | A5   | £650,000 |
+            | 2       | H    | £88,000  |
+            | 1       | W    | £230,000 |
 
 
 #     Scenario: I can add my credits purchase values, for my habitat tiers and see an estimate https://eaflood.atlassian.net/browse/BNGP-2814
