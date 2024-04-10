@@ -11,6 +11,7 @@ const middleNamePage = require("../page_objects/credits-purchase/middle-name.pag
 const dateOfBirthPage = require("../page_objects/credits-purchase/date-of-birth.page.js");
 const nationalityPage = require("../page_objects/credits-purchase/nationality.page.js");
 const confirmTermsAndConditionsPage = require("../page_objects/credits-purchase/confirm-terms-conditions.page.js");
+const creditsCheckCutomerDueDiligencePage = require("../page_objects/credits-purchase/check-customer-due-diligence.page.js.js")
 
 
 
@@ -192,6 +193,10 @@ async function completeDueDiligenceSection(middleNameValue, dob) {
      expect(await browser.getTitle()).toContain(nationalityPage.titleText);
      await nationalityPage.nationality1.addValue("Albania");
      await nationalityPage.continueButton.click();
+
+     //cya page
+     expect(await browser.getTitle()).toContain(creditsCheckCutomerDueDiligencePage.titleText);
+     await creditsCheckCutomerDueDiligencePage.continueButton.click();
      
      //tasklist add CDD section shows as complete
      expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
