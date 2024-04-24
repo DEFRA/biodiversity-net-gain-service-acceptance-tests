@@ -14,11 +14,9 @@ Feature: Check and Submit
         # Applicant info
         And I choose to add "applicant-info" details
         And I have completed the applicant information section
-
         And I am on the "written-authorisation-upload" page
         And I choose and upload a "written-authorisation" file
         And I confirm it is the correct file
-
         And I am on the "check-applicant-info" page
         And confirm the applicant-info details are correct
         # land ownership
@@ -26,6 +24,7 @@ Feature: Check and Submit
         And I am on the "land-ownership-upload" page
         And I choose and upload a "land-ownership" file
         And I confirm it is the correct file
+        # And I confirm the correct file
         And I have completed the land-ownership section
         # land boundary
         And I choose to add "land-boundary" details

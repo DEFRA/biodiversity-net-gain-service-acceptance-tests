@@ -379,6 +379,12 @@ When("I confirm it is the correct file", async () => {
   await basePage.continueButton.click();
   });
 
+  When("I confirm the correct file", async () => {
+    await basePage.radioYes.waitForExist({ timeout: 5000 });
+    await basePage.radioYes.click();
+    await basePage.continueButton.click();
+    });
+
 
 When("I choose an empty {string} file", async (document) => {
 
