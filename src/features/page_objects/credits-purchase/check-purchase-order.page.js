@@ -9,10 +9,6 @@ class creditsPurchaseOrderPage extends Page {
     return $("#purchaseOrderNumber"); 
    }
 
-  get saveAndContinueButton() {
-    return $("#saveAndContinue");
-  }
-
   open() {
     return super.open("credits-purchase/check-purchase-order");
   }

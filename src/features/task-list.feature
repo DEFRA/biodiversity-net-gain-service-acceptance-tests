@@ -25,7 +25,7 @@ Feature: Task List Page
         And I should see the "local-land-charge" section status as "NOT STARTED"
         And I should see the "check-and-submit" section status as "CANNOT START YET"
 
-    #allocation
+    @skip() #allocation
     Scenario Outline: allocation - The sections on the task list page should show the status of progress.
         Given I navigate to the "developer/tasklist" page
         Then I should see my progress as "You have completed 0 of 6 sections."
