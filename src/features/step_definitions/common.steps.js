@@ -70,6 +70,7 @@ const  DeveloperDetailsName = require("../page_objects/developer/details-name.pa
 const AddStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/add-statutory-biodiversity-credits.page");
 const EstimatedCostStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/estimated-cost-statutory-biodiversity-credits.page");
 const uploadMetricFilePage = require("../page_objects/credits-purchase/upload-metric-file.page.js");
+const developmentInformationPage = require("../page_objects/credits-purchase/development-project-information.page.js");
 const CreditsPurchaseTaskListPage = require("../page_objects/credits-purchase/tasklist.page.js");
 const CreditsPurchaseConfirmDevelopmentDetailsPage = require("../page_objects/credits-purchase/confirm-development-details.page.js");
 const CreditsPurchaseCheckAndSubmitPage = require("../page_objects/credits-purchase/check-and-submit.page.js");
@@ -166,8 +167,9 @@ const pages = {
   "add-credits" : AddStatutoryBiodiversityCreditsPage,
   "estimate-cost-of-credits" : EstimatedCostStatutoryBiodiversityCreditsPage,
   "credits-purchase-metric-upload" : uploadMetricFilePage,
+  "development-project-information" : developmentInformationPage,
   "credits-purchase-task-list": CreditsPurchaseTaskListPage,
-  "development-details": CreditsPurchaseConfirmDevelopmentDetailsPage,
+  // "development-details": CreditsPurchaseConfirmDevelopmentDetailsPage,
   "credits-purchase-check-and-submit": CreditsPurchaseCheckAndSubmitPage,
   "credits-purchase-application-submitted": CreditsPurchaseApplicationSubmittedPage
 };

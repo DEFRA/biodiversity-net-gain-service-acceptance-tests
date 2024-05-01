@@ -149,6 +149,10 @@ get manageBngNavLink(){
     return $('*[data-testid="application-reference-value"]');
   }
 
+  get localPlanningAuthority(){
+    return $("#localPlanningAuthority")
+  }
+
    async addFirstName(value) {
     await (this.firstName).clearValue();
     await this.firstName.addValue(value);

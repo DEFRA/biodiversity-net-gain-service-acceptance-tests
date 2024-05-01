@@ -12,6 +12,14 @@ class CreditsTaskListPage extends Page {
     get uploadMetricStatus() {
         return $("#upload-metric-status");
       }
+
+    get addDevelopmentInformation() {
+      return $("#add-devlopment-project-information");
+    }
+
+    get addDevelopmentInformationStatus() {
+      return $("#add-devlopment-project-information-status");
+    }
   
     get addCredits(){
       return $("#add-credits");

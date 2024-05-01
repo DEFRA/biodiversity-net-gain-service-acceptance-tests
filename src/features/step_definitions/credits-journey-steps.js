@@ -11,12 +11,18 @@ const middleNamePage = require("../page_objects/credits-purchase/middle-name.pag
 const dateOfBirthPage = require("../page_objects/credits-purchase/date-of-birth.page.js");
 const nationalityPage = require("../page_objects/credits-purchase/nationality.page.js");
 const confirmTermsAndConditionsPage = require("../page_objects/credits-purchase/confirm-terms-conditions.page.js");
-const creditsCheckCutomerDueDiligencePage = require("../page_objects/credits-purchase/check-customer-due-diligence.page.js.js")
+const creditsCheckCutomerDueDiligencePage = require("../page_objects/credits-purchase/check-customer-due-diligence.page.js.js");
+const developmentProjectInformationPage = require("../page_objects/credits-purchase/development-project-information.page.js");
 
 
 
 When("I choose to start a new application", async () => {
      await creditsApplicationListPage.createNewCreditApplicationLink.click();
+}) 
+
+
+Given("I have completed the Development Information section", async () => {
+     await completeAddDevelopmentInfoSection("Middlesbrough LPA", "1234", "New BNG Project");
 }) 
 
 Given("I have completed the Statutory biodiversity credits section", async () => {
@@ -118,12 +124,30 @@ Then("I should see the estimated cost of {string} for the {string}", async (cost
  })
 
 Then("I should see the total estimated cost of {string}", async (value) => {
-     expect(await estimatedCostStatutoryBiodiversityCreditsPage.totalEstimatedCost).toHaveText(value);
+     await expect(await estimatedCostStatutoryBiodiversityCreditsPage.totalEstimatedCost).toHaveText(value);
 }) 
 
 Given(/^I add credits for my application/, function (table){
      console.log(table.rows());
 });
+
+
+async function completeAddDevelopmentInfoSection(lpa, applicationNumber, projectName) {
+     expect(await browser.getTitle()).toContain(developmentProjectInformationPage.titleText);
+     // add lpa 
+     await developmentProjectInformationPage.localPlanningAuthority.addValue(lpa);
+     //add planning reference
+     await developmentProjectInformationPage.planningApplicationNumber.addValue(applicationNumber);
+     //add development name
+     await developmentProjectInformationPage.developmentName.addValue(projectName);
+
+     developmentProjectInformationPage.continueButton.click()
+     //tasklist add development information section shows as complete
+     expect(await browser.getTitle()).toContain(developmentProjectInformationPage.titleText);
+     await expect(CreditsPurchaseTaskListPage.addDevelopmentInformationStatus).toHaveText("COMPLETED");  
+
+
+}
 
 async function completeAddCreditsSection(credit, creditValue) {
 
