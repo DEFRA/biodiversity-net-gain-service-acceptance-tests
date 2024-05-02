@@ -11,16 +11,20 @@ Feature: Credit Purchase Journey Tests
         And I choose to manage my statutory biodiversity credit applications
         And I choose to start a new application
 
-        # metric
+        # Statutory biodiversity metric
         And I choose to add "Statutory biodiversity metric" details
         # And I have completed the Statutory biodiversity metric section
         And I am on the "credits-purchase-metric-upload" page
         And I choose and upload a "credits-purchase-metric" file
         And I confirm it is the correct file
-        And I confirm the "development-details" information is correct
         And I should see the "credits-purchase-metric" section status as "COMPLETED"
 
-        # add credits
+        # Development Information
+        And I choose to add "Development Information" details
+        And I am on the "development-project-information" page
+        And I have completed the Development Information section
+
+        # add Statutory biodiversity credits
         And I choose to add "Statutory biodiversity credit" details
         And I have completed the Statutory biodiversity credits section
 

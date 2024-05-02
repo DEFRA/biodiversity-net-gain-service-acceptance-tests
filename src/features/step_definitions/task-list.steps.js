@@ -47,6 +47,13 @@ When ("I choose to add {string} details", async (task) => {
       await CreditsTaskListPage.uploadMetric.click();
     break;
     }
+
+    case "Development Information": {
+      expect(await browser.getTitle()).toContain(CreditsTaskListPage.titleText);
+      await CreditsTaskListPage.addDevelopmentInformation.click();
+    break;
+    }
+
     case "Statutory biodiversity credit": {
       expect(await browser.getTitle()).toContain(CreditsTaskListPage.titleText);
       await CreditsTaskListPage.addCredits.click();
