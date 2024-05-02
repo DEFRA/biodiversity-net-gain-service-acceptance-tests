@@ -4,7 +4,7 @@ Feature: Credit Purchase Journey Tests
     As a developer
     I need to be able to see and select credits
     So that i can purchase credits and fulfill my BNG obligations.
-
+    @e2e
     Scenario: Complete all credit application details
         Given I choose to manage my biodiversity gains
         # // nav bar manage link should really be baseurl
