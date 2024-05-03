@@ -35,7 +35,7 @@ Feature: Task List Page
     #credits
     Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-4128 2 - The sections on the task list page should show the status of progress.
         Given I navigate to the "credits-purchase-task-list" page
-        Then I should see my progress as "You have completed 0 of 6 sections."
+        Then I should see my progress as "You have completed 0 of 7 sections."
         And I should see the "credits-purchase-metric" section status as "NOT STARTED"
         And I should see the "add-credits" section status as "NOT STARTED"
         And I should see the "purchase-order" section status as "NOT STARTED"
