@@ -64,13 +64,14 @@ const DeveloperConsentAgreementUploadPage = require("../page_objects/developer/c
 const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/developer/metric-confirm-development-details.page"); 
 const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answers.page");
 const  DeveloperDetailsName = require("../page_objects/developer/details-name.page");
+const developmentInformationPage = require("../page_objects/developer/development-project-information.page.js");
 
 
 //**Credits Purchase Journey pages */
 const AddStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/add-statutory-biodiversity-credits.page");
 const EstimatedCostStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/estimated-cost-statutory-biodiversity-credits.page");
 const uploadMetricFilePage = require("../page_objects/credits-purchase/upload-metric-file.page.js");
-const developmentInformationPage = require("../page_objects/credits-purchase/development-project-information.page.js");
+const CreditsDevelopmentInformationPage = require("../page_objects/credits-purchase/development-project-information.page.js");
 const CreditsPurchaseTaskListPage = require("../page_objects/credits-purchase/tasklist.page.js");
 const CreditsPurchaseConfirmDevelopmentDetailsPage = require("../page_objects/credits-purchase/confirm-development-details.page.js");
 const CreditsPurchaseCheckAndSubmitPage = require("../page_objects/credits-purchase/check-and-submit.page.js");
@@ -162,12 +163,13 @@ const pages = {
   "confirm-development-details": DeveloperConfirmDevelopmentDetailsPage,
   "check-answers" : DeveloperCheckAnswersPage,
   "developer-details-name": DeveloperDetailsName, 
+  "development-project-information" : developmentInformationPage,
 
 //**CREDITS PURCHASE JOURNEY */
   "add-credits" : AddStatutoryBiodiversityCreditsPage,
   "estimate-cost-of-credits" : EstimatedCostStatutoryBiodiversityCreditsPage,
   "credits-purchase-metric-upload" : uploadMetricFilePage,
-  "development-project-information" : developmentInformationPage,
+  "credits-development-project-information" : CreditsDevelopmentInformationPage,
   "credits-purchase-task-list": CreditsPurchaseTaskListPage,
   // "development-details": CreditsPurchaseConfirmDevelopmentDetailsPage,
   "credits-purchase-check-and-submit": CreditsPurchaseCheckAndSubmitPage,

@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class DeveloperTaskListPage extends Page {
   get titleText() {
-    return "Record off-site biodiversity gains for a development project";
+    return "Record allocation of off-site biodiversity gains to a development";
   }
   
   //developer sections

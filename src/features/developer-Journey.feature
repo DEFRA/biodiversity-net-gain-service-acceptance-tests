@@ -28,8 +28,14 @@ Feature: Developer Journey Tests
     Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         #****applicant details section shouldn't exist for the DEFRAID for dev journey but currently does***
-        And I navigate to the "developer-details-name" page
-        And I have completed the applicant details section for my development
+        # And I navigate to the "developer-details-name" page
+        # And I have completed the applicant details section for my development
+
+        # Development Information
+        And I choose to add "Development Information" details
+        And I am on the "development-project-information" page
+        And I have completed the "allocation" Development Information section
+
         # Developer Metric
         And I want to upload the metric file
         And I enter my off site gain reference number as "1234"

@@ -21,9 +21,9 @@ Feature: Credit Purchase Journey Tests
         And I should see the "credits-purchase-metric" section status as "COMPLETED"
 
         # Development Information
-        And I choose to add "Development Information" details
-        And I am on the "development-project-information" page
-        And I have completed the Development Information section
+        And I choose to add "Credits Development Information" details
+        And I am on the "credits-development-project-information" page
+        And I have completed the "credits" Development Information section
 
         # add Statutory biodiversity credits
         And I choose to add "Statutory biodiversity credit" details

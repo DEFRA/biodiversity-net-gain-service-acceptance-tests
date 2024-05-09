@@ -149,8 +149,24 @@ get manageBngNavLink(){
     return $('*[data-testid="application-reference-value"]');
   }
 
+  get addDevelopmentInformation() {
+    return $("#add-devlopment-project-information");
+  }
+
+  get addDevelopmentInformationStatus() {
+    return $("#add-devlopment-project-information-status");
+  }
+
   get localPlanningAuthority(){
     return $("#localPlanningAuthority")
+  }
+
+  get planningApplicationNumber(){
+    return $("#planning-application-reference-value")
+  }
+
+  get developmentName(){
+    return $("#development-name-value")
   }
 
    async addFirstName(value) {
