@@ -117,6 +117,7 @@ exports.config = {
   baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
   // "http://localhost:3000",
   //"https://tstbngwebwa2401.azurewebsites.net"
+  //"https://pocbngweb001.azurewebsites.net"
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
   //
