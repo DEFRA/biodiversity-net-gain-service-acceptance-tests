@@ -42,6 +42,11 @@ Feature: Biodiversity metric display/playback
                 Then I should not be able to upload the file
                 And I am informed that the selected file does not have enough data
 
+        Scenario: BNGP-4700 1 service to only accept published (latest) 4.1 metric version and not the draft version
+                When I choose to upload a "Draft 4.1" metric file
+                Then I should not be able to upload the file
+                And I should see the error "The selected file must not be a draft version"
+
 
 
 
