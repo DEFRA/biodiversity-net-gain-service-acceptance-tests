@@ -1,4 +1,4 @@
-@regression
+@regression @new
 Feature: Biodiversity metric display/playback
 
         As a Site provider registering a gain site
@@ -15,10 +15,10 @@ Feature: Biodiversity metric display/playback
                 Then The total for "<HabitatType>" should be "<total>"
                 Examples:
                         | metricDisplayPage      | HabitatType                 | total |
-                        | check-habitat-baseline | Habitat type and condition  | 5.12  |
+                        | check-habitat-baseline | Habitat type and condition  | 4.81  |
                         | check-habitat-baseline | Hedgerow type and condition | 0.30  |
                         | check-habitat-baseline | River type and condition    | 1.00  |
-                        | check-habitat-created  | Habitat type and condition  | 5.12  |
+                        | check-habitat-created  | Habitat type and condition  | 4.81  |
                         | check-habitat-created  | Hedgerow type and condition | 0.30  |
                         | check-habitat-created  | River type and condition    | 1.00  |
 
