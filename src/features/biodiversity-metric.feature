@@ -1,4 +1,4 @@
-@regression @new
+@regression
 Feature: Biodiversity metric display/playback
 
         As a Site provider registering a gain site

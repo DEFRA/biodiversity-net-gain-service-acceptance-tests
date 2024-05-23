@@ -10,7 +10,7 @@ class DeveloperBiodiversityGainSiteNumberPage extends Page {
   }
 
   get offSiteReferenceNumber(){
-    return $("#bngNumber");
+    return $("#bgsNumber");
   }
 
   open() {
