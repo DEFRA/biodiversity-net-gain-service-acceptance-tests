@@ -5,14 +5,6 @@ class creditsPurchaseDevelopmentInformationPage extends Page {
     return "Development project information";
   }
 
-  get planningApplicationNumber(){
-    return $("#planning-application-reference-value")
-  }
-
-  get developmentName(){
-    return $("#development-name-value")
-  }
-
   get path() {
     return "credits-purchase/development-project-information";
   }

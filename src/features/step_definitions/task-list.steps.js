@@ -48,6 +48,12 @@ When ("I choose to add {string} details", async (task) => {
     break;
     }
     case "Development Information": {
+      expect(await browser.getTitle()).toContain(DeveloperTaskListPage.titleText);
+      await DeveloperTaskListPage.addDevelopmentInformation.click();
+    break;
+    }
+
+    case "Credits Development Information": {
       expect(await browser.getTitle()).toContain(CreditsTaskListPage.titleText);
       await CreditsTaskListPage.addDevelopmentInformation.click();
     break;
