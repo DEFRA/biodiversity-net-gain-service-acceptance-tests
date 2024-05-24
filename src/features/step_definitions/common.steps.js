@@ -76,6 +76,7 @@ const CreditsPurchaseTaskListPage = require("../page_objects/credits-purchase/ta
 const CreditsPurchaseConfirmDevelopmentDetailsPage = require("../page_objects/credits-purchase/confirm-development-details.page.js");
 const CreditsPurchaseCheckAndSubmitPage = require("../page_objects/credits-purchase/check-and-submit.page.js");
 const CreditsPurchaseApplicationSubmittedPage = require("../page_objects/credits-purchase/application-submitted.page.js");
+const CreditsPurchaseApplicationListPage = require("../page_objects/credits-purchase/check-statutory-biodiversity-credits.page.js");
 
 const pages = {
   //Dashboard
@@ -173,7 +174,8 @@ const pages = {
   "credits-purchase-task-list": CreditsPurchaseTaskListPage,
   // "development-details": CreditsPurchaseConfirmDevelopmentDetailsPage,
   "credits-purchase-check-and-submit": CreditsPurchaseCheckAndSubmitPage,
-  "credits-purchase-application-submitted": CreditsPurchaseApplicationSubmittedPage
+  "credits-purchase-application-submitted": CreditsPurchaseApplicationSubmittedPage,
+  "check-statutory-biodiversity-credits": CreditsPurchaseApplicationListPage
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {

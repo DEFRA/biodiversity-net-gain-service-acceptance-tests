@@ -138,7 +138,7 @@ When("I choose and upload a {string} file", async (document) => {
       CheckPage = checkDeveloperMetricFilePage
 
       //metric is .xlsx and .xslm files only
-      filePath = join(__dirname, "../../TestFiles/test_DEV_Mutant_metric.xlsm");
+      filePath = join(__dirname, "../../TestFiles/test_developer_metric.xlsm");
       break;
     }
     case "consent-agreement":{
@@ -152,7 +152,7 @@ When("I choose and upload a {string} file", async (document) => {
       CheckPage = checkCreditsPurchaseMetricFilePage
 
       //metric is .xlsx and .xslm files only
-      filePath = join(__dirname, "../../TestFiles/test_DEV_Mutant_metric.xlsm");
+      filePath = join(__dirname, "../../TestFiles/test_developer_metric.xlsm");
       break;
     }
     default:{

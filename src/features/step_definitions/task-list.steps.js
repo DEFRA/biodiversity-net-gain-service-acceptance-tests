@@ -47,7 +47,6 @@ When ("I choose to add {string} details", async (task) => {
       await CreditsTaskListPage.uploadMetric.click();
     break;
     }
-
     case "Development Information": {
       expect(await browser.getTitle()).toContain(DeveloperTaskListPage.titleText);
       await DeveloperTaskListPage.addDevelopmentInformation.click();
@@ -78,6 +77,12 @@ When ("I choose to add {string} details", async (task) => {
     case "terms and conditions": {
       expect(await browser.getTitle()).toContain(CreditsTaskListPage.titleText);
       await CreditsTaskListPage.acceptTermsAndConditions.click();
+    break;
+    }
+    //Allocation
+    case "biodiversity gain site information": {
+      expect(await browser.getTitle()).toContain(DeveloperTaskListPage.titleText);
+      await DeveloperTaskListPage.addBiodiversityGainSiteInfo.click();
     break;
     }
     default:{

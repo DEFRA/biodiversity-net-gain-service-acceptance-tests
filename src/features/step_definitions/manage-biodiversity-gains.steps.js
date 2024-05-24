@@ -1,7 +1,7 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 const manageBngPage = require("../page_objects/manage-biodiversity-gains.page");
 
-When("I choose to manage my biodiversity gains", async () => {
+When("I choose to manage biodiversity gains", async () => {
    
         // assert against the page title and on the manage BNG page
         await $("h1").waitForExist();
@@ -19,7 +19,7 @@ When("I choose to manage my gain sites", async () => {
         await manageBngPage.manageGainSitesLink.click();
 });
 
-When("I choose to manage my statutory biodiversity credit applications", async () => {
+When("I choose to buy statutory biodiversity credits", async () => {
 
         // assert against the page title and on the manage BNG page
         await $("h1").waitForExist();

@@ -18,7 +18,7 @@ const allocationTaskListPage = require("../page_objects/developer/tasklist.page.
 
 
 
-When("I choose to start a new application", async () => {
+When("I choose to buy new statutory biodiversity credits", async () => {
      await creditsApplicationListPage.createNewCreditApplicationLink.click();
 }) 
 

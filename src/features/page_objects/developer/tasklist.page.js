@@ -6,8 +6,12 @@ class DeveloperTaskListPage extends Page {
   }
   
   //developer sections
-  get uploadMetricFileStatus(){
-    return $("#upload-metric-file-status");
+  get addBiodiversityGainSiteInfo(){
+    return $("#gain-site-allocation-info");
+  }
+
+  get addBiodiversityGainSiteInfoStatus(){
+    return $("#gain-site-allocation-info-status");
   }
 
   get confirmDevelopmentDetailsStatus(){

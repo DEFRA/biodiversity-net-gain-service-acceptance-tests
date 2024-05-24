@@ -15,10 +15,10 @@ Feature: Biodiversity metric display/playback
                 Then The total for "<HabitatType>" should be "<total>"
                 Examples:
                         | metricDisplayPage      | HabitatType                 | total |
-                        | check-habitat-baseline | Habitat type and condition  | 5.12  |
+                        | check-habitat-baseline | Habitat type and condition  | 4.81  |
                         | check-habitat-baseline | Hedgerow type and condition | 0.30  |
                         | check-habitat-baseline | River type and condition    | 1.00  |
-                        | check-habitat-created  | Habitat type and condition  | 5.12  |
+                        | check-habitat-created  | Habitat type and condition  | 4.81  |
                         | check-habitat-created  | Hedgerow type and condition | 0.30  |
                         | check-habitat-created  | River type and condition    | 1.00  |
 
@@ -41,6 +41,11 @@ Feature: Biodiversity metric display/playback
                 When I choose a metric file with no data
                 Then I should not be able to upload the file
                 And I am informed that the selected file does not have enough data
+
+        Scenario: BNGP-4700 1 service to only accept published (latest) 4.1 metric version and not the draft version
+                When I choose to upload a "Draft 4.1" metric file
+                Then I should not be able to upload the file
+                And I should see the error "The selected file must not be a draft version"
 
 
 

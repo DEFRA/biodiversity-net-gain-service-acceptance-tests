@@ -6,10 +6,10 @@ Feature: Credit Purchase Journey Tests
     So that i can purchase credits and fulfill my BNG obligations.
     @e2e
     Scenario: Complete all credit application details
-        Given I choose to manage my biodiversity gains
+        Given I choose to manage biodiversity gains
         # // nav bar manage link should really be baseurl
-        And I choose to manage my statutory biodiversity credit applications
-        And I choose to start a new application
+        And I choose to buy statutory biodiversity credits
+        And I choose to buy new statutory biodiversity credits
 
         # Statutory biodiversity metric
         And I choose to add "Statutory biodiversity metric" details

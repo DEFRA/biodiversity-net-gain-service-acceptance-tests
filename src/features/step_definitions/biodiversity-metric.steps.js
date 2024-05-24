@@ -20,6 +20,10 @@ When("I choose to upload a {string} metric file", async (version) => {
       filePath = join(__dirname, "../../TestFiles/test_metric_4.0.xlsm");
       break;
     }
+    case "Draft 4.1": {
+      filePath = join(__dirname, "../../TestFiles/test_metric_draft_4.1.xlsm");
+      break;
+    }
   }
 
   remoteFilePath = await browser.uploadFile(filePath);
