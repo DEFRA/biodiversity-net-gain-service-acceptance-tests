@@ -291,10 +291,10 @@ exports.config = {
 
       // And I choose to manage my gain sites
       // # And I am on the "biodiversity-gain-sites" page
-      await manageBngPage.manageGainSiteslink.click();
+      await manageBngPage.manageGainSitesLink.click();
 
       // And I choose to start a new registration
-      await biodiversityGainSitesPage.registerNewGainSitelink.click();
+      await biodiversityGainSitesPage.registerNewGainSiteLink.click();
    },
   /**
    * Runs before a WebdriverIO command gets executed.
