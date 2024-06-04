@@ -10,7 +10,7 @@ Feature: BNGP-786 Enter Area in hectares
 
     Scenario Outline: I can add the total hectares for my land
         When I add total hectares as "<hectares>"
-        Then I should be on the "check-land-boundary-details" page
+        Then I should be on the "register-land-task-list" page
         Examples:
             | hectares |
             | 1231.11  |

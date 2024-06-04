@@ -7,7 +7,7 @@ Feature: Check and Submit
 
     Background: Complete all registration details
 
-        Given I choose to manage my biodiversity gains
+        Given I choose to manage biodiversity gains
         # // nav bar manage link should really be baseurl
         And I choose to manage my gain sites
         And I choose to start a new registration

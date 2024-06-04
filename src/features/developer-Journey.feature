@@ -6,7 +6,7 @@ Feature: Developer Journey Tests
     # So that I can track the progress of my registration.
 
     Background: Complete applicant details
-        Given I choose to manage my biodiversity gains
+        Given I choose to manage biodiversity gains
         # // nav bar manage link should really be baseurl
         And I choose to manage my off-site gains for my development projects
         And I choose to record off-site gains for a new development
@@ -28,10 +28,16 @@ Feature: Developer Journey Tests
     Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         #****applicant details section shouldn't exist for the DEFRAID for dev journey but currently does***
-        And I navigate to the "developer-details-name" page
-        And I have completed the applicant details section for my development
+        # And I navigate to the "developer-details-name" page
+        # And I have completed the applicant details section for my development
+
+        # Development Information
+        And I choose to add "Development Information" details
+        And I am on the "development-project-information" page
+        And I have completed the "allocation" Development Information section
+
         # Developer Metric
-        And I want to upload the metric file
+        And I choose to add "biodiversity gain site information" details
         And I enter my off site gain reference number as "1234"
         And I choose and upload a "developer-metric" file
         And I confirm it is the correct file
@@ -47,3 +53,15 @@ Feature: Developer Journey Tests
         And The biodiversity gain site reference should be displayed
         And The fee amount of "£45.00" should be displayed
 
+    Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-5068 I can check my BGS number API "statuses" against the Powerapp and display appropriate error messages
+        And I choose to add "biodiversity gain site information" details
+        And I enter my off site gain reference number as "<BGSNumber>"
+        Then I should see the error "<error-msg>"
+        Examples:
+            | BGSNumber          | error-msg                                                                                   |
+            | active             | This gain site registration is not complete - wait until you have confirmation.             |
+            | rejected           | This reference is for a rejected application - enter a reference for an approved gain site. |
+            | removed            | This reference is for a gain site which is no longer registered.                            |
+            | internally-removed | This reference is for a gain site which is no longer registered.                            |
+            | inactive           | This reference is for a gain site which has been withdrawn from registration.               |
+            | doesNotExist       | The gain site reference was not recognised - enter a reference for an approved gain site.   |

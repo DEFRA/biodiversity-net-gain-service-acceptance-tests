@@ -11,12 +11,20 @@ const middleNamePage = require("../page_objects/credits-purchase/middle-name.pag
 const dateOfBirthPage = require("../page_objects/credits-purchase/date-of-birth.page.js");
 const nationalityPage = require("../page_objects/credits-purchase/nationality.page.js");
 const confirmTermsAndConditionsPage = require("../page_objects/credits-purchase/confirm-terms-conditions.page.js");
-const creditsCheckCutomerDueDiligencePage = require("../page_objects/credits-purchase/check-customer-due-diligence.page.js.js")
+const creditsCheckCutomerDueDiligencePage = require("../page_objects/credits-purchase/check-customer-due-diligence.page.js.js");
+const creditsDevelopmentProjectInformationPage = require("../page_objects/credits-purchase/development-project-information.page.js");
+const allocationDevelopmentProjectInformationPage = require("../page_objects/developer/development-project-information.page.js");
+const allocationTaskListPage = require("../page_objects/developer/tasklist.page.js");
 
 
 
-When("I choose to start a new application", async () => {
+When("I choose to buy new statutory biodiversity credits", async () => {
      await creditsApplicationListPage.createNewCreditApplicationLink.click();
+}) 
+
+
+Given("I have completed the {string} Development Information section", async (journey) => {
+     await completeAddDevelopmentInfoSection("Middlesbrough LPA", "1234", "New BNG Project", journey);
 }) 
 
 Given("I have completed the Statutory biodiversity credits section", async () => {
@@ -118,12 +126,55 @@ Then("I should see the estimated cost of {string} for the {string}", async (cost
  })
 
 Then("I should see the total estimated cost of {string}", async (value) => {
-     expect(await estimatedCostStatutoryBiodiversityCreditsPage.totalEstimatedCost).toHaveText(value);
+     await expect(await estimatedCostStatutoryBiodiversityCreditsPage.totalEstimatedCost).toHaveText(value);
 }) 
 
 Given(/^I add credits for my application/, function (table){
      console.log(table.rows());
 });
+
+
+async function completeAddDevelopmentInfoSection(lpa, applicationNumber, projectName, journey) {
+
+     switch (journey) {
+          case "credits": {
+               expect(await browser.getTitle()).toContain(creditsDevelopmentProjectInformationPage.titleText);
+               // add lpa 
+               await creditsDevelopmentProjectInformationPage.localPlanningAuthority.addValue(lpa);
+               //add planning reference
+               await creditsDevelopmentProjectInformationPage.planningApplicationNumber.addValue(applicationNumber);
+               //add development name
+               await creditsDevelopmentProjectInformationPage.developmentName.addValue(projectName);
+
+               creditsDevelopmentProjectInformationPage.continueButton.click()
+               //tasklist add development information section shows as complete
+               expect(await browser.getTitle()).toContain(creditsDevelopmentProjectInformationPage.titleText);
+               await expect(CreditsPurchaseTaskListPage.addDevelopmentInformationStatus).toHaveText("COMPLETED");  
+
+               break;
+          }
+          case "allocation": {
+               expect(await browser.getTitle()).toContain(allocationDevelopmentProjectInformationPage.titleText);
+               // add lpa 
+               await allocationDevelopmentProjectInformationPage.localPlanningAuthority.addValue(lpa);
+               //add planning reference
+               await allocationDevelopmentProjectInformationPage.planningApplicationNumber.addValue(applicationNumber);
+               //add development name
+               await allocationDevelopmentProjectInformationPage.developmentName.addValue(projectName);
+
+               allocationDevelopmentProjectInformationPage.continueButton.click()
+               //tasklist add development information section shows as complete
+               expect(await browser.getTitle()).toContain(allocationDevelopmentProjectInformationPage.titleText);
+               await expect(allocationTaskListPage.addDevelopmentInformationStatus).toHaveText("COMPLETED"); 
+
+               break;
+          }
+          default:{
+               throw new Error("Journey "+ journey +" doesn't exist");
+             }
+     }
+
+}
 
 async function completeAddCreditsSection(credit, creditValue) {
 

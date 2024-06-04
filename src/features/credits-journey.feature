@@ -6,21 +6,26 @@ Feature: Credit Purchase Journey Tests
     So that i can purchase credits and fulfill my BNG obligations.
     @e2e
     Scenario: Complete all credit application details
-        Given I choose to manage my biodiversity gains
+        Given I choose to manage biodiversity gains
         # // nav bar manage link should really be baseurl
-        And I choose to manage my statutory biodiversity credit applications
-        And I choose to start a new application
+        And I choose to buy statutory biodiversity credits
+        And I choose to buy new statutory biodiversity credits
 
-        # metric
+        # Statutory biodiversity metric
         And I choose to add "Statutory biodiversity metric" details
         # And I have completed the Statutory biodiversity metric section
         And I am on the "credits-purchase-metric-upload" page
         And I choose and upload a "credits-purchase-metric" file
         And I confirm it is the correct file
-        And I confirm the "development-details" information is correct
+        # And I confirm the development details #*****redundant now as is a further development project section on the credits tasklist https://eaflood.atlassian.net/browse/BNGP-4839  #
         And I should see the "credits-purchase-metric" section status as "COMPLETED"
 
-        # add credits
+        # Development Information
+        And I choose to add "Credits Development Information" details
+        And I am on the "credits-development-project-information" page
+        And I have completed the "credits" Development Information section
+
+        # add Statutory biodiversity credits
         And I choose to add "Statutory biodiversity credit" details
         And I have completed the Statutory biodiversity credits section
 

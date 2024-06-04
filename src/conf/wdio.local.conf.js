@@ -117,6 +117,7 @@ exports.config = {
   baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
   // "http://localhost:3000",
   //"https://tstbngwebwa2401.azurewebsites.net"
+  //"https://pocbngweb001.azurewebsites.net"
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
   //
@@ -290,10 +291,10 @@ exports.config = {
 
       // And I choose to manage my gain sites
       // # And I am on the "biodiversity-gain-sites" page
-      await manageBngPage.manageGainSiteslink.click();
+      await manageBngPage.manageGainSitesLink.click();
 
       // And I choose to start a new registration
-      await biodiversityGainSitesPage.registerNewGainSitelink.click();
+      await biodiversityGainSitesPage.registerNewGainSiteLink.click();
    },
   /**
    * Runs before a WebdriverIO command gets executed.

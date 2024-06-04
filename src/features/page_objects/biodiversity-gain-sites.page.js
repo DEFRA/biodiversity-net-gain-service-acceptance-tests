@@ -10,7 +10,7 @@ class BiodiversityGainSitePage extends Page {
   }
 
   open() {
-    return super.open("land/manage-biodiversity-gains");
+    return super.open("land/biodiversity-gain-sites");
   }
 }
 module.exports = new BiodiversityGainSitePage();
