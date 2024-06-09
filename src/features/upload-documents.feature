@@ -51,7 +51,7 @@ Feature: Upload Documents
             | BNGP-499    | legal-agreement | 11.75 kB |
             | BNGP-767    | land-boundary   | 11.75 kB |
             # | BNGP-526    | geospatial      | 1.07 kB  |
-            | BNGP-524    | metric          | 4.84 MB  |
+            | BNGP-524    | metric          | 4.11 MB  |
             | BNGP-515    | land-ownership  | 11.75 kB |
 
     Scenario Outline: <jira ticket> 4 - There is a way to choose a different <document> if necessary
