@@ -14,7 +14,7 @@ Feature: Dashboard for multiple registration support (defra id)
         And I am on the "biodiversity-gain-sites" page
         And I choose to start a new registration
         Then I should be on the "register-land-task-list" page
-
+    @new
     Scenario: BNGP-4472 3 I can start a new credit application
         When  I choose to buy statutory biodiversity credits
         And I am on the "check-statutory-biodiversity-credits" page

@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class creditsPurchaseCheckAndSubmitPage extends Page {
   get titleText() {
-    return "Check your answers before you submit your information";
+    return "Check your answers before sending your application";
   }
 
   get path() {
