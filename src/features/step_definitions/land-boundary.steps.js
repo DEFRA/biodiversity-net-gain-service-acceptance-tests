@@ -9,19 +9,6 @@ Given("I have completed the land-boundary section", async () => {
   await completeLandBoundarySection("TL6233", "1231.11");
 })
 
-async function completeLandBoundarySection(gridreference, hectares) {
-
-  await gridReferencePage.addGridReference(gridreference);
-  await addHectaresPage.addHectares(hectares);
-  
-  // confirm on the cya page
-  await (checkLandBoundaryDetailsPage.continueButton).click();
-
-   //tasklist section shows as complete
-   await expect(tasklistPage.landBoundaryStatus).toHaveText("COMPLETED");  
-
-}
-
 When("I add a valid grid reference {string}", async (gridreference) => {
   await gridReferencePage.addGridReference(gridreference);
 });
@@ -41,3 +28,16 @@ Then(/^I choose to upload (?:a|an) "(.*)" file$/, async (fileType) => {
     await landboundaryFileChoices.chooseLandboundaryFileType(fileType);
   }
 );
+
+async function completeLandBoundarySection(gridreference, hectares) {
+
+  await gridReferencePage.addGridReference(gridreference);
+  await addHectaresPage.addHectares(hectares);
+  
+  // confirm on the cya page
+  await (checkLandBoundaryDetailsPage.continueButton).click();
+
+   //tasklist section shows as complete
+   await expect(tasklistPage.landBoundaryStatus).toHaveText("COMPLETED");  
+
+}
