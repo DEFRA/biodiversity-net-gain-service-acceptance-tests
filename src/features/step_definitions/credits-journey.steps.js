@@ -1,8 +1,7 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 //**Credits Purchase Journey pages */
-const addStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/add-statutory-biodiversity-credits.page");
-const estimatedCostStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/estimated-cost-statutory-biodiversity-credits.page");
-const creditsApplicationListPage = require("../page_objects/credits-purchase/credits-application-list.page");
+const addStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/add-statutory-biodiversity-credits.page.js");
+const estimatedCostStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/estimated-cost-statutory-biodiversity-credits.page.js");
 const CreditsPurchaseTaskListPage = require("../page_objects/credits-purchase/tasklist.page.js");
 const checkPurchaseOrderPage = require("../page_objects/credits-purchase/check-purchase-order.page.js");
 const purchasingIndividualOrganisationPage = require("../page_objects/credits-purchase/purchasing-individual-organisation.page.js");
@@ -15,13 +14,7 @@ const creditsCheckCutomerDueDiligencePage = require("../page_objects/credits-pur
 const creditsDevelopmentProjectInformationPage = require("../page_objects/credits-purchase/development-project-information.page.js");
 const allocationDevelopmentProjectInformationPage = require("../page_objects/developer/development-project-information.page.js");
 const allocationTaskListPage = require("../page_objects/developer/tasklist.page.js");
-
-
-
-When("I choose to buy new statutory biodiversity credits", async () => {
-     await creditsApplicationListPage.createNewCreditApplicationLink.click();
-}) 
-
+const creditsApplicationListPage = require("../page_objects/credits-purchase/credits-application-list.page.js");
 
 Given("I have completed the {string} Development Information section", async (journey) => {
      await completeAddDevelopmentInfoSection("Middlesbrough LPA", "1234", "New BNG Project", journey);
@@ -51,6 +44,13 @@ Given("I have completed the Terms and conditions section", async () => {
 
 })
 
+When("I choose to buy new statutory biodiversity credits", async () => {
+     // assert against the page title
+     // await $("h1").waitForExist({ timeout: 5000 });
+     expect(await browser.getTitle()).toContain(creditsApplicationListPage.titleText); 
+
+     await creditsApplicationListPage.createNewCreditApplicationLink.click();
+});
 
 When("I add a value of {string} to the habitat {string}", async (value, unit) => {
      switch (unit) {
