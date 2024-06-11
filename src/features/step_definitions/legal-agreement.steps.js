@@ -23,11 +23,12 @@ const habitatPlanLegalAgreementPage = require("../page_objects/management_plan/h
 const enhancementWorksStartDatePage = require('../page_objects/management_plan/enhancement-works-start-date.page.js');
 const legalAgreementEndDatePage = require('../page_objects/legal_agreement/habitat-enhancements-end-date.page.js');
 const legalAgreementAnyOtherLandownersPage = require("../page_objects/legal_agreement/any-other-landowners.page.js");
+const applicantDetailsEmailpage = require("../page_objects/applicant_details/email.page.js");
 
 let  basePage = legalAgreementAddPartiesPage;
 
 Given("I have completed the legal-agreement section", async () => {
-  await completeLegalAgreementSection("legal party 1", "12/10/2022");
+  await completeLegalAgreementSection("legal party 1", "landowner@email.com");
 })
 
 Given("I am Informed I have to add all {string} files", async (legalType) => {
@@ -80,7 +81,7 @@ When("I add a legal party role as a {string}", async (role) => {
 //   // await addLegalPartyFullName(fullname); 
 // })
 
-async function completeLegalAgreementSection(fullname, date) { 
+async function completeLegalAgreementSection(fullname, landownerEmailAddress) { 
   
   //**** Conservation Covenant default at the moment ****
   
@@ -129,6 +130,7 @@ async function completeLegalAgreementSection(fullname, date) {
   // And I add the landholder or leaseholders organisation name
   // await addLegalParty(fullname); 
   await addOrganisationName(fullname); 
+  await applicantDetailsEmailpage.addEmailAddress(landownerEmailAddress);
 
   // assert against the page title
   await $("h1").waitForExist();
