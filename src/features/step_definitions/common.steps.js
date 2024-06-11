@@ -230,14 +230,10 @@ When("I upload without choosing a file", async () => {
   await basePage.uploadButton.click();
 });
 
-
-
-
 When("I go back to the previous page", async () => {
   // service back button
   await basePage.backButton.click();
 }) 
-
 
 When("I refresh the page", async () => {
   await browser.execute(() => { window.foobar = 'not refreshed yet' })
@@ -249,16 +245,15 @@ When("I refresh the page", async () => {
 
 
 When("I select {string} and continue", async (option) => {
-
   switch (option) {
     case "Conservation covenant": {
       await legalAgreementTypePage.conservationCovenant.click();
-      await basePage.continueButton.click();
+      await legalAgreementTypePage.continueButton.click();
       break;
     }
     case "Planning obligation": {
       await legalAgreementTypePage.planningObligation.click();
-      await basePage.continueButton.click();
+      await legalAgreementTypePage.continueButton.click();
       break;
     }
     case "I do not have a legal agreement": {
@@ -267,8 +262,11 @@ When("I select {string} and continue", async (option) => {
     }
     case "Other role": {
       (await legalAgreementAddPartiesPage.otherLegalPartyRoleOption).click();
-      await basePage.continueButton.click();
+      await legalAgreementAddPartiesPage.continueButton.click();
       break;
+    }
+    default:{
+      throw new Error("Option "+ option +" doesn't exist");
     }
   }
 });

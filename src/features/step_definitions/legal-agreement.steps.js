@@ -4,9 +4,9 @@ const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/ad
 const legalAgreementCheckAddedAllFilesPage = require("../page_objects/legal_agreement/check-you-added-all-legal-files.page.js")
 const checkLegalAgreementDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page.js");
 const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page.js");
-const tasklistPage = require("../page_objects/register-land-task-list.page");
+const tasklistPage = require("../page_objects/register-land-task-list.page.js");
 const needAddAllLegalFilesPage = require("../page_objects/legal_agreement/planning_obligation/need-add-all-legal-files.page.js");
-const NeedAddAllLegalFilesCCPage = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-legal-files-cc.page.js")
+const needAddAllLegalFilesCCPage = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-legal-files-cc.page.js")
 const needAddAllResponsibleBodies = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-responsible-bodies.page.js")
 const addResponsibleBodyConservationCovenantPage = require("../page_objects/legal_agreement/conservation_covenant/add-responsible-body-cc.page.js")
 const checkResponsibleBodiesPage = require("../page_objects/legal_agreement/conservation_covenant/check-responsible-bodies-cc.page.js")
@@ -23,23 +23,29 @@ const habitatPlanLegalAgreementPage = require("../page_objects/management_plan/h
 const enhancementWorksStartDatePage = require('../page_objects/management_plan/enhancement-works-start-date.page.js');
 const legalAgreementEndDatePage = require('../page_objects/legal_agreement/habitat-enhancements-end-date.page.js');
 const legalAgreementAnyOtherLandownersPage = require("../page_objects/legal_agreement/any-other-landowners.page.js");
-
-
+const applicantDetailsEmailpage = require("../page_objects/applicant_details/email.page.js");
 
 let  basePage = legalAgreementAddPartiesPage;
 
 Given("I have completed the legal-agreement section", async () => {
-  await completeLegalAgreementSection("legal party 1", "12/10/2022");
+  await completeLegalAgreementSection("legal party 1", "landowner@email.com");
 })
 
-Given("I am Informed I have to add all {string} files", async (filetype)=> {
-  
-  //page object defaults to CC at the moment  
-  // assert against the page title
-  await $("h1").waitForExist();
-  expect(await browser.getTitle()).toContain(NeedAddAllLegalFilesCCPage.titleText);
-  NeedAddAllLegalFilesCCPage.continueButton.click();
-})
+Given("I am Informed I have to add all {string} files", async (legalType) => {
+  switch (legalType) {
+    case "Conservation covenant": {
+        // page object defaults to CC at the moment  
+        // assert against the page title
+        await $("h1").waitForExist();
+        expect(await browser.getTitle()).toContain(needAddAllLegalFilesCCPage.titleText);
+        await needAddAllLegalFilesCCPage.continueButton.click();
+      break;
+    }
+    default:{
+      throw new Error("Legaltype "+ legalType +" doesn't exist");
+    }
+  }
+});
 
 When("I choose to add another legal party of {string} with a role of {string}", async (fullname, role) =>{
   
@@ -75,7 +81,7 @@ When("I add a legal party role as a {string}", async (role) => {
 //   // await addLegalPartyFullName(fullname); 
 // })
 
-async function completeLegalAgreementSection(fullname, date) { 
+async function completeLegalAgreementSection(fullname, landownerEmailAddress) { 
   
   //**** Conservation Covenant default at the moment ****
   
@@ -124,6 +130,7 @@ async function completeLegalAgreementSection(fullname, date) {
   // And I add the landholder or leaseholders organisation name
   // await addLegalParty(fullname); 
   await addOrganisationName(fullname); 
+  await applicantDetailsEmailpage.addEmailAddress(landownerEmailAddress);
 
   // assert against the page title
   await $("h1").waitForExist();

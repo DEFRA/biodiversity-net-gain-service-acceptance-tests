@@ -6,7 +6,6 @@ class AddLandownerOrganisationCCPage extends Page {
     return "Add a landowner or leaseholder listed on the conservation covenant";
   }
 
-  
 
   open() {
     return super.open("land/add-landowner-organisation-conservation-covenant");

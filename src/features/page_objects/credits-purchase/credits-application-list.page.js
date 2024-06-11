@@ -5,10 +5,6 @@ class creditsApplicationListPage extends Page {
     return "Statutory biodiversity credits";
   }
 
-  // get createNewCreditApplicationLink() {
-  //   return $('*[data-testid="#create-credits-purchase"]');
-  // }
-
   get createNewCreditApplicationLink() {
     return $("#create-credits-purchase");
   }
