@@ -72,9 +72,9 @@ exports.config = {
       // browserVersion: "122.0.6258.0",
       // browserVersion: "stable",
       // acceptInsecureCerts: true,
-      // "goog:chromeOptions": {
-      //   args: ["--headless", "--disable-logging"],
-      // },
+      "goog:chromeOptions": {
+        args: ["--headless", "--disable-logging"],
+      },
     },
 
     // If outputDir is provided WebdriverIO can capture driver session logs
@@ -115,9 +115,13 @@ exports.config = {
   // gets prepended directly.
 
   baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
-  // "http://localhost:3000",
-  //"https://tstbngwebwa2401.azurewebsites.net"
-  //"https://pocbngweb001.azurewebsites.net"
+  //"http://localhost:3000",
+  // process.env.BNG_FE_POC_URL;
+  // process.env.BNG_FE_POC2_URL;
+  // process.env.BNG_FE_POC3_URL;
+  // process.env.BNG_FE_DEV_URL;
+  // process.env.BNG_FE_TST1_URL; 
+  // process.env.BNG_FE_TST2_URL;
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
   //
@@ -178,7 +182,7 @@ exports.config = {
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: ["./src/features/step_definitions/**/*.js"],
+    require: ["./src/features/step_definitions/**/*.steps.js"],
     // <boolean> show full backtrace for errors
     backtrace: true,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -262,10 +266,10 @@ exports.config = {
       const loginPage = require("../features/page_objects/login.page");
       const manageBngPage = require("../features/page_objects/manage-biodiversity-gains.page");
       const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page")
-      const username = '528250494194';
-      const password = 'ChristopherWallace';
+      const username = process.env.BNG_FE_LOGIN_USER;
+      const password = process.env.BNG_FE_LOGIN_PASSWORD;
       // Set the baseUrl
-      const baseUrl = process.env.SERVICE_URL || 'http://localhost:3000'
+      const baseUrl = process.env.SERVICE_URL || "http://localhost:3000"
       // BNGP-4486 - /signin redirects to gov gateway
       const startPagePath = '/signin';
       // Combine the baseUrl and startPagePath to get the complete login page URL
