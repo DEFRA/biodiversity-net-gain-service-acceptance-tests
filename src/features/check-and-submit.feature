@@ -59,17 +59,18 @@ Feature: Check and Submit
 
     @skip()  # skip upload test for release 5
     Scenario: BNGP-190 1 - I can review all sections I have completed
-        Then I should be on the "check-and-submit" page
+        # Then I should be on the "check-and-submit" page
+        Given I am on the "check-and-submit" page
         #---- Applicant information
         # And I should see the "fullname" on the summary shown as "John Smith"
         # And I should see the "role" on the summary shown as "Landowner"
         # And I should see the "email address" on the summary shown as "test@example.com"
         #---- Land ownership
-        And I should see the "Proof of land ownership file uploaded" on the summary shown as "test_12kb.docx"
+        Then I should see the "Proof of land ownership file uploaded" on the summary shown as "test_12kb.docx"
         #---- Biodiversity gain site boundary
         And I should see the "Land boundary file uploaded" on the summary shown as "test_12kb.docx"
         And I should see the "grid reference" on the summary shown as "TL6233"
-        And I should see the "hectares" on the summary shown as "1231.11"
+        And I should see the "hectares" on the summary shown as "1231.11 ha"
         #---- Statutory biodiversity metric and habitat declarations
 
         And I should see the "Biodiversity Metric file uploaded" on the summary shown as "test_metric.xlsm"
@@ -87,17 +88,15 @@ Feature: Check and Submit
         And I should see the "legal-agreement start date" on the summary shown as "12 October 2022"
 
     @skip() #update with https://eaflood.atlassian.net/browse/BNGP-3983
-    Scenario: BNGP-190 2, 3 - When I update an answer to a section I am returned to the Summary Page
-        When I choose to change the "fullname" answer on the "check-and-submit" page
-        And I update the "fullname" to "new name"
+    Scenario: BNGP-190 2, 3 - When I update an answer to a section I am returned to the check and submit Page
+        Given I choose to change the "fullname" answer on the "check-and-submit" page
+        When I update the "fullname" to "new name"
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
     @e2e
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
-        And I am on the "check-and-submit" page
-        And I have agreed to the terms and conditions
         When I submit my application
         Then I should be on the "application-submitted" page
         And The "biodiversity gain site" reference should be displayed
@@ -108,8 +107,6 @@ Feature: Check and Submit
 
 
     Scenario: BNGP-3635 - On submission if the confirmation page is refreshed the details are not resubmitted or shown on the page
-        And I am on the "check-and-submit" page
-        And I have agreed to the terms and conditions
         And I submit my application
         And I am on the "application-submitted" page
         When I refresh the page
@@ -117,8 +114,6 @@ Feature: Check and Submit
         And the fee amount should not be displayed
 
     Scenario: https://eaflood.atlassian.net/browse/BNGP-4336 BACS payment details
-        And I am on the "check-and-submit" page
-        And I have agreed to the terms and conditions
         When I submit my application
         And I am on the "application-submitted" page
         Then The sort code "60 70 80" should be displayed
