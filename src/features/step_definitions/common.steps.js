@@ -61,7 +61,7 @@ const developerStartPage = require("../page_objects/developer/routing-register.p
 const DeveloperTaskListPage = require("../page_objects/developer/tasklist.page");
 const DeveloperMetricUploadPage = require("../page_objects/developer/upload-metric-file.page");
 const DeveloperConsentAgreementUploadPage = require("../page_objects/developer/consent-agreement-upload.page");  
-const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/developer/metric-confirm-development-details.page"); 
+// const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/developer/metric-confirm-development-details.page"); 
 const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answers.page");
 const  DeveloperDetailsName = require("../page_objects/developer/details-name.page");
 const developmentInformationPage = require("../page_objects/developer/development-project-information.page.js");
@@ -161,7 +161,7 @@ const pages = {
   "developer/tasklist": DeveloperTaskListPage,
   "developer-metric-upload": DeveloperMetricUploadPage,
   "consent-agreement-upload":  DeveloperConsentAgreementUploadPage,
-  "confirm-development-details": DeveloperConfirmDevelopmentDetailsPage,
+  // "confirm-development-details": DeveloperConfirmDevelopmentDetailsPage,
   "check-answers" : DeveloperCheckAnswersPage,
   "developer-details-name": DeveloperDetailsName, 
   "development-project-information" : developmentInformationPage,
@@ -230,14 +230,10 @@ When("I upload without choosing a file", async () => {
   await basePage.uploadButton.click();
 });
 
-
-
-
 When("I go back to the previous page", async () => {
   // service back button
   await basePage.backButton.click();
 }) 
-
 
 When("I refresh the page", async () => {
   await browser.execute(() => { window.foobar = 'not refreshed yet' })
@@ -249,16 +245,15 @@ When("I refresh the page", async () => {
 
 
 When("I select {string} and continue", async (option) => {
-
   switch (option) {
     case "Conservation covenant": {
       await legalAgreementTypePage.conservationCovenant.click();
-      await basePage.continueButton.click();
+      await legalAgreementTypePage.continueButton.click();
       break;
     }
     case "Planning obligation": {
       await legalAgreementTypePage.planningObligation.click();
-      await basePage.continueButton.click();
+      await legalAgreementTypePage.continueButton.click();
       break;
     }
     case "I do not have a legal agreement": {
@@ -267,8 +262,11 @@ When("I select {string} and continue", async (option) => {
     }
     case "Other role": {
       (await legalAgreementAddPartiesPage.otherLegalPartyRoleOption).click();
-      await basePage.continueButton.click();
+      await legalAgreementAddPartiesPage.continueButton.click();
       break;
+    }
+    default:{
+      throw new Error("Option "+ option +" doesn't exist");
     }
   }
 });

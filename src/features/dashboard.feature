@@ -1,11 +1,11 @@
-@regression
+@regression  @new
 
 Feature: Dashboard for multiple registration support (defra id)
     As a User
     I need the ability to view in progress applications in a dashboard
     So that I can take action against those applications
 
-    Background:
+    Background: I Choose to manage biodiversity gains
         Given I choose to manage biodiversity gains
         And I am on the "manage-biodiversity-gains" page
 
@@ -18,7 +18,7 @@ Feature: Dashboard for multiple registration support (defra id)
     Scenario: BNGP-4472 3 I can start a new credit application
         When  I choose to buy statutory biodiversity credits
         And I am on the "check-statutory-biodiversity-credits" page
-        When I choose to buy new statutory biodiversity credits
+        And I choose to buy new statutory biodiversity credits
         Then I should be on the "credits-purchase-task-list" page
 
 

@@ -6,7 +6,6 @@ Feature: Check and Submit
     So that I can confirm I am satisfied with all the entered details and submit my application
 
     Background: Complete all registration details
-
         Given I choose to manage biodiversity gains
         # // nav bar manage link should really be baseurl
         And I choose to manage my gain sites
@@ -57,6 +56,10 @@ Feature: Check and Submit
         # Confirm all sections complete
         And I confirm I have completed all "landowner" journey sections
 
+        #check and submit page
+        And I am on the "check-and-submit" page
+        And I have agreed to the terms and conditions
+
     @skip()  # skip upload test for release 5
     Scenario: BNGP-190 1 - I can review all sections I have completed
         # Then I should be on the "check-and-submit" page
@@ -94,7 +97,7 @@ Feature: Check and Submit
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
-    @e2e
+    @e2e @new
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         When I submit my application
@@ -104,7 +107,6 @@ Feature: Check and Submit
         And The sort code "60 70 80" should be displayed
         And The account number "10026630" should be displayed
         And The swift code "NWBKGB2L" should be displayed
-
 
     Scenario: BNGP-3635 - On submission if the confirmation page is refreshed the details are not resubmitted or shown on the page
         And I submit my application
