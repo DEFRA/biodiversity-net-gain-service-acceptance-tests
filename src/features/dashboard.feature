@@ -1,4 +1,4 @@
-@regression  @new
+@regression
 
 Feature: Dashboard for multiple registration support (defra id)
     As a User
