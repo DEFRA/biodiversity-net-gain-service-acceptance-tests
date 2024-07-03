@@ -12,29 +12,29 @@ Feature: Check and Submit
         And I choose to start a new registration
         # Applicant info
         And I choose to add "applicant-info" details
-        And I have completed the applicant information section
+        And I have completed the "landowner" applicant information section
         And I am on the "written-authorisation-upload" page
-        And I choose and upload a "written-authorisation" file
+        And I upload a "written-authorisation" file
         And I confirm it is the correct file
         And I am on the "check-applicant-info" page
         And confirm the applicant-info details are correct
         # land ownership
         And I choose to add "land-ownership" details
         And I am on the "land-ownership-upload" page
-        And I choose and upload a "land-ownership" file
+        And I upload a "land-ownership" file
         And I confirm it is the correct file
         # And I confirm the correct file
         And I have completed the land-ownership section
         # land boundary
         And I choose to add "land-boundary" details
         And I am on the "land-boundary-upload" page
-        And I choose and upload a "land-boundary" file
+        And I upload a "land-boundary" file
         And I confirm it is the correct file
         And I have completed the land-boundary section
         # Metric
         And I choose to add "metric" details
         And I am on the "metric-upload" page
-        And I choose and upload a "metric" file
+        And I upload a "metric" file
         And I confirm it is the correct file
         And I confirm the "check-habitat-baseline" information is correct
         And I confirm the "check-habitat-creation" information is correct
@@ -45,13 +45,13 @@ Feature: Check and Submit
         And I am on the "legal-agreement-type" page
         And I select "Conservation covenant" and continue
         And I am Informed I have to add all "Conservation covenant" files
-        And I choose and upload a "legal-agreement" file
+        And I upload a "legal-agreement" file
         And I confirm it is the correct file
         And I have completed the legal-agreement section
         # Local land Charges
         And I choose to add "local-land-charge" details
         And I am on the "local-land-charge-upload" page
-        And I choose and upload a "local-land-charge" file
+        And I upload a "local-land-charge" file
         And I confirm it is the correct file
         # Confirm all sections complete
         And I confirm I have completed all "landowner" journey sections
@@ -97,7 +97,7 @@ Feature: Check and Submit
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
-    @e2e @new
+    @e2e
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         When I submit my application

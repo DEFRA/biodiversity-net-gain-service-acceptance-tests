@@ -9,7 +9,7 @@ Feature: Biodiversity metric display/playback
                 Given I navigate to the "metric-upload" page
 
         Scenario Outline: BNGP-523 1a - The uploaded metric data on the <metricDisplayPage> page has correct totals for <HabitatType>
-                And I choose and upload a "metric" file
+                And I upload a "metric" file
                 And I confirm it is the correct file
                 When I navigate to the "<metricDisplayPage>" page
                 Then The total for "<HabitatType>" should be "<total>"
