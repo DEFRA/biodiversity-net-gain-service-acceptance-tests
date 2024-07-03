@@ -61,7 +61,7 @@ Given('I have completed the biodiversity metric section', async () => {
 
 async function completeBiodiversityMetricSection () {
   // todo: refine multiple ands
-  //And I choose and upload a "metric" file
+  //And I upload a "metric" file
   //       And I confirm it is the correct file
 
   //       And I check the habitat baseline information is correct

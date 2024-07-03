@@ -60,8 +60,6 @@ const basePage = legalAgreementUploadPage;
 const developerStartPage = require("../page_objects/developer/routing-register.page");
 const DeveloperTaskListPage = require("../page_objects/developer/tasklist.page");
 const DeveloperMetricUploadPage = require("../page_objects/developer/upload-metric-file.page");
-const DeveloperConsentAgreementUploadPage = require("../page_objects/developer/consent-agreement-upload.page");  
-// const DeveloperConfirmDevelopmentDetailsPage = require("../page_objects/developer/metric-confirm-development-details.page"); 
 const DeveloperCheckAnswersPage = require("../page_objects/developer/check-answers.page");
 const  DeveloperDetailsName = require("../page_objects/developer/details-name.page");
 const developmentInformationPage = require("../page_objects/developer/development-project-information.page.js");
@@ -160,11 +158,9 @@ const pages = {
   "routing-register": developerStartPage,
   "developer/tasklist": DeveloperTaskListPage,
   "developer-metric-upload": DeveloperMetricUploadPage,
-  "consent-agreement-upload":  DeveloperConsentAgreementUploadPage,
-  // "confirm-development-details": DeveloperConfirmDevelopmentDetailsPage,
   "check-answers" : DeveloperCheckAnswersPage,
   "developer-details-name": DeveloperDetailsName, 
-  "development-project-information" : developmentInformationPage,
+  "development-project-details" : developmentInformationPage,
 
 //**CREDITS PURCHASE JOURNEY */
   "add-credits" : AddStatutoryBiodiversityCreditsPage,

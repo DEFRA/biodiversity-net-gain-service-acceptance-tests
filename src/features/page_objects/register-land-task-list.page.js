@@ -61,10 +61,6 @@ class TaskList extends Page {
     return $("#add-local-land-charge-search-certificate-status");
   }
 
-  get submitStatus(){
-    return $("#check-your-answers-status");
-  }
-
   get checkAndSubmitBtn(){
     return $("a[href='/land/check-and-submit']");
   }
