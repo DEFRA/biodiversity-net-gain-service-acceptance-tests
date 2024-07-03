@@ -47,12 +47,6 @@ When ("I choose to add {string} details", async (task) => {
       await CreditsTaskListPage.uploadMetric.click();
     break;
     }
-    case "Development Information": {
-      expect(await browser.getTitle()).toContain(DeveloperTaskListPage.titleText);
-      await DeveloperTaskListPage.addDevelopmentInformation.click();
-    break;
-    }
-
     case "Credits Development Information": {
       expect(await browser.getTitle()).toContain(CreditsTaskListPage.titleText);
       await CreditsTaskListPage.addDevelopmentInformation.click();
@@ -85,6 +79,21 @@ When ("I choose to add {string} details", async (task) => {
       await DeveloperTaskListPage.addBiodiversityGainSiteInfo.click();
     break;
     }
+    case "developer-applicant-info": {
+      expect(await browser.getTitle()).toContain(DeveloperTaskListPage.titleText);
+      await DeveloperTaskListPage.addapplicantDetails.click();
+    break;
+    }
+    case "Development Project": {
+      expect(await browser.getTitle()).toContain(DeveloperTaskListPage.titleText);
+      await DeveloperTaskListPage.addDevelopmentInformation.click();
+    break;
+    }
+    case "planning decision notice": {
+      expect(await browser.getTitle()).toContain(DeveloperTaskListPage.titleText);
+      await DeveloperTaskListPage.addPlanningDecisionNoticeInfo.click();
+    break;
+    }
     default:{
       throw new Error(`Tasklist section ${task} doesn't exist`);
     } 
@@ -97,7 +106,7 @@ switch(journey){
     await expect(DeveloperTaskListPage.submitStatus).not.toHaveText("CANNOT START YET")
     await expect(DeveloperTaskListPage.submitStatus).toHaveText("NOT STARTED YET")
 
-  await DeveloperTaskListPage.submitInformation.click();
+  await DeveloperTaskListPage.devCheckAndSubmitBtn.click();
   break;
   }
   case "landowner":{
@@ -159,22 +168,23 @@ Then("I should see the {string} section status as {string}", async (task, status
     break;
     }
     //developer journey tasklist sections
-    case "upload-metric-file": {
-      await expect(DeveloperTaskListPage.uploadMetricFileStatus).toHaveText(status);
+    case "biodiversity gain site information": {
+      await expect(DeveloperTaskListPage.addBiodiversityGainSiteInfoStatus).toHaveText(status);
     break;
     }
-    case "confirm development details": {
-      await expect(TaskList.confirmDevelopmentDetailsStatus).toHaveText(status);
+    case "developer-applicant-info": {
+      await expect(DeveloperTaskListPage.addapplicantDetailsStatus).toHaveText(status);
     break;
     }
-    case "confirm off-site gain": {
-      await expect(TaskList.confirmOffSiteGainStatus).toHaveText(status);
+    case "Development Project": {
+      await expect(DeveloperTaskListPage.addDevelopmentInformationStatus).toHaveText(status);
     break;
     }
-    case "upload the consent document": {
-      await expect(TaskList.uploadConsentDocumentStatus).toHaveText(status);
+    case "planning decision notice": {
+      await expect(DeveloperTaskListPage.addPlanningDecisionNoticeStatus).toHaveText(status);
     break;
     }
+
     //credit purchase journey tasklist sections
     case "credits-purchase-metric": {
       expect(await browser.getTitle()).toContain(CreditsTaskListPage.titleText);

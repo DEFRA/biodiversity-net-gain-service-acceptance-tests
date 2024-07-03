@@ -19,8 +19,8 @@ const uploadLocalLandChargePage = require("../page_objects/local_land_charge/upl
 const checkLocalLandChargePage = require("../page_objects/local_land_charge/check-local-land-charge.page");
 
 //developer uploads
-const consentAgreementUploadPage = require("../page_objects/developer/consent-agreement-upload.page");
-const consentAgreementCheckPage = require("../page_objects/developer/consent-agreement-check.page");
+const uploadPlanningDecisionNoticePage = require("../page_objects/developer/upload-planning-decision-notice.page");
+const checkPlanningDecisionNoticePage = require("../page_objects/developer/upload-planning-decision-notice-check.page");
 const uploadDeveloperMetricFilePage = require("../page_objects/developer/upload-metric-file.page");
 const checkDeveloperMetricFilePage= require("../page_objects/developer/check-metric-file.page");
 const DeveloperTaskListPage = require( "../page_objects/developer/tasklist.page");
@@ -65,7 +65,7 @@ let filename = "";
 let filePath = "";
 let remoteFilePath = "";
 
-When("I choose and upload a {string} file", async (document) => {
+When("I upload a {string} file", async (document) => {
   //default test file
   filePath = join(__dirname, "../../TestFiles/test_12kb.docx");
 
@@ -141,9 +141,9 @@ When("I choose and upload a {string} file", async (document) => {
       filePath = join(__dirname, "../../TestFiles/test_developer_metric.xlsm");
       break;
     }
-    case "consent-agreement":{
-      UploadPage = consentAgreementUploadPage;
-      CheckPage = consentAgreementCheckPage;
+    case "planning-decision-notice":{
+      UploadPage = uploadPlanningDecisionNoticePage;
+      CheckPage = checkPlanningDecisionNoticePage;
       break;
     }
     //****CREDIT Purchase UPLOADS*****
@@ -169,6 +169,7 @@ When("I choose and upload a {string} file", async (document) => {
   // set the remote path value to the upload element and continue
   await UploadPage.govFileUpload.setValue(remoteFilePath);
   await UploadPage.uploadButton.click();
+  
 });
 
 When("I want to upload the metric file", async () => {

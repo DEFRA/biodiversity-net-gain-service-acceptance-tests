@@ -54,6 +54,14 @@ class CheckAndSubmit extends Page {
     return $('*[data-testid="metric-file-name-value"]');
   }
 
+  get metricHabitatBaselineValue(){
+    return $('*[data-testid="baseline-biodiversity-value-declaration"]');
+  }
+
+  get metricHabitatCreationEnhancementValue(){
+    return $('*[data-testid="habitat-creation-and-enhancement-declaration"]');
+  }
+
   get hmmpFileNameValue(){
     return $('*[data-testid="habitat-plan-file-name-value"]');
   }

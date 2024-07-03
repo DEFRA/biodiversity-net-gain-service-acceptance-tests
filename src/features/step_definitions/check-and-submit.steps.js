@@ -59,6 +59,14 @@ Then("I should see the {string} on the summary shown as {string}", async (sectio
         await expect(CheckAndSubmitPage.metricFileNameValue).toHaveText(value);
       break;
       }
+      case "Habitat baseline information is correct": {
+        await expect(CheckAndSubmitPage.metricHabitatBaselineValue).toHaveText(value);
+      break;
+      }
+      case "Habitat creation and enhancement information is correct": {
+        await expect(CheckAndSubmitPage.metricHabitatCreationEnhancementValue).toHaveText(value);
+      break;
+      }
       case "Habitat management and monitoring plan uploaded": {
         await expect(CheckAndSubmitPage.hmmpFileNameValue).toHaveText(value);
       break;

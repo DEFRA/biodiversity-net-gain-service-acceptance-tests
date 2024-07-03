@@ -11,6 +11,10 @@ module.exports = class Page {
     return $("#continue");
   }
 
+  get govContinue() {
+    return $(".govuk-button");
+  }
+
   get backButton() {
     return $(".govuk-back-link");
   }
@@ -167,6 +171,10 @@ get manageBngNavLink(){
 
   get developmentName(){
     return $("#development-name-value")
+  }
+
+  get submitStatus(){
+    return $("#check-your-answers-status");
   }
 
    async addFirstName(value) {

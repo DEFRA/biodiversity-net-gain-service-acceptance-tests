@@ -1,5 +1,4 @@
 @regression
-
 Feature: Dashboard for multiple registration support (defra id)
     As a User
     I need the ability to view in progress applications in a dashboard

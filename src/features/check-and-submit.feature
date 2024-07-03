@@ -12,29 +12,29 @@ Feature: Check and Submit
         And I choose to start a new registration
         # Applicant info
         And I choose to add "applicant-info" details
-        And I have completed the applicant information section
+        And I have completed the "landowner" applicant information section
         And I am on the "written-authorisation-upload" page
-        And I choose and upload a "written-authorisation" file
+        And I upload a "written-authorisation" file
         And I confirm it is the correct file
         And I am on the "check-applicant-info" page
         And confirm the applicant-info details are correct
         # land ownership
         And I choose to add "land-ownership" details
         And I am on the "land-ownership-upload" page
-        And I choose and upload a "land-ownership" file
+        And I upload a "land-ownership" file
         And I confirm it is the correct file
         # And I confirm the correct file
         And I have completed the land-ownership section
         # land boundary
         And I choose to add "land-boundary" details
         And I am on the "land-boundary-upload" page
-        And I choose and upload a "land-boundary" file
+        And I upload a "land-boundary" file
         And I confirm it is the correct file
         And I have completed the land-boundary section
         # Metric
         And I choose to add "metric" details
         And I am on the "metric-upload" page
-        And I choose and upload a "metric" file
+        And I upload a "metric" file
         And I confirm it is the correct file
         And I confirm the "check-habitat-baseline" information is correct
         And I confirm the "check-habitat-creation" information is correct
@@ -45,13 +45,13 @@ Feature: Check and Submit
         And I am on the "legal-agreement-type" page
         And I select "Conservation covenant" and continue
         And I am Informed I have to add all "Conservation covenant" files
-        And I choose and upload a "legal-agreement" file
+        And I upload a "legal-agreement" file
         And I confirm it is the correct file
         And I have completed the legal-agreement section
         # Local land Charges
         And I choose to add "local-land-charge" details
         And I am on the "local-land-charge-upload" page
-        And I choose and upload a "local-land-charge" file
+        And I upload a "local-land-charge" file
         And I confirm it is the correct file
         # Confirm all sections complete
         And I confirm I have completed all "landowner" journey sections
@@ -62,17 +62,18 @@ Feature: Check and Submit
 
     @skip()  # skip upload test for release 5
     Scenario: BNGP-190 1 - I can review all sections I have completed
-        Then I should be on the "check-and-submit" page
+        # Then I should be on the "check-and-submit" page
+        Given I am on the "check-and-submit" page
         #---- Applicant information
         # And I should see the "fullname" on the summary shown as "John Smith"
         # And I should see the "role" on the summary shown as "Landowner"
         # And I should see the "email address" on the summary shown as "test@example.com"
         #---- Land ownership
-        And I should see the "Proof of land ownership file uploaded" on the summary shown as "test_12kb.docx"
+        Then I should see the "Proof of land ownership file uploaded" on the summary shown as "test_12kb.docx"
         #---- Biodiversity gain site boundary
         And I should see the "Land boundary file uploaded" on the summary shown as "test_12kb.docx"
         And I should see the "grid reference" on the summary shown as "TL6233"
-        And I should see the "hectares" on the summary shown as "1231.11"
+        And I should see the "hectares" on the summary shown as "1231.11 ha"
         #---- Statutory biodiversity metric and habitat declarations
 
         And I should see the "Biodiversity Metric file uploaded" on the summary shown as "test_metric.xlsm"
@@ -90,13 +91,13 @@ Feature: Check and Submit
         And I should see the "legal-agreement start date" on the summary shown as "12 October 2022"
 
     @skip() #update with https://eaflood.atlassian.net/browse/BNGP-3983
-    Scenario: BNGP-190 2, 3 - When I update an answer to a section I am returned to the Summary Page
-        When I choose to change the "fullname" answer on the "check-and-submit" page
-        And I update the "fullname" to "new name"
+    Scenario: BNGP-190 2, 3 - When I update an answer to a section I am returned to the check and submit Page
+        Given I choose to change the "fullname" answer on the "check-and-submit" page
+        When I update the "fullname" to "new name"
         Then I should be returned to the "check-and-submit" page
         And I should see the "fullname" updated to "new name" on the "check-and-submit" page
 
-    @e2e @new
+    @e2e
     Scenario: BNGP-198 1 - The Biodiversity Gain Site Reference is displayed
         # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
         When I submit my application

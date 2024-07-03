@@ -18,7 +18,7 @@ Feature: Land Boundary
     @bug @skip() #skip geospatial as currently disabled
     Scenario: BNGP-1711 BUG - geospatial upload error (geojson, repeat upload)
         When I navigate to the "geospatial-upload" page
-        And I choose and upload a "geospatial-geojson" file
+        And I upload a "geospatial-geojson" file
         And  I choose a different file
         And I am on the "geospatial-upload" page
         And I choose and upload the same file
