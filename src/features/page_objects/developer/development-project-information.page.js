@@ -2,7 +2,7 @@ const Page = require("../page");
 
 class developerJourneyDevelopmentInformationPage extends Page {
   get titleText() {
-    return "Development project information";
+    return "Development project details";
   }
 
   get path() {
