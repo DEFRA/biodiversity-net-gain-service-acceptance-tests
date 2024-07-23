@@ -116,12 +116,12 @@ exports.config = {
 
   baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
   //"http://localhost:3000",
-  // process.env.BNG_FE_POC_URL;
-  // process.env.BNG_FE_POC2_URL;
-  // process.env.BNG_FE_POC3_URL;
-  // process.env.BNG_FE_DEV_URL;
-  // process.env.BNG_FE_TST1_URL; 
-  // process.env.BNG_FE_TST2_URL;
+  // process.env.BNG_FE_POC_URL,
+  // process.env.BNG_FE_POC2_URL,
+  // process.env.BNG_FE_POC3_URL,
+  // process.env.BNG_FE_DEV_URL,
+  // process.env.BNG_FE_TST1_URL, 
+  // process.env.BNG_FE_TST2_URL,
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
   //

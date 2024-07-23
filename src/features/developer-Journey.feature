@@ -1,56 +1,61 @@
-
+@regression
 Feature: Developer Journey Tests
 
-    # As a developer
-    # I need to see the status of the sections I need to complete
-    # So that I can track the progress of my registration.
+    As a developer
+    I need to see the status of the sections I need to complete
+    So that I can track the progress of my allocation of off-site biodiversity gains to a development.
 
-    Background: Complete applicant details
+    Background: Choose to record off-site gains for a new development
         Given I choose to manage biodiversity gains
         # // nav bar manage link should really be baseurl
         And I choose to manage my off-site gains for my development projects
         And I choose to record off-site gains for a new development
-    # # Developer Journey task list
-    # And I navigate to the "developer/tasklist" page
+        And I am on the "developer/tasklist" page
 
     Scenario: BNGP-2194 2, 5 - The sections on the task list page should show the status of progress.
-        When I am on the "developer/tasklist" page
-        Then I should see the "details" section status as "COMPLETED"
-        And I should see my progress as "You have completed 1 of 6 sections"
-        And I should see the "Upload Metric 4.0 file" section status as "NOT STARTED"
-        And I should see the "Confirm development details" section status as "NOT STARTED"
-        And I should see the "Confirm off-site gain" section status as "NOT STARTED"
-        And I should see the "Upload the consent document" section status as "NOT STARTED"
-        And I should see the "submit" section status as "CANNOT START YET"
+        # Applicant Info
+        # Add details about the applicant
+        And I choose to add "developer-applicant-info" details
+        When I have completed the "developer" applicant information section
+        Then I should see my progress as "You have completed 1 of 5 sections."
+        And I should see the "developer-applicant-info" section status as "COMPLETED"
+        And I should see the "biodiversity gain site information" section status as "NOT STARTED"
+        And I should see the "Development Project" section status as "NOT STARTED"
+        And I should see the "planning decision notice" section status as "NOT STARTED"
+        And I should see the "check-and-submit" section status as "CANNOT START YET"
 
-
-    # Check answers
-    Scenario: BNGP-2964 1 - The Biodiversity Gain Site Reference is displayed
-        # AND https://eaflood.atlassian.net/browse/BNGP-3378 - 3 appropriate fee is displayed for the journey
-        #****applicant details section shouldn't exist for the DEFRAID for dev journey but currently does***
-        # And I navigate to the "developer-details-name" page
-        # And I have completed the applicant details section for my development
+    @e2e
+    Scenario: https://eaflood.atlassian.net/browse/BNGP-2964 1 - The Allocation Biodiversity Gain Site Reference is displayed
+        # Applicant Info
+        # Add details about the applicant
+        And I choose to add "developer-applicant-info" details
+        And I have completed the "developer" applicant information section
 
         # Development Information
-        And I choose to add "Development Information" details
-        And I am on the "development-project-information" page
+        # Upload Metric : Add Biodiversity Gain Site details
+        And I choose to add "biodiversity gain site information" details
+        And I enter my off site gain reference number as "BGS-010124001"
+        And I upload a "developer-metric" file
+        And I confirm it is the correct file
+        And I confirm my off site gain
+
+        # Add development project details
+        And I choose to add "Development Project" details
+        And I am on the "development-project-details" page
         And I have completed the "allocation" Development Information section
 
-        # Developer Metric
-        And I choose to add "biodiversity gain site information" details
-        And I enter my off site gain reference number as "1234"
-        And I choose and upload a "developer-metric" file
+        # Upload planning decision notice
+        And I choose to add "planning decision notice" details
+        And I upload a "planning-decision-notice" file
         And I confirm it is the correct file
-        And I confirm my development details
-        And I confirm my off site gain
-        # Consent for off site gain
-        And I choose and upload a "consent-agreement" file
-        And I confirm it is the correct file
+
+        # Submit your off-site gains information
         And I confirm I have completed all "developer" journey sections
         And I am on the "check-answers" page
+        And I have agreed to the terms and conditions
         When I submit my developer information
         Then I should be on the "application-submitted" page
-        And The biodiversity gain site reference should be displayed
+        And The "biodiversity gain site" reference should be displayed
         And The fee amount of "£45.00" should be displayed
 
     Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-5068 I can check my BGS number API "statuses" against the Powerapp and display appropriate error messages
