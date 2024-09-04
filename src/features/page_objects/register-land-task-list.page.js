@@ -6,27 +6,23 @@ class TaskList extends Page {
   }
 
   get addApplicantInfo() {
-    return $("#add-applicant-information");
+    return $("a[href='/land/agent-acting-for-client']");
   }
 
   get addLandBoundary() {
-    return $("#add-land-boundary");
+    return $("a[href='/land/upload-land-boundary']");
   }
 
   get addLandOwnership() {
-    return $("#add-land-ownership");
-  }
-
-  get addHmmp(){
-    return $("#add-habitat-management");
+    return $("a[href='/land/upload-ownership-proof']");
   }
 
   get addLegalAgreement() {
-    return $("#add-legal-agreement");
+    return $("a[href='/land/legal-agreement-type']");
   }
 
   get addLocallandCharge() {
-    return $("#add-local-land-charge-search-certificate");
+    return $("a[href='/land/upload-local-land-charge']");
   }
   
   get submitInformation(){

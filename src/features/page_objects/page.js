@@ -142,7 +142,7 @@ get manageBngNavLink(){
    }
 
    get addMetric() {
-    return $("#add-habitat-information");
+    return $("a[href='/land/upload-metric']");
   }
 
   get progressText(){
@@ -154,7 +154,7 @@ get manageBngNavLink(){
   }
 
   get addDevelopmentInformation() {
-    return $("#add-devlopment-project-information");
+    return $("a[href='/credits-purchase/development-project-information']");
   }
 
   get addDevelopmentInformationStatus() {

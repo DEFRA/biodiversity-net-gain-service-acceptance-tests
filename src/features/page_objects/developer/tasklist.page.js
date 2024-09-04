@@ -6,25 +6,26 @@ class DeveloperTaskListPage extends Page {
   } 
   //developer sections
   get addapplicantDetails(){
-    return $("#applicant-details");
+    return $("a[href='/developer/agent-acting-for-client");
   }
   get addapplicantDetailsStatus(){
     return $("#applicant-details-status");
   }
   get addBiodiversityGainSiteInfo(){
-    return $("#gain-site-allocation-info");
+    return $("a[href='/developer/biodiversity-gain-site-number");
   }
   get addBiodiversityGainSiteInfoStatus(){
     return $("#gain-site-allocation-info-status");
   }
-  get addDevelopmentProjectInfo(){
-    return $("#add-devlopment-project-information");
+  get addDevelopmentInformation() {
+    return $("a[href='/developer/development-project-information']");
   }
+
   get addDevelopmentProjectInfoStatus(){
     return $("#add-devlopment-project-information-Status");
   }
   get addPlanningDecisionNoticeInfo(){
-    return $("#planning-decision-notice");
+    return $("a[href='/developer/upload-planning-decision-notice");
   }
   get addPlanningDecisionNoticeStatus(){
     return $("#planning-decision-notice-status");

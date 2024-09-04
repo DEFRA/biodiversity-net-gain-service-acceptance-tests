@@ -6,7 +6,7 @@ class CreditsTaskListPage extends Page {
     }
   
     get uploadMetric() {
-      return $("#upload-metric");
+      return $("a[href='/credits-purchase/upload-metric-file']");
     }
 
     get uploadMetricStatus() {
@@ -14,7 +14,7 @@ class CreditsTaskListPage extends Page {
       }
   
     get addCredits(){
-      return $("#add-credits");
+      return $("a[href='/credits-purchase/add-statutory-biodiversity-credits']");
     }
   
     get addCreditsStatus() {
@@ -22,7 +22,7 @@ class CreditsTaskListPage extends Page {
     }
 
     get addPurchaseOrder(){
-        return $("#add-purchase-order");
+        return $("a[href='/credits-purchase/check-purchase-order']");
       }
     
       get addPurhaseOrderStatus() {
@@ -30,7 +30,7 @@ class CreditsTaskListPage extends Page {
       }
   
       get addCustomerDueDiligence(){
-        return $("#customer-due-diligence");
+        return $("a[href='/credits-purchase/purchasing-individual-organisation']");
       }
     
       get addCustomerDueDiligenceStatus() {
@@ -38,7 +38,7 @@ class CreditsTaskListPage extends Page {
       }
 
       get acceptTermsAndConditions(){
-        return $("#terms-and-conditions");
+        return $("a[href='/credits-purchase/confirm-terms-conditions']");
       }
     
       get acceptTermsAndConditionsStatus() {

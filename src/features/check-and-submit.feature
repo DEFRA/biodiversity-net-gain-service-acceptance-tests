@@ -12,7 +12,7 @@ Feature: Check and Submit
         And I choose to start a new registration
         # Applicant info
         And I choose to add "applicant-info" details
-        And I have completed the "landowner" applicant information section
+        And I have Completed the "landowner" applicant information section
         And I am on the "written-authorisation-upload" page
         And I upload a "written-authorisation" file
         And I confirm it is the correct file
@@ -39,7 +39,7 @@ Feature: Check and Submit
         And I confirm the "check-habitat-baseline" information is correct
         And I confirm the "check-habitat-creation" information is correct
         And I confirm the "check-metric-details" information is correct
-        And I should see the "metric" section status as "COMPLETED"
+        And I should see the "metric" section status as "Completed"
         # Legal Agreement
         And I choose to add "legal-agreement" details
         And I am on the "legal-agreement-type" page
