@@ -8,7 +8,6 @@ class AgentActingForClientPage extends Page {
 
   get path() {
     return "land/applicant-details-is-agent";
-    // agent-acting-for-client";
   }
 
   open() {

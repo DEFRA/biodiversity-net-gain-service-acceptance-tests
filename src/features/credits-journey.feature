@@ -21,7 +21,7 @@ Feature: Credit Purchase Journey Tests
         And I upload a "credits-purchase-metric" file
         And I confirm it is the correct file
         # And I confirm the development details #*****redundant now as is a further development project section on the credits tasklist https://eaflood.atlassian.net/browse/BNGP-4839  #
-        And I should see the "credits-purchase-metric" section status as "COMPLETED"
+        And I should see the "credits-purchase-metric" section status as "Completed"
 
         # Development Information
         And I choose to add "Credits Development Information" details

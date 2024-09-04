@@ -38,6 +38,6 @@ async function completeLandBoundarySection(gridreference, hectares) {
   await (checkLandBoundaryDetailsPage.continueButton).click();
 
    //tasklist section shows as complete
-   await expect(tasklistPage.landBoundaryStatus).toHaveText("COMPLETED");  
+   await expect(tasklistPage.landBoundaryStatus).toHaveText("Completed");  
 
 }

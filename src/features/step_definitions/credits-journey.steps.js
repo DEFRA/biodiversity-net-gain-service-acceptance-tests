@@ -40,7 +40,7 @@ Given("I have completed the Terms and conditions section", async () => {
 
      //tasklist confirm terms and conditions section shows as complete
      expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
-     await expect(CreditsPurchaseTaskListPage.acceptTermsAndConditionsStatus).toHaveText("COMPLETED");  
+     await expect(CreditsPurchaseTaskListPage.acceptTermsAndConditionsStatus).toHaveText("Completed");  
 
 })
 
@@ -51,6 +51,7 @@ When("I choose to buy new statutory biodiversity credits", async () => {
 
      await creditsApplicationListPage.createNewCreditApplicationLink.click();
 });
+
 
 When("I add a value of {string} to the habitat {string}", async (value, unit) => {
      switch (unit) {
@@ -149,7 +150,7 @@ async function completeAddDevelopmentInfoSection(lpa, applicationNumber, project
                creditsDevelopmentProjectInformationPage.continueButton.click()
                //tasklist add development information section shows as complete
                expect(await browser.getTitle()).toContain(creditsDevelopmentProjectInformationPage.titleText);
-               await expect(CreditsPurchaseTaskListPage.addDevelopmentInformationStatus).toHaveText("COMPLETED");  
+               await expect(CreditsPurchaseTaskListPage.addDevelopmentInformationStatus).toHaveText("Completed");  
 
                break;
           }
@@ -165,7 +166,7 @@ async function completeAddDevelopmentInfoSection(lpa, applicationNumber, project
                allocationDevelopmentProjectInformationPage.continueButton.click()
                //tasklist add development information section shows as complete
                expect(await browser.getTitle()).toContain(allocationDevelopmentProjectInformationPage.titleText);
-               await expect(allocationTaskListPage.addDevelopmentInformationStatus).toHaveText("COMPLETED"); 
+               await expect(allocationTaskListPage.addDevelopmentInformationStatus).toHaveText("Completed"); 
 
                break;
           }
@@ -190,7 +191,7 @@ async function completeAddCreditsSection(credit, creditValue) {
 
      //tasklist add credits section shows as complete
      expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
-     await expect(CreditsPurchaseTaskListPage.addCreditsStatus).toHaveText("COMPLETED");  
+     await expect(CreditsPurchaseTaskListPage.addCreditsStatus).toHaveText("Completed");  
 }
 
 async function completePurchaseOrderSection(value) {
@@ -202,7 +203,7 @@ async function completePurchaseOrderSection(value) {
 
      //tasklist add po number section shows as complete
      expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
-     await expect(CreditsPurchaseTaskListPage.addPurhaseOrderStatus).toHaveText("COMPLETED");  
+     await expect(CreditsPurchaseTaskListPage.addPurhaseOrderStatus).toHaveText("Completed");  
 }
 
 async function completeDueDiligenceSection(middleNameValue, dob) {
@@ -251,5 +252,5 @@ async function completeDueDiligenceSection(middleNameValue, dob) {
      
      //tasklist add CDD section shows as complete
      expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
-     await expect(CreditsPurchaseTaskListPage.addCustomerDueDiligenceStatus).toHaveText("COMPLETED");  
+     await expect(CreditsPurchaseTaskListPage.addCustomerDueDiligenceStatus).toHaveText("Completed");  
 }
