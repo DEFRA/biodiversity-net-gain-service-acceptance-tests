@@ -20,6 +20,6 @@ async function completeLandOwnershipSection(fullname) {
 
   //tasklist section shows as complete
   expect(await browser.getTitle()).toContain(tasklistPage.titleText);
-  await expect(tasklistPage.landOwnershipStatus).toHaveText("COMPLETED");  
+  await expect(tasklistPage.landOwnershipStatus).toHaveText("Completed");  
   }
 

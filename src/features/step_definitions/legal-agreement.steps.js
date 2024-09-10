@@ -170,7 +170,7 @@ expect(await browser.getTitle()).toContain(habitatPlanLegalAgreementPage.titleTe
   await (checkLegalAgreementDetailsPage.acceptBtn).click();
 
   //tasklist section shows as complete
- await expect(tasklistPage.legalAgreementStatus).toHaveText("COMPLETED");    
+ await expect(tasklistPage.legalAgreementStatus).toHaveText("Completed");    
   }
   
 async function addResponsibleBody(fullname) {

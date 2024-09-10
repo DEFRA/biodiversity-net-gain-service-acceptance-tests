@@ -4,7 +4,7 @@ const DeveloperTaskListPage = require("../page_objects/developer/tasklist.page")
 const CreditsTaskListPage = require("../page_objects/credits-purchase/tasklist.page");
 
 When ("I choose to add {string} details", async (task) => {
-  const status = "NOT STARTED"
+  const status = "Not started"
 
   switch (task) {
     case "applicant-info": {     
@@ -103,8 +103,8 @@ When ("I choose to add {string} details", async (task) => {
 When("I confirm I have completed all {string} journey sections", async (journey) => {
 switch(journey){
   case "developer":{
-    await expect(DeveloperTaskListPage.submitStatus).not.toHaveText("CANNOT START YET")
-    await expect(DeveloperTaskListPage.submitStatus).toHaveText("NOT STARTED YET")
+    await expect(DeveloperTaskListPage.submitStatus).not.toHaveText("Cannot start yet")
+    await expect(DeveloperTaskListPage.submitStatus).toHaveText("Not started yet")
 
   await DeveloperTaskListPage.devCheckAndSubmitBtn.click();
   break;
@@ -112,18 +112,18 @@ switch(journey){
   case "landowner":{
     // check all section statuses 
 
-    // /make sure cannot start status for the cya section has changed to not started yet
-    await expect(TaskList.submitStatus).not.toHaveText("CANNOT START YET")
-    await expect(TaskList.submitStatus).toHaveText("NOT STARTED YET")
+    // /make sure cannot start status for the cya section has changed to Not started yet
+    await expect(TaskList.submitStatus).not.toHaveText("Cannot start yet")
+    await expect(TaskList.submitStatus).toHaveText("Not started yet")
     await (TaskList.checkAndSubmitBtn).click();
     break;
     }
     case "credits":{
       // check all section statuses 
   
-      // /make sure cannot start status for the cya section has changed to not started yet
-      await expect(CreditsTaskListPage.submitStatus).not.toHaveText("CANNOT START YET")
-      await expect(CreditsTaskListPage.submitStatus).toHaveText("NOT STARTED YET")
+      // /make sure cannot start status for the cya section has changed to Not started yet
+      await expect(CreditsTaskListPage.submitStatus).not.toHaveText("Cannot start yet")
+      await expect(CreditsTaskListPage.submitStatus).toHaveText("Not started yet")
       await (CreditsTaskListPage.checkAndSubmitBtn).click();
       break;
       }

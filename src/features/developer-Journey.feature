@@ -18,13 +18,13 @@ Feature: Developer Journey Tests
         And I choose to add "developer-applicant-info" details
         When I have completed the "developer" applicant information section
         Then I should see my progress as "You have completed 1 of 5 sections."
-        And I should see the "developer-applicant-info" section status as "COMPLETED"
-        And I should see the "biodiversity gain site information" section status as "NOT STARTED"
-        And I should see the "Development Project" section status as "NOT STARTED"
-        And I should see the "planning decision notice" section status as "NOT STARTED"
-        And I should see the "check-and-submit" section status as "CANNOT START YET"
+        And I should see the "developer-applicant-info" section status as "Completed"
+        And I should see the "biodiversity gain site information" section status as "Not started"
+        And I should see the "Development Project" section status as "Not started"
+        And I should see the "planning decision notice" section status as "Not started"
+        And I should see the "check-and-submit" section status as "Cannot start yet"
 
-    @e2e
+    @e2e @new
     Scenario: https://eaflood.atlassian.net/browse/BNGP-2964 1 - The Allocation Biodiversity Gain Site Reference is displayed
         # Applicant Info
         # Add details about the applicant

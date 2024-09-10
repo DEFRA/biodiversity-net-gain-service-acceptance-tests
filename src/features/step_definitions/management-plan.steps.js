@@ -5,7 +5,7 @@ const tasklistPage = require("../page_objects/register-land-task-list.page");
 let  basePage = monitoringStartDatePage;
 
 
-Given("I have completed the management-plan section", async () => {
+Given("I have Completed the management-plan section", async () => {
     await completeManagementPlanSection("13/10/2022");
   })
 
@@ -30,6 +30,6 @@ async function completeManagementPlanSection(date) {
     await (checkManagementMonitoringDetailsPage.continueButton).click();
 
  //tasklist section shows as complete
- await expect(tasklistPage.hmmpStatus).toHaveText("COMPLETED");  
+ await expect(tasklistPage.hmmpStatus).toHaveText("Completed");  
     
   }
