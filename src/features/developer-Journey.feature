@@ -18,6 +18,7 @@ Feature: Developer Journey Tests
         And I choose to add "developer-applicant-info" details
         When I have completed the "developer" applicant information section
         Then I should see my progress as "You have completed 1 of 5 sections."
+<<<<<<< HEAD
         And I should see the "developer-applicant-info" section status as "Completed"
         And I should see the "biodiversity gain site information" section status as "Not started"
         And I should see the "Development Project" section status as "Not started"
