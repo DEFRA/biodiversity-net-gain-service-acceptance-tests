@@ -12,11 +12,7 @@ Feature: Check and Submit
         And I choose to start a new registration
         # Applicant info
         And I choose to add "applicant-info" details
-<<<<<<< HEAD
-        And I have Completed the "landowner" applicant information section
-=======
         And I have completed the "landowner" applicant information section
->>>>>>> main
         And I am on the "written-authorisation-upload" page
         And I upload a "written-authorisation" file
         And I confirm it is the correct file
