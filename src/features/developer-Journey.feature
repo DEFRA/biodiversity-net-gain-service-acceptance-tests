@@ -18,7 +18,6 @@ Feature: Developer Journey Tests
         And I choose to add "developer-applicant-info" details
         When I have completed the "developer" applicant information section
         Then I should see my progress as "You have completed 1 of 5 sections."
-<<<<<<< HEAD
         And I should see the "developer-applicant-info" section status as "Completed"
         And I should see the "biodiversity gain site information" section status as "Not started"
         And I should see the "Development Project" section status as "Not started"
@@ -35,7 +34,7 @@ Feature: Developer Journey Tests
         # Development Information
         # Upload Metric : Add Biodiversity Gain Site details
         And I choose to add "biodiversity gain site information" details
-        And I enter my off site gain reference number as "BGS-010124001"
+        And I enter my off site gain reference number as "gFSTO7ZSVI3oglCbbYAn4VMXDZmhMjY1"
         And I upload a "developer-metric" file
         And I confirm it is the correct file
         And I confirm my off site gain
