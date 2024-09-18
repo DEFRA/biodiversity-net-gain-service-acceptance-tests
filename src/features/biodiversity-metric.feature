@@ -15,12 +15,12 @@ Feature: Biodiversity metric display/playback
                 Then The total for "<HabitatType>" should be "<total>"
                 Examples:
                         | metricDisplayPage      | HabitatType                 | total |
-                        | check-habitat-baseline | Habitat type and condition  | 4.81  |
-                        | check-habitat-baseline | Hedgerow type and condition | 0.30  |
-                        | check-habitat-baseline | River type and condition    | 1.00  |
-                        | check-habitat-created  | Habitat type and condition  | 4.81  |
-                        | check-habitat-created  | Hedgerow type and condition | 0.30  |
-                        | check-habitat-created  | River type and condition    | 1.00  |
+                        | check-habitat-baseline | Habitat type and condition  | 31.75 |
+                        | check-habitat-baseline | Hedgerow type and condition | 0.93  |
+                        | check-habitat-baseline | River type and condition    | 2.00  |
+                        | check-habitat-created  | Habitat type and condition  | 31.75 |
+                        | check-habitat-created  | Hedgerow type and condition | 1.09  |
+                        | check-habitat-created  | River type and condition    | 2.00  |
 
         Scenario Outline: BNGP-3674 1, 4 metric files that are version <version> are rejected
                 # CD08 https://docs.google.com/document/d/1PVBCPrs7ijLhG48Qs9XNEeTqyTYYkU7bjXBNAoyXOaM/edit

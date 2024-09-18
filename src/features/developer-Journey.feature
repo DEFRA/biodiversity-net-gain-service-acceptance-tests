@@ -34,8 +34,8 @@ Feature: Developer Journey Tests
         # Development Information
         # Upload Metric : Add Biodiversity Gain Site details
         And I choose to add "biodiversity gain site information" details
-        And I enter my off site gain reference number as "BGS-010124001"
-        And I upload a "developer-metric" file
+        And I enter my off site gain reference number as "1234"
+        And I choose and upload a "developer-metric" file
         And I confirm it is the correct file
         And I confirm my off site gain
 
