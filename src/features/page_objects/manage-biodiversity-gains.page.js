@@ -17,6 +17,10 @@ class ManageBngPage extends Page {
     return $("a[href='/developer/development-projects']");
   }
 
+  get manageCombinedCaseLink() {
+    return $("a[href='/combined-case/combined-case-projects']");
+  }
+
   open() {
     return super.open("land/manage-biodiversity-gains");
   }

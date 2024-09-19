@@ -21,6 +21,11 @@ Feature: Dashboard for multiple registration support (defra id)
         And I choose to buy new statutory biodiversity credits
         Then I should be on the "credits-purchase-task-list" page
 
+    Scenario: https://eaflood.atlassian.net/browse/BNGP-5160  I can start a new combined case application
+        When  I choose to register a gain site and record off site gains at the same time
+        And I am on the "combined-case-projects" page
+        And I choose to register a gain site and allocate to a development
+        Then I should be on the "combined-case/tasklist" page
 
 
 

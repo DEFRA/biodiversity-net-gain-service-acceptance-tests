@@ -76,6 +76,12 @@ const CreditsPurchaseCheckAndSubmitPage = require("../page_objects/credits-purch
 const CreditsPurchaseApplicationSubmittedPage = require("../page_objects/credits-purchase/application-submitted.page.js");
 const CreditsPurchaseApplicationListPage = require("../page_objects/credits-purchase/check-statutory-biodiversity-credits.page.js");
 
+
+//**Combined case journey pages */
+const CombinedCaseTaskListPage = require("../page_objects/combined_case/tasklist.page.js");
+const CombinedCaseApplicationListPage = require("../page_objects/combined_case/combined-case-projects.page.js");
+
+
 const pages = {
   //Dashboard
   "manage-biodiversity-gains" : manageBngPage,
@@ -171,7 +177,12 @@ const pages = {
   // "development-details": CreditsPurchaseConfirmDevelopmentDetailsPage,
   "credits-purchase-check-and-submit": CreditsPurchaseCheckAndSubmitPage,
   "credits-purchase-application-submitted": CreditsPurchaseApplicationSubmittedPage,
-  "check-statutory-biodiversity-credits": CreditsPurchaseApplicationListPage
+  "check-statutory-biodiversity-credits": CreditsPurchaseApplicationListPage,
+
+//**COMBINED CASE */
+"combined-case-projects": CombinedCaseApplicationListPage,
+"combined-case/tasklist": CombinedCaseTaskListPage
+
 };
 
 Given(/^I navigate to the "(.*)" page$/, async (page) => {

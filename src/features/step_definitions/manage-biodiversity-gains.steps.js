@@ -39,3 +39,14 @@ When("I choose to manage my off-site gains for my development projects", async (
 })
 
 
+When("I choose to register a gain site and record off site gains at the same time", async () => {
+
+        // assert against the page title and on the manage BNG page
+        await $("h1").waitForExist();
+        expect(await browser.getTitle()).toContain(manageBngPage.titleText);
+
+        await expect(manageBngPage.manageCombinedCaseLink).toExist();
+        await manageBngPage.manageCombinedCaseLink.click();
+})
+
+
