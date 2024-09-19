@@ -1,6 +1,7 @@
 const { Given, When } = require("@wdio/cucumber-framework");
+const RegisterTaskListPage = require("../page_objects/register-land-task-list.page");
 const landOwnershipProofListPage = require("../page_objects/land_ownership/ownership-proof-list.page");
-const tasklistPage = require("../page_objects/register-land-task-list.page");
+const TaskList = new RegisterTaskListPage();
 
 
 Given("I have completed the land-ownership section", async () => {
@@ -19,7 +20,7 @@ async function completeLandOwnershipSection(fullname) {
   await landOwnershipProofListPage.continueButton.click();
 
   //tasklist section shows as complete
-  expect(await browser.getTitle()).toContain(tasklistPage.titleText);
-  await expect(tasklistPage.landOwnershipStatus).toHaveText("Completed");  
+  expect(await browser.getTitle()).toContain(TaskList.titleText);
+  await expect(TaskList.landOwnershipStatus).toHaveText("Completed");  
   }
 

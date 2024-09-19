@@ -1,7 +1,8 @@
 const { When, Then } = require("@wdio/cucumber-framework");
-const TaskList = require("../page_objects/register-land-task-list.page");
+const RegisterTaskListPage = require("../page_objects/register-land-task-list.page");
 const DeveloperTaskListPage = require("../page_objects/developer/tasklist.page");
 const CreditsTaskListPage = require("../page_objects/credits-purchase/tasklist.page");
+const TaskList = new RegisterTaskListPage();
 
 When ("I choose to add {string} details", async (task) => {
   const status = "Not started"

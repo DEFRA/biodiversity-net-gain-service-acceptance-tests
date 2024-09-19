@@ -3,7 +3,9 @@ const landboundaryFileChoices = require("../page_objects/land_boundary/choose-la
 const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
 const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
 const checkLandBoundaryDetailsPage = require("../page_objects/land_boundary/check-land-boundary-details.page");
-const tasklistPage = require("../page_objects/register-land-task-list.page");
+const RegisterTaskListPage = require("../page_objects/register-land-task-list.page");
+const TaskList = new RegisterTaskListPage();
+
 
 Given("I have completed the land-boundary section", async () => {
   await completeLandBoundarySection("TL6233", "1231.11");
@@ -38,6 +40,6 @@ async function completeLandBoundarySection(gridreference, hectares) {
   await (checkLandBoundaryDetailsPage.continueButton).click();
 
    //tasklist section shows as complete
-   await expect(tasklistPage.landBoundaryStatus).toHaveText("Completed");  
+   await expect(TaskList.landBoundaryStatus).toHaveText("Completed");  
 
 }

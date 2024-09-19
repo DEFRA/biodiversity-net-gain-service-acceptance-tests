@@ -65,4 +65,4 @@ class TaskList extends Page {
     return super.open("land/register-land-task-list");
   }
 }
-module.exports = new TaskList();
+module.exports = TaskList;

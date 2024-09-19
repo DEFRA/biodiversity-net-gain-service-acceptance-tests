@@ -4,7 +4,8 @@ const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/ad
 const legalAgreementCheckAddedAllFilesPage = require("../page_objects/legal_agreement/check-you-added-all-legal-files.page.js")
 const checkLegalAgreementDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page.js");
 const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page.js");
-const tasklistPage = require("../page_objects/register-land-task-list.page.js");
+const RegisterTaskListPage = require("../page_objects/register-land-task-list.page.js");
+const TaskList = new RegisterTaskListPage();
 const needAddAllLegalFilesPage = require("../page_objects/legal_agreement/planning_obligation/need-add-all-legal-files.page.js");
 const needAddAllLegalFilesCCPage = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-legal-files-cc.page.js")
 const needAddAllResponsibleBodies = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-responsible-bodies.page.js")
@@ -170,7 +171,7 @@ expect(await browser.getTitle()).toContain(habitatPlanLegalAgreementPage.titleTe
   await (checkLegalAgreementDetailsPage.acceptBtn).click();
 
   //tasklist section shows as complete
- await expect(tasklistPage.legalAgreementStatus).toHaveText("Completed");    
+ await expect(TaskList.legalAgreementStatus).toHaveText("Completed");    
   }
   
 async function addResponsibleBody(fullname) {
