@@ -1,7 +1,11 @@
 const { Given, When, Then, BeforeAll } = require('@wdio/cucumber-framework');
 const { join, basename } = require("node:path");
-const uploadWrittenAuthorisationPage = require("../page_objects/applicant_info/upload-written-authorisation.page.js");
-const checkWrittenAuthorisationPage = require("../page_objects/applicant_info/check-written-authorisation-file.page.js");
+const UploadWrittenAuthorisationPage = require("../page_objects/applicant_info/upload-written-authorisation.page.js");
+const uploadWrittenAuthorisationPage = new UploadWrittenAuthorisationPage();
+
+const CheckWrittenAuthorisationPage = require("../page_objects/applicant_info/check-written-authorisation-file.page.js");
+const checkWrittenAuthorisationPage = new CheckWrittenAuthorisationPage();
+
 const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
 const legalAgreementUploadPage = require("../page_objects/legal_agreement/conservation_covenant/upload-legal-agreement-cc.page");
@@ -29,6 +33,10 @@ const DeveloperTaskListPage = require( "../page_objects/developer/tasklist.page"
 const uploadCreditsPurchaseMetricFilePage = require("../page_objects/credits-purchase/upload-metric-file.page.js");
 const checkCreditsPurchaseMetricFilePage= require("../page_objects/credits-purchase/check-metric-file.page.js");
 const CreditsPurchaseTaskListPage = require( "../page_objects/credits-purchase/tasklist.page.js");
+
+//combined case uploads
+const CombinedcaseUploadWrittenAuthorisationPage = require("../page_objects/combined_case/applicant_info/upload-written-authorisation.page.js")
+const combinedcaseUploadWrittenAuthorisationPage = new CombinedcaseUploadWrittenAuthorisationPage();
 
 
 
@@ -153,6 +161,12 @@ When("I upload a {string} file", async (document) => {
 
       //metric is .xlsx and .xslm files only
       filePath = join(__dirname, "../../TestFiles/test_developer_metric.xlsm");
+      break;
+    }
+     //****Combined Case  UPLOADS*****
+     case "combined-case-written-authorisation": {
+      UploadPage = combinedcaseUploadWrittenAuthorisationPage;
+      CheckPage = checkWrittenAuthorisationPage;
       break;
     }
     default:{

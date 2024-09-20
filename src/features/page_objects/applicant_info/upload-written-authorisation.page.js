@@ -14,4 +14,4 @@ class UploadWrittenAuthorisationPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new UploadWrittenAuthorisationPage();
+module.exports = UploadWrittenAuthorisationPage;

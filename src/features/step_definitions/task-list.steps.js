@@ -2,6 +2,7 @@ const { When, Then } = require("@wdio/cucumber-framework");
 const RegisterTaskListPage = require("../page_objects/register-land-task-list.page");
 const DeveloperTaskListPage = require("../page_objects/developer/tasklist.page");
 const CreditsTaskListPage = require("../page_objects/credits-purchase/tasklist.page");
+const CombinedCaseTaskListPage = require("../page_objects/combined_case/tasklist.page.js");
 const TaskList = new RegisterTaskListPage();
 
 When ("I choose to add {string} details", async (task) => {
@@ -95,6 +96,47 @@ When ("I choose to add {string} details", async (task) => {
       await DeveloperTaskListPage.addPlanningDecisionNoticeInfo.click();
     break;
     }
+    // Combined case - reg
+    case "combined-case-applicant-info": {     
+      await expect(CombinedCaseTaskListPage.applicantInfoStatus).toHaveText(status);
+      await CombinedCaseTaskListPage.addApplicantInfo.click();  
+    break;
+    }
+    case "combined-case-land-ownership": {     
+      await expect(CombinedCaseTaskListPage.landOwnershipStatus).toHaveText(status);
+      await CombinedCaseTaskListPage.addLandOwnership.click();  
+    break;
+    }
+    case "combined-case-land-boundary": {
+      await expect(CombinedCaseTaskListPage.landBoundaryStatus).toHaveText(status);
+      await CombinedCaseTaskListPage.addLandBoundary.click();
+    break;
+  }
+     case "combined-case-metric": {
+      await expect(CombinedCaseTaskListPage.metricStatus).toHaveText(status);
+      await CombinedCaseTaskListPage.addMetric.click();
+    break;
+    }
+    case "combined-case-legal-agreement": {
+      await expect(CombinedCaseTaskListPage.legalAgreementStatus).toHaveText(status);
+      await CombinedCaseTaskListPage.addLegalAgreement.click();
+    break;
+    }
+    case "combined-case-local-land-charge": {
+      await expect(CombinedCaseTaskListPage.localLandChargeStatus).toHaveText(status);
+      await CombinedCaseTaskListPage.addLocallandCharge.click();
+    break;
+    }
+    // Combined case - allocation
+    
+    
+    
+    
+    case "combined-case-check-and-submit": {
+      await expect(CombinedCaseTaskListPage.submitStatus).toHaveText(status);
+    break;
+    }
+    
     default:{
       throw new Error(`Tasklist section ${task} doesn't exist`);
     } 

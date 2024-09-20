@@ -9,8 +9,13 @@ const applicantDetailsRolePage = require("../page_objects/applicant_details/role
 const applicantDetailsEmailPage = require("../page_objects/applicant_details/email.page");
 const applicantDetailsCorrectEmailPage = require("../page_objects/applicant_details/correct-email.page");
 const applicantDetailsCheckYourDetailsPage = require("../page_objects/applicant_details/check-your-details.page");
-const uploadWrittenAuthorisationPage = require("../page_objects/applicant_info/upload-written-authorisation.page.js");
-const checkApplicantInfoPage = require("../page_objects/applicant_info/check-applicant-information.page.js");
+
+const UploadWrittenAuthorisationPage = require("../page_objects/applicant_info/upload-written-authorisation.page.js");
+const uploadWrittenAuthorisationPage = new UploadWrittenAuthorisationPage();
+
+const CheckApplicantInfoPage = require("../page_objects/applicant_info/check-applicant-information.page.js");
+const checkApplicantInfoPage = new CheckApplicantInfoPage();
+
 const legalAgreementTypePage = require("../page_objects/legal_agreement/legal-agreement-type.page");
 const legalAgreementNeedpage = require("../page_objects/legal_agreement/need-legal-agreement.page");
 const needAddAllLegalFilesPage = require("../page_objects/legal_agreement/planning_obligation/need-add-all-legal-files.page.js");
@@ -26,7 +31,10 @@ const legalAgreementCheckDetailsPage = require("../page_objects/legal_agreement/
 const legalAgreementAnyOtherLandownersPage = require("../page_objects/legal_agreement/any-other-landowners.page.js");
 const managementPlanUploadPage = require("../page_objects/management_plan/management-plan-upload.page");
 const managementPlanCheckPage = require("../page_objects/management_plan/management-plan-check.page");
-const taskListPage = require("../page_objects/register-land-task-list.page");
+
+const RegisterTaskListPage = require("../page_objects/register-land-task-list.page");
+const taskListPage = new RegisterTaskListPage();
+
 const landBoundaryChooseUploadOptionPage = require("../page_objects/land_boundary/choose-land-boundary-upload.page");
 const landBoundaryUploadImageFilePage = require("../page_objects/land_boundary/upload-land-boundary.page");
 const landBoundaryUploadGeospatialFilePage = require("../page_objects/land_boundary/upload-geospatial-file.page");
@@ -80,6 +88,11 @@ const CreditsPurchaseApplicationListPage = require("../page_objects/credits-purc
 //**Combined case journey pages */
 const CombinedCaseTaskListPage = require("../page_objects/combined_case/tasklist.page.js");
 const CombinedCaseApplicationListPage = require("../page_objects/combined_case/combined-case-projects.page.js");
+
+const CombinedCaseUploadWrittenAuthorisationPage = require("../page_objects/combined_case/applicant_info/upload-written-authorisation.page.js")
+const combinedCaseUploadWrittenAuthorisationPage = new CombinedCaseUploadWrittenAuthorisationPage();
+const CombinedCaseCheckApplicantInfoPage = require("../page_objects/combined_case/applicant_info/check-applicant-information.page.js");
+const combinedCaseCheckApplicantInfoPage = new CombinedCaseCheckApplicantInfoPage();
 
 
 const pages = {
@@ -158,7 +171,6 @@ const pages = {
   //Confirmation
   "application-submitted": confirmationPage,
   
-
   //**DEVELOPER JOURNEY */
   //Start
   "routing-register": developerStartPage,
@@ -181,7 +193,9 @@ const pages = {
 
 //**COMBINED CASE */
 "combined-case-projects": CombinedCaseApplicationListPage,
-"combined-case/tasklist": CombinedCaseTaskListPage
+"combined-case/tasklist": CombinedCaseTaskListPage,
+"combined-case-check-applicant-info": combinedCaseCheckApplicantInfoPage,
+"combined-case-written-authorisation-upload": combinedCaseUploadWrittenAuthorisationPage
 
 };
 
