@@ -14,4 +14,4 @@ class AgentActingForClientPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new AgentActingForClientPage();
+module.exports = AgentActingForClientPage;

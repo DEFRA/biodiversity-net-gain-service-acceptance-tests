@@ -14,4 +14,4 @@ class ClientsUkAddressPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new ClientsUkAddressPage();
+module.exports = ClientsUkAddressPage;

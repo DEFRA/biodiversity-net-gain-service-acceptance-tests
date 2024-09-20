@@ -14,4 +14,4 @@ class ClientsNamePage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new ClientsNamePage();
+module.exports = ClientsNamePage;

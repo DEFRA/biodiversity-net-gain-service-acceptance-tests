@@ -10,4 +10,4 @@ class ClientsEmailPage extends Page {
     return super.open("land/clients-email-address");
   }
 }
-module.exports = new ClientsEmailPage();
+module.exports = ClientsEmailPage;

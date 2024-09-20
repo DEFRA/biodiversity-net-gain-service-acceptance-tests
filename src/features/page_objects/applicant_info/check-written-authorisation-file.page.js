@@ -14,4 +14,4 @@ class CheckWrittenAuthorisationPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new CheckWrittenAuthorisationPage();
+module.exports = CheckWrittenAuthorisationPage;

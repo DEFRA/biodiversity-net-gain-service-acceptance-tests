@@ -14,4 +14,4 @@ class IsClientAddressUkPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new IsClientAddressUkPage();
+module.exports = IsClientAddressUkPage;

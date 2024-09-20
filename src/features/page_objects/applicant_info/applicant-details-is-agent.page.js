@@ -14,4 +14,4 @@ class ApplicantDetailsIsAgentPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new ApplicantDetailsIsAgentPage();
+module.exports = ApplicantDetailsIsAgentPage;

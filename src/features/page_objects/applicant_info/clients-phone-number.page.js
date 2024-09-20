@@ -14,4 +14,4 @@ class ClientsPhoneNumberPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new ClientsPhoneNumberPage();
+module.exports = ClientsPhoneNumberPage;

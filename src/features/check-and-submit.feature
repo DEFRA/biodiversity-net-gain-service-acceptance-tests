@@ -17,7 +17,7 @@ Feature: Check and Submit
         And I upload a "written-authorisation" file
         And I confirm it is the correct file
         And I am on the "check-applicant-info" page
-        And confirm the applicant-info details are correct
+        And confirm the "applicant-info" details are correct
         # land ownership
         And I choose to add "land-ownership" details
         And I am on the "land-ownership-upload" page

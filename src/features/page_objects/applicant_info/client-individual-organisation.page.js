@@ -16,4 +16,4 @@ class IsClientIndividualorOrgPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new IsClientIndividualorOrgPage();
+module.exports = IsClientIndividualorOrgPage;
