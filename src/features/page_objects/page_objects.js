@@ -88,22 +88,28 @@ const CombinedCaseLandOwnershipCheckPage = require("./combined_case/land_ownersh
 
 // Instantiate the objects
 module.exports = {
+   //Dashboard
   "manage-biodiversity-gains": new ManageBngPage(),
   "biodiversity-gain-sites": new BiodiversityGainSitesPage(),
+  //eligibility questions
   "check-you-can-register": new CheckYouCanRegisterPage(),
   "site-in-england": new SiteInEnglandPage(),
   "cannot-continue": new CannotContinuePage(),
   // "results": new ResultsPage(),
+  //applicant details
   "applicant-name": new ApplicantDetailsNamePage(),
   // "role": new ApplicantDetailsRolePage(),
   // "email": new ApplicantDetailsEmailPage(),
   "correct-email": new ApplicantDetailsCorrectEmailPage(),
   "check-your-details": new ApplicantDetailsCheckYourDetailsPage(),
+  //applicant info
   "written-authorisation-upload": new UploadWrittenAuthorisationPage(),
   "check-applicant-info": new CheckApplicantInfoPage(),
+  //land ownership
   "land-ownership-upload": new LandOwnershipUploadPage(),
   "land-ownership-check": new LandOwnershipCheckPage(),
   "registered-landowner": new LandownershipRegisteredLandownerPage(),
+  //Land boundary 
   "choose-land-boundary-upload": new LandBoundaryChooseUploadOptionPage(),
   "land-boundary-upload": new LandBoundaryUploadImageFilePage(),
   "geospatial-upload": new LandBoundaryUploadGeospatialFilePage(),
@@ -112,15 +118,18 @@ module.exports = {
   "check-land-boundary-details": new LandBoundaryCheckImageDetailsPage(),
   "grid-reference": new GridReferencePage(),
   "add-hectares": new AddHectaresPage(),
+  //metric
   "metric-upload": new MetricUploadPage(),
   "metric-check": new MetricCheckPage(),
   "check-habitat-baseline": new MetricDisplayBaselinePage(),
   "check-habitat-created": new MetricDisplayHabitatCreationPage(),
   "check-metric-details": new MetricCheckDetailsPage(),
+  //hmmp
   "management-plan-upload": new ManagementPlanUploadPage(),
   "management-plan-check": new ManagementPlanCheckPage(),
   "monitoring-start-date": new MonitoringStartDatePage(),
   "check-management-monitoring-details": new ManagementMonitoringCheckDetailsPage(),
+  //legal agreement
   "legal-agreement-upload": new LegalAgreementUploadPage(),
   "legal-agreement-cc-upload": new LegalAgreementCCUploadPage(),
   "legal-agreement-check": new LegalAgreementCheckFileCCPage(),
@@ -134,11 +143,22 @@ module.exports = {
   "check-legal-agreement-details": new LegalAgreementCheckDetailsPage(),
   "check-legal-agreement-cc-details": new LegalAgreementCheckFileCCPage(),
   "any-other-landowners": new LegalAgreementAnyOtherLandownersPage(),
+  //Local land Charge search certificate
   "local-land-charge-upload": new LocalLandChargeUploadPage(),
   "local-land-charge-check": new LocalLandChargeCheckPage(),
   "need-local-land-charge": new LocalLandChargeNeedPage(),
+   // task-list
   "register-land-task-list": new RegisterTaskListPage(),
+   //// tasklist sections
+   "land-ownership" : new LandOwnershipUploadPage(),
+   "land-boundary" : new LandBoundaryUploadImageFilePage(),
+   "metric": new MetricUploadPage(),
+   "management-plan": new ManagementPlanUploadPage(),
+   "legal-agreement": new LegalAgreementTypePage(),
+   "local-land-charge": new LocalLandChargeUploadPage(),
+    //summary
   "check-and-submit": new CheckAndSubmitPage(),
+    //Confirmation
   "application-submitted": new ConfirmationPage(),
 
   // Developer Journey
@@ -173,3 +193,4 @@ module.exports = {
   // "land-boundary-upload": new LandBoundaryUploadImageFilePage(),
 
 };
+
