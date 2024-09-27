@@ -13,4 +13,4 @@ class ManagementPlanCheck extends Page {
     return super.open("land/check-management-plan-file");
   }
 }
-module.exports = new ManagementPlanCheck();
+module.exports = ManagementPlanCheck;

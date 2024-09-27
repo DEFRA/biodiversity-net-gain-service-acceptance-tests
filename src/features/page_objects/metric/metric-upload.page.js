@@ -14,4 +14,4 @@ class MetricUpload extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new MetricUpload();
+module.exports = MetricUpload;

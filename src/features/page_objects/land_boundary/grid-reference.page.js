@@ -20,4 +20,4 @@ class LandBoundaryGridReference extends Page {
     return super.open("land/add-grid-reference");
   }
 }
-module.exports = new LandBoundaryGridReference();
+module.exports = LandBoundaryGridReference;

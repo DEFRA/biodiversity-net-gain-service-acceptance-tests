@@ -10,4 +10,4 @@ class AddLandownerIndividualCCPage extends Page {
     return super.open("land/add-landowner-individual-conservation-covenant");
   }
 }
-module.exports = new AddLandownerIndividualCCPage();
+module.exports = AddLandownerIndividualCCPage;

@@ -10,4 +10,4 @@ class NeedAddAllLandownersS106Page extends Page {
     return super.open("land/need-add-all-landowners");
   }
 }
-module.exports = new NeedAddAllLandownersS106Page();
+module.exports = NeedAddAllLandownersS106Page;

@@ -17,4 +17,4 @@ class CheckYouCanRegisterPage extends Page {
     return super.open("land/check-you-can-register");
   }
 }
-module.exports = new CheckYouCanRegisterPage();
+module.exports = CheckYouCanRegisterPage;

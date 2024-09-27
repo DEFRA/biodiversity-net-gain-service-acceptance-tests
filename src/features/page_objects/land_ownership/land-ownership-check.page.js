@@ -1,7 +1,7 @@
 // CD13 https://docs.google.com/document/d/1512UH8oObKC-6taSPuOhJ3ZEF25I8tBvu4FMeq-_grY/edit
 const Page = require("../page");
 
-class LandOwnershipCheck extends Page {
+class LandOwnershipCheckPage extends Page {
   get titleText() {
     return "Check the proof of land ownership file";
   }
@@ -14,4 +14,4 @@ class LandOwnershipCheck extends Page {
     return super.open("land/check-ownership-proof-file");
   }
 }
-module.exports = new LandOwnershipCheck();
+module.exports = LandOwnershipCheckPage;

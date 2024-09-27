@@ -9,6 +9,6 @@ class CreditsMetricUploadPage extends Page {
     return super.open("credits-purchase/upload-metric-file");
   }
 }
-module.exports = new CreditsMetricUploadPage();
+module.exports = CreditsMetricUploadPage;
 
 

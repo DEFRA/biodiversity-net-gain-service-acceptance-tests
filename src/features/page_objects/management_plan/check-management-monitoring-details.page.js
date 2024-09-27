@@ -9,4 +9,4 @@ class ManagementMonitoringPlanCheckDetails extends Page {
     return super.open("land/check-management-monitoring-details");
   }
 }
-module.exports = new ManagementMonitoringPlanCheckDetails();
+module.exports = ManagementMonitoringPlanCheckDetails;

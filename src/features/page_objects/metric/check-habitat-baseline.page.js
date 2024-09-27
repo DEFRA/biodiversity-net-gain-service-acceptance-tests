@@ -10,4 +10,4 @@ class MetricDisplayBaseline extends Page {
     return super.open("land/check-habitat-baseline");
   }
 }
-module.exports = new MetricDisplayBaseline();
+module.exports = MetricDisplayBaseline;

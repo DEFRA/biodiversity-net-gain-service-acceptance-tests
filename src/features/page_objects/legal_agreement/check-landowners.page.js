@@ -10,4 +10,4 @@ class LegalAgreementCheckLandownersPage extends Page {
     return super.open("land/check-landowners");
   }
 }
-module.exports = new LegalAgreementCheckLandownersPage();
+module.exports = LegalAgreementCheckLandownersPage;

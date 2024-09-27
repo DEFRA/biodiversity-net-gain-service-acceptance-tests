@@ -57,4 +57,4 @@ class CreditsTaskListPage extends Page {
       return super.open("credits-purchase/tasklist");
     }
   }
-  module.exports = new CreditsTaskListPage();
+  module.exports = CreditsTaskListPage;

@@ -33,4 +33,4 @@ class CheckYourDetails extends Page {
     return super.open("land/check-your-details");
   }
 }
-module.exports = new CheckYourDetails();
+module.exports = CheckYourDetails;

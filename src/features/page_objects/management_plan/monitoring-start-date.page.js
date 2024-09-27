@@ -9,4 +9,4 @@ class MonitoringStartDate extends Page {
     return super.open("land/management-monitoring-start-date");
   }
 }
-module.exports = new MonitoringStartDate();
+module.exports = MonitoringStartDate;

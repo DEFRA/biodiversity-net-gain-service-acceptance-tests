@@ -20,4 +20,4 @@ class DeveloperApplicantDetailsName extends Page {
     return super.open("developer/details-name");
   }
 }
-module.exports = new DeveloperApplicantDetailsName();
+module.exports = DeveloperApplicantDetailsName;

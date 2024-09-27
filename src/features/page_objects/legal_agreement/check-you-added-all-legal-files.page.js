@@ -14,4 +14,4 @@ class LegalAgreementCheckAddedAllFilesPage extends Page {
     return super.open("land/check-you-added-all-legal-files");
   }
 }
-module.exports = new LegalAgreementCheckAddedAllFilesPage();
+module.exports = LegalAgreementCheckAddedAllFilesPage;

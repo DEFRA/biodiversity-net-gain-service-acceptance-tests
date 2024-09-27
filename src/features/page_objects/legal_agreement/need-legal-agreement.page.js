@@ -9,4 +9,4 @@ class LegalAgreementNeed extends Page {
     return super.open("land/need-legal-agreement");
   }
 }
-module.exports = new LegalAgreementNeed();
+module.exports = LegalAgreementNeed;

@@ -106,4 +106,4 @@ class CheckAndSubmit extends Page {
     return super.open("land/check-and-submit");
   }
 }
-module.exports = new CheckAndSubmit();
+module.exports = CheckAndSubmit;

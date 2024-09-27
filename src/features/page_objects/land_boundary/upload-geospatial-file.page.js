@@ -13,4 +13,4 @@ class LandBoundaryUploadGeospatialFile extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new LandBoundaryUploadGeospatialFile();
+module.exports = LandBoundaryUploadGeospatialFile;

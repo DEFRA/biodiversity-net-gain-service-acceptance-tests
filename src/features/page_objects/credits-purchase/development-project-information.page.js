@@ -13,4 +13,4 @@ class creditsPurchaseDevelopmentInformationPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new creditsPurchaseDevelopmentInformationPage();
+module.exports = creditsPurchaseDevelopmentInformationPage;

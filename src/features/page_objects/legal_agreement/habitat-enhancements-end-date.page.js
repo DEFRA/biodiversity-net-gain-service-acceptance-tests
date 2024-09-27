@@ -10,4 +10,4 @@ class LegalAgreementEndDatePage extends Page {
     return super.open("land/habitat-enhancements-end-date");
   }
 }
-module.exports = new LegalAgreementEndDatePage();
+module.exports = LegalAgreementEndDatePage;

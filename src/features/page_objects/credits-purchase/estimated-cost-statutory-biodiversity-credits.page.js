@@ -41,4 +41,4 @@ class EstimatedCostStatutoryBiodiversityCreditsPage extends Page {
     return super.open("credits-purchase/estimated-cost-statutory-biodiversity-credits");
   }
 }
-module.exports = new EstimatedCostStatutoryBiodiversityCreditsPage();
+module.exports = EstimatedCostStatutoryBiodiversityCreditsPage;

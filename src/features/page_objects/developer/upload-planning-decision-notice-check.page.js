@@ -13,4 +13,4 @@ class DeveloperUploadPlanningDecisionNoticePage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new DeveloperUploadPlanningDecisionNoticePage();
+module.exports = DeveloperUploadPlanningDecisionNoticePage;

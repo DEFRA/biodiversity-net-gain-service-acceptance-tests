@@ -14,4 +14,4 @@ class MetricCheck extends Page {
     return super.open("land/check-metric-file");
   }
 }
-module.exports = new MetricCheck();
+module.exports = MetricCheck;

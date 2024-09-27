@@ -17,4 +17,4 @@ class LandBoundaryCheckGeospatialFile extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new LandBoundaryCheckGeospatialFile();
+module.exports = LandBoundaryCheckGeospatialFile;

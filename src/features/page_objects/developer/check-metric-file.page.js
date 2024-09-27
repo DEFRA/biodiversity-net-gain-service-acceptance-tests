@@ -13,4 +13,4 @@ class DeveloperCheckMetricUploadPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new DeveloperCheckMetricUploadPage();
+module.exports = DeveloperCheckMetricUploadPage;

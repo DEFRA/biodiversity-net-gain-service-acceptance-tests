@@ -13,4 +13,4 @@ class developerJourneyDevelopmentInformationPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new developerJourneyDevelopmentInformationPage();
+module.exports = developerJourneyDevelopmentInformationPage;

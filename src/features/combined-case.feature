@@ -3,7 +3,7 @@ Feature: Combined Case Check and Submit
     As a Site Provider
     I need to review all the application details I have provided
     So that I can confirm I am satisfied with all the entered details and submit my application
-    @new  @e2e
+    @e2e
     Scenario: Complete all combined case details
         Given I choose to manage biodiversity gains
         # // nav bar manage link should really be baseurl
@@ -18,13 +18,13 @@ Feature: Combined Case Check and Submit
         And I confirm it is the correct file
         And I am on the "combined-case-check-applicant-info" page
         And confirm the "combined-case-applicant-info" details are correct
-# # land ownership
-# And I choose to add "land-ownership" details
-# And I am on the "land-ownership-upload" page
-# And I upload a "land-ownership" file
-# And I confirm it is the correct file
-# # And I confirm the correct file
-# And I have completed the land-ownership section
+        # land ownership
+        And I choose to add "combined-case-land-ownership" details
+        And I am on the "combined-case-land-ownership-upload" page
+        And I upload a "combined-case-land-ownership" file
+        And I confirm it is the correct file
+        # And I confirm the correct file
+        And I have completed the land-ownership section
 # # land boundary
 # And I choose to add "land-boundary" details
 # And I am on the "land-boundary-upload" page

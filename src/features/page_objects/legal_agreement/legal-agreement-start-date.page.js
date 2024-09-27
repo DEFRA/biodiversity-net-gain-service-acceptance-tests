@@ -9,4 +9,4 @@ class LegalAgreementStartDate extends Page {
     return super.open("land/legal-agreement-start-date");
   }
 }
-module.exports = new LegalAgreementStartDate();
+module.exports = LegalAgreementStartDate;

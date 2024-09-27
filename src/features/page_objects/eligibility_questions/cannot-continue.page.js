@@ -9,4 +9,4 @@ class CannotContinuePage extends Page {
     return super.open("land/cannot-continue");
   }
 }
-module.exports = new CannotContinuePage();
+module.exports = CannotContinuePage;

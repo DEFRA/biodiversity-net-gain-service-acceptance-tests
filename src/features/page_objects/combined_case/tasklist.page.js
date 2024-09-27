@@ -29,4 +29,4 @@ class CombinedCaseTaskListPage extends RegisterTasklistPage {
     return super.open("combined-case/tasklist");
   }
 }
-module.exports = new CombinedCaseTaskListPage();
+module.exports = CombinedCaseTaskListPage;

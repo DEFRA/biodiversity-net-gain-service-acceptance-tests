@@ -10,4 +10,4 @@ class LegalAgreementAnyOtherLandownersPage extends Page {
     return super.open("land/any-other-landowners");
   }
 }
-module.exports = new LegalAgreementAnyOtherLandownersPage();
+module.exports = LegalAgreementAnyOtherLandownersPage;

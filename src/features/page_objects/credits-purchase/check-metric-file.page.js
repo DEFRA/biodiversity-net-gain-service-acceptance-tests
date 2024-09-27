@@ -13,4 +13,4 @@ class CreditsPurchaseCheckMetricUploadPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new CreditsPurchaseCheckMetricUploadPage();
+module.exports = CreditsPurchaseCheckMetricUploadPage;

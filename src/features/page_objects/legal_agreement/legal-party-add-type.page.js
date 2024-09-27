@@ -17,4 +17,4 @@ class LegalPartyAddTypePage extends Page {
     return super.open("land/legal-party-add-type");
   }
 }
-module.exports = new LegalPartyAddTypePage();
+module.exports = LegalPartyAddTypePage;

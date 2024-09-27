@@ -40,4 +40,4 @@ class LegalAgreementAddParties extends Page {
     return super.open("land/add-legal-agreement-parties");
   }
 }
-module.exports = new LegalAgreementAddParties();
+module.exports = LegalAgreementAddParties;

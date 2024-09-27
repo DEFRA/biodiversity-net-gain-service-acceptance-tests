@@ -13,4 +13,4 @@ class LegalPartyListPage extends Page {
     return super.open("land/legal-party-list");
   }
 }
-module.exports = new LegalPartyListPage();
+module.exports = LegalPartyListPage;

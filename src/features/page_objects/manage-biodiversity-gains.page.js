@@ -25,4 +25,4 @@ class ManageBngPage extends Page {
     return super.open("land/manage-biodiversity-gains");
   }
 }
-module.exports = new ManageBngPage();
+module.exports = ManageBngPage;

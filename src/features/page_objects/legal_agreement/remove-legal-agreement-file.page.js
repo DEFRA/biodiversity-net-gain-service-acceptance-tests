@@ -10,4 +10,4 @@ class LegalAgreementRemoveFilePage extends Page {
     return super.open("land/remove-legal-agreement-file");
   }
 }
-module.exports = new LegalAgreementRemoveFilePage();
+module.exports = LegalAgreementRemoveFilePage;

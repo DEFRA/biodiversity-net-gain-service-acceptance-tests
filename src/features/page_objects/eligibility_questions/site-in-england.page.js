@@ -9,4 +9,4 @@ class SiteInEnglandPage extends Page {
     return super.open("land/site-in-england");
   }
 }
-module.exports = new SiteInEnglandPage();
+module.exports = SiteInEnglandPage;

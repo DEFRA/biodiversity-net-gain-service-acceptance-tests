@@ -13,4 +13,4 @@ class BiodiversityGainSitePage extends Page {
     return super.open("land/biodiversity-gain-sites");
   }
 }
-module.exports = new BiodiversityGainSitePage();
+module.exports = BiodiversityGainSitePage;

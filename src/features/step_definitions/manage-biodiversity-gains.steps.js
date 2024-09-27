@@ -1,5 +1,6 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
-const manageBngPage = require("../page_objects/manage-biodiversity-gains.page");
+const ManageBngPage = require("../page_objects/manage-biodiversity-gains.page");
+const manageBngPage = new ManageBngPage();
 
 Given("I choose to manage biodiversity gains", async () => {
    

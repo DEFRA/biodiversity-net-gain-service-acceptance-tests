@@ -1,11 +1,15 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-const landboundaryFileChoices = require("../page_objects/land_boundary/choose-land-boundary-upload.page");
-const gridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
-const addHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
-const checkLandBoundaryDetailsPage = require("../page_objects/land_boundary/check-land-boundary-details.page");
+const LandboundaryFileChoices = require("../page_objects/land_boundary/choose-land-boundary-upload.page");
+const GridReferencePage = require("../page_objects/land_boundary/grid-reference.page");
+const AddHectaresPage = require("../page_objects/land_boundary/add-hectares.page");
+const CheckLandBoundaryDetailsPage = require("../page_objects/land_boundary/check-land-boundary-details.page");
 const RegisterTaskListPage = require("../page_objects/register-land-task-list.page");
-const TaskList = new RegisterTaskListPage();
 
+const landboundaryFileChoices = new LandboundaryFileChoices();
+const gridReferencePage = new GridReferencePage();
+const addHectaresPage = new AddHectaresPage();
+const checkLandBoundaryDetailsPage = new CheckLandBoundaryDetailsPage();
+const TaskList = new RegisterTaskListPage();
 
 Given("I have completed the land-boundary section", async () => {
   await completeLandBoundarySection("TL6233", "1231.11");

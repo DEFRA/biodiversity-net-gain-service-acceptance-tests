@@ -13,4 +13,4 @@ class LandBoundaryUploadImageFile extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new LandBoundaryUploadImageFile();
+module.exports = LandBoundaryUploadImageFile;

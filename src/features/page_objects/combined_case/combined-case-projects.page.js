@@ -13,4 +13,4 @@ class CombinedCaseApplicationListPage extends Page {
     return super.open("combined-case/combined-case-projects");
   }
 }
-module.exports = new CombinedCaseApplicationListPage();
+module.exports = CombinedCaseApplicationListPage;

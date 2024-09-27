@@ -10,4 +10,4 @@ class LandownerIndividualOrganisationS106Page extends Page {
     return super.open("land/landowner-individual-organisation");
   }
 }
-module.exports = new LandownerIndividualOrganisationS106Page();
+module.exports = LandownerIndividualOrganisationS106Page;

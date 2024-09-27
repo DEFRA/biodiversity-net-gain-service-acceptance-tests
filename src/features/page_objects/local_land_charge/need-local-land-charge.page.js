@@ -10,4 +10,4 @@ class LocalLandChargeNeedPage extends Page {
     return super.open("land/need-local-land-charge");
   }
 }
-module.exports = new LocalLandChargeNeedPage();
+module.exports = LocalLandChargeNeedPage;

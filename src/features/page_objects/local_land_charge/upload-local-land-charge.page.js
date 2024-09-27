@@ -14,4 +14,4 @@ class LocalLandChargeUploadPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new LocalLandChargeUploadPage();
+module.exports = LocalLandChargeUploadPage;

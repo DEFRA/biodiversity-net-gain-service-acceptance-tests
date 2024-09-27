@@ -9,4 +9,4 @@ class LandBoundaryCheckDetails extends Page {
     return super.open("land/check-land-boundary-details");
   }
 }
-module.exports = new LandBoundaryCheckDetails();
+module.exports = LandBoundaryCheckDetails;

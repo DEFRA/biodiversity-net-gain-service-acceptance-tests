@@ -14,4 +14,4 @@ class LocalLandChargeCheckPage extends Page {
     return super.open("land/check-local-land-charge");
   }
 }
-module.exports = new LocalLandChargeCheckPage();
+module.exports = LocalLandChargeCheckPage;

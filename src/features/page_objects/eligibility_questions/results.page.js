@@ -13,4 +13,4 @@ class ResultsPage extends Page {
     return super.open("land/results");
   }
 }
-module.exports = new ResultsPage();
+module.exports = ResultsPage;

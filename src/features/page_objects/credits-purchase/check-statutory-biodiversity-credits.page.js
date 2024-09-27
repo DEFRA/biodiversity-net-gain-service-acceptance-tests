@@ -13,4 +13,4 @@ class CreditsPurchaseApplicationListPage extends Page {
     return super.open("land/check-statutory-biodiversity-credits");
   }
 }
-module.exports = new CreditsPurchaseApplicationListPage();
+module.exports = CreditsPurchaseApplicationListPage;

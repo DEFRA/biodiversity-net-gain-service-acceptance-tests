@@ -48,4 +48,4 @@ class ApplicantDetailsRole extends Page {
     return super.open("land/role");
   }
 }
-module.exports = new ApplicantDetailsRole();
+module.exports = ApplicantDetailsRole;

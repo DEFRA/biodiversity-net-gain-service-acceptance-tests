@@ -14,4 +14,4 @@ class LegalAgreementCheckFileCC extends Page {
     return super.open("land/check-legal-agreement-file");
   }
 }
-module.exports = new LegalAgreementCheckFileCC();
+module.exports = LegalAgreementCheckFileCC;

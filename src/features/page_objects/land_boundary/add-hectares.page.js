@@ -20,4 +20,4 @@ async addHectares(value) {
     return super.open("land/add-hectares");
   }
 }
-module.exports = new LandBoundaryAddHectares();
+module.exports = LandBoundaryAddHectares;

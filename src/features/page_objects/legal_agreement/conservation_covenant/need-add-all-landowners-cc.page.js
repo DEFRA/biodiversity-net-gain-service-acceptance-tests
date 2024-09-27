@@ -10,4 +10,4 @@ class NeedAddAllLandownersCCPage extends Page {
     return super.open("land/need-add-all-landowners-conservation-covenant");
   }
 }
-module.exports = new NeedAddAllLandownersCCPage();
+module.exports = NeedAddAllLandownersCCPage;

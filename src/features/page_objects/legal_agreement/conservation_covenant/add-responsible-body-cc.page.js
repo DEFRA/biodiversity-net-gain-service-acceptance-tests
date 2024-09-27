@@ -15,4 +15,4 @@ class AddResponsibleBodyConservationCovenantPage extends Page {
     return super.open("land/add-responsible-body-conservation-covenant");
   }
 }
-module.exports = new AddResponsibleBodyConservationCovenantPage();
+module.exports = AddResponsibleBodyConservationCovenantPage;

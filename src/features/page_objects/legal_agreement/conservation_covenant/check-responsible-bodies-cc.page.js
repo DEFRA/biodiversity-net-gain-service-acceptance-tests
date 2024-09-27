@@ -10,4 +10,4 @@ class CheckResponsibleBodiesPage extends Page {
     return super.open("land/check-responsible-bodies");
   }
 }
-module.exports = new CheckResponsibleBodiesPage();
+module.exports = CheckResponsibleBodiesPage;

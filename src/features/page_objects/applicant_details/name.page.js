@@ -20,4 +20,4 @@ class ApplicantDetailsName extends Page {
     return super.open("land/name");
   }
 }
-module.exports = new ApplicantDetailsName();
+module.exports = ApplicantDetailsName;

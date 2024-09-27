@@ -1,32 +1,58 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 
-const legalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page.js");
-const legalAgreementCheckAddedAllFilesPage = require("../page_objects/legal_agreement/check-you-added-all-legal-files.page.js")
-const checkLegalAgreementDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page.js");
-const legalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page.js");
+const LegalAgreementAddPartiesPage = require("../page_objects/legal_agreement/add-legal-agreement-parties.page.js");
+const LegalAgreementCheckAddedAllFilesPage = require("../page_objects/legal_agreement/check-you-added-all-legal-files.page.js")
+const CheckLegalAgreementDetailsPage = require("../page_objects/legal_agreement/check-legal-agreement-details.page.js");
+const LegalPartyListPage = require("../page_objects/legal_agreement/legal-party-list.page.js");
 const RegisterTaskListPage = require("../page_objects/register-land-task-list.page.js");
-const TaskList = new RegisterTaskListPage();
-const needAddAllLegalFilesPage = require("../page_objects/legal_agreement/planning_obligation/need-add-all-legal-files.page.js");
-const needAddAllLegalFilesCCPage = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-legal-files-cc.page.js")
-const needAddAllResponsibleBodies = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-responsible-bodies.page.js")
-const addResponsibleBodyConservationCovenantPage = require("../page_objects/legal_agreement/conservation_covenant/add-responsible-body-cc.page.js")
-const checkResponsibleBodiesPage = require("../page_objects/legal_agreement/conservation_covenant/check-responsible-bodies-cc.page.js")
-const legalPartyAddTypePage = require("../page_objects/legal_agreement/legal-party-add-type.page.js");
+const NeedAddAllLegalFilesPage = require("../page_objects/legal_agreement/planning_obligation/need-add-all-legal-files.page.js");
+const NeedAddAllLegalFilesCCPage = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-legal-files-cc.page.js")
+const NeedAddAllResponsibleBodies = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-responsible-bodies.page.js")
+const AddResponsibleBodyConservationCovenantPage = require("../page_objects/legal_agreement/conservation_covenant/add-responsible-body-cc.page.js")
+const CheckResponsibleBodiesPage = require("../page_objects/legal_agreement/conservation_covenant/check-responsible-bodies-cc.page.js")
+const LegalPartyAddTypePage = require("../page_objects/legal_agreement/legal-party-add-type.page.js");
 const AddLandownerIndividualCCPage = require("../page_objects/legal_agreement/conservation_covenant/add-landowner-individual-conservation-covenant.page.js")
-const addLandownerOrganisationCCPage = require("../page_objects/legal_agreement/conservation_covenant/add-landowner-organisation-conservation-covenant.page.js")
-const needAddAllLandownersCCPage = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-landowners-cc.page.js");
+const AddLandownerOrganisationCCPage = require("../page_objects/legal_agreement/conservation_covenant/add-landowner-organisation-conservation-covenant.page.js")
+const NeedAddAllLandownersCCPage = require("../page_objects/legal_agreement/conservation_covenant/need-add-all-landowners-cc.page.js");
 const NeedAddAllLandownersS106Page = require("../page_objects/legal_agreement/planning_obligation/need-add-all-landowners.page.js")
-const landownerIndividualOrOrganisationCCPage = require("../page_objects/legal_agreement/conservation_covenant/landowner-cc-individual-organisation.page.js")
+const LandownerIndividualOrOrganisationCCPage = require("../page_objects/legal_agreement/conservation_covenant/landowner-cc-individual-organisation.page.js")
 const LandownerIndividualOrganisationS106Page = require("../page_objects/legal_agreement/planning_obligation/landowner-individual-organisation.page.js")
-const legalAgreementRemoveFilePage = require("../page_objects/legal_agreement/remove-legal-agreement-file.page.js")
-const legalAgreementCheckLandownersPage = require("../page_objects/legal_agreement/check-landowners.page.js")
-const habitatPlanLegalAgreementPage = require("../page_objects/management_plan/habitat-plan-legal-agreement.page.js");
-const enhancementWorksStartDatePage = require('../page_objects/management_plan/enhancement-works-start-date.page.js');
-const legalAgreementEndDatePage = require('../page_objects/legal_agreement/habitat-enhancements-end-date.page.js');
-const legalAgreementAnyOtherLandownersPage = require("../page_objects/legal_agreement/any-other-landowners.page.js");
-const applicantDetailsEmailpage = require("../page_objects/applicant_details/email.page.js");
+const LegalAgreementRemoveFilePage = require("../page_objects/legal_agreement/remove-legal-agreement-file.page.js")
+const LegalAgreementCheckLandownersPage = require("../page_objects/legal_agreement/check-landowners.page.js")
+const HabitatPlanLegalAgreementPage = require("../page_objects/management_plan/habitat-plan-legal-agreement.page.js");
+const EnhancementWorksStartDatePage = require('../page_objects/management_plan/enhancement-works-start-date.page.js');
+const LegalAgreementEndDatePage = require('../page_objects/legal_agreement/habitat-enhancements-end-date.page.js');
+const LegalAgreementAnyOtherLandownersPage = require("../page_objects/legal_agreement/any-other-landowners.page.js");
+const ApplicantDetailsEmailpage = require("../page_objects/applicant_details/email.page.js");
 
-let  basePage = legalAgreementAddPartiesPage;
+const legalAgreementAddPartiesPage = new LegalAgreementAddPartiesPage();
+const legalAgreementCheckAddedAllFilesPage = new LegalAgreementCheckAddedAllFilesPage();
+const checkLegalAgreementDetailsPage = new CheckLegalAgreementDetailsPage();
+const legalPartyListPage = new LegalPartyListPage();
+const TaskList = new RegisterTaskListPage();
+const needAddAllLegalFilesPage = new NeedAddAllLegalFilesPage();
+const needAddAllLegalFilesCCPage = new NeedAddAllLegalFilesCCPage();
+const needAddAllResponsibleBodies = new NeedAddAllResponsibleBodies();
+const addResponsibleBodyConservationCovenantPage = new AddResponsibleBodyConservationCovenantPage();
+const checkResponsibleBodiesPage = new CheckResponsibleBodiesPage();
+const legalPartyAddTypePage = new LegalPartyAddTypePage();
+const addLandownerIndividualCCPage = new AddLandownerIndividualCCPage();
+const addLandownerOrganisationCCPage = new AddLandownerOrganisationCCPage();
+const needAddAllLandownersCCPage = new NeedAddAllLandownersCCPage();
+const needAddAllLandownersS106Page = new NeedAddAllLandownersS106Page();
+const landownerIndividualOrOrganisationCCPage = new LandownerIndividualOrOrganisationCCPage();
+const landownerIndividualOrganisationS106Page = new LandownerIndividualOrganisationS106Page();
+const legalAgreementRemoveFilePage = new LegalAgreementRemoveFilePage();
+const legalAgreementCheckLandownersPage = new LegalAgreementCheckLandownersPage();
+const habitatPlanLegalAgreementPage = new HabitatPlanLegalAgreementPage();
+const enhancementWorksStartDatePage = new EnhancementWorksStartDatePage();
+const legalAgreementEndDatePage = new LegalAgreementEndDatePage();
+const legalAgreementAnyOtherLandownersPage = new LegalAgreementAnyOtherLandownersPage();
+const applicantDetailsEmailpage = new ApplicantDetailsEmailpage();
+
+
+
+let  basePage = new LegalAgreementAddPartiesPage();
 
 Given("I have completed the legal-agreement section", async () => {
   await completeLegalAgreementSection("legal party 1", "landowner@email.com");

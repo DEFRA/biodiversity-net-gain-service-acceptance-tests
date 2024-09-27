@@ -13,4 +13,4 @@ class LandBoundaryCheckImageFile extends Page {
     return super.open("land/check-land-boundary-file");
   }
 }
-module.exports = new LandBoundaryCheckImageFile();
+module.exports = LandBoundaryCheckImageFile;

@@ -13,4 +13,4 @@ class creditsPurchaseCheckAndSubmitPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new creditsPurchaseCheckAndSubmitPage();
+module.exports = creditsPurchaseCheckAndSubmitPage;

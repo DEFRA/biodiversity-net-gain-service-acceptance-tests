@@ -13,4 +13,4 @@ class DeveloperCheckAnswersPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new DeveloperCheckAnswersPage();
+module.exports = DeveloperCheckAnswersPage;

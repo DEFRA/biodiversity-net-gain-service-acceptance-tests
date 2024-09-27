@@ -82,4 +82,4 @@ class DeveloperTaskListPage extends Page {
     return super.open("developer/tasklist");
   }
 }
-module.exports = new DeveloperTaskListPage();
+module.exports = DeveloperTaskListPage;

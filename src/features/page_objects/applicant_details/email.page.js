@@ -25,4 +25,4 @@ class ApplicantDetailsEmail extends Page {
     return super.open("land/email");
   }
 }
-module.exports = new ApplicantDetailsEmail();
+module.exports = ApplicantDetailsEmail;

@@ -11,4 +11,4 @@ class AddLandownerOrganisationCCPage extends Page {
     return super.open("land/add-landowner-organisation-conservation-covenant");
   }
 }
-module.exports = new AddLandownerOrganisationCCPage();
+module.exports = AddLandownerOrganisationCCPage;

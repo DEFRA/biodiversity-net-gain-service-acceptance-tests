@@ -14,4 +14,4 @@ class HabitatPlanLegalAgreementPage extends Page {
     return super.open("land/habitat-plan-legal-agreement");
   }
 }
-module.exports = new HabitatPlanLegalAgreementPage();
+module.exports = HabitatPlanLegalAgreementPage;

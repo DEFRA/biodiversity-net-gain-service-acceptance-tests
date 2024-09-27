@@ -37,4 +37,4 @@ class AddStatutoryBiodiversityCreditsPage extends Page {
     return super.open("credits-purchase/add-statutory-biodiversity-credits");
   }
 }
-module.exports = new AddStatutoryBiodiversityCreditsPage();
+module.exports = AddStatutoryBiodiversityCreditsPage;

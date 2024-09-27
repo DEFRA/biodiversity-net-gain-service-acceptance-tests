@@ -13,4 +13,4 @@ class ManagementPlanUpload extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new ManagementPlanUpload();
+module.exports = ManagementPlanUpload;

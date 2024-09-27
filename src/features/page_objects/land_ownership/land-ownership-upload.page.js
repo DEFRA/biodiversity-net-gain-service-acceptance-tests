@@ -1,6 +1,6 @@
 const Page = require("../page");
 
-class LandOwnershipUpload extends Page {
+class LandOwnershipUploadPage extends Page {
   get titleText() {
     return "Upload proof of land ownership";
   }
@@ -13,4 +13,4 @@ class LandOwnershipUpload extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new LandOwnershipUpload();
+module.exports = LandOwnershipUploadPage;

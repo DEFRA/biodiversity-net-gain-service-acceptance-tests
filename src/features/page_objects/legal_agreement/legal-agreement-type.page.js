@@ -21,4 +21,4 @@ class LegalAgreementType extends Page {
     return super.open("land/legal-agreement-type");
   }
 }
-module.exports = new LegalAgreementType();
+module.exports = LegalAgreementType;

@@ -10,4 +10,4 @@ class NeedAddAllLegalFilesCCPage extends Page {
     return super.open("land/need-add-all-legal-files");
   }
 }
-module.exports = new NeedAddAllLegalFilesCCPage();
+module.exports = NeedAddAllLegalFilesCCPage;

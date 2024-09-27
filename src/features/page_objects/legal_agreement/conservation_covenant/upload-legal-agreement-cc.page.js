@@ -13,4 +13,4 @@ class LegalAgreementConservationCovenantUpload extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new LegalAgreementConservationCovenantUpload();
+module.exports = LegalAgreementConservationCovenantUpload;

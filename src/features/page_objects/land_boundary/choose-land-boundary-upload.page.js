@@ -48,4 +48,4 @@ class LandBoundaryChooseUploadOption extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new LandBoundaryChooseUploadOption();
+module.exports = LandBoundaryChooseUploadOption;

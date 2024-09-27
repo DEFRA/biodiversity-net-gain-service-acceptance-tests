@@ -23,4 +23,4 @@ class LandownerIndividualOrOrganisationCCPage extends Page {
     return super.open(this.path);
   }
 }
-module.exports = new LandownerIndividualOrOrganisationCCPage();
+module.exports = LandownerIndividualOrOrganisationCCPage;

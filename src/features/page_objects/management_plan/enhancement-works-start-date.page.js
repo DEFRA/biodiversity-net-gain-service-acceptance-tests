@@ -10,4 +10,4 @@ class EnhancementWorksStartDatePage extends Page {
     return super.open("land/enhancement-works-start-date");
   }
 }
-module.exports = new EnhancementWorksStartDatePage();
+module.exports = EnhancementWorksStartDatePage;

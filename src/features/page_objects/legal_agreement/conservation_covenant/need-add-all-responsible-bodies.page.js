@@ -10,4 +10,4 @@ class NeedAddAllResponsibleBodiesPage extends Page {
     return super.open("land/need-add-all-responsible-bodies");
   }
 }
-module.exports = new NeedAddAllResponsibleBodiesPage();
+module.exports = NeedAddAllResponsibleBodiesPage;

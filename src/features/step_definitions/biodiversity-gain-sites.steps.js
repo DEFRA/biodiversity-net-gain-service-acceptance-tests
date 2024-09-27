@@ -1,5 +1,6 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
-const biodiversityGainSitesPage = require('../page_objects/biodiversity-gain-sites.page');
+const BiodiversityGainSitesPage = require('../page_objects/biodiversity-gain-sites.page');
+const biodiversityGainSitesPage = new BiodiversityGainSitesPage();
 
 When("I choose to start a new registration", async () => {
         // assert against the page title

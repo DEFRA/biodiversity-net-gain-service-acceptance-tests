@@ -45,4 +45,4 @@ class LegalAgreementCheckDetails extends Page {
     return super.open("land/check-legal-agreement-details");
   }
 }
-module.exports = new LegalAgreementCheckDetails();
+module.exports = LegalAgreementCheckDetails;

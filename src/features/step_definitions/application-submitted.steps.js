@@ -1,6 +1,10 @@
 const {Then} = require("@wdio/cucumber-framework");
-const applicationSubmittedPage = require("../page_objects/application-submitted.page");
+const ApplicationSubmittedPage = require("../page_objects/application-submitted.page");
 const CreditsPurchaseApplicationSubmittedPage = require("../page_objects/credits-purchase/application-submitted.page.js");
+
+const applicationSubmittedPage = new ApplicationSubmittedPage();
+const creditsPurchaseApplicationSubmittedPage = new CreditsPurchaseApplicationSubmittedPage();
+
 
 Then("The {string} reference should be displayed", async (refnumber) => {
         switch (refnumber) {
@@ -10,8 +14,8 @@ Then("The {string} reference should be displayed", async (refnumber) => {
         break;
         }
         case "biodiversity credit": {
-                await expect(CreditsPurchaseApplicationSubmittedPage.referenceNumber).toBeDisplayed();
-                await expect(CreditsPurchaseApplicationSubmittedPage.referenceNumber).toHaveText(expect.stringContaining("BNGCRD"));
+                await expect(creditsPurchaseApplicationSubmittedPage.referenceNumber).toBeDisplayed();
+                await expect(creditsPurchaseApplicationSubmittedPage.referenceNumber).toHaveText(expect.stringContaining("BNGCRD"));
         break;
         }
         default:{

@@ -33,4 +33,4 @@ class ApplicationSubmittedPage extends Page {
     return super.open("application-submitted");
   }
 }
-module.exports = new ApplicationSubmittedPage();
+module.exports = ApplicationSubmittedPage;
