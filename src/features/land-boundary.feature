@@ -1,4 +1,4 @@
-@regression @new
+@regression
 Feature: Land Boundary
 
     As a Site Provider

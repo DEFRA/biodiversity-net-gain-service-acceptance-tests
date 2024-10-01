@@ -10,12 +10,18 @@ const { setUploadPagesForDocument, uploadFileForDocument, getFilePathForDocument
 let filename = "";
 
 When("I upload a {string} file", async (document) => {
-    const { UploadPage } = setUploadPagesForDocument(document);
+    const { UploadPage, CheckPage } = setUploadPagesForDocument(document);
     
     const filePath = getFilePathForDocument(document);
 
     // Upload the document and get the filename
     filename = await uploadFileForDocument(UploadPage, filePath);
+
+    // confirm that the file is correct
+    await CheckPage.radioYes.waitForExist({ timeout: 5000 });
+    await CheckPage.radioYes.click();
+    await CheckPage.continueButton.click();
+
   });
 
 When("I want to upload the metric file", async () => {

@@ -20,7 +20,6 @@ Feature: Legal Agreement
     Scenario: BNGP-188 3 I should be able to add multiple legal parties
         When I select "Planning obligation" and continue
         And I upload a "legal-agreement" file
-        And I confirm it is the correct file
         And I add the legal party "Legal Party 1" with a role of "Landowner"
         And I choose to add another legal party of "Legal Party 2" with a role of "Developer"
         Then I can should see the number of legal parties in the title as "2"

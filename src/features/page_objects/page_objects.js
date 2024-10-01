@@ -10,6 +10,7 @@ const ApplicantDetailsNamePage = require("./applicant_details/name.page");
 const ApplicantDetailsCorrectEmailPage = require("./applicant_details/correct-email.page");
 const ApplicantDetailsCheckYourDetailsPage = require("./applicant_details/check-your-details.page");
 const UploadWrittenAuthorisationPage = require("./applicant_info/upload-written-authorisation.page.js");
+const CheckWrittenAuthorisationPage = require("./applicant_info/check-written-authorisation-file.page.js");
 const CheckApplicantInfoPage = require("./applicant_info/check-applicant-information.page.js");
 const LegalAgreementTypePage = require("./legal_agreement/legal-agreement-type.page");
 const LegalAgreementNeedPage = require("./legal_agreement/need-legal-agreement.page");
@@ -67,7 +68,7 @@ const CheckPlanningDecisionNoticePage = require("../page_objects/developer/uploa
 
 // Credits Purchase Journey pages
 const AddStatutoryBiodiversityCreditsPage = require("./credits-purchase/add-statutory-biodiversity-credits.page");
-const EstimatedCostStatutoryBiodiversityCreditsPage = require("./credits-purchase/estimated-cost-statutory-biodiversity-credits.page");
+// const EstimatedCostStatutoryBiodiversityCreditsPage = require("./credits-purchase/estimated-cost-statutory-biodiversity-credits.page");
 const UploadMetricFilePage = require("./credits-purchase/upload-metric-file.page.js");
 const CreditsDevelopmentInformationPage = require("./credits-purchase/development-project-information.page.js");
 const CreditsPurchaseTaskListPage = require("./credits-purchase/tasklist.page.js");
@@ -85,6 +86,20 @@ const CombinedCaseUploadWrittenAuthorisationPage = require("./combined_case/appl
 const CombinedCaseCheckWrittenAuthorisationPage = require("./combined_case/applicant_info/check-written-authorisation-file.page.js");
 const CombinedCaseLandOwnershipUploadPage = require("./combined_case/land_ownership/land-ownership-upload.page.js");
 const CombinedCaseLandOwnershipCheckPage = require("./combined_case/land_ownership/land-ownership-check.page.js");
+const CombinedCaseLandBoundaryUploadImageFilePage = require("./combined_case/land_boundary/upload-land-boundary.page.js");
+const CombinedCaseLandBoundaryCheckImageFile = require("./combined_case/land_boundary/check-land-boundary-file.page.js");
+const CombinedCaseMetricUpload = require("./combined_case/metric/metric-upload.page.js");
+const CombinedCaseMetricCheckPage = require("./combined_case/metric/metric-check.page.js");
+const CombinedCaseMetricDisplayBaselinePage = require("./combined_case/metric/check-habitat-baseline.page");
+const CombinedCaseMetricDisplayHabitatCreationPage = require("./combined_case/metric/check-habitat-created.page");
+const CombinedCaseMetricCheckDetailsPage = require("./combined_case/metric/check-metric-details.page");
+const CombinedCaseLegalAgreementTypePage = require("./combined_case/legal_agreement/legal-agreement-type.page.js");
+const CombinedCaseLocalLandChargeUploadPage = require("./combined_case/local_land_charge/upload-local-land-charge.page.js");
+const CombinedCaseLocalLandChargeCheckPage = require("./combined_case/local_land_charge/check-local-land-charge.page.js");
+const CombinedCaseDeveloperJourneyDevelopmentInformationPage = require("./combined_case/developer/development-project-information.page.js");
+const CombinedCaseDeveloperMetricUploadPage = require("./combined_case/developer/check-metric-file.page.js");
+const CombinedCaseDeveloperCheckMetricUploadPage = require("./combined_case/developer/upload-metric-file.page.js");
+const DeveloperJourneyDevelopmentInformationPage = require("./combined_case/developer/development-project-information.page.js");
 
 // Instantiate the objects
 module.exports = {
@@ -104,6 +119,7 @@ module.exports = {
   "check-your-details": new ApplicantDetailsCheckYourDetailsPage(),
   //applicant info
   "written-authorisation-upload": new UploadWrittenAuthorisationPage(),
+  "check-written-authorisation": new CheckWrittenAuthorisationPage(),
   "check-applicant-info": new CheckApplicantInfoPage(),
   //land ownership
   "land-ownership-upload": new LandOwnershipUploadPage(),
@@ -112,6 +128,7 @@ module.exports = {
   //Land boundary 
   "choose-land-boundary-upload": new LandBoundaryChooseUploadOptionPage(),
   "land-boundary-upload": new LandBoundaryUploadImageFilePage(),
+  "check-land-boundary-file": new LandBoundaryCheckImageFilePage(),
   "geospatial-upload": new LandBoundaryUploadGeospatialFilePage(),
   "check-geospatial-file": new LandBoundaryCheckGeospatialFilePage(),
   "land-boundary-check": new LandBoundaryCheckImageFilePage(),
@@ -174,7 +191,7 @@ module.exports = {
 
   // Credits Purchase Journey
   "add-credits": new AddStatutoryBiodiversityCreditsPage(),
-  "estimate-cost-of-credits": new EstimatedCostStatutoryBiodiversityCreditsPage(),
+  // "estimate-cost-of-credits": new EstimatedCostStatutoryBiodiversityCreditsPage(),
   "credits-purchase-metric-upload": new UploadMetricFilePage(),
   "credits-purchase-check-metric-file": new CheckCreditsPurchaseMetricFilePage(),
   "credits-development-project-information": new CreditsDevelopmentInformationPage(),
@@ -190,7 +207,22 @@ module.exports = {
   "combined-case-check-written-authorisation-file": new CombinedCaseCheckWrittenAuthorisationPage(),
   "combined-case-land-ownership-upload": new CombinedCaseLandOwnershipUploadPage(),
   "combined-case-land-ownership-check": new CombinedCaseLandOwnershipCheckPage(),
-  // "land-boundary-upload": new LandBoundaryUploadImageFilePage(),
+  "combined-case-land-boundary-upload": new CombinedCaseLandBoundaryUploadImageFilePage(),
+  "combined-case-land-boundary-check": new CombinedCaseLandBoundaryCheckImageFile(),
+  "combined-case-metric-upload": new CombinedCaseMetricUpload(),
+  "combined-case-metric-check": new CombinedCaseMetricCheckPage(),
+  "combined-case-check-habitat-baseline": new CombinedCaseMetricDisplayBaselinePage(),
+  "combined-case-check-habitat-created": new CombinedCaseMetricDisplayHabitatCreationPage(),
+  "combined-case-check-metric-details": new CombinedCaseMetricCheckDetailsPage(),
+  "combined-case-legal-agreement-type": new CombinedCaseLegalAgreementTypePage(),
+  "combined-case-local-land-charge-upload": new CombinedCaseLocalLandChargeUploadPage(),
+  "combined-case-local-land-charge-check": new CombinedCaseLocalLandChargeCheckPage(),
+  
+  "combined-case-development-project-details": new CombinedCaseDeveloperJourneyDevelopmentInformationPage(),
 
+  "combined-case-developer-metric-upload": new CombinedCaseDeveloperMetricUploadPage(),
+  "combined-case-developer-metric-check": new CombinedCaseDeveloperCheckMetricUploadPage(),
+
+  "combined-case-project-details": new DeveloperJourneyDevelopmentInformationPage(),
 };
 

@@ -13,6 +13,10 @@ class TaskList extends Page {
     return $("a[href='/land/upload-land-boundary']");
   }
 
+  get addMetric() {
+    return $("a[href='/land/upload-metric']");
+  }
+
   get addLandOwnership() {
     return $("a[href='/land/upload-ownership-proof']");
   }

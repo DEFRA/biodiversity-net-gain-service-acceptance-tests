@@ -36,7 +36,6 @@ Feature: Developer Journey Tests
         And I choose to add "biodiversity gain site information" details
         And I enter my off site gain reference number as "gFSTO7ZSVI3oglCbbYAn4VMXDZmhMjY1"
         And I upload a "developer-metric" file
-        And I confirm it is the correct file
         And I confirm my off site gain
 
         # Add development project details
@@ -47,7 +46,6 @@ Feature: Developer Journey Tests
         # Upload planning decision notice
         And I choose to add "planning decision notice" details
         And I upload a "planning-decision-notice" file
-        And I confirm it is the correct file
 
         # Submit your off-site gains information
         And I confirm I have completed all "developer" journey sections

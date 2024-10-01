@@ -141,10 +141,6 @@ get manageBngNavLink(){
     return $('*[data-testid="riverTotal"]'); 
    }
 
-   get addMetric() {
-    return $("a[href='/land/upload-metric']");
-  }
-
   get progressText(){
     return $(".govuk-\\!-margin-bottom-4");
   }
@@ -158,7 +154,8 @@ get manageBngNavLink(){
   }
 
   get addDevelopmentInformationStatus() {
-    return $("#add-devlopment-project-information-status");
+    return $("#task-list-1-status");
+    // return $("#add-development-project-information-status");
   }
 
   get localPlanningAuthority(){
@@ -173,16 +170,23 @@ get manageBngNavLink(){
     return $("#development-name-value")
   }
 
+  get addPlanningDecisionNoticeInfo(){
+    return $("a[href='/developer/upload-planning-decision-notice");
+  }
+
+  get addPlanningDecisionNoticeStatus(){
+    return $("#planning-decision-notice-status");
+  }
+
   get submitStatus(){
     return $("#check-your-answers-status");
   }
-
+  
    async addFirstName(value) {
     await (this.firstName).clearValue();
     await this.firstName.addValue(value);
     await expect(this.firstName).toHaveValue(value);
   }
-
   // async addMiddleName(value) {
   //   await (this.middleName).clearValue();
   //   await this.middleName.addValue(value);

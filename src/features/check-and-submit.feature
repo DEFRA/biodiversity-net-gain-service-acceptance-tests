@@ -15,27 +15,22 @@ Feature: Check and Submit
         And I have completed the "landowner" applicant information section
         And I am on the "written-authorisation-upload" page
         And I upload a "written-authorisation" file
-        And I confirm it is the correct file
         And I am on the "check-applicant-info" page
         And confirm the "applicant-info" details are correct
         # land ownership
         And I choose to add "land-ownership" details
         And I am on the "land-ownership-upload" page
         And I upload a "land-ownership" file
-        And I confirm it is the correct file
-        # And I confirm the correct file
-        And I have completed the land-ownership section
+        And I have completed the "registration" land-ownership section
         # land boundary
         And I choose to add "land-boundary" details
         And I am on the "land-boundary-upload" page
         And I upload a "land-boundary" file
-        And I confirm it is the correct file
         And I have completed the land-boundary section
         # Metric
         And I choose to add "metric" details
         And I am on the "metric-upload" page
         And I upload a "metric" file
-        And I confirm it is the correct file
         And I confirm the "check-habitat-baseline" information is correct
         And I confirm the "check-habitat-creation" information is correct
         And I confirm the "check-metric-details" information is correct
@@ -46,13 +41,11 @@ Feature: Check and Submit
         And I select "Conservation covenant" and continue
         And I am Informed I have to add all "Conservation covenant" files
         And I upload a "legal-agreement" file
-        And I confirm it is the correct file
         And I have completed the legal-agreement section
         # Local land Charges
         And I choose to add "local-land-charge" details
         And I am on the "local-land-charge-upload" page
         And I upload a "local-land-charge" file
-        And I confirm it is the correct file
         # Confirm all sections complete
         And I confirm I have completed all "landowner" journey sections
 

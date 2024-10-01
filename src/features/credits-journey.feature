@@ -19,7 +19,6 @@ Feature: Credit Purchase Journey Tests
         # And I have completed the Statutory biodiversity metric section
         And I am on the "credits-purchase-metric-upload" page
         And I upload a "credits-purchase-metric" file
-        And I confirm it is the correct file
         # And I confirm the development details #*****redundant now as is a further development project section on the credits tasklist https://eaflood.atlassian.net/browse/BNGP-4839  #
         And I should see the "credits-purchase-metric" section status as "Completed"
 

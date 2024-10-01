@@ -10,4 +10,4 @@ class LandOwnershipProofListPage extends Page {
     return super.open("land/land-ownership-list");
   }
 }
-module.exports = new LandOwnershipProofListPage();
+module.exports = LandOwnershipProofListPage;

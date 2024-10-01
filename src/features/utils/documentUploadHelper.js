@@ -11,8 +11,9 @@ function setUploadPagesForDocument(document) {
     }
     case "legal-agreement": {
       return {
-        UploadPage: pages["legal-agreement-upload"],
-        CheckPage: pages["legal-agreement-cc-upload"],
+        // UploadPage: pages["legal-agreement-upload"],
+        UploadPage: pages["legal-agreement-cc-upload"],
+        CheckPage: pages["legal-agreement-check"],
       };
     }
     case "local-land-charge": {
@@ -66,7 +67,6 @@ function setUploadPagesForDocument(document) {
     }
     //****CREDIT Purchase UPLOADS*****
     case "credits-purchase-metric":{
-
       return {
         UploadPage: pages["credits-purchase-metric-upload"],
         CheckPage: pages["credits-purchase-check-metric-file"],
@@ -88,15 +88,29 @@ function setUploadPagesForDocument(document) {
     }
     case "combined-case-land-boundary": {
       return {
-
+        UploadPage: pages["combined-case-land-boundary-upload"],
+        CheckPage: pages["combined-case-land-boundary-check"],
       }
     }
-    case "combined-case-metric": { return {} }
-    case "combined-case-legal-agreement": {return{}}
-    case "combined-case-local-land-charge": {return{}}
-     // Combined case - allocation
-     case "combined-case-check-and-submit": {return{}}
-
+    case "combined-case-metric": { 
+      return {
+        UploadPage: pages["combined-case-metric-upload"],
+        CheckPage: pages["combined-case-metric-check"],
+    } }
+    // case "combined-case-legal-agreement": {return{}}
+    case "combined-case-local-land-charge": {
+      return{
+        UploadPage: pages["combined-case-local-land-charge-upload"],
+        CheckPage: pages["combined-case-metric-check"],
+      }}
+    // Combined case - allocation
+    case "combined-case-developer-metric": { 
+      return {
+        UploadPage: pages["combined-case-developer-metric-upload"],
+        CheckPage: pages["combined-case-developer-metric-check"],
+    } 
+  }
+    case "combined-case-check-and-submit": {return{}}
     default: {
       throw new Error(`Document section ${document} doesn't exist`);
     }
@@ -124,9 +138,11 @@ function getFilePathForDocument(document, filetype = "docx") {
     case "geospatial-geojson":
       return join(__dirname, "../../TestFiles/test_geospatial.geojson");
     case "metric":
+    case "combined-case-metric":
       return join(__dirname, "../../TestFiles/test_metric.xlsm");
     case "developer-metric":
     case "credits-purchase-metric":
+    case "combined-case-developer-metric":
       return join(__dirname, "../../TestFiles/test_developer_metric.xlsm");
     default:
       return join(__dirname, `../../TestFiles/test_12kb.${filetype}`);

@@ -25,6 +25,10 @@ Given("I try to navigate to the {string} page", async (path) => {
   await browser.url(pageUrl);
 });
 
+Given("I have completed the {string} Development Information section", async (journey) => {
+  await completeAddDevelopmentInfoSection("Middlesbrough LPA", "1234", "New BNG Project", journey);
+}) 
+
 When(/^I (?:am|should be) (?:shown|on|returned to) the "(.*)" page$/, async (page) => {
   if (page === "404") {
     expect(await browser.getTitle()).toContain("Page not found");
@@ -125,44 +129,6 @@ Then("The page title should be {string}", async (pageTitle) => {
 async function confirmLegalAgreementDetails() {
   await pages["check-legal-agreement-details"].acceptBtn.waitForExist();
   await pages["check-legal-agreement-details"].acceptBtn.click();
-}
-
-async function confirmLandOwnershipDetails() {
-  await pages["land-ownership-check"].continueButton.waitForExist();
-  await pages["land-ownership-check"].continueButton.click();
-}
-
-async function checkMetricDetails() {
-  await pages["check-metric-details"].continueButton.waitForExist();
-  await pages["check-metric-details"].continueButton.click();
-}
-
-async function confirmMetricBaselineDetails() {
-  await pages["check-habitat-baseline"].continueButton.waitForExist();
-  await pages["check-habitat-baseline"].continueButton.click();
-}
-
-async function confirmMetricHabitatCreationDetails() {
-  await pages["check-habitat-created"].continueButton.waitForExist();
-  await pages["check-habitat-created"].continueButton.click();
-}
-
-async function confirmManagementPlanDetails() {
-  await pages["check-management-monitoring-details"].continueButton.waitForExist();
-  await pages["check-management-monitoring-details"].continueButton.click();
-}
-
-async function confirmLandBoundaryDetails() {
-  await pages["check-land-boundary-details"].continueButton.waitForExist();
-  await pages["check-land-boundary-details"].continueButton.click();
-}
-
-async function confirmApplicantDetails() {
-  await pages["check-your-details"].continueButton.waitForExist();
-  await expect(pages["check-your-details"].fullnameValue).not.toBeNull();
-  await expect(pages["check-your-details"].roleValue).not.toBeNull();
-  await expect(pages["check-your-details"].emailValue).not.toBeNull();
-  await pages["check-your-details"].continueButton.click();
 }
 
 When("I enter a start date of {string}", async (date) => {
@@ -275,3 +241,98 @@ Then(/^I should see the "(.*)" (?:shown as|updated to) "(.*)" on the "(.*)" page
       throw new Error(`Page ${pageKey} doesn't exist`);
   }
 });
+
+async function confirmLandOwnershipDetails() {
+  await pages["land-ownership-check"].continueButton.waitForExist();
+  await pages["land-ownership-check"].continueButton.click();
+}
+
+async function checkMetricDetails() {
+  await pages["check-metric-details"].continueButton.waitForExist();
+  await pages["check-metric-details"].continueButton.click();
+}
+
+async function confirmMetricBaselineDetails() {
+  await pages["check-habitat-baseline"].continueButton.waitForExist();
+  await pages["check-habitat-baseline"].continueButton.click();
+}
+
+async function confirmMetricHabitatCreationDetails() {
+  await pages["check-habitat-created"].continueButton.waitForExist();
+  await pages["check-habitat-created"].continueButton.click();
+}
+
+async function confirmManagementPlanDetails() {
+  await pages["check-management-monitoring-details"].continueButton.waitForExist();
+  await pages["check-management-monitoring-details"].continueButton.click();
+}
+
+async function confirmLandBoundaryDetails() {
+  await pages["check-land-boundary-details"].continueButton.waitForExist();
+  await pages["check-land-boundary-details"].continueButton.click();
+}
+
+async function confirmApplicantDetails() {
+  await pages["check-your-details"].continueButton.waitForExist();
+  await expect(pages["check-your-details"].fullnameValue).not.toBeNull();
+  await expect(pages["check-your-details"].roleValue).not.toBeNull();
+  await expect(pages["check-your-details"].emailValue).not.toBeNull();
+  await pages["check-your-details"].continueButton.click();
+}
+
+async function completeAddDevelopmentInfoSection(lpa, applicationNumber, projectName, journey) {
+  switch (journey) {
+       case "credits": {
+            expect(await browser.getTitle()).toContain(pages["credits-development-project-information"].titleText);
+            // add lpa 
+            await pages["credits-development-project-information"].localPlanningAuthority.addValue(lpa);
+            //add planning reference
+            await pages["credits-development-project-information"].planningApplicationNumber.addValue(applicationNumber);
+            //add development name
+            await pages["credits-development-project-information"].developmentName.addValue(projectName);
+
+            await pages["credits-development-project-information"].continueButton.click()
+            //tasklist add development information section shows as complete
+            expect(await browser.getTitle()).toContain(pages["credits-purchase-task-list"].titleText);
+            await expect(pages["credits-purchase-task-list"].addDevelopmentInformationStatus).toHaveText("Completed");  
+
+            break;
+       }
+       case "allocation": {
+            expect(await browser.getTitle()).toContain(pages["development-project-details"].titleText);
+            // add lpa 
+            await pages["development-project-details"].localPlanningAuthority.addValue(lpa);
+            //add planning reference
+            await pages["development-project-details"].planningApplicationNumber.addValue(applicationNumber);
+            //add development name
+            await pages["development-project-details"].developmentName.addValue(projectName);
+
+            await pages["development-project-details"].continueButton.click()
+            //tasklist add development information section shows as complete
+            expect(await browser.getTitle()).toContain(pages["developer/tasklist"].titleText);
+            // await pages["developer/tasklist"].addDevelopmentInformationStatus.waitForExist({ timeout: 5000 });
+            await expect( pages["developer/tasklist"].addDevelopmentInformationStatus).toHaveText("Completed"); 
+            break;
+       }
+       case "combined-case":{
+          expect(await browser.getTitle()).toContain(pages["development-project-details"].titleText);
+          // add lpa 
+          await pages["combined-case-project-details"].localPlanningAuthority.addValue(lpa);
+          //add planning reference
+          await pages["combined-case-project-details"].planningApplicationNumber.addValue(applicationNumber);
+          //add development name
+          await pages["combined-case-project-details"].developmentName.addValue(projectName);
+
+          await pages["combined-case-project-details"].continueButton.click()
+          //tasklist add development information section shows as complete
+          expect(await browser.getTitle()).toContain(pages["combined-case/tasklist"].titleText);
+          await expect( pages["combined-case/tasklist"].addDevelopmentInformationStatus).toHaveText("Completed"); 
+          break;
+       }
+       default:{
+            throw new Error("Journey "+ journey +" doesn't exist");
+          }
+  }
+
+}
+

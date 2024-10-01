@@ -132,6 +132,23 @@ When ("I choose to add {string} details", async (task) => {
     break;
     }
     // Combined case - allocation
+    case "combined case planning decision notice": {
+      await expect( combinedCaseTaskListPage.addPlanningDecisionNoticeStatus).toHaveText(status);
+      await combinedCaseTaskListPage.addPlanningDecisionNoticeInfo.click();
+    break;
+    }
+
+    case "match available habitat": {
+      expect(await browser.getTitle()).toContain(combinedCaseTaskListPage.titleText);
+      await combinedCaseTaskListPage.addMatchAvailableHabitats.click();
+    break;
+    }
+
+    case "combined case Development Project": {
+      expect(await browser.getTitle()).toContain(combinedCaseTaskListPage.titleText);
+      await combinedCaseTaskListPage.addDevelopmentInformation.click();
+    break;
+    }
     case "combined-case-check-and-submit": {
       await expect( combinedCaseTaskListPage.submitStatus).toHaveText(status);
     break;
@@ -247,6 +264,11 @@ Then("I should see the {string} section status as {string}", async (task, status
     }
     case "terms-and-conditions": {
       await expect(creditsTaskListPage.acceptTermsAndConditionsStatus).toHaveText(status);
+    break;
+    }
+    // combined case
+    case "combined-case-metric": {
+      await expect(combinedCaseTaskListPage.metricStatus).toHaveText(status);
     break;
     }
     default:{

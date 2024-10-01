@@ -9,7 +9,6 @@ Feature: Upload Documents
     Scenario Outline: <jira ticket> 1 - There is an option of uploading a single <document>
         When I navigate to the "<document>-upload" page
         And I upload a "<document>" file
-        And I confirm it is the correct file
         Then I should be on the "<destination>" page
         Examples: Landowner Journey
             | jira ticket | document          | destination                 |

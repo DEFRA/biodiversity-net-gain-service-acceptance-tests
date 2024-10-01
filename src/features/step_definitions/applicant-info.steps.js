@@ -124,7 +124,7 @@ async function completeApplicantInfoSection(firstname, lastname, journey, addr1,
         await clientsPhoneNumberPage.continueButton.click();
               // And I am on the "written-authorisation-upload" page
               // And I upload a "written-authorisation" file
-              // And I confirm it is the correct file 
+              // #And I confirm it is the correct file 
     
      break;
     }
@@ -220,7 +220,7 @@ async function completeApplicantInfoSection(firstname, lastname, journey, addr1,
           await clientsPhoneNumberPage.continueButton.click();
                 // And I am on the "written-authorisation-upload" page
                 // And I upload a "written-authorisation" file
-                // And I confirm it is the correct file 
+                // #And I confirm it is the correct file 
       
       break;
     }

@@ -1,7 +1,9 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 //**Credits Purchase Journey pages */
-const addStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/add-statutory-biodiversity-credits.page.js");
-const estimatedCostStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/estimated-cost-statutory-biodiversity-credits.page.js");
+const AddStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/add-statutory-biodiversity-credits.page.js");
+const EstimatedCostStatutoryBiodiversityCreditsPage = require("../page_objects/credits-purchase/estimated-cost-statutory-biodiversity-credits.page.js");
+
+
 const CreditsPurchaseTaskListPage = require("../page_objects/credits-purchase/tasklist.page.js");
 const checkPurchaseOrderPage = require("../page_objects/credits-purchase/check-purchase-order.page.js");
 const purchasingIndividualOrganisationPage = require("../page_objects/credits-purchase/purchasing-individual-organisation.page.js");
@@ -11,14 +13,9 @@ const dateOfBirthPage = require("../page_objects/credits-purchase/date-of-birth.
 const nationalityPage = require("../page_objects/credits-purchase/nationality.page.js");
 const confirmTermsAndConditionsPage = require("../page_objects/credits-purchase/confirm-terms-conditions.page.js");
 const creditsCheckCutomerDueDiligencePage = require("../page_objects/credits-purchase/check-customer-due-diligence.page.js.js");
-const creditsDevelopmentProjectInformationPage = require("../page_objects/credits-purchase/development-project-information.page.js");
-const allocationDevelopmentProjectInformationPage = require("../page_objects/developer/development-project-information.page.js");
-const allocationTaskListPage = require("../page_objects/developer/tasklist.page.js");
 const creditsApplicationListPage = require("../page_objects/credits-purchase/credits-application-list.page.js");
-
-Given("I have completed the {string} Development Information section", async (journey) => {
-     await completeAddDevelopmentInfoSection("Middlesbrough LPA", "1234", "New BNG Project", journey);
-}) 
+const addStatutoryBiodiversityCreditsPage = new AddStatutoryBiodiversityCreditsPage();
+const creditsPurchaseTaskListPage = new CreditsPurchaseTaskListPage();
 
 Given("I have completed the Statutory biodiversity credits section", async () => {
      await completeAddCreditsSection("1", "£42,000");
@@ -39,8 +36,8 @@ Given("I have completed the Terms and conditions section", async () => {
      await confirmTermsAndConditionsPage.continueButton.click();
 
      //tasklist confirm terms and conditions section shows as complete
-     expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
-     await expect(CreditsPurchaseTaskListPage.acceptTermsAndConditionsStatus).toHaveText("Completed");  
+     expect(await browser.getTitle()).toContain(creditsPurchaseTaskListPage.titleText);
+     await expect(creditsPurchaseTaskListPage.acceptTermsAndConditionsStatus).toHaveText("Completed");  
 
 })
 
@@ -92,90 +89,43 @@ When("I add a value of {string} to the habitat {string}", async (value, unit) =>
 Then("I should see the estimated cost of {string} for the {string}", async (cost, unit) => {
      
      await $("h1").waitForExist();
-     expect(await browser.getTitle()).toContain(estimatedCostStatutoryBiodiversityCreditsPage.titleText);
+     expect(await browser.getTitle()).toContain(EstimatedCostStatutoryBiodiversityCreditsPage.titleText);
 
      switch (unit) {
           case "A1": {
-               await expect(await estimatedCostStatutoryBiodiversityCreditsPage.unitCostA1).toHaveText(cost);
+               await expect(await EstimatedCostStatutoryBiodiversityCreditsPage.unitCostA1).toHaveText(cost);
                break;
           }
           case "A2": {
-               await expect(await estimatedCostStatutoryBiodiversityCreditsPage.unitCostA2).toHaveText(cost);
+               await expect(await EstimatedCostStatutoryBiodiversityCreditsPage.unitCostA2).toHaveText(cost);
                break;
           }
           case "A3": {
-               await expect(await estimatedCostStatutoryBiodiversityCreditsPage.unitCostA3).toHaveText(cost);
+               await expect(await EstimatedCostStatutoryBiodiversityCreditsPage.unitCostA3).toHaveText(cost);
                break;
           }
           case "A4": {
-               await expect(await estimatedCostStatutoryBiodiversityCreditsPage.unitCostA4).toHaveText(cost);
+               await expect(await EstimatedCostStatutoryBiodiversityCreditsPage.unitCostA4).toHaveText(cost);
                break;
           }
           case "A5": {
-               await expect(await estimatedCostStatutoryBiodiversityCreditsPage.unitCostA5).toHaveText(cost);
+               await expect(await EstimatedCostStatutoryBiodiversityCreditsPage.unitCostA5).toHaveText(cost);
                break;
           }
           case "H": {
-               await expect(await estimatedCostStatutoryBiodiversityCreditsPage.unitCostH).toHaveText(cost);
+               await expect(await EstimatedCostStatutoryBiodiversityCreditsPage.unitCostH).toHaveText(cost);
                break;
           }
           case "W": {
-               await expect(await estimatedCostStatutoryBiodiversityCreditsPage.unitCostW).toHaveText(cost);
+               await expect(await EstimatedCostStatutoryBiodiversityCreditsPage.unitCostW).toHaveText(cost);
                break;
           }
      }
  })
 
 Then("I should see the total estimated cost of {string}", async (value) => {
-     await expect(await estimatedCostStatutoryBiodiversityCreditsPage.totalEstimatedCost).toHaveText(value);
+     await expect(await EstimatedCostStatutoryBiodiversityCreditsPage.totalEstimatedCost).toHaveText(value);
 }) 
-
-Given(/^I add credits for my application/, function (table){
-     console.log(table.rows());
-});
-
-
-async function completeAddDevelopmentInfoSection(lpa, applicationNumber, projectName, journey) {
-
-     switch (journey) {
-          case "credits": {
-               expect(await browser.getTitle()).toContain(creditsDevelopmentProjectInformationPage.titleText);
-               // add lpa 
-               await creditsDevelopmentProjectInformationPage.localPlanningAuthority.addValue(lpa);
-               //add planning reference
-               await creditsDevelopmentProjectInformationPage.planningApplicationNumber.addValue(applicationNumber);
-               //add development name
-               await creditsDevelopmentProjectInformationPage.developmentName.addValue(projectName);
-
-               creditsDevelopmentProjectInformationPage.continueButton.click()
-               //tasklist add development information section shows as complete
-               expect(await browser.getTitle()).toContain(creditsDevelopmentProjectInformationPage.titleText);
-               await expect(CreditsPurchaseTaskListPage.addDevelopmentInformationStatus).toHaveText("Completed");  
-
-               break;
-          }
-          case "allocation": {
-               expect(await browser.getTitle()).toContain(allocationDevelopmentProjectInformationPage.titleText);
-               // add lpa 
-               await allocationDevelopmentProjectInformationPage.localPlanningAuthority.addValue(lpa);
-               //add planning reference
-               await allocationDevelopmentProjectInformationPage.planningApplicationNumber.addValue(applicationNumber);
-               //add development name
-               await allocationDevelopmentProjectInformationPage.developmentName.addValue(projectName);
-
-               allocationDevelopmentProjectInformationPage.continueButton.click()
-               //tasklist add development information section shows as complete
-               expect(await browser.getTitle()).toContain(allocationDevelopmentProjectInformationPage.titleText);
-               await expect(allocationTaskListPage.addDevelopmentInformationStatus).toHaveText("Completed"); 
-
-               break;
-          }
-          default:{
-               throw new Error("Journey "+ journey +" doesn't exist");
-             }
-     }
-
-}
 
 async function completeAddCreditsSection(credit, creditValue) {
 
@@ -184,14 +134,14 @@ async function completeAddCreditsSection(credit, creditValue) {
      await addStatutoryBiodiversityCreditsPage.habitatUnitA1.addValue(credit);
      await addStatutoryBiodiversityCreditsPage.continueButton.click();
 
-     expect(await browser.getTitle()).toContain(estimatedCostStatutoryBiodiversityCreditsPage.titleText);
+     expect(await browser.getTitle()).toContain(EstimatedCostStatutoryBiodiversityCreditsPage.titleText);
   
-     await expect(await estimatedCostStatutoryBiodiversityCreditsPage.unitCostA1).toHaveText(creditValue);
-     await estimatedCostStatutoryBiodiversityCreditsPage.continueButton.click();
+     await expect(await EstimatedCostStatutoryBiodiversityCreditsPage.unitCostA1).toHaveText(creditValue);
+     await EstimatedCostStatutoryBiodiversityCreditsPage.continueButton.click();
 
      //tasklist add credits section shows as complete
-     expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
-     await expect(CreditsPurchaseTaskListPage.addCreditsStatus).toHaveText("Completed");  
+     expect(await browser.getTitle()).toContain(creditsPurchaseTaskListPage.titleText);
+     await expect(creditsPurchaseTaskListPage.addCreditsStatus).toHaveText("Completed");  
 }
 
 async function completePurchaseOrderSection(value) {
@@ -202,8 +152,8 @@ async function completePurchaseOrderSection(value) {
      await checkPurchaseOrderPage.continueButton.click();
 
      //tasklist add po number section shows as complete
-     expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
-     await expect(CreditsPurchaseTaskListPage.addPurhaseOrderStatus).toHaveText("Completed");  
+     expect(await browser.getTitle()).toContain(creditsPurchaseTaskListPage.titleText);
+     await expect(creditsPurchaseTaskListPage.addPurhaseOrderStatus).toHaveText("Completed");  
 }
 
 async function completeDueDiligenceSection(middleNameValue, dob) {
@@ -251,6 +201,6 @@ async function completeDueDiligenceSection(middleNameValue, dob) {
      await creditsCheckCutomerDueDiligencePage.continueButton.click();
      
      //tasklist add CDD section shows as complete
-     expect(await browser.getTitle()).toContain(CreditsPurchaseTaskListPage.titleText);
-     await expect(CreditsPurchaseTaskListPage.addCustomerDueDiligenceStatus).toHaveText("Completed");  
+     expect(await browser.getTitle()).toContain(creditsPurchaseTaskListPage.titleText);
+     await expect(creditsPurchaseTaskListPage.addCustomerDueDiligenceStatus).toHaveText("Completed");  
 }
