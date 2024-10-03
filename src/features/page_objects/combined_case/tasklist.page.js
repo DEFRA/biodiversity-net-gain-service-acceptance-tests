@@ -6,39 +6,39 @@ class CombinedCaseTaskListPage extends RegisterTasklistPage {
     } 
 
     get addApplicantInfo() {
-      return $("a[href='/combined-case/agent-acting-for-client']");
+      return $("a[href^='/combined-case/agent-acting-for-client']");
     }
 
     get addLandBoundary() {
-      return $("a[href='/combined-case/upload-land-boundary']");
+      return $("a[href^='/combined-case/upload-land-boundary']");
     }
 
     get addMetric() {
-      return $("a[href='/combined-case/upload-metric']");
+      return $("a[href^='/combined-case/upload-metric']");
     }
 
     get addLandOwnership() {
-      return $("a[href='/combined-case/upload-ownership-proof']");
+      return $("a[href^='/combined-case/upload-ownership-proof']");
     }
 
     get addLegalAgreement() {
-      return $("a[href='/combined-case/legal-agreement-type']");
+      return $("a[href^='/combined-case/legal-agreement-type']");
     }
 
     get addLocallandCharge() {
-      return $("a[href='/combined-case/upload-local-land-charge']");
+      return $("a[href^='/combined-case/upload-local-land-charge']");
     }
     //developer sections
     get addPlanningDecisionNoticeInfo(){
-      return $("a[href='/combined-case/upload-planning-decision-notice");
+      return $("a[href^='/combined-case/upload-planning-decision-notice");
     }
 
     get addMatchAvailableHabitats(){
-      return $("a[href='/combined-case/upload-allocation-metric");
+      return $("a[href^='/combined-case/upload-allocation-metric");
     }
 
     get addDevelopmentInformation() {
-      return $("a[href='/combined-case/development-project-information']");
+      return $("a[href^='/combined-case/development-project-information']");
     }
 
   open() {
