@@ -138,12 +138,14 @@ function getFilePathForDocument(document, filetype = "docx") {
     case "geospatial-geojson":
       return join(__dirname, "../../TestFiles/test_geospatial.geojson");
     case "metric":
-    case "combined-case-metric":
       return join(__dirname, "../../TestFiles/test_metric.xlsm");
     case "developer-metric":
     case "credits-purchase-metric":
-    case "combined-case-developer-metric":
       return join(__dirname, "../../TestFiles/test_developer_metric.xlsm");
+    case "combined-case-metric":
+      return join(__dirname, "../../TestFiles/test_combined_case_registration_metric.xlsx");
+    case "combined-case-developer-metric":
+      return join(__dirname, "../../TestFiles/test_combined_case_developer_metric.xlsm");
     default:
       return join(__dirname, `../../TestFiles/test_12kb.${filetype}`);
   }
