@@ -143,9 +143,9 @@ function getFilePathForDocument(document, filetype = "docx") {
     case "credits-purchase-metric":
       return join(__dirname, "../../TestFiles/test_developer_metric.xlsm");
     case "combined-case-metric":
-      return join(__dirname, "../../TestFiles/test_combined_case_registration_metric.xlsx");
+      return join(__dirname, "../../TestFiles/test_combined_case_registration_metric.xlsm");
     case "combined-case-developer-metric":
-      return join(__dirname, "../../TestFiles/test_combined_case_developer_metric.xlsm");
+      return join(__dirname, "../../TestFiles/test_combined_case_developer_metric.xlsx");
     default:
       return join(__dirname, `../../TestFiles/test_12kb.${filetype}`);
   }
