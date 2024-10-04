@@ -22,7 +22,6 @@ Feature: Combined Case Check and Submit
         And I choose to add "combined-case-land-ownership" details
         And I am on the "combined-case-land-ownership-upload" page
         And I upload a "combined-case-land-ownership" file
-        # And I confirm the correct file
         And I have completed the "combined-case" land-ownership section
         # land boundary
         And I choose to add "combined-case-land-boundary" details
