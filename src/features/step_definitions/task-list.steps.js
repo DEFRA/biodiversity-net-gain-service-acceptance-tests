@@ -164,31 +164,33 @@ switch(journey){
   case "developer":{
     await expect(developerTaskListPage.submitStatus).not.toHaveText("Cannot start yet")
     await expect(developerTaskListPage.submitStatus).toHaveText("Not started yet")
-
-  await developerTaskListPage.devCheckAndSubmitBtn.click();
+    await developerTaskListPage.devCheckAndSubmitBtn.click();
   break;
   }
   case "landowner":{
-    // check all section statuses 
-
-    // /make sure cannot start status for the cya section has changed to Not started yet
+  // /make sure cannot start status for the cya section has changed to Not started yet
     await expect(TaskList.submitStatus).not.toHaveText("Cannot start yet")
     await expect(TaskList.submitStatus).toHaveText("Not started yet")
     await (TaskList.checkAndSubmitBtn).click();
-    break;
-    }
-    case "credits":{
-      // check all section statuses 
-  
-      // /make sure cannot start status for the cya section has changed to Not started yet
-      await expect(creditsTaskListPage.submitStatus).not.toHaveText("Cannot start yet")
-      await expect(creditsTaskListPage.submitStatus).toHaveText("Not started yet")
-      await (creditsTaskListPage.checkAndSubmitBtn).click();
-      break;
-      }
-    default:{
-      throw new Error(`The journey entered ${journey} doesn't exist`);
-    } 
+  break;
+  }
+  case "credits":{
+    // /make sure cannot start status for the cya section has changed to Not started yet
+    await expect(creditsTaskListPage.submitStatus).not.toHaveText("Cannot start yet")
+    await expect(creditsTaskListPage.submitStatus).toHaveText("Not started yet")
+    await (creditsTaskListPage.checkAndSubmitBtn).click();
+  break;
+  }
+  case "combined-case":{
+    // /make sure cannot start status for the cya section has changed to Not started yet
+    await expect(combinedCaseTaskListPage.submitStatus).not.toHaveText("Cannot start yet")
+    await expect(combinedCaseTaskListPage.submitStatus).toHaveText("Not started yet")
+    await (combinedCaseTaskListPage.checkAndSubmitBtn).click();
+  break;
+  }  
+  default:{
+    throw new Error(`The journey entered ${journey} doesn't exist`);
+  } 
 }
 });
 

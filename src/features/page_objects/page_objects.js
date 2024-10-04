@@ -99,7 +99,8 @@ const CombinedCaseLocalLandChargeCheckPage = require("./combined_case/local_land
 const CombinedCaseDeveloperJourneyDevelopmentInformationPage = require("./combined_case/developer/development-project-information.page.js");
 const CombinedCaseDeveloperMetricUploadPage = require("./combined_case/developer/check-metric-file.page.js");
 const CombinedCaseDeveloperCheckMetricUploadPage = require("./combined_case/developer/upload-metric-file.page.js");
-const DeveloperJourneyDevelopmentInformationPage = require("./combined_case/developer/development-project-information.page.js");
+const CombinedCaseCheckAndSubmitPage = require("./combined_case/check-and-submit.page.js"); 
+const CombinedCaseDeveloperDeveloperJourneyDevelopmentInformationPage = require("./combined_case/developer/development-project-information.page.js");
 
 // Instantiate the objects
 module.exports = {
@@ -216,13 +217,11 @@ module.exports = {
   "combined-case-check-metric-details": new CombinedCaseMetricCheckDetailsPage(),
   "combined-case-legal-agreement-type": new CombinedCaseLegalAgreementTypePage(),
   "combined-case-local-land-charge-upload": new CombinedCaseLocalLandChargeUploadPage(),
-  "combined-case-local-land-charge-check": new CombinedCaseLocalLandChargeCheckPage(),
-  
+  "combined-case-local-land-charge-check": new CombinedCaseLocalLandChargeCheckPage(), 
   "combined-case-development-project-details": new CombinedCaseDeveloperJourneyDevelopmentInformationPage(),
-
   "combined-case-developer-metric-upload": new CombinedCaseDeveloperMetricUploadPage(),
   "combined-case-developer-metric-check": new CombinedCaseDeveloperCheckMetricUploadPage(),
-
-  "combined-case-project-details": new DeveloperJourneyDevelopmentInformationPage(),
+  "combined-case-project-details": new CombinedCaseDeveloperDeveloperJourneyDevelopmentInformationPage(),
+  "combined-case-check-and-submit": new CombinedCaseCheckAndSubmitPage(),
 };
 

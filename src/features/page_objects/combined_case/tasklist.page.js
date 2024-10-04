@@ -41,6 +41,10 @@ class CombinedCaseTaskListPage extends RegisterTasklistPage {
       return $("a[href^='/combined-case/development-project-information']");
     }
 
+    get checkAndSubmitBtn(){
+      return $("a[href^='/combined-case/check-and-submit']");
+    }
+
   open() {
     return super.open("combined-case/tasklist");
   }
