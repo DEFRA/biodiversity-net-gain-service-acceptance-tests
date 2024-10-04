@@ -1,8 +1,8 @@
 @regression
 Feature: Combined Case Check and Submit
-    As a Site Provider
+    As a combined case user
     I need to review all the application details I have provided
-    So that I can confirm I am satisfied with all the entered details and submit my application
+    So that I can confirm my details and submit my application
 
     @e2e @new
     Scenario: Complete all combined case details
@@ -54,9 +54,6 @@ Feature: Combined Case Check and Submit
         And I choose to add "combined case planning decision notice" details
         And I upload a "planning-decision-notice" file
 
-
-
-
         # Add development project details
         And I choose to add "combined case Development Project" details
         And I am on the "combined-case-development-project-details" page
@@ -64,22 +61,16 @@ Feature: Combined Case Check and Submit
 
         And I choose to add "match available habitat" details
         And I upload a "combined-case-developer-metric" file
-        And I match stuff
+        And I match my habitats
 
-
-
-#         # Submit your off-site gains information
-#         And I confirm I have completed all "developer" journey sections
-#         And I am on the "check-answers" page
-#         And I have agreed to the terms and conditions
-
-
-
-#         When I submit my developer information
-
-
-# # Confirm all sections complete
-# And I confirm I have completed all "combined-case" journey sections
-# #check and submit page
-# And I am on the "check-and-submit" page
-# And I have agreed to the terms and conditions
+        # Submit your combined case information
+        And I confirm I have completed all "combined-case" journey sections
+        And I am on the "combined-case-check-and-submit" page
+        And I have agreed to the terms and conditions
+        When I submit my application
+        Then I should be on the "application-submitted" page
+        And The "biodiversity gain site" reference should be displayed
+        And The fee amount of "£639.00" should be displayed
+        And The sort code "60 70 80" should be displayed
+        And The account number "10026630" should be displayed
+        And The swift code "NWBKGB2L" should be displayed
