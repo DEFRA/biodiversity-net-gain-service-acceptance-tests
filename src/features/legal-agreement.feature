@@ -68,5 +68,19 @@ Feature: Legal Agreement
             | page                       |
             | legal-agreement-start-date |
             | monitoring-start-date      |
+    @new
+    Scenario: https://eaflood.atlassian.net/browse/BNGP-5489 - Bug - 1
+        When I select "Conservation covenant" and continue
+        And I am Informed I have to add all "Conservation covenant" files
+        And I upload a "legal-agreement" file
+        And I confirm all legal agreement files are added
+        And I add the responsible body "legal party 2" listed on the legal agreement
+        And I confirm there are other landowners or leaseholders listed on the legal agreement
+        Then I should be on the "" page
+# And I add another landowner or leaseholder as an organisation
 
-    Scenario: BNGP-3863
+
+
+# Complete next few pages, up until the “Are there any other landowners or leaseholders listed” page
+
+# Select “No” and Continue
