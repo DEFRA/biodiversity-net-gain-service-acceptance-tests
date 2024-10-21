@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class SiteInEnglandPage extends Page {
-  get titleText() {
-    return "Is the biodiversity gain site in England?";
+  get titleText () {
+    return 'Is the biodiversity gain site in England?'
   }
 
-  open() {
-    return super.open("land/site-in-england");
+  open () {
+    return super.open('land/site-in-england')
   }
 }
-module.exports = SiteInEnglandPage;
+module.exports = SiteInEnglandPage

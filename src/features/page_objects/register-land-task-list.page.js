@@ -1,72 +1,72 @@
-const Page = require("./page");
+const Page = require('./page')
 
 class TaskList extends Page {
-  get titleText() {
-    return "Register a biodiversity gain site";
+  get titleText () {
+    return 'Register a biodiversity gain site'
   }
 
-  get addApplicantInfo() {
-    return $("a[href='/land/agent-acting-for-client']");
+  get addApplicantInfo () {
+    return $("a[href^='/land/agent-acting-for-client']")
   }
 
-  get addLandBoundary() {
-    return $("a[href='/land/upload-land-boundary']");
+  get addLandBoundary () {
+    return $("a[href^='/land/upload-land-boundary']")
   }
 
-  get addMetric() {
-    return $("a[href='/land/upload-metric']");
+  get addMetric () {
+    return $("a[href^='/land/upload-metric']")
   }
 
-  get addLandOwnership() {
-    return $("a[href='/land/upload-ownership-proof']");
+  get addLandOwnership () {
+    return $("a[href^='/land/upload-ownership-proof']")
   }
 
-  get addLegalAgreement() {
-    return $("a[href='/land/legal-agreement-type']");
+  get addLegalAgreement () {
+    return $("a[href^='/land/legal-agreement-type']")
   }
 
-  get addLocallandCharge() {
-    return $("a[href='/land/upload-local-land-charge']");
-  }
-  
-  get submitInformation(){
-    return $("#check-your-answers");
+  get addLocallandCharge () {
+    return $("a[href^='/land/upload-local-land-charge']")
   }
 
-  get applicantInfoStatus() {
-    return $("#add-applicant-information-status");
+  get submitInformation () {
+    return $('#check-your-answers')
   }
 
-  get landBoundaryStatus() {
-    return $("#add-land-boundary-status");
+  get applicantInfoStatus () {
+    return $('#add-applicant-information-status')
   }
 
-  get landOwnershipStatus() {
-    return $("#add-land-ownership-status");
+  get landBoundaryStatus () {
+    return $('#add-land-boundary-status')
   }
 
-  get metricStatus() {
-    return $("#add-habitat-information-status");
+  get landOwnershipStatus () {
+    return $('#add-land-ownership-status')
   }
 
-  get hmmpStatus(){
-    return $("#add-habitat-management-status");
+  get metricStatus () {
+    return $('#add-habitat-information-status')
   }
 
-  get legalAgreementStatus() {
-    return $("#add-legal-agreement-status");
+  get hmmpStatus () {
+    return $('#add-habitat-management-status')
   }
 
-  get localLandChargeStatus() {
-    return $("#add-local-land-charge-search-certificate-status");
+  get legalAgreementStatus () {
+    return $('#add-legal-agreement-status')
   }
 
-  get checkAndSubmitBtn(){
-    return $("a[href='/land/check-and-submit']");
+  get localLandChargeStatus () {
+    return $('#add-local-land-charge-search-certificate-status')
   }
 
-  open() {
-    return super.open("land/register-land-task-list");
+  get checkAndSubmitBtn () {
+    return $("a[href='/land/check-and-submit']")
+  }
+
+  open () {
+    return super.open('land/register-land-task-list')
   }
 }
-module.exports = TaskList;
+module.exports = TaskList

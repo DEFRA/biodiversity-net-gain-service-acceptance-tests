@@ -4,7 +4,7 @@ Feature: Combined Case Check and Submit
     I need to review all the application details I have provided
     So that I can confirm my details and submit my application
 
-    @e2e @new
+    @e2e
     Scenario: Complete all combined case details
         Given I choose to manage biodiversity gains
         # # // nav bar manage link should really be baseurl
@@ -16,22 +16,26 @@ Feature: Combined Case Check and Submit
         And I have completed the "combined-case" applicant information section
         And I am on the "combined-case-written-authorisation-upload" page
         And I upload a "combined-case-written-authorisation" file
+        And I confirm it is the correct file
         And I am on the "combined-case-check-applicant-info" page
         And confirm the "combined-case-applicant-info" details are correct
         # land ownership
         And I choose to add "combined-case-land-ownership" details
         And I am on the "combined-case-land-ownership-upload" page
         And I upload a "combined-case-land-ownership" file
+        And I confirm it is the correct file
         And I have completed the "combined-case" land-ownership section
         # land boundary
         And I choose to add "combined-case-land-boundary" details
         And I am on the "combined-case-land-boundary-upload" page
         And I upload a "combined-case-land-boundary" file
+        And I confirm it is the correct file
         And I have completed the land-boundary section
         # Metric
         And I choose to add "combined-case-metric" details
         And I am on the "combined-case-metric-upload" page
         And I upload a "combined-case-metric" file
+        And I confirm it is the correct file
         And I confirm the "check-habitat-baseline" information is correct
         And I confirm the "check-habitat-creation" information is correct
         And I confirm the "check-metric-details" information is correct
@@ -40,18 +44,21 @@ Feature: Combined Case Check and Submit
         And I choose to add "combined-case-legal-agreement" details
         And I am on the "combined-case-legal-agreement-type" page
         And I select "Conservation covenant" and continue
-        And I am Informed I have to add all "Conservation covenant" files
-        And I upload a "legal-agreement" file
+        And I am informed I have to add all "Conservation covenant" files
+        And I upload a "combined-case-legal-agreement" file
+        And I confirm it is the correct file
         And I have completed the legal-agreement section
         # Local land Charges
         And I choose to add "combined-case-local-land-charge" details
         And I am on the "combined-case-local-land-charge-upload" page
         And I upload a "combined-case-local-land-charge" file
+        And I confirm it is the correct file
 
         ### Allocation Section
         # Upload planning decision notice
         And I choose to add "combined case planning decision notice" details
-        And I upload a "planning-decision-notice" file
+        And I upload a "combined-case-planning-decision-notice" file
+        And I confirm it is the correct file
 
         # Add development project details
         And I choose to add "combined case Development Project" details
@@ -60,6 +67,7 @@ Feature: Combined Case Check and Submit
 
         And I choose to add "match available habitat" details
         And I upload a "combined-case-developer-metric" file
+        And I confirm it is the correct file
         And I match my habitats
 
         # Submit your combined case information

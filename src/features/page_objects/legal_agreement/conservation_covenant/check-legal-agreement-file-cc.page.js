@@ -1,17 +1,17 @@
 // copydeck CD74
-const Page = require("../../page");
+const Page = require('../../page')
 
 class LegalAgreementCheckFileCC extends Page {
-  get titleText() {
-    return "Check the conservation covenant file";
+  get titleText () {
+    return 'Check the conservation covenant file'
   }
 
-  get downloadLink() {
-    return $("#document-download");
+  get downloadLink () {
+    return $('#document-download')
   }
 
-  open() {
-    return super.open("land/check-legal-agreement-file");
+  open () {
+    return super.open('land/check-legal-agreement-file')
   }
 }
-module.exports = LegalAgreementCheckFileCC;
+module.exports = LegalAgreementCheckFileCC

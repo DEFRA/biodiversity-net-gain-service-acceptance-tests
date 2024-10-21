@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class CreditsPurchaseCheckMetricUploadPage extends Page {
-  get titleText() {
-    return "Check the statutory biodiversity metric file";
+  get titleText () {
+    return 'Check the statutory biodiversity metric file'
   }
 
-  get path() {
-    return "credits-purchase/check-metric-file";
+  get path () {
+    return 'credits-purchase/check-metric-file'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = CreditsPurchaseCheckMetricUploadPage;
+module.exports = CreditsPurchaseCheckMetricUploadPage

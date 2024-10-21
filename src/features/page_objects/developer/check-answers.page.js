@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class DeveloperCheckAnswersPage extends Page {
-  get titleText() {
-    return "Check your answers before submitting your information";
+  get titleText () {
+    return 'Check your answers before submitting your information'
   }
 
-  get path() {
-    return "developer/check-answers";
+  get path () {
+    return 'developer/check-answers'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = DeveloperCheckAnswersPage;
+module.exports = DeveloperCheckAnswersPage

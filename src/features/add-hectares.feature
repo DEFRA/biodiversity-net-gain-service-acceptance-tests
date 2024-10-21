@@ -6,11 +6,17 @@ Feature: BNGP-786 Enter Area in hectares
     So the Operator can identify the full size of the site
 
     Background:
-        Given I navigate to the "add-hectares" page
+        Given I choose to manage biodiversity gains
+        And I choose to manage my gain sites
+        And I choose to start a new registration
+        And I choose to add "land-boundary" details
+        And I upload a "land-boundary" file
+        And I confirm it is the correct file
+        And I add a valid grid reference "TL6222"
 
     Scenario Outline: I can add the total hectares for my land
         When I add total hectares as "<hectares>"
-        Then I should be on the "register-land-task-list" page
+        Then I should be on the "check-land-boundary-details" page
         Examples:
             | hectares |
             | 1231.11  |

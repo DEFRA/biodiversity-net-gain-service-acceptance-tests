@@ -1,12 +1,12 @@
-const DeveloperJourneyDevelopmentInformationPage = require("../../developer/development-project-information.page");
+const DeveloperJourneyDevelopmentInformationPage = require('../../developer/development-project-information.page')
 
 class CombinedCaseDeveloperJourneyDevelopmentInformationPage extends DeveloperJourneyDevelopmentInformationPage {
-  get path() {
-    return "combined-case/development-project-information";
+  get path () {
+    return 'combined-case/development-project-information'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = CombinedCaseDeveloperJourneyDevelopmentInformationPage;
+module.exports = CombinedCaseDeveloperJourneyDevelopmentInformationPage

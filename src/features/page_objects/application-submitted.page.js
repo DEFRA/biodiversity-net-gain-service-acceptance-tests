@@ -1,36 +1,36 @@
-const Page = require("./page");
+const Page = require('./page')
 
 class ApplicationSubmittedPage extends Page {
-  get titleText() {
-    return "Application submitted";
+  get titleText () {
+    return 'Application submitted'
   }
 
-  get feeAmount(){
-    return $('*[data-testid="fee-amount-value"]');
- }
-  
-  get paymentRreference(){
-    return $('*[data-testid="payment-reference-value"]');
+  get feeAmount () {
+    return $('*[data-testid="fee-amount-value"]')
   }
 
-  get accountName(){
-    return $('*[data-testid="account-name-value"]');
+  get paymentRreference () {
+    return $('*[data-testid="payment-reference-value"]')
   }
 
-  get sortCode(){
-    return $('*[data-testid="sort-code-value"]');
+  get accountName () {
+    return $('*[data-testid="account-name-value"]')
   }
 
-  get accountNumber(){
-    return $('*[data-testid="account-number-value"]');
+  get sortCode () {
+    return $('*[data-testid="sort-code-value"]')
   }
 
-  get swiftBicCode(){
-    return $('*[data-testid="swift-bic-code-value"]');
+  get accountNumber () {
+    return $('*[data-testid="account-number-value"]')
   }
 
-  open() {
-    return super.open("application-submitted");
+  get swiftBicCode () {
+    return $('*[data-testid="swift-bic-code-value"]')
+  }
+
+  open () {
+    return super.open('application-submitted')
   }
 }
-module.exports = ApplicationSubmittedPage;
+module.exports = ApplicationSubmittedPage

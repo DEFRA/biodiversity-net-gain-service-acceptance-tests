@@ -1,12 +1,17 @@
 @regression
 Feature: BNGP-785 Grid Reference
 
-    As as Site Provider
+    As a Site Provider
     I need to enter the central grid reference of my site
     So that the Operator is able to identify its location
 
     Background:
-        Given I navigate to the "grid-reference" page
+        Given I choose to manage biodiversity gains
+        And I choose to manage my gain sites
+        And I choose to start a new registration
+        And I choose to add "land-boundary" details
+        And I upload a "land-boundary" file
+        And I confirm it is the correct file
 
     Scenario: BNGP-785 1 Grid reference cannot be blank
         When I continue without an action

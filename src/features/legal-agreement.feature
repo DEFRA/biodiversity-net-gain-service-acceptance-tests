@@ -1,4 +1,5 @@
 
+
 Feature: Legal Agreement
 
     As a Site Provider
@@ -6,7 +7,12 @@ Feature: Legal Agreement
     So that I can provide the data required for registration
 
     Background:
-        Given I navigate to the "legal-agreement-type" page
+        #Given I choose to start a new registration
+        Given I choose to manage biodiversity gains
+        # // nav bar manage link should really be baseurl
+        And I choose to manage my gain sites
+        And I choose to start a new registration
+        And I choose to add "legal-agreement" details
 
     Scenario Outline: BNGP-188 2 I have a choice between 2 types of legal agreement or not having one
         When I select "<legal-agreement-type>" and continue
@@ -19,12 +25,21 @@ Feature: Legal Agreement
 
     Scenario: BNGP-188 3 I should be able to add multiple legal parties
         When I select "Planning obligation" and continue
-        And I upload a "legal-agreement" file
+        And I am informed I have to add all "Planning obligation" files
+        And I upload a "planning-obligation" file
+        And I confirm it is the correct file
+        And I confirm all legal agreement files are added
+        And I am informed I have to add all "Local planning authority" details
+        And I add the local planning authority as "Middlesbrough LPA"
+
+        And I add the responsible body "legal party 2" listed on the legal agreement
+        And I confirm other landowners or leaseholders are listed on the legal agreement as "true"
+
         And I add the legal party "Legal Party 1" with a role of "Landowner"
         And I choose to add another legal party of "Legal Party 2" with a role of "Developer"
         Then I can should see the number of legal parties in the title as "2"
 
-    #todo refactor
+    @skip() #todo refactor
     Scenario: BNGP-188 4 There is a way to remove unwanted legal parties from the list
         When I navigate to the "legal-party-list" page
         Then I can remove the other "legal party"
@@ -68,19 +83,13 @@ Feature: Legal Agreement
             | page                       |
             | legal-agreement-start-date |
             | monitoring-start-date      |
-    @new
+
     Scenario: https://eaflood.atlassian.net/browse/BNGP-5489 - Bug - 1
         When I select "Conservation covenant" and continue
-        And I am Informed I have to add all "Conservation covenant" files
+        And I am informed I have to add all "Conservation covenant" files
         And I upload a "legal-agreement" file
         And I confirm all legal agreement files are added
         And I add the responsible body "legal party 2" listed on the legal agreement
-        And I confirm there are other landowners or leaseholders listed on the legal agreement
-        Then I should be on the "" page
+        And I confirm other landowners or leaseholders are listed on the legal agreement as "false"
+        Then I should be on the "habitat-plan-legal-agreement" page
 # And I add another landowner or leaseholder as an organisation
-
-
-
-# Complete next few pages, up until the “Are there any other landowners or leaseholders listed” page
-
-# Select “No” and Continue

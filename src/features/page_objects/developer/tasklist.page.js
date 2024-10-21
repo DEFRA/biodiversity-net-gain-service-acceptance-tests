@@ -1,30 +1,37 @@
-const RegisterTasklistPage = require("../register-land-task-list.page")
+const RegisterTasklistPage = require('../register-land-task-list.page')
 
 class DeveloperTaskListPage extends RegisterTasklistPage {
-  get titleText() {
-    return "Record allocation of off-site biodiversity gains to a development";
-  } 
-  //developer sections
-  get addapplicantDetails(){
-    return $("a[href='/developer/agent-acting-for-client");
+  get titleText () {
+    return 'Record allocation of off-site biodiversity gains to a development'
   }
-  get addapplicantDetailsStatus(){
-    return $("#applicant-details-status");
+
+  // developer sections
+  get addapplicantDetails () {
+    return $("a[href='/developer/agent-acting-for-client")
   }
-  get addBiodiversityGainSiteInfo(){
-    return $("a[href='/developer/biodiversity-gain-site-number");
+
+  get addapplicantDetailsStatus () {
+    return $('#applicant-details-status')
   }
-  get addBiodiversityGainSiteInfoStatus(){
-    return $("#gain-site-allocation-info-status");
+
+  get addBiodiversityGainSiteInfo () {
+    return $("a[href='/developer/biodiversity-gain-site-number")
   }
-  get addDevelopmentInformation() {
-    return $("a[href='/developer/development-project-information']");
+
+  get addBiodiversityGainSiteInfoStatus () {
+    return $('#gain-site-allocation-info-status')
   }
-  get devCheckAndSubmitBtn(){
-       return $("a[href='/developer/check-and-submit']");
+
+  get addDevelopmentInformation () {
+    return $("a[href='/developer/development-project-information']")
   }
-  open() {
-    return super.open("developer/tasklist");
+
+  get devCheckAndSubmitBtn () {
+    return $("a[href='/developer/check-and-submit']")
+  }
+
+  open () {
+    return super.open('developer/tasklist')
   }
 }
-module.exports = DeveloperTaskListPage;
+module.exports = DeveloperTaskListPage

@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class RegisteredLandowner extends Page {
-  get titleText() {
-    return "Are you the only registered landowner?";
+  get titleText () {
+    return 'Are you the only registered landowner?'
   }
 
-  get path() {
-    return "land/registered-landowner";
+  get path () {
+    return 'land/registered-landowner'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = RegisteredLandowner;
+module.exports = RegisteredLandowner

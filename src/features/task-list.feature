@@ -15,8 +15,11 @@ Feature: Task List Page
             | Planning obligation | Legal agreements | Completed |
 
     Scenario: BNGP-527 2, 5 - The sections on the task list page should show the status of progress.
-        #Todo: add more specific tests
-        Given I navigate to the "register-land-task-list" page
+        #Given I choose to start a new registration
+        Given I choose to manage biodiversity gains
+        # // nav bar manage link should really be baseurl
+        And I choose to manage my gain sites
+        And I choose to start a new registration
         Then I should see my progress as "You have completed 0 of 7 sections."
         And I should see the "land-ownership" section status as "Not started"
         And I should see the "land-boundary" section status as "Not started"
@@ -34,7 +37,7 @@ Feature: Task List Page
 
     #credits
     Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-4128 2 - The sections on the task list page should show the status of progress.
-        Given I navigate to the "credits-purchase-task-list" page
+        Given I choose to start a new credit purchase application
         Then I should see my progress as "You have completed 0 of 7 sections."
         And I should see the "credits-purchase-metric" section status as "Not started"
         And I should see the "add-credits" section status as "Not started"

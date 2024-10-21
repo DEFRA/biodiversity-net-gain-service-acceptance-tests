@@ -1,24 +1,24 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class DeveloperRoutingRegisterPage extends Page {
-  get titleText() {
-    return "What do you want to do?";
+  get titleText () {
+    return 'What do you want to do?'
   }
 
-  get radioRegisterGainSite(){
-    return $("input[value='register-gain-site']");
+  get radioRegisterGainSite () {
+    return $("input[value='register-gain-site']")
   }
 
-  get radioRecordOffsite(){
-    return $("input[value='record-off-site']");
+  get radioRecordOffsite () {
+    return $("input[value='record-off-site']")
   }
 
-  get path() {
-    return "developer/routing-register";
+  get path () {
+    return 'developer/routing-register'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = DeveloperRoutingRegisterPage;
+module.exports = DeveloperRoutingRegisterPage

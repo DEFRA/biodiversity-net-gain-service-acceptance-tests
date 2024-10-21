@@ -1,20 +1,20 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class LandownerConsentPage extends Page {
-  get titleText() {
-    return "Landowner consent declaration";
+  get titleText () {
+    return 'Landowner consent declaration'
   }
 
-  get landownerConsentChkBox() {
-  return $("input[value='true']"); 
+  get landownerConsentChkBox () {
+    return $("input[value='true']")
   }
 
-  get path() {
-    return "land/landowner-consent";
+  get path () {
+    return 'land/landowner-consent'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = new LandownerConsentPage();
+module.exports = new LandownerConsentPage()

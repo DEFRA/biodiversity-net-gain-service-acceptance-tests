@@ -1,12 +1,12 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class CombinedCaseMatchAllocationSummaryPage extends Page {
-  get titleText() {
-    return "Confirm your matched habitats";
+  get titleText () {
+    return 'Confirm your matched habitats'
   }
 
-  open() {
-    return super.open("combined-case/match-allocation-summary");
+  open () {
+    return super.open('combined-case/match-allocation-summary')
   }
 }
-module.exports = CombinedCaseMatchAllocationSummaryPage;
+module.exports = CombinedCaseMatchAllocationSummaryPage

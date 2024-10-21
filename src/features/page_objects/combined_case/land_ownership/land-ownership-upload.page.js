@@ -1,13 +1,12 @@
-const LandOwnershipUploadPage = require("../../land_ownership/land-ownership-upload.page");
+const LandOwnershipUploadPage = require('../../land_ownership/land-ownership-upload.page')
 
-class CombinedCaseLandOwnershipUploadPage extends LandOwnershipUploadPage  {
-
-  get path() {
-    return "combined-case/upload-ownership-proof";
+class CombinedCaseLandOwnershipUploadPage extends LandOwnershipUploadPage {
+  get path () {
+    return 'combined-case/upload-ownership-proof'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = CombinedCaseLandOwnershipUploadPage;
+module.exports = CombinedCaseLandOwnershipUploadPage
