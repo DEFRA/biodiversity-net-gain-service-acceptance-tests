@@ -23,8 +23,7 @@ Feature: Developer Journey Tests
         And I should see the "Development Project" section status as "Not started"
         And I should see the "planning decision notice" section status as "Not started"
         And I should see the "check-and-submit" section status as "Cannot start yet"
-
-    @e2e @new
+    @e2e
     Scenario: https://eaflood.atlassian.net/browse/BNGP-2964 1 - The Allocation Biodiversity Gain Site Reference is displayed
         # Applicant Info
         # Add details about the applicant
@@ -34,7 +33,7 @@ Feature: Developer Journey Tests
         # Development Information
         # Upload Metric : Add Biodiversity Gain Site details
         And I choose to add "biodiversity gain site information" details
-        And I enter my off site gain reference number as "gFSTO7ZSVI3oglCbbYAn4VMXDZmhMjY1"
+        And I enter my off site gain reference number as "BGS-DoNot-Use-007"
         And I upload a "developer-metric" file
         And I confirm it is the correct file
         And I confirm my off site gain

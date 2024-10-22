@@ -1,25 +1,25 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class ApplicantDetailsCorrectEmail extends Page {
-  get titleText() {
-    return "Is this email address correct?";
-  }
-  
-  get emailLabel(){
-    return $("#correctEmail-hint")
+  get titleText () {
+    return 'Is this email address correct?'
   }
 
-  get emailTextbox() {
-    return $("#emailAddress");
+  get emailLabel () {
+    return $('#correctEmail-hint')
   }
 
-  async confirmEmailAddress() {
-    await (this.radioYes).click();
-    await (this.continueButton).click();
+  get emailTextbox () {
+    return $('#emailAddress')
   }
-  
-  open() {
-    return super.open("land/email");
+
+  async confirmEmailAddress () {
+    await (this.radioYes).click()
+    await (this.continueButton).click()
+  }
+
+  open () {
+    return super.open('land/email')
   }
 }
-module.exports = new ApplicantDetailsCorrectEmail();
+module.exports = ApplicantDetailsCorrectEmail

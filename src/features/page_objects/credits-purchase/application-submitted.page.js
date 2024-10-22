@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class creditsPurchaseApplicationSubmittedPage extends Page {
-  get titleText() {
-    return "Application complete";
+  get titleText () {
+    return 'Application complete'
   }
 
-  get path() {
-    return "credits-purchase/application-submitted";
+  get path () {
+    return 'credits-purchase/application-submitted'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = new creditsPurchaseApplicationSubmittedPage();
+module.exports = creditsPurchaseApplicationSubmittedPage

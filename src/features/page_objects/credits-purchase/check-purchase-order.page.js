@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class creditsPurchaseOrderPage extends Page {
-  get titleText() {
-    return "Will you be using a purchase order?";
+  get titleText () {
+    return 'Will you be using a purchase order?'
   }
 
-  get purchaseOrderNumber(){
-    return $("#purchaseOrderNumber"); 
-   }
+  get purchaseOrderNumber () {
+    return $('#purchaseOrderNumber')
+  }
 
-  open() {
-    return super.open("credits-purchase/check-purchase-order");
+  open () {
+    return super.open('credits-purchase/check-purchase-order')
   }
 }
-module.exports = new creditsPurchaseOrderPage();
+module.exports = new creditsPurchaseOrderPage()

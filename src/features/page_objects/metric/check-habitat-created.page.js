@@ -10,4 +10,4 @@ class MetricCheckHabitatCreation extends Page {
     return super.open('land/check-habitat-created')
   }
 }
-module.exports = new MetricCheckHabitatCreation()
+module.exports = MetricCheckHabitatCreation

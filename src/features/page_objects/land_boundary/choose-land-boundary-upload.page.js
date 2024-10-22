@@ -1,51 +1,49 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class LandBoundaryChooseUploadOption extends Page {
-  get titleText() {
-    return "Choose how to add the biodiversity gain site boundary";
+  get titleText () {
+    return 'Choose how to add the biodiversity gain site boundary'
   }
 
-  get geospatialOption() {
+  get geospatialOption () {
     // location-options
-    return $("#landBoundaryUploadType");
+    return $('#landBoundaryUploadType')
   }
 
-  get imageOption() {
-
+  get imageOption () {
     // location-options-2
-    return $("#landBoundaryUploadType-2");
+    return $('#landBoundaryUploadType-2')
   }
 
-  get geospatialOptionLbl() {
-    return $("#landBoundaryUploadType+ .govuk-radios__label");
+  get geospatialOptionLbl () {
+    return $('#landBoundaryUploadType+ .govuk-radios__label')
   }
 
-  get imageOptionLbl() {
-    return $("#landBoundaryUploadType-2+ .govuk-radios__label");
+  get imageOptionLbl () {
+    return $('#landBoundaryUploadType-2+ .govuk-radios__label')
   }
 
-  get path() {
-    return "land/choose-land-boundary-upload";
+  get path () {
+    return 'land/choose-land-boundary-upload'
   }
 
-  async chooseLandboundaryFileType(fileType) {
+  async chooseLandboundaryFileType (fileType) {
     switch (fileType) {
-      case "geospatial":
+      case 'geospatial':
         await expect(this.geospatialOption).toBeClickable;
-        (await this.geospatialOption).click();
-        break;
-      case "Document or Image":
-        await expect(this.imageOption).toBeClickable;
-        await (await this.imageOption).click();
-        break;
+        (await this.geospatialOption).click()
+        break
+      case 'Document or Image':
+        await expect(this.imageOption).toBeClickable
+        await (await this.imageOption).click()
+        break
     }
-  
-    await this.continueButton.click();
-  }
-  
 
-  open() {
-    return super.open(this.path);
+    await this.continueButton.click()
+  }
+
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = new LandBoundaryChooseUploadOption();
+module.exports = LandBoundaryChooseUploadOption

@@ -6,6 +6,7 @@ Feature: Check and Submit
     So that I can confirm I am satisfied with all the entered details and submit my application
 
     Background: Complete all registration details
+        #Given I choose to start a new registration
         Given I choose to manage biodiversity gains
         # // nav bar manage link should really be baseurl
         And I choose to manage my gain sites
@@ -17,14 +18,13 @@ Feature: Check and Submit
         And I upload a "written-authorisation" file
         And I confirm it is the correct file
         And I am on the "check-applicant-info" page
-        And confirm the applicant-info details are correct
+        And confirm the "applicant-info" details are correct
         # land ownership
         And I choose to add "land-ownership" details
         And I am on the "land-ownership-upload" page
         And I upload a "land-ownership" file
         And I confirm it is the correct file
-        # And I confirm the correct file
-        And I have completed the land-ownership section
+        And I have completed the "registration" land-ownership section
         # land boundary
         And I choose to add "land-boundary" details
         And I am on the "land-boundary-upload" page
@@ -42,9 +42,6 @@ Feature: Check and Submit
         And I should see the "metric" section status as "Completed"
         # Legal Agreement
         And I choose to add "legal-agreement" details
-        And I am on the "legal-agreement-type" page
-        And I select "Conservation covenant" and continue
-        And I am Informed I have to add all "Conservation covenant" files
         And I upload a "legal-agreement" file
         And I confirm it is the correct file
         And I have completed the legal-agreement section
