@@ -10,4 +10,4 @@ class MetricCheckDetails extends Page {
     return super.open('land/check-metric-details')
   }
 }
-module.exports = new MetricCheckDetails()
+module.exports = MetricCheckDetails

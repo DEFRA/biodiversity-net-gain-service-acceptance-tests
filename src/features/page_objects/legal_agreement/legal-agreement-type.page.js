@@ -1,24 +1,24 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class LegalAgreementType extends Page {
-  get titleText() {
-    return "Which legal agreement do you have?";
+  get titleText () {
+    return 'Which legal agreement do you have?'
   }
 
-  get downloadLink() {
-    return $("#document-download");
+  get downloadLink () {
+    return $('#document-download')
   }
 
-  get conservationCovenant() {
-    return $("#conservation-covenant");
+  get conservationCovenant () {
+    return $('#conservation-covenant')
   }
 
-  get planningObligation() {
-    return $("#planning-obligation");
+  get planningObligation () {
+    return $('#planning-obligation')
   }
 
-  open() {
-    return super.open("land/legal-agreement-type");
+  open () {
+    return super.open('land/legal-agreement-type')
   }
 }
-module.exports = new LegalAgreementType();
+module.exports = LegalAgreementType

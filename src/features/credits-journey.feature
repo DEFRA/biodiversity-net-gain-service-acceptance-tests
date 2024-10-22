@@ -10,7 +10,7 @@ Feature: Credit Purchase Journey Tests
         # // nav bar manage link should really be baseurl
         And I choose to buy statutory biodiversity credits
         And I choose to buy new statutory biodiversity credits
-        And I am on the "credits-purchase-task-list" page
+        And I am on the "credits-purchase-tasklist" page
 
     @e2e
     Scenario: Complete all credit application details

@@ -1,16 +1,16 @@
-const Page = require("../../page");
+const Page = require('../../page')
 
 class LegalAgreementConservationCovenantUpload extends Page {
-  get titleText() {
-    return "Upload the conservation covenant";
+  get titleText () {
+    return 'Upload the conservation covenant'
   }
 
-  get path() {
-    return "land/upload-legal-agreement";
+  get path () {
+    return 'land/upload-legal-agreement'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = new LegalAgreementConservationCovenantUpload();
+module.exports = LegalAgreementConservationCovenantUpload

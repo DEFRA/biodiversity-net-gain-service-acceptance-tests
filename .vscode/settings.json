@@ -11,7 +11,7 @@
     "**/node_modules/": true
   },
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll": "explicit"
     },
     "eslint.validate": ["javascript"]
 

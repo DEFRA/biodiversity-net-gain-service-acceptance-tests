@@ -1,13 +1,13 @@
 // Copydeck CD75
-const Page = require("../page");
+const Page = require('../page')
 
 class LocalLandChargeNeedPage extends Page {
-  get titleText() {
-    return "You need a local land charge search certificate";
+  get titleText () {
+    return 'You need a local land charge search certificate'
   }
 
-  open() {
-    return super.open("land/need-local-land-charge");
+  open () {
+    return super.open('land/need-local-land-charge')
   }
 }
-module.exports = new LocalLandChargeNeedPage();
+module.exports = LocalLandChargeNeedPage

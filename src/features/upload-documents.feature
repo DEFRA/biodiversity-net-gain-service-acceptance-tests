@@ -5,31 +5,15 @@ Feature: Upload Documents
     I need to upload copies of my evidence documents
     So that I can prove that I have met all the eligibility criteria
 
-    @skip() #skipped as covered by @e2e tests
-    Scenario Outline: <jira ticket> 1 - There is an option of uploading a single <document>
-        When I navigate to the "<document>-upload" page
-        And I upload a "<document>" file
-        And I confirm it is the correct file
-        Then I should be on the "<destination>" page
-        Examples: Landowner Journey
-            | jira ticket | document          | destination                 |
-            | BNGP-499    | legal-agreement   | add-legal-agreement-parties |
-            # | BNGP-765    | management-plan   | habitat-works-start-date    |
-            | BNGP-767    | land-boundary     | grid-reference              |
-            # | BNGP-526    | geospatial        | check-land-boundary-details |
-            | BNGP-524    | metric            | metric-display-baseline     |
-            | BNGP-515    | land-ownership    | registered-landowner        |
-            | BNGP-3094   | local-land-charge | register-land-task-list     |
-        Examples: Developer Journey
-            | jira ticket | document          | destination                 |
-            | BNGP-738    | developer-metric  | confirm-development-details |
-            | BNGP-2195   | consent-agreement | developer/tasklist          |
-
+    Background: Start new registration
+        Given I choose to manage biodiversity gains
+        And I choose to manage my gain sites
+        And I choose to start a new registration
 
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
-        When I navigate to the "<document>-upload" page
-        And I choose a file type that is not in the specified format
-        #todo needs mulitiple unspecified
+        When I choose to add "<document>" details
+        And I choose a file type that is not in the specified format for the "<document>"
+        # Todo needs mulitiple unspecified
         Then I should not be able to upload the file
         And I am informed of what the allowed file types should be
         Examples:
@@ -41,7 +25,7 @@ Feature: Upload Documents
             | BNGP-515    | land-ownership  |
 
     Scenario Outline: <jira ticket> 3 - I can check that the uploaded <document> is the one I wanted to upload before continuing
-        When I navigate to the "<document>-upload" page
+        When I choose to add "<document>" details
         And I upload a "<document>" file
         And I am on the "<document>-check" page
         Then There should be a link to download the document
@@ -55,9 +39,9 @@ Feature: Upload Documents
             | BNGP-515    | land-ownership  | 11.75 kB |
 
     Scenario Outline: <jira ticket> 4 - There is a way to choose a different <document> if necessary
-        When I navigate to the "<document>-upload" page
+        When I choose to add "<document>" details
         And I upload a "<document>" file
-        And  I choose a different file
+        And I choose a different file
         Then I should be returned to the "<document>-upload" page
         Examples:
             | jira ticket | document        |
@@ -68,7 +52,7 @@ Feature: Upload Documents
             | BNGP-515    | land-ownership  |
 
     Scenario Outline: I cannot upload an empty <document>
-        When I navigate to the "<document>-upload" page
+        When I choose to add "<document>" details
         And I choose an empty "<document>" file
         Then I should not be able to upload the file
         And I am informed that the file is empty
@@ -81,21 +65,20 @@ Feature: Upload Documents
 
     # https://eaflood.atlassian.net/browse/BNGP-4756
     Scenario Outline: I cannot continue without uploading a <document>
-        When I navigate to the "<document>-upload" page
-        And I upload without choosing a file
+        When I choose to add "<document>" details
+        And I try to upload a "<document>" without choosing a file
         Then I should see the error "<message>"
         And I should see the error and the error summary displayed
         Examples:
-            | document                | message                                 |
-            | legal-agreement         | Select a legal agreement                |
-            | land-boundary           | Select a file showing the land boundary |
+            | document        | message                                 |
+            | legal-agreement | Select a legal agreement                |
+            | land-boundary   | Select a file showing the land boundary |
             # | geospatial      | Select a file showing the land boundary         |
-            | metric                  | Select a statutory biodiversity metric  |
-            | land-ownership          | Select a proof of land ownership file   |
-            | credits-purchase-metric | Select a statutory biodiversity metric  |
+            | metric          | Select a statutory biodiversity metric  |
+            | land-ownership  | Select a proof of land ownership file   |
 
     Scenario Outline: I cannot continue without confirming the uploaded <document>
-        When I navigate to the "<document>-upload" page
+        When I choose to add "<document>" details
         And I upload a "<document>" file
         And I am on the "<document>-check" page
         And I continue without an action
@@ -110,7 +93,7 @@ Feature: Upload Documents
             | land-ownership  |
 
     Scenario Outline: I should be able to upload a .<filetype> filetype for <document> files
-        When I navigate to the "<document>-upload" page
+        When I choose to add "<document>" details
         Then I should be able to upload a "<document>" file with a filetype of "<filetype>"
         Examples:
             | document        | filetype |
@@ -129,13 +112,10 @@ Feature: Upload Documents
             | land-boundary   | docx     |
             | land-boundary   | pdf      |
             | land-boundary   | jpg      |
-    # | geospatial      | zip      |
-    # | geospatial      | geojson  |
-    # | geospatial      | gpkg     |
 
     @skip()
     Scenario Outline: <jira ticket> 8 I cannot upload a <document> file that is larger than the maximum file size (currently 50MB with 2.43 threshhold that allows for both binary and decimal interpretations of the upload limit)
-        When I navigate to the "<document>-upload" page
+        When I choose to add "<document>" details
         And I choose a '<byteType>' file of '<filesize>' or "<byteSize>" Bytes
         Then I should not be able to upload the file
         Examples:

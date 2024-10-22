@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class developerJourneyDevelopmentInformationPage extends Page {
-  get titleText() {
-    return "Development project details";
+  get titleText () {
+    return 'Development project details'
   }
 
-  get path() {
-    return "developer/development-project-information";
+  get path () {
+    return 'developer/development-project-information'
   }
 
-  open() {
-    return super.open(this.path);
+  open () {
+    return super.open(this.path)
   }
 }
-module.exports = new developerJourneyDevelopmentInformationPage();
+module.exports = developerJourneyDevelopmentInformationPage

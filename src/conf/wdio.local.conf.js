@@ -54,7 +54,9 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 10,
+  maxInstances: 3,  
+  restartBrowserBetweenTests: true,  // Restart browser between tests to prevent state leakage
+
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -154,7 +156,7 @@ exports.config = {
   framework: "cucumber",
   //
   // The number of times to retry the entire specfile when it fails as a whole
-     specFileRetries: 1,
+    //  specFileRetries: 1,
   //
   // Delay in seconds between the spec file retry attempts
      specFileRetriesDelay: 0,
@@ -261,11 +263,9 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-   before: async (uri, feature, scenarios) => {
+   before: async () => {
       // browser.setCookies([{name: 'seen_cookie_message', value: 'true'}])
       const loginPage = require("../features/page_objects/login.page");
-      const manageBngPage = require("../features/page_objects/manage-biodiversity-gains.page");
-      const biodiversityGainSitesPage = require("../features/page_objects/biodiversity-gain-sites.page")
       const username = process.env.BNG_FE_LOGIN_USER;
       const password = process.env.BNG_FE_LOGIN_PASSWORD;
       // Set the baseUrl
@@ -287,18 +287,6 @@ exports.config = {
     
       //And I am logged in to the service
       await loginPage.isLoggedIn();
-      //#Landing page - tasklist for new session (TODO refine after as random landing at the moment)
-      
-      // And I choose to manage my biodiversity gains
-      // nav bar manage link should really be baseurl
-      await manageBngPage.manageBngNavLink.click();
-
-      // And I choose to manage my gain sites
-      // # And I am on the "biodiversity-gain-sites" page
-      await manageBngPage.manageGainSitesLink.click();
-
-      // And I choose to start a new registration
-      await biodiversityGainSitesPage.registerNewGainSiteLink.click();
    },
   /**
    * Runs before a WebdriverIO command gets executed.

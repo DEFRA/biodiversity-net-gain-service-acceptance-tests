@@ -1,16 +1,16 @@
-const Page = require("../page");
+const Page = require('../page')
 
 class creditsApplicationListPage extends Page {
-  get titleText() {
-    return "Statutory biodiversity credits";
+  get titleText () {
+    return 'Statutory biodiversity credits'
   }
 
-  get createNewCreditApplicationLink() {
-    return $("#create-credits-purchase");
+  get createNewCreditApplicationLink () {
+    return $('#create-credits-purchase')
   }
 
-  open() {
-    return super.open("credits-purchase/check-statutory-biodiversity-credits");
+  open () {
+    return super.open('credits-purchase/check-statutory-biodiversity-credits')
   }
 }
-module.exports = new creditsApplicationListPage();
+module.exports = new creditsApplicationListPage()
