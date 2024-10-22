@@ -14,11 +14,6 @@ Given('I enter my off site gain reference number as {string}', async (refNumber)
   await (DeveloperMetricUploadPage.continueButton).click()
 })
 
-//  Given("I confirm my development details", async () => {
-//   await DeveloperConfirmDevelopmentDetailsPage.radioYes.click();
-//   await DeveloperConfirmDevelopmentDetailsPage.continueButton.click();
-//  })
-
 Given('I confirm my off site gain', async () => {
   // Todo: check totals are correct before continuing
   await DeveloperConfirmOffSiteGainPage.continueButton.click()
