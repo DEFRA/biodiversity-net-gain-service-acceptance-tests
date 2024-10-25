@@ -6,10 +6,6 @@ class LegalAgreementCheckAddedAllFilesPage extends Page {
     return 'You have added 1 legal agreement file'
   }
 
-  get downloadLink () {
-    return $('#document-download')
-  }
-
   open () {
     return super.open('land/check-you-added-all-legal-files')
   }

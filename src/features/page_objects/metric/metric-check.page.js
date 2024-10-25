@@ -6,10 +6,6 @@ class MetricCheck extends Page {
     return 'Check the statutory biodiversity metric file'
   }
 
-  get downloadLink () {
-    return $('#document-download')
-  }
-
   open () {
     return super.open('land/check-metric-file')
   }

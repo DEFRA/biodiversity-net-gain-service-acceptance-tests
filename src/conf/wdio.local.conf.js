@@ -1,10 +1,9 @@
 // for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
 //https://www.npmjs.com/package/cucumber-html-reporter
 // import cucumberJson from "wdio-cucumberjs-json-reporter";
-// const { removeSync } = require('fs-extra');
-
-// const { BeforeFeature } = require('@cucumber/cucumber');
-// const { loginPage } = require('../features/page_objects/login.page'); 
+const path = require("path");
+const fs = require("fs");
+const downloadDir = path.resolve(process.cwd(), "./src/TestFiles/downloads")
 
 exports.config = {
   // Browserstack Config
@@ -16,7 +15,7 @@ exports.config = {
   // Runner Configuration
   // ====================
   //
-  runner: 'local',
+  runner: "local",
   //
   // ==================
   // Specify Test Files
@@ -70,15 +69,20 @@ exports.config = {
       // maxInstances: 10,
       //
      
-      browserName: "chrome",
-      // browserVersion: "122.0.6258.0",
-      // browserVersion: "stable",
-      // acceptInsecureCerts: true,
+    "browserName": "chrome",
+      // "browserVersion": "122.0.6258.0",
+      // "browserVersion": "stable",
+      // "acceptInsecureCerts": true,
       "goog:chromeOptions": {
-        args: ["--headless", "--disable-logging"],
-      },
-    },
-
+        "args": ["--headless", "--disable-logging"],
+        "prefs": {
+            "download.default_directory": downloadDir, 
+            "download.prompt_for_download": false,
+            "download.directory_upgrade": true,
+           "safebrowsing.enabled": true
+        }
+      }
+    }
     // If outputDir is provided WebdriverIO can capture driver session logs
     // it is possible to configure which logTypes to include/exclude.
     // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -310,8 +314,17 @@ exports.config = {
    * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
    * @param {Object}                 context  Cucumber World object
    */
-  // beforeScenario: function (world, context) {
-  // },
+  beforeScenario: function () {
+    // Check if the download directory exists
+    if (fs.existsSync(downloadDir)) {
+      // Read all files in the directory
+      fs.readdirSync(downloadDir).forEach((file) => {
+        const filePath = path.join(downloadDir, file);
+        // Delete each file individually
+        fs.unlinkSync(filePath);
+      });
+    }
+  }
   /**
    *
    * Runs before a Cucumber Step.

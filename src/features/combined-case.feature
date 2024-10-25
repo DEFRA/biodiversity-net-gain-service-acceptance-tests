@@ -4,10 +4,9 @@ Feature: Combined Case Check and Submit
     I need to review all the application details I have provided
     So that I can confirm my details and submit my application
 
-    @e2e
-    Scenario: Complete all combined case details
+    Background: Start a "combined case" journey and complete all details
+        ## Start combined case journey
         Given I choose to manage biodiversity gains
-        # # // nav bar manage link should really be baseurl
         And I choose to register a gain site and record off site gains at the same time
         And I choose to register a gain site and allocate to a development
         ## Registration section
@@ -65,13 +64,14 @@ Feature: Combined Case Check and Submit
         And I am on the "combined-case-development-project-details" page
         And I have completed the "combined-case" Development Information section
 
-        And I choose to add "match available habitat" details
+        And I choose to add "combined-case-developer-metric" details
         And I upload a "combined-case-developer-metric" file
         And I confirm it is the correct file
         And I match my habitats
 
-        # Submit your combined case information
-        And I confirm I have completed all "combined-case" journey sections
+    @e2e
+    Scenario: Submit your combined case information
+        Given I confirm I have completed all "combined-case" journey sections
         And I am on the "combined-case-check-and-submit" page
         And I have agreed to the terms and conditions
         When I submit my application

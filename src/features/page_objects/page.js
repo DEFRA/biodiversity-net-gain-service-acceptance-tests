@@ -31,6 +31,10 @@ module.exports = class Page {
     return $('.govuk-file-upload')
   }
 
+  get downloadLink () {
+    return $('#document-download')
+  }
+
   get manageBngNavLink () {
     return $('#link-manage-account')
   }

@@ -6,10 +6,6 @@ class LegalAgreementCheckFileCC extends Page {
     return 'Check the conservation covenant file'
   }
 
-  get downloadLink () {
-    return $('#document-download')
-  }
-
   open () {
     return super.open('land/check-legal-agreement-file')
   }

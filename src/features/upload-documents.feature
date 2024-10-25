@@ -28,8 +28,9 @@ Feature: Upload Documents
         When I choose to add "<document>" details
         And I upload a "<document>" file
         And I am on the "<document>-check" page
-        Then There should be a link to download the document
+        Then There should be a link to download the "<document>"
         And I should be able to see the filesize of the document as "<filesize>"
+        And I can download the "<document>"
         Examples:
             | jira ticket | document        | filesize |
             | BNGP-499    | legal-agreement | 11.75 kB |
@@ -92,9 +93,10 @@ Feature: Upload Documents
             | metric          |
             | land-ownership  |
 
-    Scenario Outline: I should be able to upload a .<filetype> filetype for <document> files
+    Scenario Outline: I should be able to upload and download .<filetype> filetype for <document> files
         When I choose to add "<document>" details
         Then I should be able to upload a "<document>" file with a filetype of "<filetype>"
+        And I can download the "<document>"
         Examples:
             | document        | filetype |
             | legal-agreement | doc      |
