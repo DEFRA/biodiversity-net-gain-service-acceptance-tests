@@ -74,7 +74,13 @@ exports.config = {
       // "browserVersion": "stable",
       // "acceptInsecureCerts": true,
       "goog:chromeOptions": {
-        "args": ["--headless", "--disable-logging"],
+        "args": [
+          "--headless", 
+          "--disable-logging",
+          "--disable-webrtc",
+          "--disable-media-stream",
+           "--disable-background-timer-throttling"
+        ],
         "prefs": {
             "download.default_directory": downloadDir, 
             "download.prompt_for_download": false,
@@ -314,7 +320,7 @@ exports.config = {
    * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
    * @param {Object}                 context  Cucumber World object
    */
-  beforeScenario: function () {
+  beforeScenario: async () => {
     // Check if the download directory exists
     if (fs.existsSync(downloadDir)) {
       // Read all files in the directory
@@ -324,7 +330,7 @@ exports.config = {
         fs.unlinkSync(filePath);
       });
     }
-  }
+  },
   /**
    *
    * Runs before a Cucumber Step.
@@ -360,7 +366,7 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-  //  afterScenario: async function (world, result, context) {
+  //  afterScenario: async function () {
   //   // cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
   //   await browser.reloadSession();
   //  },
@@ -370,8 +376,10 @@ exports.config = {
    * @param {String}                   uri      path to feature file
    * @param {GherkinDocument.IFeature} feature  Cucumber feature object
    */
-  // afterFeature: function (uri, feature) {
-  // },
+  afterFeature: function (uri, feature) {
+    // reload browser session for long runs
+    browser.reloadSession();
+  },
 
   /**
    * Runs after a WebdriverIO command gets executed
