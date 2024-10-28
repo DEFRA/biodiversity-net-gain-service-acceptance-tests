@@ -57,6 +57,7 @@ Feature: Developer Journey Tests
         And The "biodiversity gain site" reference should be displayed
         And The fee amount of "£45.00" should be displayed
 
+    @skip() #skipped as covered by unit tests
     Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-5068 I can check my BGS number API "statuses" against the Powerapp and display appropriate error messages
         And I choose to add "biodiversity gain site information" details
         And I enter my off site gain reference number as "<BGSNumber>"
