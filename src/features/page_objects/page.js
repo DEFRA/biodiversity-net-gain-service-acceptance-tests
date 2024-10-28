@@ -149,8 +149,7 @@ module.exports = class Page {
   }
 
   get addDevelopmentInformationStatus () {
-    return $("#add-devlopment-project-information-status");
-    // Todo get dev to fix id typo
+    return $("#add-development-project-information-status");
   }
 
   get localPlanningAuthority () {
