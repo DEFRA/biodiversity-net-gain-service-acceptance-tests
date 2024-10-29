@@ -22,7 +22,7 @@ Next install the dependencies
 
 'npm run regression' to run all tests
 
-## CI/CD Pipeline optimised testss
+## CI/CD Pipeline optimised tests
 
 npm run test:ci '@e2e'
 
@@ -42,4 +42,4 @@ The current tags in use are:
 
 @Bug - Tagging a test where we know there is a bug in the application
 
-@skip() - skips running any scenario, feature, or step tagged with this
+@skip() - skips running any scenario, feature, or step tagged with this
