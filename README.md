@@ -1,6 +1,6 @@
 # biodiversity-net-gain-service-acceptance-tests
 
-A repository for storing acceptance tests (For regression testing of the Biodiversity Net Gain Register Project)
+A repository for storing acceptance tests (For testing the front end of the Biodiversity Net Gain Register Project)
 
 # **Prerequisites**
 
@@ -33,9 +33,13 @@ Use tags to run a specific set of tests e.g. 'npm run e2e' to run all tests tagg
 The current tags in use are:
 
 @e2e - UI tests for end to end scenarios which will include submission of the payload to the operator. These will be used in the dev and test environments.
-@smoke - UI tests for end to end scenarios. these wil not include submission of the payload to the operator. These will be used for Live environment.
+
+@smoke - UI tests for end to end scenarios. these wil not include submission of the payload to the operator. These will be used in the dev and test environments.
+
 @regression - UI tests used for a full regression. These will be used in test and staging environment.
 
 @new - for local running of specific tests.
+
 @Bug - Tagging a test where we know there is a bug in the application
-@skip - skips running any scenario, feature, or step tagged with this
+
+@skip() - skips running any scenario, feature, or step tagged with this
