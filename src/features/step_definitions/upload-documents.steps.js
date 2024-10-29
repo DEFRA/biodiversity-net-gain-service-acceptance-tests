@@ -100,7 +100,6 @@ Then('I can download the {string}', async (document) => {
 
 })
 
-
 Then('I should be able to see the filesize of the document as {string}', async (filesize) => {
   await expect(currentCheckPage.filesizeIndicator).toHaveText(filesize)
 })
@@ -265,4 +264,3 @@ async function uploadDocument(document) {
 async function getcurrentUploadPagesOrDefault(defaultPage = 'legal-agreement-cc-upload') {
   return currentUploadPage || pages[defaultPage]; // Return the current page if set, otherwise use a default
 }
-

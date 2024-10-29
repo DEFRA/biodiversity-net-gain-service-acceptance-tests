@@ -23,7 +23,6 @@ Feature: Developer Journey Tests
         And I should see the "Development Project" section status as "Not started"
         And I should see the "planning decision notice" section status as "Not started"
         And I should see the "check-and-submit" section status as "Cannot start yet"
-
     @e2e
     Scenario: https://eaflood.atlassian.net/browse/BNGP-2964 1 - The Allocation Biodiversity Gain Site Reference is displayed
         # Applicant Info
@@ -58,6 +57,7 @@ Feature: Developer Journey Tests
         And The "biodiversity gain site" reference should be displayed
         And The fee amount of "£45.00" should be displayed
 
+    @skip() #skipped as covered by unit tests
     Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-5068 I can check my BGS number API "statuses" against the Powerapp and display appropriate error messages
         And I choose to add "biodiversity gain site information" details
         And I enter my off site gain reference number as "<BGSNumber>"
@@ -70,7 +70,7 @@ Feature: Developer Journey Tests
             | internally-removed | This reference is for a gain site which is no longer registered.                            |
             | inactive           | This reference is for a gain site which has been withdrawn from registration.               |
             | doesNotExist       | The gain site reference was not recognised - enter a reference for an approved gain site.   |
-    @new
+
     Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-5505 I should be able to upload and download a .<filetype> filetype for <document> files
         When I choose to add "<document>" details
         Then I should be able to upload a "<document>" file with a filetype of "<filetype>"
