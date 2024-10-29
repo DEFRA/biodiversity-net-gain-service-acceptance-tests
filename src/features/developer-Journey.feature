@@ -70,7 +70,7 @@ Feature: Developer Journey Tests
             | internally-removed | This reference is for a gain site which is no longer registered.                            |
             | inactive           | This reference is for a gain site which has been withdrawn from registration.               |
             | doesNotExist       | The gain site reference was not recognised - enter a reference for an approved gain site.   |
-
+    @new
     Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-5505 I should be able to upload and download a .<filetype> filetype for <document> files
         When I choose to add "<document>" details
         Then I should be able to upload a "<document>" file with a filetype of "<filetype>"
