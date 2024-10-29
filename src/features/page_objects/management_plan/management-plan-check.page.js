@@ -5,10 +5,6 @@ class ManagementPlanCheck extends Page {
     return 'Check the habitat management and monitoring plan file'
   }
 
-  get downloadLink () {
-    return $('#document-download')
-  }
-
   open () {
     return super.open('land/check-management-plan-file')
   }

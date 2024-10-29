@@ -5,10 +5,6 @@ class LandBoundaryCheckImageFile extends Page {
     return 'Check the land boundary file'
   }
 
-  get downloadLink () {
-    return $('#document-download')
-  }
-
   open () {
     return super.open('land/check-land-boundary-file')
   }

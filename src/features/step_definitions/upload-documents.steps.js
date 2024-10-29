@@ -2,10 +2,11 @@ const { When, Then } = require('@wdio/cucumber-framework')
 const { join, basename } = require('node:path')
 const pages = require('../page_objects/page_objects')
 const { setUploadPagesForDocument, uploadFileForDocument, getFilePathForDocument } = require('../utils/documentUploadHelper')
+const fs = require('fs');
+const path = require('path');
 
 let UploadPage = ''
 let CheckPage = ''
-
 let filename = ''
 let filePath = ''
 let remoteFilePath = ''
@@ -75,11 +76,28 @@ Then('I should be able to upload a {string} file with a filetype of {string}', a
   await expect(await browser.getTitle()).toContain(CheckPage.titleText)
 })
 
-Then('There should be a link to download the document', async () => {
+Then('There should be a link to download the {string}', async (document) => {
   await currentCheckPage.downloadLink.waitForExist({ timeout: 5000 })
   const link = await currentCheckPage.downloadLink
   await expect(link).toHaveText(filename)
   await expect(link.getAttribute('href')).not.toBeNull()
+});
+
+Then('I can download the {string}', async (document) => {
+  await currentCheckPage.downloadLink.waitForExist({ timeout: 5000 })
+  const link = await currentCheckPage.downloadLink
+  await link.click();
+
+  // Define the download path and check for the file
+  const downloadDir = path.resolve(__dirname, '../../TestFiles/downloads'); 
+  const filePath = path.join(downloadDir, filename);
+ 
+  // Wait and check if the file is downloaded
+  await browser.pause(5000); 
+  const fileExists = fs.existsSync(filePath);
+
+  expect(fileExists).toBe(true);
+
 })
 
 Then('I should be able to see the filesize of the document as {string}', async (filesize) => {
@@ -246,4 +264,3 @@ async function uploadDocument(document) {
 async function getcurrentUploadPagesOrDefault(defaultPage = 'legal-agreement-cc-upload') {
   return currentUploadPage || pages[defaultPage]; // Return the current page if set, otherwise use a default
 }
-
