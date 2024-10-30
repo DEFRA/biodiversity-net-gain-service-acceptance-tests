@@ -7,7 +7,6 @@ Feature: Developer Journey Tests
 
     Background: Choose to record off-site gains for a new development
         Given I choose to manage biodiversity gains
-        # // nav bar manage link should really be baseurl
         And I choose to manage my off-site gains for my development projects
         And I choose to record off-site gains for a new development
         And I am on the "developer/tasklist" page
