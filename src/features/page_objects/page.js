@@ -153,7 +153,7 @@ module.exports = class Page {
   }
 
   get addDevelopmentInformationStatus() {
-    return $("#add-devlopment-project-information-status");
+    return $("#add-development-project-information-status");
   }
 
   get localPlanningAuthority () {
