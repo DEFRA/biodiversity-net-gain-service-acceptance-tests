@@ -100,9 +100,10 @@ Then('I can download the {string}', async (document) => {
 
 })
 
-Then('I should be able to see the filesize of the document as {string}', async (filesize) => {
-  await expect(currentCheckPage.filesizeIndicator).toHaveText(filesize)
-})
+Then("I should be able to see the filesize of the document as {string}", async (filesize) => {
+  // get actual filesize of test file
+  await expect(currentCheckPage.filesizeIndicator).toHaveText(filesize);
+});
 
 When('I upload a file that contains malware or a virus', async () => {
   const filePath = join(__dirname, '../../TestFiles/test_eicar-adobe-acrobat-attachment.pdf')
@@ -246,9 +247,9 @@ When('I choose a {string} file of {string} or {string} Bytes', async (byteType, 
   await UploadPage.continueButton.click()
 })
 
-Then('The original document should be deleted', async function () {
-  return 'pending'
-})
+Then("The original document should be deleted", async function () {
+  return "pending";
+});
 
 async function uploadDocument(document) {
   const { UploadPage, CheckPage } = setUploadPagesForDocument(document)
