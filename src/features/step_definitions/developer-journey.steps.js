@@ -12,9 +12,7 @@ const baseUrl = process.env.SERVICE_URL || 'http://localhost:3000'
 Given('I enter my off site gain reference number as {string}', async (bngRefNumber) => {
   
   // set the bngRefNumber to use the mock variable if the environment the tests are running on is pre prod  // https://eaflood.atlassian.net/browse/BNGP-5407
-  console.log('baserurl = '+ baseUrl)
-  if(baseUrl == 'https://dev1-manage-biodiversity-gains.azure.defra.cloud'){
-  // if(baseUrl == 'https://pre2-manage-biodiversity-gains.azure.defra.cloud'){
+  if(baseUrl == 'https://pre2-manage-biodiversity-gains.azure.defra.cloud'){
     bngRefNumber = 'gFSTO7ZSVI3oglCbbYAn4VMXDZmhMjY1'
   }
   
