@@ -13,7 +13,6 @@ Feature: Upload Documents
     Scenario Outline: <jira ticket> 2, 6 - I cannot upload a <document> that is not in the specified format
         When I choose to add "<document>" details
         And I choose a file type that is not in the specified format for the "<document>"
-        # Todo needs mulitiple unspecified
         Then I should not be able to upload the file
         And I am informed of what the allowed file types should be
         Examples:
@@ -92,7 +91,7 @@ Feature: Upload Documents
             # | geospatial      |
             | metric          |
             | land-ownership  |
-
+    @new
     Scenario Outline: I should be able to upload and download .<filetype> filetype for <document> files
         When I choose to add "<document>" details
         Then I should be able to upload a "<document>" file with a filetype of "<filetype>"

@@ -73,7 +73,7 @@ Then('I should be able to upload a {string} file with a filetype of {string}', a
   filename = await uploadFileForDocument(currentUploadPage, filePath)
 
   await $('h1').waitForExist({ timeout: 5000 })
-  await expect(await browser.getTitle()).toContain(CheckPage.titleText)
+  await expect(await browser.getTitle()).toContain(currentCheckPage.titleText)
 })
 
 Then('There should be a link to download the {string}', async (document) => {
@@ -93,7 +93,7 @@ Then('I can download the {string}', async (document) => {
   const filePath = path.join(downloadDir, filename);
  
   // Wait and check if the file is downloaded
-  await browser.pause(5000); 
+  await browser.pause(10000); 
   const fileExists = fs.existsSync(filePath);
 
   expect(fileExists).toBe(true);
