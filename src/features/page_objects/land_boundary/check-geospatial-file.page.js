@@ -5,10 +5,6 @@ class LandBoundaryCheckGeospatialFile extends Page {
     return 'Check the geospatial file'
   }
 
-  get downloadLink () {
-    return $('#document-download')
-  }
-
   get path () {
     return 'land/check-geospatial-file'
   }

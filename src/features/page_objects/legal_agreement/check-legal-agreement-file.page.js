@@ -6,10 +6,6 @@ class LegalAgreementCheckFile extends Page {
     return 'Check the planning obligation (section 106 agreement) file'
   }
 
-  get downloadLink () {
-    return $('#document-download')
-  }
-
   open () {
     return super.open('land/check-legal-agreement-file')
   }

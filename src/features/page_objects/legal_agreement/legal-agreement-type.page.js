@@ -5,10 +5,6 @@ class LegalAgreementType extends Page {
     return 'Which legal agreement do you have?'
   }
 
-  get downloadLink () {
-    return $('#document-download')
-  }
-
   get conservationCovenant () {
     return $('#conservation-covenant')
   }

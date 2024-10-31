@@ -9,153 +9,19 @@ const developerTaskListPage = new DeveloperTaskListPage()
 const creditsTaskListPage = new CreditsTaskListPage()
 const combinedCaseTaskListPage = new CombinedCaseTaskListPage()
 
+
 When('I choose to add {string} details', async (task) => {
-  const status = 'Not started'
 
-  switch (task) {
-    case 'applicant-info': {
-      await expect(TaskList.applicantInfoStatus).toHaveText(status)
-      await TaskList.addApplicantInfo.click()
-      break
-    }
-    case 'land-ownership': {
-      await expect(TaskList.landOwnershipStatus).toHaveText(status)
-      await TaskList.addLandOwnership.click()
-      break
-    }
-    case 'land-boundary': {
-      await expect(TaskList.landBoundaryStatus).toHaveText(status)
-      await TaskList.addLandBoundary.click()
-      break
-    }
-    case 'metric': {
-      await expect(TaskList.metricStatus).toHaveText(status)
-      await TaskList.addMetric.click()
-      break
-    }
-    case 'legal-agreement': {
-      await expect(TaskList.legalAgreementStatus).toHaveText(status)
-      await TaskList.addLegalAgreement.click()
-      break
-    }
-    case 'local-land-charge': {
-      await expect(TaskList.localLandChargeStatus).toHaveText(status)
-      await TaskList.addLocallandCharge.click()
-      break
-    }
-    case 'check-and-submit': {
-      await expect(TaskList.submitStatus).toHaveText(status)
-      break
-    }
-    // Credits
-    case 'Statutory biodiversity metric': {
-      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
-      await creditsTaskListPage.uploadMetric.click()
-      break
-    }
-    case 'Credits Development Information': {
-      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
-      await creditsTaskListPage.addDevelopmentInformation.click()
-      break
-    }
-    case 'Statutory biodiversity credit': {
-      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
-      await creditsTaskListPage.addCredits.click()
-      break
-    }
-    case 'Purchase Order': {
-      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
-      await creditsTaskListPage.addPurchaseOrder.click()
-      break
-    }
-    case 'Customer due diligence': {
-      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
-      await creditsTaskListPage.addCustomerDueDiligence.click()
-      break
-    }
-    case 'terms and conditions': {
-      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
-      await creditsTaskListPage.acceptTermsAndConditions.click()
-      break
-    }
-    // Allocation
-    case 'biodiversity gain site information': {
-      expect(await browser.getTitle()).toContain(developerTaskListPage.titleText)
-      await developerTaskListPage.addBiodiversityGainSiteInfo.click()
-      break
-    }
-    case 'developer-applicant-info': {
-      expect(await browser.getTitle()).toContain(developerTaskListPage.titleText)
-      await developerTaskListPage.addapplicantDetails.click()
-      break
-    }
-    case 'Development Project': {
-      expect(await browser.getTitle()).toContain(developerTaskListPage.titleText)
-      await developerTaskListPage.addDevelopmentInformation.click()
-      break
-    }
-    case 'planning decision notice': {
-      expect(await browser.getTitle()).toContain(developerTaskListPage.titleText)
-      await developerTaskListPage.addPlanningDecisionNoticeInfo.click()
-      break
-    }
-    // Combined case - reg
-    case 'combined-case-applicant-info': {
-      await expect(combinedCaseTaskListPage.applicantInfoStatus).toHaveText(status)
-      await combinedCaseTaskListPage.addApplicantInfo.click()
-      break
-    }
-    case 'combined-case-land-ownership': {
-      await expect(combinedCaseTaskListPage.landOwnershipStatus).toHaveText(status)
-      await combinedCaseTaskListPage.addLandOwnership.click()
-      break
-    }
-    case 'combined-case-land-boundary': {
-      await expect(combinedCaseTaskListPage.landBoundaryStatus).toHaveText(status)
-      await combinedCaseTaskListPage.addLandBoundary.click()
-      break
-    }
-    case 'combined-case-metric': {
-      await expect(combinedCaseTaskListPage.metricStatus).toHaveText(status)
-      await combinedCaseTaskListPage.addMetric.click()
-      break
-    }
-    case 'combined-case-legal-agreement': {
-      await expect(combinedCaseTaskListPage.legalAgreementStatus).toHaveText(status)
-      await combinedCaseTaskListPage.addLegalAgreement.click()
-      break
-    }
-    case 'combined-case-local-land-charge': {
-      await expect(combinedCaseTaskListPage.localLandChargeStatus).toHaveText(status)
-      await combinedCaseTaskListPage.addLocallandCharge.click()
-      break
-    }
-    // Combined case - allocation
-    case 'combined case planning decision notice': {
-      await expect(combinedCaseTaskListPage.addPlanningDecisionNoticeStatus).toHaveText(status)
-      await combinedCaseTaskListPage.addPlanningDecisionNoticeInfo.click()
-      break
-    }
+    const status='Not started'
 
-    case 'match available habitat': {
-      expect(await browser.getTitle()).toContain(combinedCaseTaskListPage.titleText)
-      await combinedCaseTaskListPage.addMatchAvailableHabitats.click()
-      break
-    }
+    await getTasklistSections(task, status)
+})
 
-    case 'combined case Development Project': {
-      expect(await browser.getTitle()).toContain(combinedCaseTaskListPage.titleText)
-      await combinedCaseTaskListPage.addDevelopmentInformation.click()
-      break
-    }
-    case 'combined-case-check-and-submit': {
-      await expect(combinedCaseTaskListPage.submitStatus).toHaveText(status)
-      break
-    }
-    default:{
-      throw new Error(`Tasklist section ${task} doesn't exist`)
-    }
-  }
+When('I choose to edit {string} details', async (task) => {
+
+  const status='Completed'
+
+  await getTasklistSections(task, status)
 })
 
 When('I confirm I have completed all {string} journey sections', async (journey) => {
@@ -277,3 +143,150 @@ Then('I should see the {string} section status as {string}', async (task, status
     }
   }
 })
+async function getTasklistSections(task, status) {
+  switch (task) {
+    case 'applicant-info': {
+      await expect(TaskList.applicantInfoStatus).toHaveText(status)
+      await TaskList.addApplicantInfo.click()
+      break
+    }
+    case 'land-ownership': {
+      await expect(TaskList.landOwnershipStatus).toHaveText(status)
+      await TaskList.addLandOwnership.click()
+      break
+    }
+    case 'land-boundary': {
+      await expect(TaskList.landBoundaryStatus).toHaveText(status)
+      await TaskList.addLandBoundary.click()
+      break
+    }
+    case 'metric': {
+      await expect(TaskList.metricStatus).toHaveText(status)
+      await TaskList.addMetric.click()
+      break
+    }
+    case 'legal-agreement': {
+      await expect(TaskList.legalAgreementStatus).toHaveText(status)
+      await TaskList.addLegalAgreement.click()
+      break
+    }
+    case 'local-land-charge': {
+      await expect(TaskList.localLandChargeStatus).toHaveText(status)
+      await TaskList.addLocallandCharge.click()
+      break
+    }
+    case 'check-and-submit': {
+      await expect(TaskList.submitStatus).toHaveText(status)
+      break
+    }
+    // Credits
+    case 'Statutory biodiversity metric': {
+      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
+      await creditsTaskListPage.uploadMetric.click()
+      break
+    }
+    case 'Credits Development Information': {
+      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
+      await creditsTaskListPage.addDevelopmentInformation.click()
+      break
+    }
+    case 'Statutory biodiversity credit': {
+      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
+      await creditsTaskListPage.addCredits.click()
+      break
+    }
+    case 'Purchase Order': {
+      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
+      await creditsTaskListPage.addPurchaseOrder.click()
+      break
+    }
+    case 'Customer due diligence': {
+      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
+      await creditsTaskListPage.addCustomerDueDiligence.click()
+      break
+    }
+    case 'terms and conditions': {
+      expect(await browser.getTitle()).toContain(creditsTaskListPage.titleText)
+      await creditsTaskListPage.acceptTermsAndConditions.click()
+      break
+    }
+    // Allocation
+    case 'biodiversity gain site information': {
+      expect(await browser.getTitle()).toContain(developerTaskListPage.titleText)
+      await developerTaskListPage.addBiodiversityGainSiteInfo.click()
+      break
+    }
+    case 'developer-applicant-info': {
+      expect(await browser.getTitle()).toContain(developerTaskListPage.titleText)
+      await developerTaskListPage.addapplicantDetails.click()
+      break
+    }
+    case 'Development Project': {
+      expect(await browser.getTitle()).toContain(developerTaskListPage.titleText)
+      await developerTaskListPage.addDevelopmentInformation.click()
+      break
+    }
+    case 'planning-decision-notice': {
+      expect(await browser.getTitle()).toContain(developerTaskListPage.titleText)
+      await developerTaskListPage.addPlanningDecisionNoticeInfo.click()
+      break
+    }
+    // Combined case - reg
+    case 'combined-case-applicant-info': {
+      await expect(combinedCaseTaskListPage.applicantInfoStatus).toHaveText(status)
+      await combinedCaseTaskListPage.addApplicantInfo.click()
+      break
+    }
+    case 'combined-case-land-ownership': {
+      await expect(combinedCaseTaskListPage.landOwnershipStatus).toHaveText(status)
+      await combinedCaseTaskListPage.addLandOwnership.click()
+      break
+    }
+    case 'combined-case-land-boundary': {
+      await expect(combinedCaseTaskListPage.landBoundaryStatus).toHaveText(status)
+      await combinedCaseTaskListPage.addLandBoundary.click()
+      break
+    }
+    case 'combined-case-metric': {
+      await expect(combinedCaseTaskListPage.metricStatus).toHaveText(status)
+      await combinedCaseTaskListPage.addMetric.click()
+      break
+    }
+    case 'combined-case-legal-agreement': {
+      await expect(combinedCaseTaskListPage.legalAgreementStatus).toHaveText(status)
+      await combinedCaseTaskListPage.addLegalAgreement.click()
+      break
+    }
+    case 'combined-case-local-land-charge': {
+      await expect(combinedCaseTaskListPage.localLandChargeStatus).toHaveText(status)
+      await combinedCaseTaskListPage.addLocallandCharge.click()
+      break
+    }
+    // Combined case - allocation
+    case 'combined case planning decision notice': {
+      await expect(combinedCaseTaskListPage.addPlanningDecisionNoticeStatus).toHaveText(status)
+      await combinedCaseTaskListPage.addPlanningDecisionNoticeInfo.click()
+      break
+    }
+
+    case 'combined-case-developer-metric': {
+      expect(await browser.getTitle()).toContain(combinedCaseTaskListPage.titleText)
+      await combinedCaseTaskListPage.addMatchAvailableHabitats.click()
+      break
+    }
+
+    case 'combined case Development Project': {
+      expect(await browser.getTitle()).toContain(combinedCaseTaskListPage.titleText)
+      await combinedCaseTaskListPage.addDevelopmentInformation.click()
+      break
+    }
+    case 'combined-case-check-and-submit': {
+      await expect(combinedCaseTaskListPage.submitStatus).toHaveText(status)
+      break
+    }
+    default: {
+      throw new Error(`Tasklist section ${task} doesn't exist`)
+    }
+  }
+}
+

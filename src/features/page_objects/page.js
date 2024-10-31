@@ -31,12 +31,16 @@ module.exports = class Page {
     return $('.govuk-file-upload')
   }
 
-  get manageBngNavLink () {
-    return $('#link-manage-account')
+  get manageBngNavLink(){
+    return $("#link-manage-account");
   }
 
-  get errorMsg () {
-    return $('.govuk-error-message')
+  get downloadLink () {
+    return $('#document-download')
+  }
+
+  get errorMsg() {
+    return $(".govuk-error-message");
   }
 
   get errorMsgSummary () {
@@ -148,9 +152,8 @@ module.exports = class Page {
     return $('*[data-testid="application-reference-value"]')
   }
 
-  get addDevelopmentInformationStatus () {
-    return $("#add-devlopment-project-information-status");
-    // Todo get dev to fix id typo
+  get addDevelopmentInformationStatus() {
+    return $("#add-development-project-information-status");
   }
 
   get localPlanningAuthority () {

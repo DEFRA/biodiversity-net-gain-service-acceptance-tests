@@ -7,7 +7,6 @@ Feature: Developer Journey Tests
 
     Background: Choose to record off-site gains for a new development
         Given I choose to manage biodiversity gains
-        # // nav bar manage link should really be baseurl
         And I choose to manage my off-site gains for my development projects
         And I choose to record off-site gains for a new development
         And I am on the "developer/tasklist" page
@@ -23,6 +22,7 @@ Feature: Developer Journey Tests
         And I should see the "Development Project" section status as "Not started"
         And I should see the "planning decision notice" section status as "Not started"
         And I should see the "check-and-submit" section status as "Cannot start yet"
+
     @e2e
     Scenario: https://eaflood.atlassian.net/browse/BNGP-2964 1 - The Allocation Biodiversity Gain Site Reference is displayed
         # Applicant Info
@@ -44,7 +44,7 @@ Feature: Developer Journey Tests
         And I have completed the "allocation" Development Information section
 
         # Upload planning decision notice
-        And I choose to add "planning decision notice" details
+        And I choose to add "planning-decision-notice" details
         And I upload a "planning-decision-notice" file
         And I confirm it is the correct file
 
@@ -70,3 +70,13 @@ Feature: Developer Journey Tests
             | internally-removed | This reference is for a gain site which is no longer registered.                            |
             | inactive           | This reference is for a gain site which has been withdrawn from registration.               |
             | doesNotExist       | The gain site reference was not recognised - enter a reference for an approved gain site.   |
+    @skip()
+    Scenario Outline: https://eaflood.atlassian.net/browse/BNGP-5505 I should be able to upload and download a .<filetype> filetype for <document> files
+        When I choose to add "<document>" details
+        Then I should be able to upload a "<document>" file with a filetype of "<filetype>"
+        And I can download the "<document>"
+        Examples:
+            | document                 | filetype |
+            | planning-decision-notice | doc      |
+            | planning-decision-notice | docx     |
+            | planning-decision-notice | pdf      |

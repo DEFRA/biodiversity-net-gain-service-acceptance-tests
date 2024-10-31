@@ -6,10 +6,6 @@ class LocalLandChargeCheckPage extends Page {
     return 'Check the local land charge search certificate file'
   }
 
-  get downloadLink () {
-    return $('#document-download')
-  }
-
   open () {
     return super.open('land/check-local-land-charge')
   }

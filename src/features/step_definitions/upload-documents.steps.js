@@ -2,10 +2,11 @@ const { When, Then } = require('@wdio/cucumber-framework')
 const { join, basename } = require('node:path')
 const pages = require('../page_objects/page_objects')
 const { setUploadPagesForDocument, uploadFileForDocument, getFilePathForDocument } = require('../utils/documentUploadHelper')
+const fs = require('fs');
+const path = require('path');
 
 let UploadPage = ''
 let CheckPage = ''
-
 let filename = ''
 let filePath = ''
 let remoteFilePath = ''
@@ -72,19 +73,37 @@ Then('I should be able to upload a {string} file with a filetype of {string}', a
   filename = await uploadFileForDocument(currentUploadPage, filePath)
 
   await $('h1').waitForExist({ timeout: 5000 })
-  await expect(await browser.getTitle()).toContain(CheckPage.titleText)
+  await expect(await browser.getTitle()).toContain(currentCheckPage.titleText)
 })
 
-Then('There should be a link to download the document', async () => {
+Then('There should be a link to download the {string}', async (document) => {
   await currentCheckPage.downloadLink.waitForExist({ timeout: 5000 })
   const link = await currentCheckPage.downloadLink
   await expect(link).toHaveText(filename)
   await expect(link.getAttribute('href')).not.toBeNull()
+});
+
+Then('I can download the {string}', async (document) => {
+  await currentCheckPage.downloadLink.waitForExist({ timeout: 5000 })
+  const link = await currentCheckPage.downloadLink
+  await link.click();
+
+  // Define the download path and check for the file
+  const downloadDir = path.resolve(__dirname, '../../TestFiles/downloads'); 
+  const filePath = path.join(downloadDir, filename);
+ 
+  // Wait and check if the file is downloaded
+  await browser.pause(10000); 
+  const fileExists = fs.existsSync(filePath);
+
+  expect(fileExists).toBe(true);
+
 })
 
-Then('I should be able to see the filesize of the document as {string}', async (filesize) => {
-  await expect(currentCheckPage.filesizeIndicator).toHaveText(filesize)
-})
+Then("I should be able to see the filesize of the document as {string}", async (filesize) => {
+  // get actual filesize of test file
+  await expect(currentCheckPage.filesizeIndicator).toHaveText(filesize);
+});
 
 When('I upload a file that contains malware or a virus', async () => {
   const filePath = join(__dirname, '../../TestFiles/test_eicar-adobe-acrobat-attachment.pdf')
@@ -228,9 +247,9 @@ When('I choose a {string} file of {string} or {string} Bytes', async (byteType, 
   await UploadPage.continueButton.click()
 })
 
-Then('The original document should be deleted', async function () {
-  return 'pending'
-})
+Then("The original document should be deleted", async function () {
+  return "pending";
+});
 
 async function uploadDocument(document) {
   const { UploadPage, CheckPage } = setUploadPagesForDocument(document)
@@ -246,4 +265,3 @@ async function uploadDocument(document) {
 async function getcurrentUploadPagesOrDefault(defaultPage = 'legal-agreement-cc-upload') {
   return currentUploadPage || pages[defaultPage]; // Return the current page if set, otherwise use a default
 }
-
