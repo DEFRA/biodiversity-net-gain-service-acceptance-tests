@@ -22,6 +22,7 @@ Feature: Developer Journey Tests
         And I should see the "Development Project" section status as "Not started"
         And I should see the "planning decision notice" section status as "Not started"
         And I should see the "check-and-submit" section status as "Cannot start yet"
+
     @e2e
     Scenario: https://eaflood.atlassian.net/browse/BNGP-2964 1 - The Allocation Biodiversity Gain Site Reference is displayed
         # Applicant Info

@@ -91,7 +91,7 @@ Feature: Upload Documents
             # | geospatial      |
             | metric          |
             | land-ownership  |
-    @new
+
     Scenario Outline: I should be able to upload and download .<filetype> filetype for <document> files
         When I choose to add "<document>" details
         Then I should be able to upload a "<document>" file with a filetype of "<filetype>"
