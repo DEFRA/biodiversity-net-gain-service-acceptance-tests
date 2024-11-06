@@ -2,11 +2,11 @@ const { When, Then } = require('@wdio/cucumber-framework')
 const { join, basename } = require('node:path')
 const pages = require('../page_objects/page_objects')
 const { setUploadPagesForDocument, uploadFileForDocument, getFilePathForDocument } = require('../utils/documentUploadHelper')
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
+const path = require('path')
 
 let UploadPage = ''
-let CheckPage = ''
+const CheckPage = ''
 let filename = ''
 let filePath = ''
 let remoteFilePath = ''
@@ -14,30 +14,28 @@ let currentUploadPage = pages['legal-agreement-cc-upload']
 let currentCheckPage = pages['legal-agreement-check']
 
 When('I upload a {string} file', async (document) => {
-
-    // pre steps/pages needed to get to the legal agreement upload page      
-    if(document == 'legal-agreement'){
-      // await pages['register-land-task-list'].addLegalAgreement.click()
-      await pages['legal-agreement-type'].conservationCovenant.click()
-      await pages['legal-agreement-type'].continueButton.click()
-      await pages['need-add-all-legal-files'].continueButton.click()
-    }
+  // pre steps/pages needed to get to the legal agreement upload page
+  if (document == 'legal-agreement') {
+    // await pages['register-land-task-list'].addLegalAgreement.click()
+    await pages['legal-agreement-type'].conservationCovenant.click()
+    await pages['legal-agreement-type'].continueButton.click()
+    await pages['need-add-all-legal-files'].continueButton.click()
+  }
 
   await uploadDocument(document)
 })
 
 When('I try to upload a {string} without choosing a file', async (document) => {
-    
-  // pre steps/pages needed to get to the legal agreement upload page      
-    if(document == 'legal-agreement'){
-      // await pages['register-land-task-list'].addLegalAgreement.click()
-      await pages['legal-agreement-type'].conservationCovenant.click()
-      await pages['legal-agreement-type'].continueButton.click()
-      await pages['need-add-all-legal-files'].continueButton.click()
-    }
+  // pre steps/pages needed to get to the legal agreement upload page
+  if (document == 'legal-agreement') {
+    // await pages['register-land-task-list'].addLegalAgreement.click()
+    await pages['legal-agreement-type'].conservationCovenant.click()
+    await pages['legal-agreement-type'].continueButton.click()
+    await pages['need-add-all-legal-files'].continueButton.click()
+  }
 
-    await currentUploadPage.uploadButton.click()
-  })
+  await currentUploadPage.uploadButton.click()
+})
 
 When('I choose and upload the same file', async () => {
   remoteFilePath = await browser.uploadFile(filePath)
@@ -50,9 +48,8 @@ When('I choose and upload the same file', async () => {
 })
 
 Then('I should be able to upload a {string} file with a filetype of {string}', async (document, filetype) => {
-  
-  // pre steps/pages needed to get to the legal agreement upload page      
-  if(document == 'legal-agreement'){
+  // pre steps/pages needed to get to the legal agreement upload page
+  if (document == 'legal-agreement') {
     // await pages['register-land-task-list'].addLegalAgreement.click()
     await pages['legal-agreement-type'].conservationCovenant.click()
     await pages['legal-agreement-type'].continueButton.click()
@@ -60,11 +57,11 @@ Then('I should be able to upload a {string} file with a filetype of {string}', a
   }
 
   const { UploadPage, CheckPage } = setUploadPagesForDocument(document)
-  currentUploadPage = UploadPage; // Set the active upload page
-  currentCheckPage = CheckPage; // Set the active Check page
+  currentUploadPage = UploadPage // Set the active upload page
+  currentCheckPage = CheckPage // Set the active Check page
 
-  if(document == "metric"){
-    filePath = join(__dirname, "../../TestFiles/test_metric." + filetype);
+  if (document == 'metric') {
+    filePath = join(__dirname, '../../TestFiles/test_metric.' + filetype)
   } else {
     filePath = join(__dirname, '../../TestFiles/test_12kb.' + filetype)
   }
@@ -81,29 +78,28 @@ Then('There should be a link to download the {string}', async (document) => {
   const link = await currentCheckPage.downloadLink
   await expect(link).toHaveText(filename)
   await expect(link.getAttribute('href')).not.toBeNull()
-});
+})
 
 Then('I can download the {string}', async (document) => {
   await currentCheckPage.downloadLink.waitForExist({ timeout: 5000 })
   const link = await currentCheckPage.downloadLink
-  await link.click();
+  await link.click()
 
   // Define the download path and check for the file
-  const downloadDir = path.resolve(__dirname, '../../TestFiles/downloads'); 
-  const filePath = path.join(downloadDir, filename);
- 
+  const downloadDir = './src/TestFiles/downloads'
+  const filePath = path.join(downloadDir, filename)
+
   // Wait and check if the file is downloaded
-  await browser.pause(10000); 
-  const fileExists = fs.existsSync(filePath);
+  await browser.pause(10000)
+  const fileExists = fs.existsSync(filePath)
 
-  expect(fileExists).toBe(true);
-
+  expect(fileExists).toBe(true)
 })
 
-Then("I should be able to see the filesize of the document as {string}", async (filesize) => {
+Then('I should be able to see the filesize of the document as {string}', async (filesize) => {
   // get actual filesize of test file
-  await expect(currentCheckPage.filesizeIndicator).toHaveText(filesize);
-});
+  await expect(currentCheckPage.filesizeIndicator).toHaveText(filesize)
+})
 
 When('I upload a file that contains malware or a virus', async () => {
   const filePath = join(__dirname, '../../TestFiles/test_eicar-adobe-acrobat-attachment.pdf')
@@ -117,9 +113,9 @@ When('I upload a file that contains malware or a virus', async () => {
 
 When('I choose a file type that is not in the specified format for the {string}', async (document) => {
   const { UploadPage, CheckPage } = setUploadPagesForDocument(document)
-  currentUploadPage = UploadPage; // Set the active upload page
-  currentCheckPage = CheckPage; // Set the active upload check page
-  
+  currentUploadPage = UploadPage // Set the active upload page
+  currentCheckPage = CheckPage // Set the active upload check page
+
   const filePath = join(__dirname, '../../TestFiles/test.txt')
   const remoteFilePath = await browser.uploadFile(filePath)
   browser.url(UploadPage.path)
@@ -247,21 +243,21 @@ When('I choose a {string} file of {string} or {string} Bytes', async (byteType, 
   await UploadPage.continueButton.click()
 })
 
-Then("The original document should be deleted", async function () {
-  return "pending";
-});
+Then('The original document should be deleted', async function () {
+  return 'pending'
+})
 
-async function uploadDocument(document) {
+async function uploadDocument (document) {
   const { UploadPage, CheckPage } = setUploadPagesForDocument(document)
-  currentUploadPage = UploadPage; // Set the active upload page
-  currentCheckPage = CheckPage; // Set the active Check page
+  currentUploadPage = UploadPage // Set the active upload page
+  currentCheckPage = CheckPage // Set the active Check page
 
   const filePath = getFilePathForDocument(document)
 
   // Upload the document and get the filename
   filename = await uploadFileForDocument(currentUploadPage, filePath)
-  }
+}
 
-async function getcurrentUploadPagesOrDefault(defaultPage = 'legal-agreement-cc-upload') {
-  return currentUploadPage || pages[defaultPage]; // Return the current page if set, otherwise use a default
+async function getcurrentUploadPagesOrDefault (defaultPage = 'legal-agreement-cc-upload') {
+  return currentUploadPage || pages[defaultPage] // Return the current page if set, otherwise use a default
 }
