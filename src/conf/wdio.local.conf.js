@@ -1,9 +1,12 @@
 // for attatchments https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter#attachment
-//https://www.npmjs.com/package/cucumber-html-reporter
+// https://www.npmjs.com/package/cucumber-html-reporter
 // import cucumberJson from "wdio-cucumberjs-json-reporter";
-const path = require("path");
-const fs = require("fs");
-const downloadDir = path.resolve(process.cwd(), "./src/TestFiles/downloads")
+const path = require('path')
+const fs = require('fs')
+const downloadDir = path.resolve(process.cwd(), './src/TestFiles/downloads')
+console.log('====Download Dir====')
+console.log(downloadDir)
+console.log('====Download Dir====')
 
 exports.config = {
   // Browserstack Config
@@ -15,7 +18,7 @@ exports.config = {
   // Runner Configuration
   // ====================
   //
-  runner: "local",
+  runner: 'local',
   //
   // ==================
   // Specify Test Files
@@ -32,7 +35,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./src/features/**/*.feature"],
+  specs: ['./src/features/**/*.feature'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -53,8 +56,8 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 3,  
-  restartBrowserBetweenTests: true,  // Restart browser between tests to prevent state leakage
+  maxInstances: 3,
+  restartBrowserBetweenTests: true, // Restart browser between tests to prevent state leakage
 
   //
   // If you have trouble getting all important capabilities together, check out the
@@ -68,24 +71,24 @@ exports.config = {
       // 5 instances get started at a time.
       // maxInstances: 10,
       //
-     
-    "browserName": "chrome",
+
+      browserName: 'chrome',
       // "browserVersion": "122.0.6258.0",
       // "browserVersion": "stable",
       // "acceptInsecureCerts": true,
-      "goog:chromeOptions": {
-        "args": [
-          "--headless", 
-          "--disable-logging",
-          "--disable-webrtc",
-          "--disable-media-stream",
-           "--disable-background-timer-throttling"
+      'goog:chromeOptions': {
+        args: [
+          '--headless',
+          '--disable-logging',
+          '--disable-webrtc',
+          '--disable-media-stream',
+          '--disable-background-timer-throttling'
         ],
-        "prefs": {
-            "download.default_directory": downloadDir, 
-            "download.prompt_for_download": false,
-            "download.directory_upgrade": true,
-           "safebrowsing.enabled": true
+        prefs: {
+          'download.default_directory': downloadDir,
+          'download.prompt_for_download': false,
+          'download.directory_upgrade': true,
+          'safebrowsing.enabled': true
         }
       }
     }
@@ -101,7 +104,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: "error",
+  logLevel: 'error',
   //
   // Set specific log levels per logger
   // loggers:
@@ -126,13 +129,13 @@ exports.config = {
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
 
-  baseUrl: process.env.SERVICE_URL || "http://localhost:3000",
-  //"http://localhost:3000",
+  baseUrl: process.env.SERVICE_URL || 'http://localhost:3000',
+  // "http://localhost:3000",
   // process.env.BNG_FE_POC_URL,
   // process.env.BNG_FE_POC2_URL,
   // process.env.BNG_FE_POC3_URL,
   // process.env.BNG_FE_DEV_URL,
-  // process.env.BNG_FE_TST1_URL, 
+  // process.env.BNG_FE_TST1_URL,
   // process.env.BNG_FE_TST2_URL,
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -152,7 +155,7 @@ exports.config = {
   // ...
   // services: [
   //   // //if this is uncommented, don't need to run selenium-standalone start separately
-    
+
   //   "chromedriver",
   //   // ["browserstack", { browserstackLocal: true, preferScenarioName: true }],
   // ],
@@ -163,22 +166,22 @@ exports.config = {
   //
   // Make sure you have the wdio adapter package for the specific framework installed
   // before running any tests.
-  framework: "cucumber",
+  framework: 'cucumber',
   //
   // The number of times to retry the entire specfile when it fails as a whole
-    //  specFileRetries: 1,
+  //  specFileRetries: 1,
   //
   // Delay in seconds between the spec file retry attempts
-     specFileRetriesDelay: 0,
+  specFileRetriesDelay: 0,
   //
   // Whether or not retried specfiles should be retried immediately or deferred to the end of the queue
-     specFileRetriesDeferred: false,
+  specFileRetriesDeferred: false,
   //
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
-    "spec",
+    'spec',
     // [
     //   "cucumberjs-json",
     //   {
@@ -194,7 +197,7 @@ exports.config = {
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: ["./src/features/step_definitions/**/*.steps.js"],
+    require: ['./src/features/step_definitions/**/*.steps.js'],
     // <boolean> show full backtrace for errors
     backtrace: true,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -204,7 +207,7 @@ exports.config = {
     // <boolean> abort the run on first failure
     failFast: false,
     // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
-    format: ["pretty"],
+    format: ['pretty'],
     // <boolean> hide step definition snippets for pending steps
     snippets: true,
     // <boolean> hide source uris
@@ -212,11 +215,11 @@ exports.config = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tags: "@new",
+    tags: '@new',
     // <number> timeout for step definitions
     timeout: 60000,
     // <boolean> Enable this config to treat undefined definitions as warnings.
-    ignoreUndefinedDefinitions: true,
+    ignoreUndefinedDefinitions: true
   },
 
   //
@@ -273,30 +276,30 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-   before: async () => {
-      // browser.setCookies([{name: 'seen_cookie_message', value: 'true'}])
-      const loginPage = require("../features/page_objects/login.page");
-      const username = process.env.BNG_FE_LOGIN_USER;
-      const password = process.env.BNG_FE_LOGIN_PASSWORD;
+  before: async () => {
+    // browser.setCookies([{name: 'seen_cookie_message', value: 'true'}])
+    const loginPage = require('../features/page_objects/login.page')
+      const username = process.env.BNG_FE_LOGIN_USER
+      const password = process.env.BNG_FE_LOGIN_PASSWORD
       // Set the baseUrl
-      const baseUrl = process.env.SERVICE_URL || "http://localhost:3000"
-      // BNGP-4486 - /signin redirects to gov gateway
-      const startPagePath = '/signin';
+      const baseUrl = process.env.SERVICE_URL || 'http://localhost:3000'
+    // BNGP-4486 - /signin redirects to gov gateway
+    const startPagePath = '/signin'
       // Combine the baseUrl and startPagePath to get the complete login page URL
-      const startPageUrl = baseUrl + startPagePath;
-      console.log(`Navigating to: ${startPageUrl}`);
+      const startPageUrl = baseUrl + startPagePath
+      console.log(`Navigating to: ${startPageUrl}`)
       
       // Navigate to the login page URL 
-      await browser.url(startPageUrl);
-      await $("h1").waitForExist();
+      await browser.url(startPageUrl)
+      await $('h1').waitForExist()
       // assert against the page title
-      await expect(await browser.getTitle()).toContain(loginPage.titleText);
+      await expect(await browser.getTitle()).toContain(loginPage.titleText)
 
       // Log in the user before the feature
-      await loginPage.login(username, password);
+      await loginPage.login(username, password)
     
       //And I am logged in to the service
-      await loginPage.isLoggedIn();
+      await loginPage.isLoggedIn()
    },
   /**
    * Runs before a WebdriverIO command gets executed.
@@ -325,10 +328,10 @@ exports.config = {
     if (fs.existsSync(downloadDir)) {
       // Read all files in the directory
       fs.readdirSync(downloadDir).forEach((file) => {
-        const filePath = path.join(downloadDir, file);
+        const filePath = path.join(downloadDir, file)
         // Delete each file individually
-        fs.unlinkSync(filePath);
-      });
+        fs.unlinkSync(filePath)
+      })
     }
   },
   /**
@@ -378,7 +381,7 @@ exports.config = {
    */
   afterFeature: function (uri, feature) {
     // reload browser session for long runs
-    browser.reloadSession();
+    browser.reloadSession()
   },
 
   /**
@@ -406,7 +409,7 @@ exports.config = {
    * @param {Array.<String>} specs List of spec file paths that ran
    */
   // afterSession: function (config, capabilities, specs) {
-    
+
   // },
   /**
    * Gets executed after all workers got shut down and the process is about to exit. An error
@@ -426,4 +429,4 @@ exports.config = {
    */
   // onReload: function(oldSessionId, newSessionId) {
   // }
-};
+}
