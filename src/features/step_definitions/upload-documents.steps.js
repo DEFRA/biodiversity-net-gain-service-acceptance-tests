@@ -94,7 +94,10 @@ Then('I can download the {string}', async (document) => {
   console.log('====File Path====')
 
   // Wait and check if the file is downloaded
-  const fileExists = await browser.waitUntil(async () => await fs.existsSync(filePath), 10000)
+  const fileExists = await browser.waitUntil(async () => await fs.existsSync(filePath), {
+    timeout: 10000,
+    timeoutMsg: 'expected file to be downloaded after 10s'
+  })
 
   expect(fileExists).toBe(true)
 })
