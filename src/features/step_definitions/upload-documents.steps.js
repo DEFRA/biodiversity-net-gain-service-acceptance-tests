@@ -86,12 +86,15 @@ Then('I can download the {string}', async (document) => {
   await link.click()
 
   // Define the download path and check for the file
-  const downloadDir = './src/TestFiles/downloads'
+  const downloadDir = join(__dirname, '../../TestFiles/downloads')
   const filePath = path.join(downloadDir, filename)
 
+  console.log('====File Path====')
+  console.log(filePath)
+  console.log('====File Path====')
+
   // Wait and check if the file is downloaded
-  await browser.pause(10000)
-  const fileExists = fs.existsSync(filePath)
+  const fileExists = await browser.waitUntil(async () => await fs.existsSync(filePath), 10000)
 
   expect(fileExists).toBe(true)
 })
