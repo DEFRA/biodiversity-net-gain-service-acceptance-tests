@@ -4,9 +4,6 @@
 const path = require('path')
 const fs = require('fs')
 const downloadDir = path.resolve(process.cwd(), './src/TestFiles/downloads')
-console.log('====Download Dir====')
-console.log(downloadDir)
-console.log('====Download Dir====')
 
 exports.config = {
   // Browserstack Config
@@ -181,7 +178,7 @@ exports.config = {
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
-    'spec',
+    'spec'
     // [
     //   "cucumberjs-json",
     //   {
@@ -279,28 +276,28 @@ exports.config = {
   before: async () => {
     // browser.setCookies([{name: 'seen_cookie_message', value: 'true'}])
     const loginPage = require('../features/page_objects/login.page')
-      const username = process.env.BNG_FE_LOGIN_USER
-      const password = process.env.BNG_FE_LOGIN_PASSWORD
-      // Set the baseUrl
-      const baseUrl = process.env.SERVICE_URL || 'http://localhost:3000'
+    const username = process.env.BNG_FE_LOGIN_USER
+    const password = process.env.BNG_FE_LOGIN_PASSWORD
+    // Set the baseUrl
+    const baseUrl = process.env.SERVICE_URL || 'http://localhost:3000'
     // BNGP-4486 - /signin redirects to gov gateway
     const startPagePath = '/signin'
-      // Combine the baseUrl and startPagePath to get the complete login page URL
-      const startPageUrl = baseUrl + startPagePath
-      console.log(`Navigating to: ${startPageUrl}`)
-      
-      // Navigate to the login page URL 
-      await browser.url(startPageUrl)
-      await $('h1').waitForExist()
-      // assert against the page title
-      await expect(await browser.getTitle()).toContain(loginPage.titleText)
+    // Combine the baseUrl and startPagePath to get the complete login page URL
+    const startPageUrl = baseUrl + startPagePath
+    console.log(`Navigating to: ${startPageUrl}`)
 
-      // Log in the user before the feature
-      await loginPage.login(username, password)
-    
-      //And I am logged in to the service
-      await loginPage.isLoggedIn()
-   },
+    // Navigate to the login page URL
+    await browser.url(startPageUrl)
+    await $('h1').waitForExist()
+    // assert against the page title
+    await expect(await browser.getTitle()).toContain(loginPage.titleText)
+
+    // Log in the user before the feature
+    await loginPage.login(username, password)
+
+    // And I am logged in to the service
+    await loginPage.isLoggedIn()
+  },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
@@ -382,7 +379,7 @@ exports.config = {
   afterFeature: function (uri, feature) {
     // reload browser session for long runs
     browser.reloadSession()
-  },
+  }
 
   /**
    * Runs after a WebdriverIO command gets executed
