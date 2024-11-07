@@ -89,10 +89,6 @@ Then('I can download the {string}', async (document) => {
   const downloadDir = join(__dirname, '../../TestFiles/downloads')
   const filePath = path.join(downloadDir, filename)
 
-  console.log('====File Path====')
-  console.log(filePath)
-  console.log('====File Path====')
-
   // Wait and check if the file is downloaded
   const fileExists = await browser.waitUntil(async () => await fs.existsSync(filePath), {
     timeout: 10000,

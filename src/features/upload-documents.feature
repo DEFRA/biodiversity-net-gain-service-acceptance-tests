@@ -1,4 +1,3 @@
-@regression
 Feature: Upload Documents
 
     As a Site Provider
