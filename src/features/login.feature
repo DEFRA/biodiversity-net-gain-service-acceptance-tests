@@ -1,4 +1,3 @@
-@regression
 Feature: Login
     As an Authenticated User
     I need to be directed to the correct landing page
